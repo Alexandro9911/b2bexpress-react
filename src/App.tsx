@@ -27,20 +27,20 @@ function App() {
           <NavMenu/>
           <section id="aboutUs" data-section='section1' className="section-item">
             <Section1_2/>
-            <Section1_3/>
+            {/*<Section1_3/>*/}
           </section>
         </section>
-        <section id="services" data-section="section2" className="section-item">
-          <Section2/>
-          <Section2_1/>
-          <Section2_2/>
-        </section>
-        <section id="feedback" data-section="section3" className="section-item">
-          <Section3/>
-        </section>
-        <section id='contacts' data-section="section4" className="section-item">
-          <Section4/>
-        </section>
+        {/*<section id="services" data-section="section2" className="section-item">*/}
+        {/*  <Section2/>*/}
+        {/*  <Section2_1/>*/}
+        {/*  <Section2_2/>*/}
+        {/*</section>*/}
+        {/*<section id="feedback" data-section="section3" className="section-item">*/}
+        {/*  <Section3/>*/}
+        {/*</section>*/}
+        {/*<section id='contacts' data-section="section4" className="section-item">*/}
+        {/*  <Section4/>*/}
+        {/*</section>*/}
       </div>
       <ScrollToTopButton />
     </div>

@@ -1,26 +1,55 @@
 .overlay-wrapper
   position: relative
   width: 100%
-  min-height: 605px  // Минимальная высота секции
+  min-height: 605px
   overflow: hidden
 
-  .background-image
+  // Фоновое изображение
+  .overlay-background-img
     position: absolute
     top: 0
     left: 0
     width: 100%
     height: 100%
+    object-fit: cover
+    pointer-events: none  // клики проходят сквозь
     z-index: 0
-    img
-      width: 100%
-      height: 100%
-      object-fit: cover
+
+  // Контент поверх фона
+  .content-overlay
+    position: relative
+    z-index: 1
+    padding: 50px 20px 40px
+    box-sizing: border-box
+    width: 100%
+    max-width: 1200px
+    margin: 0 auto
+
+// Адаптивность
+@media (max-width: 1024px)
+  .overlay-wrapper
+    min-height: 520px
 
   .content-overlay
-    position: absolute
-    top: 100px
-    left: 0
-    width: 100%
-    z-index: 1
-    box-sizing: border-box
-    padding: 0 20px
+    padding: 80px 16px 32px
+
+@media (max-width: 768px)
+  .overlay-wrapper
+    min-height: 480px
+
+  .content-overlay
+    padding: 70px 16px 28px
+
+@media (max-width: 480px)
+  .overlay-wrapper
+    min-height: 420px
+
+  .content-overlay
+    padding: 60px 12px 24px
+
+@media (max-width: 360px)
+  .overlay-wrapper
+    min-height: 380px
+
+  .content-overlay
+    padding: 50px 10px 20px

@@ -3,17 +3,16 @@ import './styles.sass';
 import Button from "../common/button/Button.tsx";
 import React from "react";
 
-export default function Header(){
-
+export default function Header() {
   const onButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(e)
-    // open modal
-  }
+    console.log(e);
+    // Здесь можно открыть модальное окно
+  };
 
   return (
     <header className="header">
       <div className="header__main-logo">
-        <img src={MainLogo} alt="Логотип"/>
+        <img src={MainLogo} alt="Логотип компании" />
       </div>
       <div className="header__title">
         <h2>Ваша задача - Наше решение</h2>
@@ -24,7 +23,7 @@ export default function Header(){
       </div>
       <div className="header__buttons">
         <Button
-          isLink={false}
+          //isLink={false}
           onClickHandler={onButtonClick}
           classNames="btn btn_medium"
           disabled={false}
@@ -33,5 +32,5 @@ export default function Header(){
         </Button>
       </div>
     </header>
-  )
+  );
 }
