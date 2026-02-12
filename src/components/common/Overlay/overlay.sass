@@ -1,0 +1,26 @@
+.overlay-wrapper
+  position: relative
+  width: 100%
+  min-height: 605px  // Минимальная высота секции
+  overflow: hidden
+
+  .background-image
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    z-index: 0
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+
+  .content-overlay
+    position: absolute
+    top: 100px
+    left: 0
+    width: 100%
+    z-index: 1
+    box-sizing: border-box
+    padding: 0 20px
