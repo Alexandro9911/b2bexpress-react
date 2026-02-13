@@ -1,4 +1,4 @@
-import CardWithButton from "../../Cards/CardWithButton/CardWithButton.tsx";
+import React, { useEffect, useRef, useState } from 'react';
 import AutoImage from '../../../assets/images/auto-transport.jpg';
 import SpecialTechImage from '../../../assets/images/special-technic.jpg';
 import TrainImage from '../../../assets/images/train.jpg';
@@ -6,96 +6,157 @@ import CourierImage from '../../../assets/images/Courier.jpg';
 import ShipImage from '../../../assets/images/ship.jpg';
 import PlaneImage from '../../../assets/images/plane.jpg';
 import Section2Image from '../../../assets/images/section2.jpg';
-import React from "react";
-import Overlay from "../../common/Overlay/Overlay.tsx";
-import './Section2.sass'
-import {OpenModal} from "../../../utils/modal.tsx";
-import Caruselle from "../../Caruselle/Caruselle.tsx";
+import Overlay from '../../common/Overlay/Overlay.tsx';
+import { OpenModal } from '../../../utils/modal.tsx';
+import './Section2.sass';
+
+interface Service {
+  imageSrc: string;
+  title: string;
+  content: string;
+  buttonText: string;
+}
 
 export default function Section2() {
+  const [visibleItems, setVisibleItems] = useState<Record<number, boolean>>({});
 
-  const data = [
+  // Создаём массив ref'ов безопасно — через useRef и инициализацию при первом рендере
+  const containerRef = useRef<HTMLDivElement>(null);
+  const blockRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const data: Service[] = [
     {
       imageSrc: AutoImage,
-      buttonStyle: '',
-      buttonText: 'Рассчитать стоимость',
       title: 'Авто',
-      content: `<ul><li>Тентованные, бортовые прицепы(с конниками и без) до 30 тонн.</li><li>Контейнеровозы, лесовозы, автовозы.</li><li>Рефрижераторы, термобудки до 20 тонн.</li><li>Фуры с низкорамными платформами, тралы, телескопические фуры с выдвигающейся платформой до 90 тонн.</li><li>Самосвалы до 40 тонн.</li></ul>`
+      content: `
+        <ul>
+          <li>Тентованные, бортовые прицепы (с конниками и без) до 30 тонн.</li>
+          <li>Контейнеровозы, лесовозы, автовозы.</li>
+          <li>Рефрижераторы, термобудки до 20 тонн.</li>
+          <li>Фуры с низкорамными платформами, тралы до 90 тонн.</li>
+          <li>Самосвалы до 40 тонн.</li>
+        </ul>
+      `,
+      buttonText: 'Рассчитать стоимость',
     },
-
     {
       imageSrc: SpecialTechImage,
-      buttonStyle: '',
+      title: 'Спецтехника',
+      content: `
+        <ul>
+          <li>Бульдозеры</li>
+          <li>Манипуляторы до 5 тонн</li>
+          <li>Автокраны до 100 тонн</li>
+          <li>Экскаваторы (гусеничные, колёсные)</li>
+        </ul>
+      `,
       buttonText: 'Рассчитать стоимость',
-      title: 'Cпецтехника',
-      content: `Бульдозеры<br>Манипуляторы до 5 тонн<br>Автокраны до 100 тонн<br>Экскаваторы (гусеничные, колёсные)`
     },
     {
       imageSrc: TrainImage,
-      buttonStyle: '',
-      buttonText: 'Рассчитать стоимость',
       title: 'ЖД',
-      content: `<ul><li>Для транспортировки грузов используются только те вагоны и контейнеры, которые полностью отвечают требованиям безопасности и способны обеспечить надежную перевозку груза.</li><li> Полная независимость от погодных условий.</li><li>Высочайший уровень безопасности.</li></ul>`
+      content: `
+        <ul>
+          <li>Вагоны и контейнеры — только безопасные.</li>
+          <li>Полная независимость от погоды.</li>
+          <li>Высочайший уровень безопасности.</li>
+        </ul>
+      `,
+      buttonText: 'Рассчитать стоимость',
     },
     {
       imageSrc: CourierImage,
-      buttonStyle: '',
-      buttonText: 'Рассчитать стоимость',
       title: 'Курьерская доставка',
-      content: `Доставка курьером от двери до двери в любой точки России, стран СНГ, а так же Китая. Оформление заказа он-лайн, или по телефону горячей линии. Наши курьеры работают 24/7.`
+      content: `
+        Доставка от двери до двери по России, СНГ и Китаю. 
+        Оформление онлайн или по телефону. Курьеры работают 24/7.
+      `,
+      buttonText: 'Рассчитать стоимость',
     },
     {
       imageSrc: ShipImage,
-      buttonStyle: '',
-      buttonText: 'Рассчитать стоимость',
       title: 'Морские',
-      content: `Морские контейнерные перевозки – это быстро и очень выгодно при импорте, или экспорте товара. Наша компания позволяет за день рассчитать стоимость перевозки, а так же подобрать самый короткий, надежный и выгодный маршрут. `
+      content: `
+        Быстро и выгодно. Импорт и экспорт. 
+        Расчёт стоимости за день. Подбор оптимального маршрута.
+      `,
+      buttonText: 'Рассчитать стоимость',
     },
     {
       imageSrc: PlaneImage,
-      buttonStyle: '',
-      buttonText: 'Рассчитать стоимость',
       title: 'Авиа',
-      content: `Доставку можно скомбинировать с авто или жд перевозкой, по территории России. Таким образом осуществить доставку под ключ.<br>Мы предлагаем несколько вариантов авиа доставки грузов из стран Азии и СНГ в Россию через Владивосток в любую точку России, а так же экспорт за рубеж.`
+      content: `
+        Комбинируем с авто или ЖД — доставка «под ключ». 
+        Экспорт и импорт через Владивосток в любую точку.
+      `,
+      buttonText: 'Рассчитать стоимость',
     },
+  ];
 
-  ]
+  const onClickButton = () => {
+    OpenModal(<div>Расчёт стоимости</div>);
+  };
 
-  const onClickButton = (e: React.MouseEvent<HTMLButtonElement>) => {
-    OpenModal(<div>Это моя модалка</div>)
-  }
+  // Инициализация refs при первом рендере
+  useEffect(() => {
+    blockRefs.current = blockRefs.current.slice(0, data.length);
+  }, [data.length]);
 
-  const renderCards = () => {
-    return data.map((item, index) => {
-      return (
-        <CardWithButton
-          imageSrc={item.imageSrc}
-          buttonAction={onClickButton}
-          buttonStyle="btn btn_size-s"
-          buttonText={item.buttonText}
-          title={item.title}
-          key={`card-with-button_${index}`}
-        >
-          {item.content}
-        </CardWithButton>
-      )
-    })
-  }
+  // Наблюдение за каждым блоком
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = Number(entry.target.getAttribute('data-index'));
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              setVisibleItems((prev) => ({ ...prev, [index]: true }));
+            }, index * 200);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
+    blockRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
 
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="content-section section2">
-      <Overlay
-        imageSrc={Section2Image}
-      >
-        <>
-          <div className="title">Услуги</div>
-          <div className="cards-grid">
-            {renderCards()}
-          </div>
-        </>
+      <Overlay imageSrc={Section2Image}>
+        <h2 className="section-title">Наши услуги</h2>
+        <div className="services-list" ref={containerRef}>
+          {data.map((item, index) => (
+            <div
+              key={index}
+              ref={(el) => (blockRefs.current[index] = el)} // Безопасное присвоение ref
+              data-index={index}
+              className={`service-block ${index % 2 === 0 ? 'image-left' : 'image-right'} ${visibleItems[index] ? 'visible' : ''}`}
+            >
+              {/* Изображение с эффектом liquid glass */}
+              <div className="service-image-wrapper">
+                <img src={item.imageSrc} alt={item.title} className="service-image" />
+              </div>
+
+              {/* Контент: заголовок, текст, кнопка */}
+              <div className="service-content">
+                <h3 className="service-title">{item.title}</h3>
+                <div
+                  className="service-text"
+                  dangerouslySetInnerHTML={{ __html: item.content }}
+                />
+                <button className="btn btn_size-s service-button" onClick={onClickButton}>
+                  {item.buttonText}
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       </Overlay>
     </div>
-  )
+  );
 }
