@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import AutoImage from '../../../assets/icons/truck.png';
 import SpecialTechImage from '../../../assets/icons/digger.png';
 import TrainImage from '../../../assets/icons/train.png';
@@ -102,16 +102,32 @@ export default function Section2() {
     blockRefs.current = blockRefs.current.slice(0, data.length);
   }, [data.length]);
 
-  // Наблюдение за каждым блоком
+  // Наблюдение за каждым блоком + анимация выезда
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const index = Number(entry.target.getAttribute('data-index'));
+          const wrapper = entry.target.querySelector('.service-image-wrapper') as HTMLElement;
+
           if (entry.isIntersecting) {
             setTimeout(() => {
               setVisibleItems((prev) => ({ ...prev, [index]: true }));
-            }, index * 200);
+
+              // Добавляем анимацию выезда
+              if (wrapper) {
+                if (entry.target.classList.contains('image-left')) {
+                  wrapper.classList.add('slide-in-left');
+                } else {
+                  wrapper.classList.add('slide-in-right');
+                }
+              }
+            }, index * 100); // задержка по индексу
+          } else {
+            // При выходе из зоны — можно убрать (опционально)
+            if (wrapper) {
+              wrapper.classList.remove('slide-in-left', 'slide-in-right');
+            }
           }
         });
       },
@@ -133,11 +149,11 @@ export default function Section2() {
           {data.map((item, index) => (
             <div
               key={index}
-              ref={(el) => (blockRefs.current[index] = el)} // Безопасное присвоение ref
+              ref={(el) => (blockRefs.current[index] = el)}
               data-index={index}
               className={`service-block ${index % 2 === 0 ? 'image-left' : 'image-right'} ${visibleItems[index] ? 'visible' : ''}`}
             >
-              {/* Изображение с эффектом liquid glass */}
+              {/* Блок изображения с анимацией выезда */}
               <div className="service-image-wrapper">
                 <img src={item.imageSrc} alt={item.title} className="service-image" />
               </div>

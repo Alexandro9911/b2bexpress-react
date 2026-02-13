@@ -102,6 +102,17 @@
     pointer-events: none
     z-index: 1
 
+  // Анимация выдвижения — зависит от стороны
+  &.slide-in-left
+    transform: translateX(-100%)
+    opacity: 0
+    animation: slideInLeft 0.8s ease forwards
+
+  &.slide-in-right
+    transform: translateX(100%)
+    opacity: 0
+    animation: slideInRight 0.8s ease forwards
+
 .service-image
   max-width: 90%
   max-height: 90%
@@ -112,6 +123,18 @@
 
 .service-block:hover .service-image
   transform: scale(1.05)
+
+// === АНИМАЦИИ ВЫЕЗДА ===
+
+@keyframes slideInLeft
+  to
+    transform: translateX(0)
+    opacity: 1
+
+@keyframes slideInRight
+  to
+    transform: translateX(0)
+    opacity: 1
 
 // === CLIP-PATH ДЛЯ СТРЕЛОК ===
 
@@ -226,6 +249,9 @@
   .service-block.image-right .service-image-wrapper
     clip-path: none
     border-radius: 16px
+    animation: none  // Отключаем анимацию на малых экранах
+    transform: translateX(0) !important
+    opacity: 1
 
 @media (max-width: 768px)
   .section-title
