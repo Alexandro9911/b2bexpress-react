@@ -180,6 +180,7 @@ export default function Section1_3() {
       {/* Блок "О нас" */}
       <div className="section1_2">
         <div className="section1_2__title">О нас</div>
+        <div className="section1_2__sub-title">Мы - ООО Мир Логистики</div>
 
         {/* Карусель из карточек */}
         <div className="section1_2__carousel">

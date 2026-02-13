@@ -30,11 +30,11 @@ function App() {
             <Section1_3/>
           </section>
         </section>
-        {/*<section id="services" data-section="section2" className="section-item">*/}
-        {/*  <Section2/>*/}
-        {/*  <Section2_1/>*/}
-        {/*  <Section2_2/>*/}
-        {/*</section>*/}
+        <section id="services" data-section="section2" className="section-item">
+          <Section2/>
+          {/*<Section2_1/>*/}
+          {/*<Section2_2/>*/}
+        </section>
         {/*<section id="feedback" data-section="section3" className="section-item">*/}
         {/*  <Section3/>*/}
         {/*</section>*/}
