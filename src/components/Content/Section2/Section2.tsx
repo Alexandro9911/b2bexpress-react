@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import AutoImage from '../../../assets/images/auto-transport.jpg';
-import SpecialTechImage from '../../../assets/images/special-technic.jpg';
-import TrainImage from '../../../assets/images/train.jpg';
-import CourierImage from '../../../assets/images/Courier.jpg';
-import ShipImage from '../../../assets/images/ship.jpg';
-import PlaneImage from '../../../assets/images/plane.jpg';
+import AutoImage from '../../../assets/icons/truck.png';
+import SpecialTechImage from '../../../assets/icons/digger.png';
+import TrainImage from '../../../assets/icons/train.png';
+import CourierImage from '../../../assets/icons/courier.png';
+import ShipImage from '../../../assets/icons/ship.png';
+import PlaneImage from '../../../assets/icons/plane.png';
 import Section2Image from '../../../assets/images/section2.jpg';
 import Overlay from '../../common/Overlay/Overlay.tsx';
 import { OpenModal } from '../../../utils/modal.tsx';
