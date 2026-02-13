@@ -3,9 +3,9 @@ import Overlay from "../../common/Overlay/Overlay";
 import Section1_2_image from "../../../assets/images/section1_2.jpg";
 import "./section1_2.sass";
 import CardWithIcon from "../../Cards/CardWithIcon/CardWithIcon";
-import FingerIcon from "../../../assets/icons/ok.svg";
-import SpeedIcon from "../../../assets/icons/speedometer.png";
-import SafetyIcon from "../../../assets/icons/safety.png";
+import FingerIcon from "../../../assets/images/finger.png";
+import SpeedIcon from "../../../assets/images/speed.png";
+import SafetyIcon from "../../../assets/images/safety.png";
 
 export default function Section1_2() {
   const [openCardId, setOpenCardId] = useState<string | null>(null);

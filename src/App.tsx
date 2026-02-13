@@ -24,10 +24,10 @@ function App() {
           >
             <Section1_1/>
           </Overlay>
-          <NavMenu/>
+          {/*<NavMenu/>*/}
           <section id="aboutUs" data-section='section1' className="section-item">
             <Section1_2/>
-            {/*<Section1_3/>*/}
+            <Section1_3/>
           </section>
         </section>
         {/*<section id="services" data-section="section2" className="section-item">*/}
