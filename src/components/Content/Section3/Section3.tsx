@@ -4,7 +4,7 @@ import FeedbackImage from '../../../assets/images/feedback.jpg';
 import ArrowIcon from '../../../assets/icons/arrow.svg';
 import Button from '../../common/button/Button.tsx';
 import { OpenModal } from '../../../utils/modal.tsx';
-import FeedbackForm from '../../FeedBackForm/FeedbackForm.tsx';
+import FeedbackForm from '../../Forms/FeedBackForm/FeedbackForm.tsx';
 
 export default function Section3() {
   const onClickHandler = () => {

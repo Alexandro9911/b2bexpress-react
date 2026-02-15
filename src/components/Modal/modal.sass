@@ -13,21 +13,62 @@
 
 .modal-content
   background: white
-  border-radius: 12px
+  border-radius: 16px
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2)
   max-width: 90vw
   max-height: 90vh
-  overflow: hidden
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3)
+  width: auto
+  margin: 16px
   position: relative
+  overflow: hidden
   display: flex
   flex-direction: column
+  box-sizing: border-box
 
-  // Внутренний скролл
-  > *
-    overflow-y: auto
-    max-height: 90vh
-    padding: 20px
-    box-sizing: border-box
+.modal-inner
+  position: relative
+  flex: 1
+  overflow-y: auto
+  overflow-x: hidden
+  padding: 0
+  display: flex
+  flex-direction: column
+  box-sizing: border-box
 
-  // Минимальная ширина
-  min-width: 300px
+  &::-webkit-scrollbar
+    width: 6px
+  &::-webkit-scrollbar-track
+    background: transparent
+  &::-webkit-scrollbar-thumb
+    background: rgba(0, 0, 0, 0.2)
+    border-radius: 3px
+  &::-webkit-scrollbar-thumb:hover
+    background: rgba(0, 0, 0, 0.3)
+
+// Крестик — внутри .modal-content, но поверх прокрутки
+.modal-close-button
+  position: absolute
+  top: 16px
+  right: 16px
+  background: none
+  border: none
+  font-size: 28px
+  color: #555
+  cursor: pointer
+  width: 36px
+  height: 36px
+  display: flex
+  align-items: center
+  justify-content: center
+  border-radius: 50%
+  transition: all 0.3s ease
+  z-index: 10
+  padding: 0
+
+  &:hover
+    background: rgba(0, 0, 0, 0.1)
+    color: #000
+    transform: rotate(90deg)
+
+  &:active
+    transform: scale(0.95)

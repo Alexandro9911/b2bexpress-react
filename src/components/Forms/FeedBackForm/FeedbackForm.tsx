@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import './feedback.sass';
-import { CloseModal } from '../../utils/modal.tsx';
-import AutoImage from '../../assets/icons/truck_black.png';
+import AutoImage from '../../../assets/icons/truck_black.png';
 
 export default function FeedbackForm() {
   const [formData, setFormData] = useState({
@@ -56,14 +55,9 @@ export default function FeedbackForm() {
     setIsSubmitted(true);
   };
 
-  const onClose = () => {
-    CloseModal();
-  };
-
   if (isSubmitted) {
     return (
       <div className="feedback-form submitted">
-        <button className="close-button" onClick={onClose} aria-label="Закрыть">×</button>
         <h2>Отзыв отправлен</h2>
         <div className="success-image-container">
           <img src={AutoImage} alt="Грузовик" className="success-image" />
@@ -75,8 +69,6 @@ export default function FeedbackForm() {
 
   return (
     <div className="feedback-form">
-      <button className="close-button" onClick={onClose} aria-label="Закрыть">×</button>
-
       <form onSubmit={handleSubmit}>
         <h2>Оставьте отзыв</h2>
 

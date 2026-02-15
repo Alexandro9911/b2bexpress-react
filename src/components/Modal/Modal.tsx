@@ -26,19 +26,28 @@ export default function Modal({ children, onClose }: Props) {
 
     document.addEventListener("mousedown", handleOutsideClick);
     document.addEventListener("keydown", handleEsc);
-    document.body.style.overflow = "hidden"; // блокируем скролл
+    document.body.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
       document.removeEventListener("keydown", handleEsc);
-      document.body.style.overflow = ""; // возвращаем
+      document.body.style.overflow = "";
     };
   }, [onClose]);
 
   return (
     <div className="modal-overlay" ref={overlayRef}>
       <div className="modal-content" ref={modalRef}>
-        {children}
+        <button
+          className="modal-close-button"
+          onClick={onClose}
+          aria-label="Закрыть"
+        >
+          ×
+        </button>
+        <div className="modal-inner">
+          {children}
+        </div>
       </div>
     </div>
   );

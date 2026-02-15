@@ -1,13 +1,14 @@
 import { useEffect, useRef, useCallback } from 'react';
 import './NavMenu.sass';
 import {OpenModal} from "../../utils/modal.tsx";
+import CalculationForm from "../Forms/CalculateForm/CalculationForm.tsx";
 
 const NavMenu: React.FC = () => {
   const navMenuRef = useRef<HTMLDivElement>(null);
   const navPlaceholderRef = useRef<HTMLDivElement>(null);
 
   const calcButtonAction = () => {
-    OpenModal(<div>текст</div>)
+    OpenModal(<CalculationForm/>);
   }
 
   const buttonConfigs = [
