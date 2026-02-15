@@ -1,15 +1,16 @@
-import { useEffect, useRef, useCallback } from 'react';
+import React, {useEffect, useRef, useCallback, useState} from 'react';
 import './NavMenu.sass';
-import {OpenModal} from "../../utils/modal.tsx";
-import CalculationForm from "../Forms/CalculateForm/CalculationForm.tsx";
+import { OpenModal } from '../../utils/modal.tsx';
+import CalculationForm from '../Forms/CalculateForm/CalculationForm.tsx';
 
 const NavMenu: React.FC = () => {
   const navMenuRef = useRef<HTMLDivElement>(null);
   const navPlaceholderRef = useRef<HTMLDivElement>(null);
 
+  const [isShown, setIsShown] = useState(false);
   const calcButtonAction = () => {
-    OpenModal(<CalculationForm/>);
-  }
+    OpenModal(<CalculationForm />);
+  };
 
   const buttonConfigs = [
     { id: 'aboutUs', text: 'О нас' },
@@ -17,7 +18,7 @@ const NavMenu: React.FC = () => {
     { id: 'feedback', text: 'Оставить отзыв' },
     { id: 'contacts', text: 'Контакты' },
     { id: 'live', text: 'Жизнь компании' },
-    { id: 'none', text: 'Рассчитать стоимость', actionButton: calcButtonAction},
+    { id: 'none', text: 'Рассчитать стоимость', actionButton: calcButtonAction },
   ];
 
   const handleScroll = useCallback(() => {
@@ -50,11 +51,10 @@ const NavMenu: React.FC = () => {
 
     let currentSectionId: string | null = null;
 
-    // 🔥 Если прокрутки нет — считаем первую кнопку активной
     if (scrollPosition < 10) {
       currentSectionId = 'aboutUs';
     } else {
-      sections.forEach(section => {
+      sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
         const top = rect.top + window.scrollY;
         const height = section.offsetHeight;
@@ -71,7 +71,7 @@ const NavMenu: React.FC = () => {
       });
     }
 
-    document.querySelectorAll('#navMenu button').forEach(btn => {
+    document.querySelectorAll('#navMenu button').forEach((btn) => {
       btn.classList.remove('active');
     });
 
@@ -86,13 +86,10 @@ const NavMenu: React.FC = () => {
   }, []);
 
   const handleNavClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    // Приводим тип, чтобы гарантировать доступ к dataset
     const button = (e.target as HTMLElement).closest('button[data-section]');
-
     if (!button || !(button instanceof HTMLElement)) return;
 
-    const targetId = button.dataset.section; // Теперь ошибка исчезла
-
+    const targetId = button.dataset.section;
     const targetSection = document.getElementById(targetId!);
 
     if (!targetSection) {
@@ -101,7 +98,6 @@ const NavMenu: React.FC = () => {
     }
 
     const offsetTop = targetSection.offsetTop + 180;
-
     window.scrollTo({
       top: offsetTop,
       behavior: 'smooth',
@@ -131,25 +127,60 @@ const NavMenu: React.FC = () => {
     };
   }, [handleScroll, updateActiveLink]);
 
+
+  const onClickHamburger = () => {
+    setIsShown((prevState) => !prevState);
+  }
+
   return (
     <>
-      <div
-        className="nav-menu"
-        id="navMenu"
-        ref={navMenuRef}
-        onClick={handleNavClick}
-      >
-        {buttonConfigs.map((btn) => (
-          <button
-            key={btn.id}
-            data-section={btn.id}
-            type="button"
-            onClick={btn.actionButton}
-          >
-            {btn.text}
+      <div className="nav-menu" id="navMenu" ref={navMenuRef} onClick={handleNavClick}>
+        {/* === Десктопная навигация (только на десктопе) === */}
+        <div className="desktop-nav">
+          {buttonConfigs.map((btn) => (
+            <button
+              key={btn.id}
+              data-section={btn.id}
+              type="button"
+              onClick={btn.actionButton}
+            >
+              {btn.text}
+            </button>
+          ))}
+        </div>
+
+        {/* === Мобильная навигация (только на мобилке) === */}
+        <div className="mobile-nav">
+          <button className="hamburger-btn" aria-label="Меню" onClick={onClickHamburger}>
+            ☰
           </button>
-        ))}
+          {isShown &&
+            <div className="mobile-list-items">
+              {buttonConfigs.map((btn) => (
+                <button
+                  key={btn.id}
+                  data-section={btn.id}
+                  type="button"
+                  onClick={btn.actionButton}
+                  style={btn.id == 'none' ? {display: "none"} : {}}
+                >
+                  {btn.text}
+                </button>
+              ))}
+            </div>
+          }
+
+          {/* Кнопка "Рассчитать стоимость" справа */}
+          <button
+            type="button"
+            className="mobile-calculate-btn"
+            onClick={calcButtonAction}
+          >
+            Рассчитать стоимость
+          </button>
+        </div>
       </div>
+
       <div ref={navPlaceholderRef}></div>
     </>
   );
