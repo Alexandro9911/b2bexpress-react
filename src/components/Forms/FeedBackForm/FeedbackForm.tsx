@@ -46,13 +46,28 @@ export default function FeedbackForm() {
     return !Object.values(newErrors).some(Boolean);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) {
       setShowSubmitError(true);
       return;
     }
-    setIsSubmitted(true);
+
+    try {
+      const response = await fetch('/phpmailer/feedback.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        console.error('Ошибка: ' + result.message);
+      }
+    } catch (error) {
+      console.error('Ошибка сети', error);
+    }
   };
 
   if (isSubmitted) {
@@ -71,13 +86,11 @@ export default function FeedbackForm() {
     <div className="feedback-form">
       <form onSubmit={handleSubmit}>
         <h2>Оставьте отзыв</h2>
-
         {showSubmitError && (
           <div className="error-message">
             Пожалуйста, заполните все обязательные поля
           </div>
         )}
-
         <div className={`form-group ${errors.company ? 'error' : ''}`}>
           <input
             type="text"
@@ -88,7 +101,6 @@ export default function FeedbackForm() {
             required
           />
         </div>
-
         <div className={`form-group ${errors.name ? 'error' : ''}`}>
           <input
             type="text"
@@ -99,7 +111,6 @@ export default function FeedbackForm() {
             required
           />
         </div>
-
         <div className={`form-group ${errors.phone ? 'error' : ''}`}>
           <PhoneInput
             placeholder="(000) 000-00-00"
@@ -110,7 +121,6 @@ export default function FeedbackForm() {
             required
           />
         </div>
-
         <div className={`form-group ${errors.review ? 'error' : ''}`}>
           <textarea
             name="review"
@@ -121,11 +131,9 @@ export default function FeedbackForm() {
             required
           ></textarea>
         </div>
-
         <button type="submit" className="btn btn_submit">
           Отправить
         </button>
-
         <div className="form-footer">
           Нажимая кнопку, вы соглашаетесь с{' '}
           <a href="/privacy" target="_blank" rel="noopener noreferrer">

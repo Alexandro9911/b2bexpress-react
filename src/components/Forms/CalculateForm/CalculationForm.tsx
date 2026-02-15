@@ -4,7 +4,6 @@ import 'react-phone-number-input/style.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './CalculationForm.sass';
-
 import { registerLocale } from 'react-datepicker';
 import { ru } from 'date-fns/locale/ru';
 registerLocale('ru', ru);
@@ -59,13 +58,31 @@ export default function CalculationForm() {
     return !Object.values(newErrors).some(Boolean);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) {
       setShowSubmitError(true);
       return;
     }
-    setIsSubmitted(true);
+
+    try {
+      const response = await fetch('/phpmailer/calculation.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          date: formData.date ? new Date(formData.date).toISOString().split('T')[0] : null,
+        }),
+      });
+      const result = await response.json();
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        console.error('Ошибка: ' + result.message);
+      }
+    } catch (error) {
+      console.error('Ошибка сети', error);
+    }
   };
 
   if (isSubmitted) {
@@ -90,13 +107,11 @@ export default function CalculationForm() {
         <div className="subtitle">
           Благодарим за доверие. Наши менеджеры рассчитают стоимость перевозки в течение 15 минут!
         </div>
-
         {showSubmitError && (
           <div className="error-message">
             Пожалуйста, заполните все обязательные поля
           </div>
         )}
-
         <div className={`form-group ${errors.cargo ? 'error' : ''}`}>
           <input
             type="text"
@@ -107,7 +122,6 @@ export default function CalculationForm() {
             required
           />
         </div>
-
         <div className={`form-group ${errors.from ? 'error' : ''}`}>
           <input
             type="text"
@@ -118,7 +132,6 @@ export default function CalculationForm() {
             required
           />
         </div>
-
         <div className={`form-group ${errors.to ? 'error' : ''}`}>
           <input
             type="text"
@@ -129,7 +142,6 @@ export default function CalculationForm() {
             required
           />
         </div>
-
         <div className="form-row">
           <div className={`form-group half ${errors.weight ? 'error' : ''}`}>
             <input
@@ -156,7 +168,6 @@ export default function CalculationForm() {
             />
           </div>
         </div>
-
         <div className="form-row">
           <div className={`form-group half ${errors.date ? 'error' : ''}`}>
             <DatePicker
@@ -185,7 +196,6 @@ export default function CalculationForm() {
             />
           </div>
         </div>
-
         <div className={`form-group ${errors.phone ? 'error' : ''}`}>
           <PhoneInput
             placeholder="(000) 000-00-00"
@@ -199,11 +209,9 @@ export default function CalculationForm() {
             required
           />
         </div>
-
         <button type="submit" className="btn btn_submit">
           Рассчитать
         </button>
-
         <div className="form-footer">
           Нажимая кнопку, вы соглашаетесь с{' '}
           <a href="/privacy" target="_blank" rel="noopener noreferrer">
