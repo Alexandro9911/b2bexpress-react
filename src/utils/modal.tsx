@@ -12,15 +12,13 @@ export const OpenModal = (content: ModalComponent): void => {
   // Закрываем предыдущее
   CloseModal();
 
-  // Создаём контейнер для модалки
   modalRoot = document.createElement("div");
   modalRoot.id = "modal-root";
   document.body.appendChild(modalRoot);
 
-  // Блокируем скролл
+
   document.body.style.overflow = "hidden";
 
-  // Создаём корень и рендерим
   root = createRoot(modalRoot);
 
   root.render(
@@ -35,7 +33,7 @@ export const OpenModal = (content: ModalComponent): void => {
  */
 export const CloseModal = (): void => {
   if (root) {
-    root.render(null); // Очищаем
+    root.render(null);
     root = null;
   }
 
@@ -44,5 +42,5 @@ export const CloseModal = (): void => {
   }
   modalRoot = null;
 
-  document.body.style.overflow = ""; // Возвращаем скролл
+  document.body.style.overflow = "";
 };

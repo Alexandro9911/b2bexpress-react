@@ -20,7 +20,6 @@ interface Service {
 export default function Section2() {
   const [visibleItems, setVisibleItems] = useState<Record<number, boolean>>({});
 
-  // Создаём массив ref'ов безопасно — через useRef и инициализацию при первом рендере
   const containerRef = useRef<HTMLDivElement>(null);
   const blockRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -97,12 +96,10 @@ export default function Section2() {
     OpenModal(<div>Расчёт стоимости</div>);
   };
 
-  // Инициализация refs при первом рендере
   useEffect(() => {
     blockRefs.current = blockRefs.current.slice(0, data.length);
   }, [data.length]);
 
-  // Наблюдение за каждым блоком + анимация выезда
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -114,7 +111,6 @@ export default function Section2() {
             setTimeout(() => {
               setVisibleItems((prev) => ({ ...prev, [index]: true }));
 
-              // Добавляем анимацию выезда
               if (wrapper) {
                 if (entry.target.classList.contains('image-left')) {
                   wrapper.classList.add('slide-in-left');
@@ -122,9 +118,8 @@ export default function Section2() {
                   wrapper.classList.add('slide-in-right');
                 }
               }
-            }, index * 100); // задержка по индексу
+            }, index * 100);
           } else {
-            // При выходе из зоны — можно убрать (опционально)
             if (wrapper) {
               wrapper.classList.remove('slide-in-left', 'slide-in-right');
             }
@@ -153,12 +148,10 @@ export default function Section2() {
               data-index={index}
               className={`service-block ${index % 2 === 0 ? 'image-left' : 'image-right'} ${visibleItems[index] ? 'visible' : ''}`}
             >
-              {/* Блок изображения с анимацией выезда */}
               <div className="service-image-wrapper">
                 <img src={item.imageSrc} alt={item.title} className="service-image" />
               </div>
 
-              {/* Контент: заголовок, текст, кнопка */}
               <div className="service-content">
                 <h3 className="service-title">{item.title}</h3>
                 <div

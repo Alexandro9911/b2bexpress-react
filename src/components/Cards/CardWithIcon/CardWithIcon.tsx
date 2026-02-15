@@ -15,16 +15,16 @@ type TProps = {
 };
 
 export default function CardWithIcon({
-                                       id,
-                                       title,
-                                       description,
-                                       imageSrc,
-                                       detailContent,
-                                       isExpanded,
-                                       onToggle,
-                                       isMinimized = false,
-                                       customClass,
-                                     }: TProps) {
+  id,
+  title,
+  description,
+  imageSrc,
+  detailContent,
+  isExpanded,
+  onToggle,
+  isMinimized = false,
+  customClass,
+}: TProps) {
   const contentRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState<number>(0);
 

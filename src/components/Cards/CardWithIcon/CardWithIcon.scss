@@ -1,4 +1,3 @@
-// Основные переменные
 $border-radius: 12px;
 $transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 $text-color: #ffffff;
@@ -27,7 +26,7 @@ $shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
-  align-self: flex-start; // ← ключ: не растягивать по высоте
+  align-self: flex-start;
 
 
   &::before {
@@ -59,7 +58,6 @@ $shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   }
 }
 
-// Минимизированная карточка — только иконка
 .card--minimized {
   width: 70px;
   height: 70px;
@@ -99,7 +97,6 @@ $shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   }
 }
 
-// Полная карточка
 .card__layout {
   display: flex;
   align-items: flex-start;
@@ -162,7 +159,7 @@ $shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 
   &:focus {
     outline: none;
-    scroll-margin-top: 100px; // предотвращает прыжок скролла
+    scroll-margin-top: 100px;
   }
 
   &:hover {
@@ -171,7 +168,6 @@ $shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   }
 }
 
-// Анимация раскрытия — плавная по высоте
 .card__expandable {
   height: 0;
   overflow: hidden;
@@ -191,7 +187,6 @@ $shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   color: $text-color;
 }
 
-// Адаптивность
 
 @media (max-width: 768px) {
   .card--minimized {

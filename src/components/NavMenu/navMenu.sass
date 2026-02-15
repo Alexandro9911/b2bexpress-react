@@ -16,7 +16,6 @@
   justify-content: flex-start
   gap: 20px
 
-// === Десктопная навигация ===
 .desktop-nav
   display: flex
 
@@ -40,9 +39,8 @@
     color: white
     border-bottom: 3px solid white
 
-// === Мобильная навигация (скрыта на десктопе) ===
 .mobile-nav
-  display: none // По умолчанию скрыто
+  display: none
   align-items: center
   gap: 10px
   width: 100%
@@ -93,7 +91,6 @@
       color: white
       border-bottom: 3px solid white
 
-// === Фиксированное меню ===
 .nav-menu.fixed
   position: fixed
   top: 0
@@ -110,7 +107,6 @@
 .nav-menu.fixed + .nav-menu-placeholder
   display: block
 
-// === Адаптивность: от 768px и ниже — мобильная версия ===
 @media (max-width: 768px)
   .nav-menu
     padding: 10px 15px
@@ -122,6 +118,5 @@
   .mobile-nav
     display: flex
 
-  // Убираем активное состояние для мобильной кнопки, если нужно
   .mobile-calculate-btn.active
     border-bottom: none

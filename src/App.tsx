@@ -16,7 +16,8 @@ import {useEffect} from "react";
 function App() {
 
   useEffect(() => {
-    console.log()
+    console.log('Developer: tg - @sanya_ne_vporyadke');
+    console.log('E-mail: alexandr.l1999@mail.ru  Александр Лялин');
   }, [])
 
   return (

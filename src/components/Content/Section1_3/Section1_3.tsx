@@ -43,7 +43,6 @@ function Counter({ end, suffix = '' }: CounterProps) {
   useEffect(() => {
     if (!isVisible) return;
 
-    let start = 0;
     const duration = 3000;
     const startTime = performance.now();
 

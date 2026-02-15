@@ -44,7 +44,7 @@ export default function Section1_2() {
             }
             isExpanded={openCardId === "comfort"}
             onToggle={() => toggleCard("comfort")}
-            isMinimized={!isMobile && openCardId && openCardId !== "comfort"}
+            isMinimized={!isMobile && openCardId !== null && openCardId !== "comfort"}
           />
 
           <CardWithIcon
@@ -69,7 +69,7 @@ export default function Section1_2() {
             }
             isExpanded={openCardId === "speed"}
             onToggle={() => toggleCard("speed")}
-            isMinimized={!isMobile && openCardId && openCardId !== "speed"}
+            isMinimized={!isMobile && openCardId !== null && openCardId !== "speed"}
           />
 
           <CardWithIcon
@@ -107,7 +107,7 @@ export default function Section1_2() {
             }
             isExpanded={openCardId === "safety"}
             onToggle={() => toggleCard("safety")}
-            isMinimized={!isMobile && openCardId && openCardId !== "safety"}
+            isMinimized={!isMobile && openCardId !== null && openCardId !== "safety"}
           />
         </div>
 

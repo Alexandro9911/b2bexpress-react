@@ -135,7 +135,6 @@ const NavMenu: React.FC = () => {
   return (
     <>
       <div className="nav-menu" id="navMenu" ref={navMenuRef} onClick={handleNavClick}>
-        {/* === Десктопная навигация (только на десктопе) === */}
         <div className="desktop-nav">
           {buttonConfigs.map((btn) => (
             <button
@@ -148,8 +147,6 @@ const NavMenu: React.FC = () => {
             </button>
           ))}
         </div>
-
-        {/* === Мобильная навигация (только на мобилке) === */}
         <div className="mobile-nav">
           <button className="hamburger-btn" aria-label="Меню" onClick={onClickHamburger}>
             ☰
@@ -169,8 +166,6 @@ const NavMenu: React.FC = () => {
               ))}
             </div>
           }
-
-          {/* Кнопка "Рассчитать стоимость" справа */}
           <button
             type="button"
             className="mobile-calculate-btn"

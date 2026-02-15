@@ -12,7 +12,6 @@
   width: 100%
   box-sizing: border-box
 
-// === Логотип ===
 .header__logo-wrapper
   flex-shrink: 0
 
@@ -21,7 +20,6 @@
   height: 184px
   object-fit: contain
 
-// === Основной контент (заголовок + контакты) ===
 .header__content
   display: flex
   flex-direction: row
@@ -56,15 +54,12 @@
   margin: 0
   line-height: 1.3
 
-// === Кнопка ===
 .header__button-wrapper
   flex-shrink: 0
 
 .header__button-wrapper .btn
   display: block
 
-
-// === Планшеты (до 1024px) ===
 @media (max-width: 1024px)
   .header
     gap: 40px
@@ -77,8 +72,6 @@
   .header__content
     flex-flow: column
 
-
-// === Мобильные устройства: до 768px — вертикальная раскладка ===
 @media (max-width: 768px)
   .header
     flex-direction: row
@@ -122,7 +115,6 @@
   .header__button-wrapper
     display: none
 
-// === Скрытие кнопки на малых мобильных (< 480px) ===
 @media (max-width: 480px)
   .header
     padding: 12px
@@ -143,8 +135,6 @@
   .header__button-wrapper
     display: none
 
-
-// === Мини-устройства (до 360px) ===
 @media (max-width: 360px)
   .header
     padding: 10px

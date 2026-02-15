@@ -36,12 +36,6 @@
   to
     opacity: 1
 
-//.content-overlay
-//  position: absolute
-//  top: 100px
-//  z-index: 1
-//  opacity: 0
-//  animation: fadeInUp 1s ease-out 0.5s forwards
 
 .section1
   display: flex
@@ -106,9 +100,6 @@
 .section1__content b.animated::after
   width: 100%
 
-// === АДАПТИВНЫЕ СТИЛИ ===
-
-// Планшеты (до 1024px)
 @media (max-width: 1024px)
   .section1
     margin-left: 40px
@@ -126,7 +117,6 @@
     font-size: 14px
     line-height: 1.55
 
-// Мобильные устройства (до 768px)
 @media (max-width: 768px)
   .section1
     width: auto
@@ -135,7 +125,7 @@
     padding: 15px 8px
     gap: 28px
     border-radius: 12px
-    background: rgba(7, 7, 7, 0.6) // более стабильный фон на мобильных
+    background: rgba(7, 7, 7, 0.6)
     -webkit-mask-image: none
     mask-image: none
     backdrop-filter: blur(4px)
@@ -168,7 +158,6 @@
   .section1__content
     white-space: pre-line
 
-// Очень маленькие экраны (до 480px)
 @media (max-width: 480px)
   .section1
     padding: 12px 8px
@@ -182,7 +171,6 @@
     font-size: 13px
     line-height: 1.5
 
-// Мини-экраны (до 360px)
 @media (max-width: 360px)
   .section1
     padding: 10px 8px
