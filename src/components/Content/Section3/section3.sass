@@ -4,10 +4,8 @@
   position: relative
   top: -10px
 
-  .background-image
-    img
-      filter: brightness(0.4) contrast(1)
-
+  .overlay-background-img
+    filter: brightness(0.4) contrast(1)
 
 .feedback-layout
   display: flex
@@ -26,9 +24,92 @@
   &__action
     display: flex
     flex-flow: row
+    position: relative
+
     img
       position: absolute
       left: -50px
       width: 45px
 
+// === Адаптивные стили для всех устройств (включая 320px) ===
 
+@media (max-width: 1024px)
+  .feedback-layout__title
+    font-size: 40px
+    margin-bottom: 70px
+    margin-top: 20px
+
+  .feedback-layout__sub-title
+    font-size: 20px
+    margin-bottom: 50px
+
+  .feedback-layout__action
+    img
+      left: -45px
+      width: 40px
+
+@media (max-width: 768px)
+  .feedback-layout__title
+    font-size: 36px
+    margin-bottom: 60px
+    margin-top: 15px
+
+  .feedback-layout__sub-title
+    font-size: 18px
+    margin-bottom: 40px
+
+  .feedback-layout__action
+    img
+      left: -40px
+      width: 35px
+
+@media (max-width: 480px)
+  .feedback-layout__title
+    font-size: 32px
+    margin-bottom: 50px
+    margin-top: 10px
+
+  .feedback-layout__sub-title
+    font-size: 16px
+    margin-bottom: 30px
+
+  .feedback-layout__action
+    img
+      left: -35px
+      width: 30px
+
+@media (max-width: 360px)
+  .feedback-layout__title
+    font-size: 30px
+    margin-bottom: 40px
+    margin-top: 10px
+
+  .feedback-layout__sub-title
+    font-size: 15px
+    margin-bottom: 25px
+
+  .feedback-layout__action
+    img
+      left: -30px
+      width: 28px
+
+@media (max-width: 320px)
+  .feedback-layout__title
+    font-size: 28px
+    margin-bottom: 35px
+    margin-top: 8px
+
+  .feedback-layout__sub-title
+    font-size: 14px
+    margin-bottom: 20px
+
+  .feedback-layout__action
+    img
+      left: -28px
+      width: 26px
+    button
+      padding: 10px 16px
+      font-size: 14px
+
+      img
+        width: 24px

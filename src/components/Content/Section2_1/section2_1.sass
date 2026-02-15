@@ -2,42 +2,180 @@
   position: relative
   top: -10px
   font-family: Raleway, serif
-  .background-image
-    img
-      height: 820px!important
-      filter: brightness(0.4) contrast(1)
+  width: 100%
+  overflow: hidden
+
+  .overlay-background-img
+    filter: brightness(0.4) contrast(1.8)
 
   .content-overlay
-    top: 40px
+    position: relative
     display: flex
-    flex-flow: column
+    flex-direction: column
     align-items: center
-    justify-content: center
+    padding: 60px 20px
+    color: white
 
   .title
-    font-family: Raleway, serif
+    font-size: 36px
+    font-weight: 700
+    text-align: center
+    margin-bottom: 50px
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4)
+    z-index: 2
 
 .steps-grid
   display: grid
-  grid-template-columns: repeat(3, 1fr)
-  gap: 20px
+  grid-template-columns: 1fr 85px 1fr 85px 1fr
+  grid-template-rows: auto auto auto
+  gap: 20px 10px
+  max-width: 1200px
+  width: 100%
+  z-index: 2
+
 
 .step-item
   display: flex
-  flex-flow: column
-  justify-content: center
+  flex-direction: column
   align-items: center
+  text-align: center
   max-width: 300px
-  color: white
+  margin: 0 auto
 
   &__icon
-    margin-bottom: 10px
+    width: 100px
+    height: 100px
+    margin-bottom: 16px
+    display: flex
+    justify-content: center
+    align-items: center
+    border-radius: 50%
+    background: rgba(255, 255, 255, 0.15)
+    backdrop-filter: blur(10px)
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2)
+    transition: transform 0.3s ease
+
     img
-      width: 120px
-      height: 120px
+      width: 60px
+      height: 60px
+      filter: brightness(1.1)
+
+  &:hover &__icon
+    transform: scale(1.1)
+    background: rgba(79, 195, 247, 0.3)
 
   &__title
     font-size: 22px
-    margin-bottom: 10px
+    font-weight: 700
+    margin-bottom: 12px
+    color: #ffffff
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4)
+
   &__text
-    font-size: 13px
+    font-size: 14px
+    line-height: 1.5
+    color: rgba(255, 255, 255, 0.9)
+
+.empty
+  display: flex
+  justify-content: center
+  align-items: center
+
+.arrow
+  display: flex
+  justify-content: center
+  align-items: center
+
+  svg
+    width: 100%
+    height: 100%
+
+  path
+    fill: none
+    stroke: white
+    stroke-width: 4
+    stroke-linecap: round
+    stroke-linejoin: round
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5))
+
+.arrow-h--1-2,
+.arrow-h--2-3,
+.arrow-h--5-4,
+.arrow-h--6-5
+  width: 85px
+  height: auto
+
+.arrow--down
+  width: auto
+  height: 40px
+  margin-bottom: 20px
+
+  svg
+    transform: rotate(90deg)
+    transform-origin: center
+
+.arrow--reverse
+  transform: scaleX(-1)
+
+
+@media (max-width: 768px)
+  .section2_1
+    .title
+      font-size: 30px
+      margin-bottom: 40px
+
+  .steps-grid
+    grid-template-columns: 1fr
+    grid-template-rows: repeat(6, auto)
+    gap: 30px
+    padding: 20px 0
+
+    > *
+      grid-column: 1
+      justify-self: center
+
+
+  .arrow,
+  .empty
+    display: none !important
+
+
+  .step-item
+    max-width: 320px
+    margin: 0 auto
+
+    &__icon
+      width: 80px
+      height: 80px
+      margin-bottom: 12px
+
+      img
+        width: 50px
+        height: 50px
+
+    &__title
+      font-size: 20px
+
+    &__text
+      font-size: 13px
+
+@media (max-width: 480px)
+  .section2_1
+    .title
+      font-size: 26px
+      margin-bottom: 30px
+
+  .step-item
+    &__icon
+      width: 70px
+      height: 70px
+
+      img
+        width: 40px
+        height: 40px
+
+    &__title
+      font-size: 18px
+
+    &__text
+      font-size: 12px

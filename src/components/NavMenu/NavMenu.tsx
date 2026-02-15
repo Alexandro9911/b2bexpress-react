@@ -90,7 +90,6 @@ const NavMenu: React.FC = () => {
       return;
     }
 
-    const navHeight = navMenuRef.current?.clientHeight || 0;
     const offsetTop = targetSection.offsetTop + 180;
 
     window.scrollTo({

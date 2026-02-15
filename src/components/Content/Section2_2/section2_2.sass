@@ -1,41 +1,134 @@
 .section2_2
   display: flex
-  flex-flow: column
+  flex-direction: column
   align-items: center
   justify-content: center
   font-family: Raleway, serif
   background: black
   color: white
-  padding-top: 40px
-  padding-bottom: 40px
+  padding: 40px 20px
   position: relative
   top: -10px
 
-
+// === ОСНОВНАЯ РАЗМЕТКА ===
 .documents-layout
   display: flex
-  flex-flow: row
-  gap: 20px
+  flex-direction: row
+  gap: 40px
   justify-content: center
   align-items: center
+  max-width: 1200px
+  width: 100%
 
-  &__image
-    img
-      width: 500px
-      object-fit: cover
+  @media (max-width: 992px)
+    flex-direction: column
+    text-align: left
+    align-items: center
+    gap: 30px
 
+// === КАРТИНКА ===
+.documents-layout__image
+  flex: 0 0 auto
+
+  img
+    width: 500px
+    max-width: 100%
+    height: auto
+    border-radius: 12px
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3)
+
+    @media (max-width: 768px)
+      width: 400px
+
+    @media (max-width: 480px)
+      width: 100%
+      max-width: 360px
+
+// === ИНФОРМАЦИОННЫЙ БЛОК ===
 .documents-info
   display: flex
-  flex-flow: column
-  align-items: start
-  justify-content: start
+  flex-direction: column
+  align-items: flex-start
+  justify-content: center
+  max-width: 500px
+  width: 100%
+
+  @media (max-width: 992px)
+    align-items: flex-start
+    text-align: left
 
   &__title
     font-size: 44px
+    font-weight: 700
+    margin-bottom: 16px
+    line-height: 1.2
+
+    @media (max-width: 768px)
+      font-size: 36px
+
+    @media (max-width: 480px)
+      font-size: 32px
 
   &__text
     font-size: 28px
+    margin-bottom: 24px
+    line-height: 1.5
+
+    ul
+      list-style: none
+      padding: 0
+      margin: 0
+
+      li
+        position: relative
+        padding-left: 36px
+        margin-bottom: 12px
+        min-height: 32px
+
+        &:before
+          content: "📄"
+          position: absolute
+          left: 0
+          top: 0
+          font-size: 24px
+          line-height: 1.2
+
+    @media (max-width: 768px)
+      font-size: 24px
+
+    @media (max-width: 480px)
+      font-size: 20px
 
   &__action
+    width: 100%
+    display: flex
+    justify-content: center
+    margin-top: 10px
 
+    .btn
+      font-size: 16px
+      padding: 12px 24px
+      border-radius: 8px
+      transition: all 0.3s ease
 
+      text-align: center !important
+
+      &:hover
+        background: rgba(255, 255, 255, 0.15)
+        transform: translateY(-2px)
+
+// === АДАПТИВ ДЛЯ МАЛЕНЬКИХ ЭКРАНОВ ===
+@media (max-width: 480px)
+  .section2_2
+    padding: 30px 15px
+
+  .documents-info
+    &__title
+      font-size: 32px
+
+    &__text
+      font-size: 20px
+
+    ul li
+      padding-left: 36px
+      font-size: 20px

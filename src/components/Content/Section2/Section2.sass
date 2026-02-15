@@ -24,6 +24,8 @@
     margin-bottom: 50px
     text-align: center
     font-weight: 600
+    color: white
+    z-index: 1
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3)
 
 // === СПИСОК УСЛУГ ===
@@ -51,7 +53,7 @@
     opacity: 1
     transform: translateY(0)
 
-  // Внутренний отступ
+  // Внутренний отступ (активен ТОЛЬКО на десктопе)
   padding: 60px 0
 
   // Фон — СВЕТЛОЕ жидкое стекло (только основной блок)
@@ -245,11 +247,10 @@
   .service-text
     font-size: 14px
 
+  // На планшетах — оставляем стрелку, убираем анимацию
   .service-block.image-left .service-image-wrapper,
   .service-block.image-right .service-image-wrapper
-    clip-path: none
-    border-radius: 16px
-    animation: none  // Отключаем анимацию на малых экранах
+    animation: none
     transform: translateX(0) !important
     opacity: 1
 
@@ -262,15 +263,12 @@
     gap: 30px
 
   .service-block
-    padding: 40px 0
+    padding: 0 !important
     flex-direction: column !important
 
   .service-image-wrapper
     height: 260px
-
-  .service-image
-    max-width: 80%
-    max-height: 80%
+    border-radius: 12px
 
   .service-content
     padding: 20px
@@ -281,6 +279,7 @@
   .service-text
     font-size: 13px
 
+// === МОБИЛЬНЫЕ (≤480px) — делаем квадратные блоки ===
 @media (max-width: 480px)
   .section-title
     font-size: 24px
@@ -290,10 +289,12 @@
     gap: 25px
 
   .service-block
-    padding: 30px 0
+    padding: 0 !important
 
   .service-image-wrapper
     height: 220px
+    border-radius: 10px
+    clip-path: none !important  // 🔥 Убираем стрелку → квадрат
 
   .service-image
     max-width: 75%
@@ -312,6 +313,7 @@
     padding: 10px 20px
     font-size: 14px
 
+// === ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ (≤320px) ===
 @media (max-width: 320px)
   .section-title
     font-size: 22px
@@ -321,10 +323,12 @@
     gap: 20px
 
   .service-block
-    padding: 25px 0
+    padding: 0 !important
 
   .service-image-wrapper
     height: 200px
+    border-radius: 10px
+    clip-path: none !important  // 🔥 Квадрат
 
   .service-image
     max-width: 70%
