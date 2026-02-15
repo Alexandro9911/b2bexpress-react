@@ -1,9 +1,14 @@
-import React, { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import './NavMenu.sass';
+import {OpenModal} from "../../utils/modal.tsx";
 
 const NavMenu: React.FC = () => {
   const navMenuRef = useRef<HTMLDivElement>(null);
   const navPlaceholderRef = useRef<HTMLDivElement>(null);
+
+  const calcButtonAction = () => {
+    OpenModal(<div>текст</div>)
+  }
 
   const buttonConfigs = [
     { id: 'aboutUs', text: 'О нас' },
@@ -11,6 +16,7 @@ const NavMenu: React.FC = () => {
     { id: 'feedback', text: 'Оставить отзыв' },
     { id: 'contacts', text: 'Контакты' },
     { id: 'live', text: 'Жизнь компании' },
+    { id: 'none', text: 'Рассчитать стоимость', actionButton: calcButtonAction},
   ];
 
   const handleScroll = useCallback(() => {
@@ -79,10 +85,13 @@ const NavMenu: React.FC = () => {
   }, []);
 
   const handleNavClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    // Приводим тип, чтобы гарантировать доступ к dataset
     const button = (e.target as HTMLElement).closest('button[data-section]');
-    if (!button) return;
 
-    const targetId = button.dataset.section;
+    if (!button || !(button instanceof HTMLElement)) return;
+
+    const targetId = button.dataset.section; // Теперь ошибка исчезла
+
     const targetSection = document.getElementById(targetId!);
 
     if (!targetSection) {
@@ -134,6 +143,7 @@ const NavMenu: React.FC = () => {
             key={btn.id}
             data-section={btn.id}
             type="button"
+            onClick={btn.actionButton}
           >
             {btn.text}
           </button>
