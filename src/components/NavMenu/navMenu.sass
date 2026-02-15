@@ -11,19 +11,15 @@
   box-sizing: border-box
   backdrop-filter: blur(5px)
   padding: 10px 10px 10px 50px
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  gap: 20px
 
+.desktop-nav
+  display: flex
 
-.nav-menu.fixed
-  position: fixed
-  top: 0
-  left: 0
-  background: rgba(7, 7, 7, 0.18)
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2)
-  z-index: 1000
-  margin-top: 0
-
-
-.nav-menu button
+.desktop-nav button
   background: transparent
   font-family: Raleway, serif !important
   color: white
@@ -35,20 +31,92 @@
   font-size: 16px
   transition: background 0.3s ease
 
+  &:hover
+    color: white
+    border-bottom: 3px solid rgba(255, 255, 255, 0.58)
 
-.nav-menu button:hover
-  color: black
+  &.active
+    color: white
+    border-bottom: 3px solid white
 
+.mobile-nav
+  display: none
+  align-items: center
+  gap: 10px
+  width: 100%
+  justify-content: space-between
 
-.nav-menu button.active
-  color: black
-  border-bottom: 3px solid white
+.hamburger-btn
+  background: transparent
+  border: none
+  font-size: 24px
+  color: white
+  cursor: pointer
+  padding: 5px 10px
+  margin: 0
 
+.mobile-calculate-btn
+  margin-left: auto
+  background: transparent
+  border: none
+  color: white
+  font-size: 16px
+  padding: 8px 16px
+  cursor: pointer
+
+  &:hover
+    color: white
+    border-bottom: 3px solid rgba(255, 255, 255, 0.58)
+.mobile-list-items
+  display: flex
+  flex-flow: column
+
+  button
+    background: transparent
+    font-family: Raleway, serif !important
+    color: white
+    border: none
+    padding: 8px 16px
+    margin: 0 5px
+    cursor: pointer
+    border-radius: unset
+    font-size: 16px
+    transition: background 0.3s ease
+
+    &:hover
+      color: white
+      border-bottom: 3px solid rgba(255, 255, 255, 0.58)
+
+    &.active
+      color: white
+      border-bottom: 3px solid white
+
+.nav-menu.fixed
+  position: fixed
+  top: 0
+  left: 0
+  background: rgba(7, 7, 7, 0.18)
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2)
+  z-index: 1000
+  margin-top: 0
 
 .nav-menu-placeholder
   height: 50px
   display: none
 
-
 .nav-menu.fixed + .nav-menu-placeholder
   display: block
+
+@media (max-width: 768px)
+  .nav-menu
+    padding: 10px 15px
+    justify-content: center
+
+  .desktop-nav
+    display: none
+
+  .mobile-nav
+    display: flex
+
+  .mobile-calculate-btn.active
+    border-bottom: none

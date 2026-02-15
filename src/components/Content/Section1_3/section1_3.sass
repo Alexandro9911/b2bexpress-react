@@ -12,6 +12,14 @@
   padding-top: 48px
   padding-bottom: 48px
   font-family: Raleway, serif
+  width: 100%
+  max-width: 100vw
+  box-sizing: border-box
+
+  @media (max-width: 768px)
+    padding-left: 8px
+    padding-right: 8px
+    padding-bottom: 20px
 
 
   &__digits
@@ -27,22 +35,77 @@
     padding-right: 40px
     padding-left: 40px
     padding-bottom: 60px
+    width: 100%
+    box-sizing: border-box
 
+    @media (max-width: 768px)
+      padding-left: 8px
+      padding-right: 8px
+
+
+// === ЗАГОЛОВОК И ТЕКСТ ===
 
 .section1_2__title
   font-size: 32px
+  margin-bottom: 30px
+  width: 100%
+  max-width: 800px
+  text-align: center
+
+  @media (max-width: 768px)
+    font-size: 28px
+
+  @media (max-width: 480px)
+    font-size: 24px
+
+  @media (max-width: 360px)
+    font-size: 22px
+
+  @media (max-width: 320px)
+    font-size: 20px
+    margin-bottom: 32px
+
+.section1_2__sub-title
+  font-size: 24px
   margin-bottom: 40px
 
 
 .section1_2__content
   font-size: 22px
   text-align: center
+  max-width: 800px
+  margin: 0 auto
+  width: 100%
+
+  @media (max-width: 768px)
+    font-size: 20px
+    line-height: 1.6
+
+  @media (max-width: 480px)
+    font-size: 18px
+    line-height: 1.5
+
+  @media (max-width: 360px)
+    font-size: 16px
+    line-height: 1.45
+
+  @media (max-width: 320px)
+    font-size: 15px
+    line-height: 1.4
+
+
+// === БЛОК ИЗОБРАЖЕНИЙ (скрыт на мобильных) ===
 
 .section1_2__images
   position: relative
   background: black
   top: -10px
   padding-bottom: 60px
+  width: 100%
+  box-sizing: border-box
+
+  @media (max-width: 768px)
+    display: none
 
 
 .image-container
@@ -50,6 +113,12 @@
   grid-template-columns: repeat(3, 1fr)
   gap: 30px
   width: 100%
+  max-width: 100%
+  margin: 0 auto
+  box-sizing: border-box
+
+  @media (max-width: 768px)
+    display: none
 
 
 .image-container img
@@ -57,16 +126,64 @@
   height: 100%
   object-fit: cover
   aspect-ratio: 1
+  border-radius: 12px
 
-.digits
-  &__title
-    font-size: 32px
-    margin-bottom: 40px
-  &__items
-    display: flex
-    flex-flow: row
-    align-items: start
-    justify-content: center
+  @media (max-width: 768px)
+    border-radius: 10px
+
+  @media (max-width: 320px)
+    border-radius: 8px
+
+
+// === БЛОК ЦИФР ===
+
+.digits__title
+  font-size: 32px
+  margin-bottom: 40px
+  width: 100%
+  max-width: 800px
+  text-align: center
+
+  @media (max-width: 768px)
+    font-size: 28px
+    margin-bottom: 32px
+
+  @media (max-width: 480px)
+    font-size: 24px
+    margin-bottom: 24px
+
+  @media (max-width: 360px)
+    font-size: 22px
+
+  @media (max-width: 320px)
+    font-size: 20px
+    margin-bottom: 20px
+
+
+.digits__items
+  display: flex
+  flex-flow: row
+  align-items: start
+  justify-content: center
+  gap: 40px
+  flex-wrap: wrap
+  width: 100%
+  max-width: 100%
+  margin: 0 auto
+  padding: 0
+  box-sizing: border-box
+
+  @media (max-width: 1024px)
+    gap: 30px
+
+  @media (max-width: 768px)
+    gap: 24px
+
+  @media (max-width: 480px)
+    gap: 20px
+
+  @media (max-width: 320px)
+    gap: 16px
 
 
 .digit-item
@@ -75,15 +192,239 @@
   align-items: center
   justify-content: center
   width: 350px
+  max-width: 100%
+  min-width: 0
 
-  &__title
-    font-size: 68px
-    padding-bottom: 40px
-    border-bottom: 1px solid white
+  @media (max-width: 1024px)
+    width: 320px
+
+  @media (max-width: 768px)
+    width: 290px
+
+  @media (max-width: 480px)
+    width: 270px
+
+  @media (max-width: 360px)
+    width: 250px
+
+  @media (max-width: 320px)
+    width: 100%
+    max-width: 280px
+    margin: 0 auto
 
 
-  &__subtext
-    width: 230px
+.digit-item__title
+  font-size: 68px
+  padding-bottom: 40px
+  border-bottom: 1px solid white
+  text-align: center
+  width: 100%
+  font-variant-numeric: tabular-nums
+  line-height: 1.1
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  word-break: break-word
+
+  @media (max-width: 768px)
+    font-size: 54px
+    padding-bottom: 32px
+
+  @media (max-width: 480px)
+    font-size: 46px
+    padding-bottom: 28px
+
+  @media (max-width: 360px)
+    font-size: 42px
+    padding-bottom: 24px
+
+  @media (max-width: 320px)
+    font-size: 40px
+    padding-bottom: 20px
+
+
+.digit-item__subtext
+  width: 230px
+  text-align: center
+  font-size: 16px
+  margin-top: 40px
+  word-break: break-word
+
+  @media (max-width: 768px)
+    width: 210px
+    font-size: 15px
+    margin-top: 32px
+
+  @media (max-width: 480px)
+    width: 190px
+    font-size: 14px
+    margin-top: 28px
+
+  @media (max-width: 360px)
+    width: 170px
+    font-size: 13px
+    margin-top: 24px
+
+  @media (max-width: 320px)
+    width: 100%
+    max-width: 200px
+    font-size: 12px
+    margin-top: 20px
+
+
+// === СТИЛИ ДЛЯ СЧЁТЧИКА — строго по центру ===
+
+.counter
+  display: block
+  text-align: center
+  width: 100%
+  font-family: inherit
+  font-size: 50px
+  font-weight: inherit
+  line-height: 1.2
+  word-break: break-word
+  height: 80px
+
+  > span
+    display: inline-block
     text-align: center
-    font-size: 16px
-    margin-top: 40px
+    width: 100%
+    font-family: "Courier New", monospace !important
+    letter-spacing: -0.5px
+
+@media screen and (max-width: 768px)
+  .counter
+    font-size: 38px
+    height: 50px
+
+// === КАРОУСЕЛЬ КАРТОЧЕК "О НАС" ===
+
+.section1_2__carousel
+  width: 100vw
+  max-width: 100vw
+  margin: 20px 0
+  padding: 0
+  left: 52%
+  right: 50%
+  transform: translateX(-50%)
+  position: relative
+  box-sizing: border-box
+
+  // 🔧 Точное центрирование на планшетах
+  @media (min-width: 768px) and (max-width: 1024px)
+    left: auto
+    right: auto
+    transform: none
+    width: 100%  // учитываем padding слева и справа (40px + 40px)
+    max-width: 1200px          // ограничиваем максимальную ширину
+    overflow: hidden           // на всякий случай, если будет вылет
+
+  .caruselle
+    padding: 0 200px
+    min-height: 300px
+
+    @media (max-width: 1024px)
+      padding: 0  // уже задано выше в .section1_2__carousel
+
+    @media (max-width: 768px)
+      padding: 0 8px
+
+    @media (max-width: 480px)
+      padding: 0
+
+
+.about-slide
+  display: flex
+  justify-content: center
+  align-items: stretch
+  gap: 40px
+  padding: 0
+  box-sizing: border-box
+
+  @media (max-width: 768px)
+    flex-direction: column
+    align-items: center
+    gap: 16px
+
+
+.about-card
+  background: rgba(255, 255, 255, 0.08)
+  border-radius: 16px
+  padding: 24px
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  text-align: center
+  position: relative
+  overflow: hidden
+  border: 1px solid rgba(255, 255, 255, 0.15)
+  backdrop-filter: blur(12px)
+  transition: all 0.4s ease
+
+  width: 100%
+  max-width: 500px
+  height: 200px
+
+  @media (max-width: 1024px)
+    width: 30em
+
+  @media (max-width: 768px)
+    max-width: 100%
+    width: 15em
+    padding: 20px
+    height: auto
+
+
+  // Диагональные КОСЫЕ линии — под 45 градусов
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background: linear-gradient(45deg, transparent 49%, rgba(255, 255, 255, 0.05) 49%, rgba(255, 255, 255, 0.05) 51%, transparent 51%)
+    background-size: 20px 20px
+    animation: moveDiagonalLines 20s linear infinite
+
+  @keyframes moveDiagonalLines
+    0%
+      background-position: 0 0
+    100%
+      background-position: 20px 20px
+
+  &:hover
+    transform: translateY(-6px) scale(1.02)
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4)
+    border-color: rgba(255, 255, 255, 0.3)
+    &::before
+      animation-play-state: paused
+
+
+.about-card__icon
+  font-size: 28px
+  margin-bottom: 12px
+  position: relative
+  z-index: 2
+
+
+.about-card__title
+  font-size: 18px
+  font-weight: 600
+  margin-bottom: 10px
+  color: white
+  position: relative
+  z-index: 2
+
+
+.about-card__text
+  font-size: 14px
+  color: rgba(255, 255, 255, 0.9)
+  line-height: 1.4
+  position: relative
+  z-index: 2
+
+  @media (max-width: 768px)
+    font-size: 13px

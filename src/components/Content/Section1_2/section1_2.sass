@@ -4,15 +4,41 @@
   flex-flow: column
   padding-left: 34px
   padding-right: 34px
-  height: 100%
   gap: 34px
+  width: 100%
+  box-sizing: border-box
 
+@media (max-width: 768px)
+  .wrapper
+    padding-left: 8px
+    padding-right: 8px
+    gap: 24px
 
-.row-cards
+.cards-container
   display: flex
-  flex-flow: row
-  flex-wrap: nowrap
+  flex-wrap: wrap
   gap: 34px
+  justify-content: center
+  width: 100%
+  position: relative
+
+  // Убираем min-height: 600px — больше не нужно
+
+  @media (min-width: 769px)
+    .card
+      &:nth-child(1), &:nth-child(2)
+        margin-bottom: 0
+      &:nth-child(3)
+        margin-top: 34px
+        align-self: center
+
+  @media (max-width: 768px)
+    flex-direction: column
+    align-items: center
+
+    .card
+      width: auto
+      max-width: 420px
 
 .section1_1
   position: relative
@@ -20,24 +46,31 @@
   font-family: Raleway, serif !important
 
   .content-overlay
-    position: relative!important
-    top: 0px !important
+    position: relative !important
+    top: 0 !important
     animation: none !important
 
-  .background-image
-    img
-      height: 820px!important
-      filter: brightness(0.4) contrast(1.8)
-
+  .overlay-background-img
+    filter: brightness(0.4) contrast(1.8)
 
 .title
   font-size: 32px
   color: white
+  display: flex
+  flex-flow: column
+  align-items: center
+  justify-content: center
+  margin-bottom: 40px
 
 .title_left
   margin-left: 120px
   margin-bottom: 40px
   margin-top: 40px
+
+  @media (max-width: 768px)
+    margin-left: 8px
+    font-size: 28px
+    text-align: center
 
 .subtitle
   display: flex
@@ -45,8 +78,9 @@
   align-items: center
   justify-content: center
   font-size: 25px
-  margin-top: 34px
-  margin-bottom: 34px
+  margin: 34px 0
   color: white
 
-
+  @media (max-width: 768px)
+    font-size: 22px
+    padding: 0 8px

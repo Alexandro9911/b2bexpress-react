@@ -12,7 +12,14 @@ import Section2_2 from "./components/Content/Section2_2/Section2_2.tsx";
 import Section3 from "./components/Content/Section3/Section3.tsx";
 import Section4 from "./components/Content/Section4/Section4.tsx";
 import ScrollToTopButton from "./components/ScrollToTopButton/ScrollToTopButton.tsx";
+import {useEffect} from "react";
 function App() {
+
+  useEffect(() => {
+    console.log('Developer: tg - @sanya_ne_vporyadke');
+    console.log('E-mail: alexandr.l1999@mail.ru  Александр Лялин');
+  }, [])
+
   return (
     <div className="main">
       <Header/>
@@ -20,7 +27,6 @@ function App() {
         <section className="content-section">
           <Overlay
             imageSrc={Section1Image}
-            customStyles="fixed-height-image_1"
           >
             <Section1_1/>
           </Overlay>

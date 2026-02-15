@@ -1,0 +1,394 @@
+.calculation-form
+  font-family: 'Raleway', sans-serif
+  background: transparent
+  backdrop-filter: blur(16px)
+  -webkit-backdrop-filter: blur(16px)
+  border: none
+  box-shadow: none
+  border-radius: 16px
+  padding: 40px
+  width: 100%
+  max-width: 520px
+  display: flex
+  flex-direction: column
+  position: relative
+  overflow: visible
+
+  &::before
+    content: ''
+    position: absolute
+    inset: 0
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 70%)
+    pointer-events: none
+    border-radius: 16px
+
+  &.submitted
+    text-align: center
+    padding: 60px 30px 50px
+
+    h2
+      font-size: 28px
+      font-weight: 700
+      color: #111
+      margin-bottom: 24px
+      line-height: 1.3
+
+    .success-image-container
+      margin: 20px 0
+      display: flex
+      justify-content: center
+
+    .success-icon
+      width: 100px
+      height: 100px
+      stroke-width: 2.5
+      stroke: #4CAF50
+      fill: none
+
+    .success-text
+      font-size: 18px
+      color: #333
+      font-weight: 500
+      line-height: 1.5
+      margin-top: 16px
+
+  h2
+    font-size: 26px
+    font-weight: 700
+    margin-bottom: 12px
+    color: #111
+    text-align: center
+    letter-spacing: -0.5px
+
+  .subtitle
+    font-size: 15px
+    color: #444
+    text-align: center
+    margin-bottom: 24px
+    line-height: 1.5
+    font-weight: 400
+    padding: 0 16px
+    box-sizing: border-box
+    margin-top: 8px
+
+  .error-message
+    background: #ffebee
+    color: #c62828
+    padding: 12px 16px
+    border-radius: 8px
+    font-size: 14px
+    margin-bottom: 20px
+    border: 1px solid #d32f2f
+    text-align: center
+    word-wrap: break-word
+    box-sizing: border-box
+
+  .form-group
+    margin-bottom: 20px
+
+    &.error input,
+    &.error textarea,
+    &.error .phone-input,
+    &.error .date-picker-input
+      border-color: #c62828 !important
+      box-shadow: 0 0 0 3px rgba(200, 40, 40, 0.12)
+
+    input, textarea, .phone-input, .date-picker-input
+      width: 100%
+      padding: 14px 18px
+      background: white
+      border: 2px solid #bbb
+      border-radius: 8px
+      font-size: 16px
+      font-family: 'Raleway', sans-serif
+      color: #111
+      transition: all 0.3s ease
+      box-sizing: border-box
+      outline: none
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08)
+
+      &:focus
+        border-color: #1976d2
+        box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.25)
+
+      &::placeholder
+        color: #777
+        opacity: 1
+        font-weight: 400
+
+  .form-row
+    display: flex
+    gap: 16px
+    width: 100%
+
+    .form-group.half
+      flex: 1
+      min-width: 0
+
+  .react-datepicker-wrapper,
+  .react-datepicker__input-container
+    width: 100%
+
+  .date-picker-input
+    width: 100% !important
+    cursor: pointer
+
+  .react-datepicker-popper
+    z-index: 1050
+
+    [data-placement^='bottom']
+      margin-top: 8px !important
+
+  .react-datepicker
+    font-family: 'Raleway', sans-serif
+    border: 1px solid #aaa
+    border-radius: 12px
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2)
+    font-size: 14px
+    width: 280px
+    padding: 0
+    margin: 0
+
+  .react-datepicker__header
+    background: white
+    border: none
+    border-radius: 12px 12px 0 0
+    padding: 10px 0
+    text-align: center
+
+  .react-datepicker__current-month
+    font-size: 15px
+    color: #111
+    font-weight: 600
+
+  .react-datepicker__navigation
+    border: 0
+    background: none
+    top: 8px
+    line-height: 1.7
+
+  .react-datepicker__month-dropdown-container,
+  .react-datepicker__year-dropdown-container
+    margin: 0 2px
+
+  .react-datepicker__month-select,
+  .react-datepicker__year-select
+    font-size: 14px
+    padding: 2px 5px
+    border: 1px solid #ddd
+    border-radius: 6px
+    background: white
+    color: #111
+
+  .react-datepicker__day-name
+    color: #111
+    font-weight: 600
+    font-size: 12px
+    width: 32px
+    margin: 0
+    line-height: 20px
+    text-align: center
+
+  .react-datepicker__day
+    width: 32px
+    height: 32px
+    line-height: 32px
+    margin: 0
+    border-radius: 6px
+    color: #333
+    padding: 0
+    text-align: center
+
+    &:hover
+      background: #1976d2
+      color: white
+
+    &.react-datepicker__day--selected,
+    &.react-datepicker__day--today
+      background: #1976d2
+      color: white
+      border-radius: 6px
+
+    &.react-datepicker__day--outside-month
+      color: #ccc
+  .react-datepicker__day--disabled
+    color: #ccc
+    cursor: not-allowed
+    &:hover
+      background: transparent
+
+  button.btn_submit
+    font-family: 'Raleway', sans-serif
+    margin-top: 6px
+    margin-left: auto
+    margin-right: auto
+    padding: 14px 32px
+    min-width: 140px
+    height: 52px
+    font-size: 16px
+    font-weight: 600
+    letter-spacing: 0.5px
+    align-self: center
+    background: #1976d2
+    color: white
+    border: none
+    border-radius: 8px
+    box-shadow: 0 4px 16px rgba(25, 118, 210, 0.35)
+    transition: all 0.3s ease
+    cursor: pointer
+
+    &:hover:not([disabled])
+      background: #1565c0
+      transform: translateY(-2px)
+      box-shadow: 0 6px 20px rgba(25, 118, 210, 0.45)
+
+    &[disabled]
+      background: #bdbdbd
+      color: #777
+      cursor: not-allowed
+      transform: none
+      box-shadow: none
+
+  .form-footer
+    text-align: center
+    font-size: 13px
+    color: #444
+    margin-top: 32px
+    line-height: 1.5
+    font-family: 'Raleway', sans-serif
+    max-width: 100%
+    word-wrap: break-word
+    padding: 0 20px
+    box-sizing: border-box
+
+    a
+      color: #1976d2
+      text-decoration: none
+      border-bottom: 1px solid #1976d2
+      transition: color 0.3s ease
+
+      &:hover
+        color: #0d47a1
+
+@media (max-width: 1024px)
+  .calculation-form
+    padding: 32px 24px
+    h2
+      font-size: 24px
+    .subtitle
+      font-size: 14px
+      margin-bottom: 16px
+      margin-top: 8px
+    .form-footer
+      margin-top: 28px
+      padding: 0 16px
+
+@media (max-width: 768px)
+  .calculation-form
+    padding: 32px 20px
+    width: auto
+    h2
+      font-size: 22px
+    .subtitle
+      font-size: 13px
+      margin-bottom: 20px
+      margin-top: 8px
+    .form-row
+      flex-direction: column
+      gap: 12px
+    .form-footer
+      font-size: 12px
+      padding: 0 16px
+      margin-top: 28px
+
+    .react-datepicker
+      left: 18px!important
+
+    .react-datepicker__current-month
+      margin-left: 20px
+
+@media (max-width: 480px)
+  .calculation-form
+    padding: 28px 16px
+    h2
+      font-size: 20px
+    .subtitle
+      font-size: 13px
+      margin-bottom: 20px
+      margin-top: 8px
+    .form-group input,
+    .form-group .phone-input,
+    .form-group .date-picker-input
+      font-size: 15px
+      padding: 13px 16px
+      border-color: #aaa
+    button.btn_submit
+      font-size: 15px
+      padding: 13px 28px
+      height: 50px
+    .form-footer
+      margin-top: 26px
+      padding: 0 12px
+
+  .react-datepicker-popper
+    [data-placement^='bottom']
+      margin-top: 10px !important
+
+  .react-datepicker
+    width: 260px
+    font-size: 13px
+
+  .react-datepicker__day-name, .react-datepicker__day
+    width: 30px
+    height: 30px
+    line-height: 30px
+
+  .react-datepicker__current-month
+    font-size: 14px
+
+@media (max-width: 360px)
+  .calculation-form
+    padding: 24px 16px
+    h2
+      font-size: 18px
+    .subtitle
+      font-size: 12px
+      margin-bottom: 16px
+      margin-top: 8px
+    .form-group input,
+    .form-group .phone-input,
+    .form-group .date-picker-input
+      font-size: 14px
+      padding: 12px 14px
+      border-color: #999
+    button.btn_submit
+      font-size: 14px
+      padding: 12px 24px
+      height: 48px
+    .form-footer
+      font-size: 11px
+      padding: 0 8px
+      margin-top: 24px
+    &.submitted
+      padding: 50px 20px 40px
+      .success-icon
+        width: 80px
+        height: 80px
+      .success-text
+        font-size: 15px
+
+  .react-datepicker-popper
+    [data-placement^='bottom']
+      margin-top: 10px !important
+
+  .react-datepicker
+    width: 250px
+    font-size: 12px
+
+  .react-datepicker__day-name, .react-datepicker__day
+    width: 28px
+    height: 28px
+    line-height: 28px
+
+  .react-datepicker__current-month
+    font-size: 13px
