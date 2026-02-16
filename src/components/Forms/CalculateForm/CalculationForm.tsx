@@ -214,7 +214,7 @@ export default function CalculationForm() {
         </button>
         <div className="form-footer">
           Нажимая кнопку, вы соглашаетесь с{' '}
-          <a href="/privacy" target="_blank" rel="noopener noreferrer">
+          <a href="https://мл-спб.рф/privacy" target="_blank" rel="noopener noreferrer">
             политикой обработки персональных данных
           </a>
         </div>

@@ -11,22 +11,17 @@ export default function Section4(){
           </div>
           <div className="info__sub-title">
             <p>Горячая линия</p>
-            <p>8 800 7007 123</p>
+            <p>8 981 110 01 01 </p>
           </div>
-          <div className="info__email">Общая почта: unitedtransport@mail.ru</div>
+          <div className="info__email">Общая почта: garant.logistics@bk.ru</div>
           <div className="info__contacts">
             <div className="contact-item">
-              <p>Ген. Директор Сказалова Людмила Владимировна</p>
-              <p>skazaloval@bk.ru</p>
+              <p>Генеральный Директор: Филин Дмитрий Александрович</p>
             </div>
             <div className="contact-item">
-              <p>Головной офис</p>
-              <p>Индекс 445028, Самарская область, г. Тольятти, б-р Королева 13, офис 121.</p>
-              <p>МАУ городского округа Тольятти АЭР (управляющая компания Бизнес-инкубатор).</p>
-            </div>
-            <div className="contact-item">
-              <p>Индекс 125424, Московская область, г. Москва, Волоколамское шоссе 73, офис 74/2.</p>
-              <p>Б.Ц. СДМ-Центр ст. метро Тушинская</p>
+              <p>Головной офис: </p>
+              <br/>
+              <p>190013 , Санкт-Петербург, Московский проспект, 60/129, офис 212-В</p>
             </div>
           </div>
         </div>

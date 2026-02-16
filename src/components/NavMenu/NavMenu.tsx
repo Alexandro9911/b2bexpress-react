@@ -17,7 +17,7 @@ const NavMenu: React.FC = () => {
     { id: 'services', text: 'Услуги' },
     { id: 'feedback', text: 'Оставить отзыв' },
     { id: 'contacts', text: 'Контакты' },
-    { id: 'live', text: 'Жизнь компании' },
+    // { id: 'live', text: 'Жизнь компании' },
     { id: 'none', text: 'Рассчитать стоимость', actionButton: calcButtonAction },
   ];
 
