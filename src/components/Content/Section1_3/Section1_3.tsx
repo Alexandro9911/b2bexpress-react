@@ -215,19 +215,19 @@ export default function Section1_3() {
             <div className="digit-item__title">
               <Counter end={1574000} />
             </div>
-            <div className="digit-item__subtext">АВТОТРАНСПОРТОМ - более чем на 1.574.000 км.</div>
+            <div className="digit-item__subtext">АВТОТРАНСПОРТОМ - более, чем на 1.574.000 км.</div>
           </div>
           <div className="digit-item">
             <div className="digit-item__title">
               <Counter end={731000} />
             </div>
-            <div className="digit-item__subtext">ЖЕЛЕЗНОДОРОЖНЫМИ ПУТЯМИ - более чем 731.000 км.</div>
+            <div className="digit-item__subtext">ЖЕЛЕЗНОДОРОЖНЫМИ ПУТЯМИ - более, чем 731.000 км.</div>
           </div>
           <div className="digit-item">
             <div className="digit-item__title">
               <Counter end={74000} suffix="" />
             </div>
-            <div className="digit-item__subtext">МОРСКИМИ КОНТЕЙНЕРАМИ – более чем 74,000 м.миль.</div>
+            <div className="digit-item__subtext">МОРСКИМИ КОНТЕЙНЕРАМИ – более, чем 74,000 м.миль.</div>
           </div>
         </div>
       </div>

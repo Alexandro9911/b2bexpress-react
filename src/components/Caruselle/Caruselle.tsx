@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import "./caruselle.sass";
-import type {CaruselleItem} from "../../types/caruselle";
+import type { CaruselleItem } from "../../types/caruselle";
 
 type Props = {
   children: CaruselleItem | CaruselleItem[];
@@ -11,15 +11,17 @@ type Props = {
 };
 
 export default function Caruselle({
-  children,
-  autoSlide = false,
-  showButtons = true,
-  timeSlide = 5000,
-  showDots = true,
-}: Props) {
+                                    children,
+                                    autoSlide = false,
+                                    showButtons = true,
+                                    timeSlide = 5000,
+                                    showDots = true,
+                                  }: Props) {
   const items = Array.isArray(children) ? children : [children];
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const slideRef = useRef<HTMLDivElement>(null);
 
   const next = () => {
@@ -32,6 +34,31 @@ export default function Caruselle({
     if (isTransitioning) return;
     setIsTransitioning(true);
     setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
+  };
+
+  // Обработка свайпа
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isSwipe = Math.abs(distance) > 50; // Минимальное расстояние свайпа
+
+    if (isSwipe && !isTransitioning) {
+      if (distance > 0) {
+        next(); // Свайп влево → следующий
+      } else {
+        prev(); // Свайп вправо ← предыдущий
+      }
+    }
   };
 
   useEffect(() => {
@@ -51,13 +78,13 @@ export default function Caruselle({
     return () => clearInterval(interval);
   }, [autoSlide, timeSlide, items.length, isTransitioning]);
 
-  useEffect(() => {
-    if (autoSlide && isTransitioning) {
-    }
-  }, [isTransitioning, autoSlide]);
-
   return (
-    <div className="caruselle">
+    <div
+      className="caruselle"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <div
         className="caruselle-track"
         ref={slideRef}
