@@ -21,8 +21,8 @@ export default function Header() {
           <h2>Ваша задача - Наше решение</h2>
         </div>
         <div className="header__contacts">
-          <p className="contact">8 (981) 110 01 01 </p>
-          <p className="contact_small">garant.logistics@bk.ru</p>
+          <p className="contact"><a href={"tel:8(981)1100101"}>8 (981) 110 01 01</a></p>
+          <p className="contact_small"><a href={'mailto:mir_logistiki01@bk.ru'}>mir_logistiki01@bk.ru</a></p>
         </div>
       </div>
       <div className="header__button-wrapper">

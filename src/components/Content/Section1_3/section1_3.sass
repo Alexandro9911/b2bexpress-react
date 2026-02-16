@@ -1,6 +1,6 @@
 .section1_2
   position: relative
-  top: -10px
+  //top: -10px
   background: black
   color: white
   display: flex
@@ -66,9 +66,31 @@
     margin-bottom: 32px
 
 .section1_2__sub-title
-  font-size: 24px
+  font-size: 44px
   margin-bottom: 40px
+  text-align: center
+  color: transparent
+  //font-weight: bolder
 
+  ///* линейный градиент, слева на право, 3 цвета */
+  //background-image:  linear-gradient(180deg, rgba(199, 52, 199, 1) 0%, rgba(65, 168, 231, 1) 100%)
+  ///* обрезаем фон по тексту */
+  //-webkit-background-clip: text
+  ///* меняет цвет текста заголовка на прозрачный что бы можно было увидеть градиент*/
+  //-webkit-text-fill-color: transparent
+
+  color: white
+  background: linear-gradient(180deg, rgba(199, 52, 199, 1) 0%, rgba(65, 168, 231, 1) 100%)
+  padding-left: 30px
+  padding-right: 30px
+  padding-top: 15px
+  padding-bottom: 15px
+  border: 1px solid transparent
+  border-radius: 10px
+
+
+  @media (max-width: 768px)
+    font-size: 24px
 
 .section1_2__content
   font-size: 22px
@@ -368,7 +390,7 @@
   height: 200px
 
   @media (max-width: 1024px)
-    width: 30em
+    width: 300px
 
   @media (max-width: 768px)
     max-width: 100%
@@ -377,7 +399,6 @@
     height: auto
 
 
-  // Диагональные КОСЫЕ линии — под 45 градусов
   &::before
     content: ''
     position: absolute
@@ -408,6 +429,8 @@
   margin-bottom: 12px
   position: relative
   z-index: 2
+  img
+    width: 38px
 
 
 .about-card__title
@@ -417,6 +440,11 @@
   color: white
   position: relative
   z-index: 2
+
+.custom-card
+  .about-card__title
+    margin-bottom: 0px
+
 
 
 .about-card__text
@@ -428,3 +456,6 @@
 
   @media (max-width: 768px)
     font-size: 13px
+
+.text-with-bullets
+  text-align: start

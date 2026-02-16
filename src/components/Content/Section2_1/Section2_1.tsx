@@ -40,7 +40,7 @@ export default function Section2_1() {
               </div>
               <div className="step-item__title">Транспорт</div>
               <div className="step-item__text">
-                В течение 2 часов подбираем необходимый транспорт
+                В течение 30 минут подбираем необходимый, свободный транспорт
               </div>
             </div>
 
@@ -63,15 +63,28 @@ export default function Section2_1() {
             <div className="arrow arrow--down arrow-v--3-4"><Arrow/></div>
 
 
-            <div className="step-item">
-              <div className="step-item__icon">
-                <img src={RubleIcon} alt="Оплата"/>
-              </div>
-              <div className="step-item__title">Оплата</div>
-              <div className="step-item__text">
-                Оплата транспортировки
-              </div>
-            </div>
+            {window.innerWidth < 768 &&
+                <div className="step-item">
+                    <div className="step-item__icon">
+                        <img src={RouteIcon} alt="Погрузка"/>
+                    </div>
+                    <div className="step-item__title">Погрузка груза</div>
+                    <div className="step-item__text">
+                        Осуществляем транспортировку груза из точки А в точку Б, с постоянным мониторингом через систему ГЛОНАСС
+                    </div>
+                </div>
+            }
+            {window.innerWidth >= 768 &&
+                <div className="step-item">
+                    <div className="step-item__icon">
+                        <img src={RubleIcon} alt="Оплата"/>
+                    </div>
+                    <div className="step-item__title">Оплата</div>
+                    <div className="step-item__text">
+                        Оплата транспортировки
+                    </div>
+                </div>
+            }
 
             <div className="arrow arrow-h--5-4 arrow--reverse"><Arrow/></div>
 
@@ -87,15 +100,28 @@ export default function Section2_1() {
 
             <div className="arrow arrow-h--6-5 arrow--reverse"><Arrow/></div>
 
-            <div className="step-item">
-              <div className="step-item__icon">
-                <img src={RouteIcon} alt="Погрузка"/>
+            {window.innerWidth >= 768 &&
+              <div className="step-item">
+                <div className="step-item__icon">
+                  <img src={RouteIcon} alt="Погрузка"/>
+                </div>
+                <div className="step-item__title">Погрузка груза</div>
+                <div className="step-item__text">
+                  Осуществляем транспортировку груза из точки А в точку Б, с постоянным мониторингом через систему ГЛОНАСС
+                </div>
               </div>
-              <div className="step-item__title">Погрузка груза</div>
-              <div className="step-item__text">
-                Осуществляем транспортировку груза из точки А в точку Б, с постоянным мониторингом через систему ГЛОНАСС
-              </div>
-            </div>
+            }
+            {window.innerWidth < 768 &&
+                <div className="step-item">
+                    <div className="step-item__icon">
+                        <img src={RubleIcon} alt="Оплата"/>
+                    </div>
+                    <div className="step-item__title">Оплата</div>
+                    <div className="step-item__text">
+                        Оплата транспортировки
+                    </div>
+                </div>
+            }
 
           </div>
         </>

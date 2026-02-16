@@ -199,13 +199,11 @@ export default function CalculationForm() {
         <div className={`form-group ${errors.phone ? 'error' : ''}`}>
           <PhoneInput
             placeholder="(000) 000-00-00"
-            value={formData.phone}
+            value={formData.phone || ''}
             onChange={handlePhoneChange}
             defaultCountry="RU"
             limitMaxLength={true}
-            inputComponent={(props) => (
-              <input {...props} className={`phone-input ${errors.phone ? 'error' : ''}`} />
-            )}
+            autoComplete="tel"
             required
           />
         </div>

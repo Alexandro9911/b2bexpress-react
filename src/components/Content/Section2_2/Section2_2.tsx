@@ -18,7 +18,7 @@ export default function Section2_2() {
             </ul>
           </div>
           <div className="documents-info__action">
-            <Button href="https://vk.com" classNames="btn btn_medium">
+            <Button href="https://disk.yandex.ru/d/grjf9CGPqdwKHQ" classNames="btn btn_medium">
               Смотреть папку с документами
             </Button>
           </div>

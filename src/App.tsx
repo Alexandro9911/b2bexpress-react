@@ -49,6 +49,9 @@ function App() {
         </section>
       </div>
       <ScrollToTopButton />
+      <div className="footer">
+        <Header/>
+      </div>
     </div>
 )
 }

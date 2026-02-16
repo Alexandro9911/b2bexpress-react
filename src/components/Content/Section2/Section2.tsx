@@ -9,6 +9,7 @@ import Section2Image from '../../../assets/images/section2.jpg';
 import Overlay from '../../common/Overlay/Overlay.tsx';
 import { OpenModal } from '../../../utils/modal.tsx';
 import './Section2.sass';
+import CalculationForm from "../../Forms/CalculateForm/CalculationForm.tsx";
 
 interface Service {
   imageSrc: string;
@@ -93,7 +94,7 @@ export default function Section2() {
   ];
 
   const onClickButton = () => {
-    OpenModal(<div>Расчёт стоимости</div>);
+    OpenModal(<CalculationForm/>);
   };
 
   useEffect(() => {

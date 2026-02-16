@@ -76,7 +76,7 @@ export default function Section1_2() {
             id="safety"
             title="Безопасность"
             imageSrc={SafetyIcon}
-            description="Мы системно подходим к вопросу безопасности грузов и клиентов."
+            description="Мы системно подходим к вопросу безопасности нашего сервиса."
             detailContent={
               <ul>
                 <li data-list="bullet">

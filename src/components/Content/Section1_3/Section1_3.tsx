@@ -1,6 +1,10 @@
 import './section1_3.sass';
 import { useEffect, useRef, useState } from 'react';
 import Caruselle from '../../Caruselle/Caruselle';
+import UserImage from '../../../assets/icons/user.png';
+import PeopleImage from '../../../assets/icons/healthcare.png';
+import AgreementImage from '../../../assets/icons/agreement.png';
+import PadlockImage from '../../../assets/icons/padlock_white.png';
 
 // Хук для отслеживания видимости элемента
 function useOnScreen(ref: React.RefObject<Element>): boolean {
@@ -112,30 +116,44 @@ function Counter({ end, suffix = '' }: CounterProps) {
 export default function Section1_3() {
   // Карточки для карусели
   const aboutCards = [
-    <div className="about-card" key="card-1">
-      <div className="about-card__icon">👥</div>
+    <div className="about-card custom-card" key="card-1">
+      <div className="about-card__icon"><img src={PeopleImage}/></div>
       <div className="about-card__title">Наша команда</div>
       <div className="about-card__text">
-        3 линейных руководителя, более 30-ти внимательных и пунктуальных Логистов
+        3 линейных руководителя, более 10-ти внимательных и пунктуальных Логистов
       </div>
     </div>,
-    <div className="about-card" key="card-2">
-      <div className="about-card__icon">📦</div>
+    <div className="about-card custom-card" key="card-2">
+      <div className="about-card__icon"><img src={UserImage}/></div>
       <div className="about-card__title">Ключевые отделы</div>
       <div className="about-card__text">
-        Отдел международной логистики, финансово-экономический отдел, дирекция по развитию, собственная служба безопасности
+        <ul className="text-with-bullets">
+          <li>
+            Отдел международной логистики
+          </li>
+          <li>
+            финансово-экономический отдел
+          </li>
+          <li>
+            дирекция по развитию
+          </li>
+          <li>
+            собственная служба безопасности
+          </li>
+        </ul>
+        {/*Отдел международной логистики, финансово-экономический отдел, дирекция по развитию, собственная служба безопасности*/}
       </div>
     </div>,
-    <div className="about-card" key="card-3">
-      <div className="about-card__icon">🤝</div>
+    <div className="about-card custom-card" key="card-3">
+      <div className="about-card__icon"><img src={AgreementImage}/></div>
       <div className="about-card__title">Партнёры</div>
       <div className="about-card__text">
         Сотни объединённых партнёров во всех сегментах бизнеса, связанных с логистикой: стоянки, склады, порты, АЗС, СТО и др.
       </div>
     </div>,
-    <div className="about-card" key="card-4">
-      <div className="about-card__icon">📍</div>
-      <div className="about-card__title">Наше обещание</div>
+    <div className="about-card custom-card" key="card-4">
+      <div className="about-card__icon"><img src={PadlockImage}/></div>
+      <div className="about-card__title">Ответственность за каждый этап</div>
       <div className="about-card__text">
         Мы контролируем каждый метр транспортировки Вашего груза.
       </div>
@@ -179,7 +197,7 @@ export default function Section1_3() {
       {/* Блок "О нас" */}
       <div className="section1_2">
         <div className="section1_2__title">О нас</div>
-        <div className="section1_2__sub-title">Мы - ООО Мир Логистики</div>
+        <div className="section1_2__sub-title">Мир Логистики</div>
 
         {/* Карусель из карточек */}
         <div className="section1_2__carousel">
