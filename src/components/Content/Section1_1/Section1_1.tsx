@@ -18,7 +18,7 @@ export default function Section1_1() {
             <br />
             по горячей линии <b>8 (981) 110-01-01</b>,
             <br />
-            или электронной почте <b>garant.logistics@bk.ruu</b>
+            или электронной почте <b>garant.logistics@bk.ru</b>
             <br />
             и сделать первый заказ.
           </p>
