@@ -102,6 +102,10 @@ const NavMenu: React.FC = () => {
       top: offsetTop,
       behavior: 'smooth',
     });
+
+    if(window.innerWidth < 768){
+      setIsShown(false);
+    }
   }, []);
 
   useEffect(() => {

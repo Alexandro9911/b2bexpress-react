@@ -25,7 +25,7 @@ export default function Section2_1() {
               <div className="step-item__icon">
                 <img src={PhoneIcon} alt="Заявка"/>
               </div>
-              <div className="step-item__title">Заявка</div>
+              <div className="step-item__title">Заявка на перевозку</div>
               <div className="step-item__text">
                 Вы оставляете заявку на сайте, или звоните на горячую линию. Наш менеджер задает уточняющие вопросы для
                 просчета стоимости и оглашает конкретные сроки доставки
@@ -38,7 +38,7 @@ export default function Section2_1() {
               <div className="step-item__icon">
                 <img src={CarIcon} alt="Транспорт"/>
               </div>
-              <div className="step-item__title">Транспорт</div>
+              <div className="step-item__title">Бронирование</div>
               <div className="step-item__text">
                 В течение 30 минут подбираем необходимый, свободный транспорт
               </div>
@@ -50,7 +50,7 @@ export default function Section2_1() {
               <div className="step-item__icon">
                 <img src={DocumentIcon} alt="Договор"/>
               </div>
-              <div className="step-item__title">Договор</div>
+              <div className="step-item__title">Заключение договора </div>
               <div className="step-item__text">
                 Заключаем договор на перевозку
               </div>
@@ -68,7 +68,7 @@ export default function Section2_1() {
                     <div className="step-item__icon">
                         <img src={RouteIcon} alt="Погрузка"/>
                     </div>
-                    <div className="step-item__title">Погрузка груза</div>
+                    <div className="step-item__title">Логистика</div>
                     <div className="step-item__text">
                         Осуществляем транспортировку груза из точки А в точку Б, с постоянным мониторингом через систему ГЛОНАСС
                     </div>
@@ -92,7 +92,7 @@ export default function Section2_1() {
               <div className="step-item__icon">
                 <img src={ExchangeIcon} alt="Обмен"/>
               </div>
-              <div className="step-item__title">Обмен</div>
+              <div className="step-item__title">Обмен документами</div>
               <div className="step-item__text">
                 Обмен транспортными и бухгалтерскими отчетными документами
               </div>
@@ -105,7 +105,7 @@ export default function Section2_1() {
                 <div className="step-item__icon">
                   <img src={RouteIcon} alt="Погрузка"/>
                 </div>
-                <div className="step-item__title">Погрузка груза</div>
+                <div className="step-item__title">Логистика</div>
                 <div className="step-item__text">
                   Осуществляем транспортировку груза из точки А в точку Б, с постоянным мониторингом через систему ГЛОНАСС
                 </div>

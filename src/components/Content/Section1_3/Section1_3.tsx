@@ -1,10 +1,9 @@
 import './section1_3.sass';
 import { useEffect, useRef, useState } from 'react';
-import Caruselle from '../../Caruselle/Caruselle';
-import UserImage from '../../../assets/icons/user.png';
-import PeopleImage from '../../../assets/icons/healthcare.png';
-import AgreementImage from '../../../assets/icons/agreement.png';
-import PadlockImage from '../../../assets/icons/padlock_white.png';
+import UserImage from '../../../assets/icons/user_colored.png';
+import PeopleImage from '../../../assets/icons/healthcare_colored.png';
+import AgreementImage from '../../../assets/icons/agreement_colored.png';
+import PadlockImage from '../../../assets/icons/padlock_colored.png';
 
 // Хук для отслеживания видимости элемента
 function useOnScreen(ref: React.RefObject<Element>): boolean {
@@ -33,7 +32,7 @@ function useOnScreen(ref: React.RefObject<Element>): boolean {
   return isIntersecting;
 }
 
-// Компонент счётчика
+// Компонент счётчика (без изменений)
 type CounterProps = {
   end: number;
   suffix?: string;
@@ -114,83 +113,95 @@ function Counter({ end, suffix = '' }: CounterProps) {
 }
 
 export default function Section1_3() {
-  // Карточки для карусели
+  // Карточки остаются в виде JSX — без преобразования в объекты
   const aboutCards = [
-    <div className="about-card custom-card" key="card-1">
-      <div className="about-card__icon"><img src={PeopleImage}/></div>
-      <div className="about-card__title">Наша команда</div>
-      <div className="about-card__text">
-        3 линейных руководителя, более 10-ти внимательных и пунктуальных Логистов
+    // Карточка 1: иконка слева → текст справа
+    <div className="about-card custom-card left-icon" key="card-1">
+      <div className="about-card__icon"><img src={PeopleImage} /></div>
+      <div className="custom-card__content">
+        <div className="about-card__title">Наша команда</div>
+        <div className="about-card__text">
+          3 линейных руководителя, более 10-ти внимательных и пунктуальных Логистов
+        </div>
       </div>
     </div>,
-    <div className="about-card custom-card" key="card-2">
-      <div className="about-card__icon"><img src={UserImage}/></div>
-      <div className="about-card__title">Ключевые отделы</div>
-      <div className="about-card__text">
-        <ul className="text-with-bullets">
-          <li>
-            Отдел международной логистики
-          </li>
-          <li>
-            финансово-экономический отдел
-          </li>
-          <li>
-            дирекция по развитию
-          </li>
-          <li>
-            собственная служба безопасности
-          </li>
-        </ul>
-        {/*Отдел международной логистики, финансово-экономический отдел, дирекция по развитию, собственная служба безопасности*/}
+    // Карточка 2: текст слева → иконка справа
+    <div className="about-card custom-card right-icon" key="card-2">
+      {window.innerWidth <= 768 &&
+          <div className="about-card__icon"><img src={UserImage}/></div>
+      }
+      <div className="custom-card__content">
+        <div className="about-card__title">Ключевые отделы</div>
+        <div className="about-card__text">
+          <ul className="text-with-bullets">
+            <li>Отдел международной логистики</li>
+            <li>финансово-экономический отдел</li>
+            <li>дирекция по развитию</li>
+            <li>собственная служба безопасности</li>
+          </ul>
+        </div>
+      </div>
+      {window.innerWidth > 768 &&
+          <div className="about-card__icon"><img src={UserImage}/></div>
+      }
+    </div>,
+    // Карточка 3: иконка слева → текст справа
+    <div className="about-card custom-card left-icon" key="card-3">
+      <div className="about-card__icon"><img src={AgreementImage} /></div>
+      <div className="custom-card__content">
+        <div className="about-card__title">Партнёры</div>
+        <div className="about-card__text">
+          Сотни объединённых партнёров во всех сегментах бизнеса, связанных с логистикой: стоянки, склады, порты, АЗС, СТО и др.
+        </div>
       </div>
     </div>,
-    <div className="about-card custom-card" key="card-3">
-      <div className="about-card__icon"><img src={AgreementImage}/></div>
-      <div className="about-card__title">Партнёры</div>
-      <div className="about-card__text">
-        Сотни объединённых партнёров во всех сегментах бизнеса, связанных с логистикой: стоянки, склады, порты, АЗС, СТО и др.
+    // Карточка 4: текст слева → иконка справа
+    <div className="about-card custom-card right-icon" key="card-4">
+      {window.innerWidth <= 768 &&
+          <div className="about-card__icon"><img src={PadlockImage} /></div>
+      }
+      <div className="custom-card__content">
+        <div className="about-card__title">Ответственность за каждый этап</div>
+        <div className="about-card__text">
+          Мы контролируем каждый метр транспортировки Вашего груза.
+        </div>
       </div>
-    </div>,
-    <div className="about-card custom-card" key="card-4">
-      <div className="about-card__icon"><img src={PadlockImage}/></div>
-      <div className="about-card__title">Ответственность за каждый этап</div>
-      <div className="about-card__text">
-        Мы контролируем каждый метр транспортировки Вашего груза.
-      </div>
+      {window.innerWidth > 768 &&
+        <div className="about-card__icon"><img src={PadlockImage} /></div>
+      }
     </div>,
   ];
 
-  // Адаптив: количество карточек на слайд
-  const [slides, setSlides] = useState<JSX.Element[]>([]);
-  // Адаптив: показывать ли кнопки
-  const [showButtons, setShowButtons] = useState(true);
+  // Рефы для анимации появления
+  const cardRefs = aboutCards.map(() => useRef<HTMLDivElement>(null));
+  const [appeared, setAppeared] = useState<boolean[]>(Array(aboutCards.length).fill(false));
 
   useEffect(() => {
-    const updateLayout = () => {
-      // Меняем поведение: планшеты и меньше — 1 карточка
-      const isTabletOrSmaller = window.innerWidth < 1025;
-      const chunkSize = isTabletOrSmaller ? 1 : 2;
+    const observers = cardRefs.map((ref, index) => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !appeared[index]) {
+            setTimeout(() => {
+              setAppeared(prev => {
+                const newArr = [...prev];
+                newArr[index] = true;
+                return newArr;
+              });
+            }, index * 200); // Плавное появление по очереди
+            observer.unobserve(entry.target);
+          }
+        },
+        { threshold: 0.1 }
+      );
 
-      // Группировка слайдов
-      const newSlides = [];
-      for (let i = 0; i < aboutCards.length; i += chunkSize) {
-        const group = aboutCards.slice(i, i + chunkSize);
-        newSlides.push(
-          <div className="about-slide" key={`slide-${i}`}>
-            {group}
-          </div>
-        );
-      }
-      setSlides(newSlides);
+      if (ref.current) observer.observe(ref.current);
+      return observer;
+    });
 
-      // Кнопки: только на десктопе
-      setShowButtons(!isTabletOrSmaller);
+    return () => {
+      observers.forEach(observer => observer.disconnect());
     };
-
-    updateLayout();
-    window.addEventListener('resize', updateLayout);
-    return () => window.removeEventListener('resize', updateLayout);
-  }, []);
+  }, [appeared]);
 
   return (
     <>
@@ -199,15 +210,21 @@ export default function Section1_3() {
         <div className="section1_2__title">О нас</div>
         <div className="section1_2__sub-title">Мир Логистики</div>
 
-        {/* Карусель из карточек */}
-        <div className="section1_2__carousel">
-          <Caruselle autoSlide={true} timeSlide={5000} showDots={true} showButtons={showButtons}>
-            {slides}
-          </Caruselle>
+        {/* Новый блок — карточки во всю ширину */}
+        <div className="about-cards-stack">
+          {aboutCards.map((card, index) => (
+            <div
+              key={`stacked-card-${index}`}
+              ref={cardRefs[index]}
+              className={`about-card-stacked ${appeared[index] ? 'visible' : ''}`}
+            >
+              {card}
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Блок цифр */}
+      {/* Блок цифр — без изменений */}
       <div className="section1_2__digits">
         <div className="digits__title">Наши показатели в цифрах:</div>
         <div className="digits__items">
