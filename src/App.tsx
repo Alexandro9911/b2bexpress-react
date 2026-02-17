@@ -2,6 +2,7 @@ import './index.css'
 import Header from "./components/Header/Header.tsx";
 import Overlay from "./components/common/Overlay/Overlay.tsx";
 import Section1Image from './assets/images/section1_test.jpg';
+import SectionVideo from './assets/video/truck-crop.mov';
 import Section1_1 from "./components/Content/Section1_1/Section1_1.tsx";
 import NavMenu from "./components/NavMenu/NavMenu.tsx";
 import Section1_2 from "./components/Content/Section1_2/Section1_2.tsx";
@@ -27,6 +28,7 @@ function App() {
         <section className="content-section">
           <Overlay
             imageSrc={Section1Image}
+            videoSrc={SectionVideo}
           >
             <Section1_1/>
           </Overlay>

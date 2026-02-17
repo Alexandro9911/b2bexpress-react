@@ -4,6 +4,7 @@
   min-height: 605px
   overflow: hidden
 
+  // Стили для фонового изображения
   .overlay-background-img
     position: absolute
     top: 0
@@ -14,6 +15,29 @@
     pointer-events: none
     z-index: 0
 
+  // Стили для фонового видео
+  .overlay-background-video
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    object-fit: cover
+    z-index: 0
+    opacity: 1
+    transition: opacity 0.3s ease
+
+    // Если видео не загрузилось, браузер покажет fallback-изображение
+    .fallback
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      object-fit: cover
+      z-index: 0
+
+  // Контент поверх фона
   .content-overlay
     position: relative
     z-index: 1
@@ -36,6 +60,10 @@
 
   .content-overlay
     padding: 70px 16px 28px
+
+  // На мобильных всегда изображение — видео не показываем
+  .overlay-background-video
+    display: none
 
 @media (max-width: 480px)
   .overlay-wrapper

@@ -29,11 +29,17 @@ export default function CardWithIcon({
   const [height, setHeight] = useState<number>(0);
 
   useEffect(() => {
-    if (isExpanded && contentRef.current) {
-      setHeight(contentRef.current.scrollHeight);
-    } else {
-      setHeight(0);
-    }
+      if (isExpanded && contentRef.current) {
+        setTimeout(() => {
+          if(contentRef.current) {
+            setHeight(contentRef.current.scrollHeight);
+          }
+        }, 600)
+      } else {
+        setTimeout(() => {
+        setHeight(0);
+        })
+      }
   }, [isExpanded]);
 
   const composeClasses = () =>
@@ -47,7 +53,7 @@ export default function CardWithIcon({
   return (
     <div className={composeClasses()} onClick={(e) => e.stopPropagation()}>
       {isMinimized ? (
-        <div className="card__minimized-icon-wrapper">
+        <div className="card__minimized-icon-wrapper" onClick={onToggle}>
           <img
             src={imageSrc}
             alt={`${typeof title === "string" ? title : "Иконка"}`}

@@ -87,7 +87,7 @@ p {
 html, body {
     overflow-x: hidden;
     width: 100%;
-    background: black;
+    background: #171717;
 }
 .footer {
     top: -10px;

@@ -1,6 +1,5 @@
 import './section1_3.sass';
 import { useEffect, useRef, useState } from 'react';
-import UserImage from '../../../assets/icons/user_colored.png';
 import PeopleImage from '../../../assets/icons/healthcare_colored.png';
 import AgreementImage from '../../../assets/icons/agreement_colored.png';
 import PadlockImage from '../../../assets/icons/padlock_colored.png';
@@ -116,35 +115,48 @@ export default function Section1_3() {
   // Карточки остаются в виде JSX — без преобразования в объекты
   const aboutCards = [
     // Карточка 1: иконка слева → текст справа
-    <div className="about-card custom-card left-icon" key="card-1">
+    <div className="about-card custom-card right-icon" key="card-1">
+      {window.innerWidth <= 768 &&
       <div className="about-card__icon"><img src={PeopleImage} /></div>
+      }
       <div className="custom-card__content">
         <div className="about-card__title">Наша команда</div>
         <div className="about-card__text">
-          3 линейных руководителя, более 10-ти внимательных и пунктуальных Логистов
-        </div>
-      </div>
-    </div>,
-    // Карточка 2: текст слева → иконка справа
-    <div className="about-card custom-card right-icon" key="card-2">
-      {window.innerWidth <= 768 &&
-          <div className="about-card__icon"><img src={UserImage}/></div>
-      }
-      <div className="custom-card__content">
-        <div className="about-card__title">Ключевые отделы</div>
-        <div className="about-card__text">
           <ul className="text-with-bullets">
+            <li>3 линейных руководителя, более 10-ти внимательных и пунктуальных Логистов</li>
+            <li>Отдел внутренней логистики</li>
             <li>Отдел международной логистики</li>
-            <li>финансово-экономический отдел</li>
-            <li>дирекция по развитию</li>
-            <li>собственная служба безопасности</li>
+            <li>Собственная служба безопасности</li>
+            <li>Финансово-экономический отдел</li>
+            <li>Дирекция по развитию</li>
+            <li>Собственный юридический отдел</li>
           </ul>
         </div>
       </div>
       {window.innerWidth > 768 &&
-          <div className="about-card__icon"><img src={UserImage}/></div>
+          <div className="about-card__icon"><img src={PeopleImage}/></div>
       }
     </div>,
+    // // Карточка 2: текст слева → иконка справа
+    // <div className="about-card custom-card right-icon" key="card-2">
+    //   {window.innerWidth <= 768 &&
+    //       <div className="about-card__icon"><img src={UserImage}/></div>
+    //   }
+    //   <div className="custom-card__content">
+    //     <div className="about-card__title">Ключевые отделы</div>
+    //     <div className="about-card__text">
+    //       <ul className="text-with-bullets">
+    //         <li>Отдел международной логистики</li>
+    //         <li>финансово-экономический отдел</li>
+    //         <li>дирекция по развитию</li>
+    //         <li>собственная служба безопасности</li>
+    //       </ul>
+    //     </div>
+    //   </div>
+    //   {window.innerWidth > 768 &&
+    //       <div className="about-card__icon"><img src={UserImage}/></div>
+    //   }
+    // </div>,
     // Карточка 3: иконка слева → текст справа
     <div className="about-card custom-card left-icon" key="card-3">
       <div className="about-card__icon"><img src={AgreementImage} /></div>
