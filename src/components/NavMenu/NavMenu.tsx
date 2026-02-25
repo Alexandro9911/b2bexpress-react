@@ -12,13 +12,18 @@ const NavMenu: React.FC = () => {
     OpenModal(<CalculationForm />);
   };
 
+  // const onClickInvestButton = () => {
+  //   window.location.href = '/invest'
+  // }
+
   const buttonConfigs = [
     { id: 'aboutUs', text: 'О нас' },
     { id: 'services', text: 'Услуги' },
     { id: 'feedback', text: 'Оставить отзыв' },
     { id: 'contacts', text: 'Контакты' },
     // { id: 'live', text: 'Жизнь компании' },
-    { id: 'none', text: 'Рассчитать стоимость', actionButton: calcButtonAction },
+    // {id: 'none1', text: 'Для инвесторов', actionButton: onClickInvestButton},
+    { id: 'none2', text: 'Рассчитать стоимость', actionButton: calcButtonAction },
   ];
 
   const handleScroll = useCallback(() => {

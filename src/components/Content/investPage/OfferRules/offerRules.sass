@@ -1,0 +1,299 @@
+// Основной блок — чёрный фон
+.offer-rules
+  background: black
+  color: white
+  font-family: 'Raleway', sans-serif
+  padding: 60px 20px
+  overflow: hidden
+
+  @media (max-width: 768px)
+    padding: 70px 16px
+
+  @media (max-width: 480px)
+    padding: 60px 12px
+
+  @media (max-width: 320px)
+    padding: 50px 10px
+
+// Контейнер — две колонки на десктопе, одна на мобильных
+.offer-rules__container
+  max-width: 1200px
+  margin: 0 auto
+  display: flex
+  gap: 60px
+  align-items: center
+
+  @media (max-width: 1024px)
+    gap: 40px
+
+  // Переход на вертикальную компоновку, если экран узкий (планшеты и мобильные)
+  @media (max-width: 1023px)
+    flex-direction: column
+    text-align: center
+
+// === ЛЕВАЯ ЧАСТЬ — ТЕКСТ И КАРТОЧКИ ===
+.offer-rules__content
+  flex: 1
+  display: flex
+  flex-direction: column
+  gap: 32px
+
+  @media (max-width: 768px)
+    gap: 24px
+
+// === ЗАГОЛОВОК ===
+.offer-rules__title
+  font-size: 24px
+  font-weight: 700
+  line-height: 1.2
+  text-transform: uppercase
+  letter-spacing: 0.8px
+  display: flex
+  flex-direction: column
+  position: relative
+  align-items: flex-start
+
+  &::before
+    content: ''
+    position: absolute
+    left: 0
+    bottom: -12px
+    width: 50%
+    height: 3px
+    background: linear-gradient(90deg, #c734c7, #41a8e7)
+    border-radius: 2px
+
+  .offer-rules__title-line
+    display: block
+
+  @media (max-width: 768px)
+    font-size: 22px
+    &::before
+      width: 90% !important
+    align-items: center
+
+  @media (max-width: 480px)
+    font-size: 20px
+    &::before
+      width: 90%
+
+  @media (max-width: 320px)
+    font-size: 18px
+    &::before
+      width: 90%
+
+// === ПОДЗАГОЛОВОК ===
+.offer-rules__subtitle
+  font-size: 18px
+  color: rgba(255, 255, 255, 0.85)
+  font-weight: 500
+  max-width: 700px
+  align-self: flex-start
+
+  @media (max-width: 768px)
+    font-size: 17px
+    align-self: center
+
+  @media (max-width: 480px)
+    font-size: 16px
+
+  @media (max-width: 320px)
+    font-size: 15px
+
+// === КАРТОЧКИ ===
+.offer-rules__cards
+  display: flex
+  flex-direction: column
+  gap: 24px
+
+.offer-rules__card
+  background: rgba(255, 255, 255, 0.12)
+  backdrop-filter: blur(12px)
+  border-radius: 16px
+  padding: 28px 24px
+  border: 1px solid rgba(255, 255, 255, 0.15)
+  transition: all 0.4s ease
+
+  &:hover
+    background: rgba(255, 255, 255, 0.16)
+    transform: translateY(-4px)
+
+  @media (max-width: 768px)
+    padding: 24px 20px
+
+// === ИКОНКА И ЗАГОЛОВОК ===
+.offer-rules__card-icon
+  font-size: 36px
+  margin-bottom: 12px
+  display: flex
+  justify-content: center
+  img
+    width: 80px
+
+  @media (max-width: 480px)
+    font-size: 32px
+
+.offer-rules__card-title
+  font-size: 17px
+  font-weight: 700
+  color: white
+  margin-bottom: 14px
+  text-align: left
+  line-height: 1.4
+
+  @media (max-width: 768px)
+    font-size: 16px
+    text-align: center
+    text-align-last: center
+
+  @media (max-width: 480px)
+    font-size: 15px
+
+// === СПИСОК В КАРТОЧКЕ ===
+.offer-rules__card-list
+  list-style: none
+  padding: 0
+  margin: 0
+  font-size: 14px
+  color: rgba(255, 255, 255, 0.92)
+  line-height: 1.6
+
+  li
+    position: relative
+    padding-left: 20px
+    margin-bottom: 6px
+    text-align: left
+
+    &:before
+      content: '•'
+      position: absolute
+      left: 0
+      color: #41a8e7
+      font-weight: bold
+
+    &:last-child
+      margin-bottom: 0
+
+  @media (max-width: 768px)
+    font-size: 13px
+
+  @media (max-width: 480px)
+    font-size: 12px
+    line-height: 1.5
+
+// === ИТОГОВАЯ ФРАЗА ===
+.offer-rules__conclusion
+  font-size: 18px
+  font-weight: 600
+  color: white
+  max-width: 600px
+  align-self: flex-start
+
+  @media (max-width: 768px)
+    font-size: 17px
+    align-self: center
+
+  @media (max-width: 480px)
+    font-size: 16px
+
+  @media (max-width: 320px)
+    font-size: 15px
+
+// === ПРАВАЯ ЧАСТЬ — СЛАЙДЕР ===
+.offer-rules__slider
+  flex: 1
+  height: 500px
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+
+  // Планшет и десктоп — как есть
+  @media (max-width: 1024px)
+    height: 450px
+
+  // На экранах меньше 1023px — слайдер внизу, больше места под контент
+  @media (max-width: 1023px)
+    width: 100%
+    max-width: 420px
+    min-height: 300px
+    order: 1
+    margin-top: 40px
+    align-self: center
+
+  @media (max-width: 768px)
+    height: 360px
+
+  @media (max-width: 480px)
+    height: 320px
+
+  @media (max-width: 320px)
+    height: 300px
+
+// Общий стиль слайда
+.offer-rules__slide
+  position: absolute
+  border-radius: 20px
+  background-size: cover
+  background-position: center
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3)
+  transition: all 0.8s cubic-bezier(0.4, 0.0, 0.2, 1)
+
+// Активная (центральная) карточка — большая на десктопе
+.offer-rules__slide--center
+  width: 360px
+  height: 360px
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%) rotate(0deg)
+  opacity: 1
+  z-index: 3
+
+// Верхняя карточка (слева сверху)
+.offer-rules__slide--top
+  width: 240px
+  height: 240px
+  top: 40px
+  left: 20px
+  transform: rotate(-10deg)
+  opacity: 0.97
+  z-index: 1
+
+// Нижняя карточка (справа снизу)
+.offer-rules__slide--bottom
+  width: 240px
+  height: 240px
+  bottom: 40px
+  right: 20px
+  transform: rotate(10deg)
+  opacity: 0.97
+  z-index: 1
+
+// === МОБИЛЬНЫЕ СТИЛИ ДЛЯ СЛАЙДОВ ===
+@media (max-width: 1023px)
+  .offer-rules__slide--center
+    width: 220px
+    height: 220px
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%) rotate(0deg)
+
+  .offer-rules__slide--top
+    width: 160px
+    height: 160px
+    top: 20px
+    left: 10px
+    transform: rotate(-8deg)
+
+  .offer-rules__slide--bottom
+    width: 160px
+    height: 160px
+    bottom: 20px
+    right: 10px
+    transform: rotate(8deg)
+
+// Убираем эффект появления у карточек
+.offer-rules__card
+  opacity: 1
+  transform: none
+  animation: none

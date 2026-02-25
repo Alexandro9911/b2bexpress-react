@@ -1,11 +1,11 @@
-import Overlay from '../../common/Overlay/Overlay.tsx';
-import Managers from '../../../assets/images/managers.jpg';
-import PhoneIcon from '../../../assets/icons/phone_icon.png';
-import CarIcon from '../../../assets/icons/car_icon.png';
-import DocumentIcon from '../../../assets/icons/document_icon.png';
-import RouteIcon from '../../../assets/icons/route_icon.png';
-import ExchangeIcon from '../../../assets/icons/exchange_icon.png';
-import RubleIcon from '../../../assets/icons/ruble_icon.png';
+import Overlay from '../../../common/Overlay/Overlay.tsx';
+import Managers from '../../../../assets/images/managers.jpg';
+import PhoneIcon from '../../../../assets/icons/phone_icon.png';
+import CarIcon from '../../../../assets/icons/car_icon.png';
+import DocumentIcon from '../../../../assets/icons/document_icon.png';
+import RouteIcon from '../../../../assets/icons/route_icon.png';
+import ExchangeIcon from '../../../../assets/icons/exchange_icon.png';
+import RubleIcon from '../../../../assets/icons/ruble_icon.png';
 import './section2_1.sass';
 
 const Arrow = () => (

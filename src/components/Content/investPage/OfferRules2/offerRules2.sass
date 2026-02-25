@@ -1,0 +1,218 @@
+// Основной блок — без фона, только контент
+.offer2
+  .offer-rules
+    color: white
+    font-family: 'Raleway', sans-serif
+    padding: 0px 20px
+    overflow: hidden
+    background: transparent
+
+    @media (max-width: 768px)
+      padding: 70px 16px
+
+    @media (max-width: 480px)
+      padding: 60px 12px
+
+    @media (max-width: 320px)
+      padding: 50px 10px
+
+  // Контейнер — центрирует и ограничивает ширину
+  .offer-rules__container
+    max-width: 1200px
+    margin: 0 auto
+    display: flex
+    flex-direction: column
+    gap: 40px
+
+    @media (max-width: 768px)
+      gap: 32px
+
+    @media (max-width: 480px)
+      gap: 28px
+
+  // === ЗАГОЛОВОК ===
+  .offer-rules__title
+    font-size: 24px
+    font-weight: 700
+    line-height: 1.2
+    text-transform: uppercase
+    letter-spacing: 0.8px
+    display: flex
+    flex-direction: column
+    position: relative
+    align-items: flex-start
+
+    &::before
+      content: ''
+      position: absolute
+      left: 0
+      bottom: -12px
+      width: 120px
+      height: 3px
+      background: transparent
+      border-radius: 2px
+
+    .offer-rules__title-line
+      display: block
+
+    @media (max-width: 768px)
+      font-size: 22px
+      &::before
+        width: 100px
+
+    @media (max-width: 480px)
+      font-size: 20px
+      &::before
+        width: 80px
+
+    @media (max-width: 320px)
+      font-size: 18px
+      &::before
+        width: 60px
+
+  // === ПОДЗАГОЛОВОК ===
+  .offer-rules__subtitle
+    font-size: 18px
+    color: rgba(255, 255, 255, 0.85)
+    font-weight: 500
+    text-align: center
+    max-width: 700px
+    align-self: center
+
+    @media (max-width: 768px)
+      font-size: 17px
+
+    @media (max-width: 480px)
+      font-size: 16px
+
+    @media (max-width: 320px)
+      font-size: 15px
+
+  // === КАРТОЧКИ ===
+  .offer-rules__cards
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: 32px
+    margin-top: 16px
+
+    @media (max-width: 1024px)
+      gap: 24px
+
+    @media (max-width: 768px)
+      grid-template-columns: 1fr
+      gap: 28px
+
+  // === КАРТОЧКА ===
+  .offer-rules__card
+    background: rgba(255, 255, 255, 0.12)
+    backdrop-filter: blur(12px)
+    border-radius: 16px
+    padding: 32px 28px
+    border: 1px solid rgba(255, 255, 255, 0.15)
+    transition: all 0.4s ease
+    opacity: 0
+    transform: translateY(20px)
+    animation: fadeInUp 0.6s ease forwards
+
+    &:hover
+      background: rgba(255, 255, 255, 0.18)
+      transform: translateY(-6px)
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2)
+
+    [data-delay='100'] &
+      animation-delay: 0.1s
+
+    @media (max-width: 768px)
+      padding: 28px 20px
+
+    @media (max-width: 480px)
+      padding: 24px 16px
+
+  // === ИКОНКА И ЗАГОЛОВОК ===
+  .offer-rules__card-icon
+    font-size: 40px
+    margin-bottom: 16px
+    display: flex
+    justify-content: center
+    img
+      width: 80px
+
+    @media (max-width: 480px)
+      font-size: 36px
+
+  .offer-rules__card-title
+    font-size: 18px
+    font-weight: 700
+    color: white
+    margin-bottom: 16px
+    text-align: center
+    line-height: 1.4
+
+    @media (max-width: 768px)
+      font-size: 17px
+
+    @media (max-width: 480px)
+      font-size: 16px
+
+  // === СПИСОК В КАРТОЧКЕ ===
+  .offer-rules__card-list
+    list-style: none
+    padding: 0
+    margin: 0
+    font-size: 15px
+    color: rgba(255, 255, 255, 0.92)
+    line-height: 1.6
+
+    li
+      position: relative
+      padding-left: 20px
+      margin-bottom: 8px
+
+      &:before
+        content: '•'
+        position: absolute
+        left: 0
+        color: #41a8e7
+        font-weight: bold
+
+      &:last-child
+        margin-bottom: 0
+
+    @media (max-width: 768px)
+      font-size: 14px
+
+    @media (max-width: 480px)
+      font-size: 13px
+      line-height: 1.5
+
+  // === ИТОГОВАЯ ФРАЗА ===
+  .offer-rules__conclusion
+    font-size: 18px
+    font-weight: 600
+    color: white
+    text-align: center
+    max-width: 600px
+    align-self: center
+    opacity: 0
+    transform: translateY(10px)
+    animation: fadeInUp 0.6s ease 0.3s forwards
+
+    @media (max-width: 768px)
+      font-size: 17px
+
+    @media (max-width: 480px)
+      font-size: 16px
+
+    @media (max-width: 320px)
+      font-size: 15px
+
+  // === АНИМАЦИИ ===
+  @keyframes fadeInUp
+    to
+      opacity: 1
+      transform: translateY(0)
+
+  // === СТИЛИ ДЛЯ OVERLAY — затемнение фона ===
+  .overlay-background-img
+    filter: brightness(0.2) contrast(0.8) saturate(.7)
+    transition: filter 0.4s ease

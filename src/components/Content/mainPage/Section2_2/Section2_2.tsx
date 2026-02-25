@@ -1,6 +1,6 @@
 import './section2_2.sass'
-import Button from '../../common/button/Button.tsx'
-import Section2_2_image from '../../../assets/images/section2_2.jpg'
+import Button from '../../../common/button/Button.tsx'
+import Section2_2_image from '../../../../assets/images/section2_2.jpg'
 
 export default function Section2_2() {
   return (

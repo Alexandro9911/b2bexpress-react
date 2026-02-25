@@ -1,8 +1,8 @@
 import './section1_3.sass';
 import { useEffect, useRef, useState } from 'react';
-import PeopleImage from '../../../assets/icons/healthcare_colored.png';
-import AgreementImage from '../../../assets/icons/agreement_colored.png';
-import PadlockImage from '../../../assets/icons/padlock_colored.png';
+import PeopleImage from '../../../../assets/icons/healthcare_colored.png';
+import AgreementImage from '../../../../assets/icons/agreement_colored.png';
+import PadlockImage from '../../../../assets/icons/padlock_colored.png';
 
 // Хук для отслеживания видимости элемента
 function useOnScreen(ref: React.RefObject<Element>): boolean {

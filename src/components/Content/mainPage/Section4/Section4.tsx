@@ -1,5 +1,5 @@
 import './section4.sass';
-import ContactsImage from '../../../assets/images/contacts_image.png';
+import ContactsImage from '../../../../assets/images/contacts_image.png';
 
 export default function Section4(){
   return (
