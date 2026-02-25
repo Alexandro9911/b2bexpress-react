@@ -1,0 +1,467 @@
+// Основной блок — без фона (прозрачный)
+.invest-list
+  color: white
+  font-family: 'Raleway', sans-serif
+  padding: 60px 20px
+  overflow: hidden
+
+  @media (max-width: 768px)
+    padding: 70px 16px
+
+  @media (max-width: 480px)
+    padding: 60px 12px
+
+  @media (max-width: 320px)
+    padding: 50px 10px
+
+// Контейнер
+.invest-list__container
+  max-width: 1200px
+  margin: 0 auto
+  display: flex
+  flex-direction: column
+  gap: 40px
+  align-items: center
+
+  @media (max-width: 768px)
+    gap: 32px
+
+  @media (max-width: 480px)
+    gap: 28px
+
+// === ЗАГОЛОВОК ===
+.invest-list__title
+  font-size: 24px
+  font-weight: 700
+  line-height: 1.2
+  text-transform: uppercase
+  letter-spacing: 0.8px
+  display: flex
+  flex-direction: column
+  position: relative
+  align-items: flex-end
+  text-align: right
+  width: 100%
+  max-width: 1200px
+  margin: 0 auto 20px
+  transform: translateY(20px)
+  transition: opacity 0.6s ease, transform 0.6s ease
+
+  &.is-visible
+    opacity: 1
+    transform: translateY(0)
+
+  &::before
+    content: ''
+    position: absolute
+    right: 0
+    bottom: -12px
+    width: 350px
+    height: 3px
+    background: linear-gradient(90deg, #c734c7, #41a8e7)
+    border-radius: 2px
+
+  .invest-list__title-line
+    display: block
+
+  @media (max-width: 768px)
+    font-size: 22px
+    &::before
+      width: 50%
+
+  @media (max-width: 480px)
+    font-size: 20px
+    &::before
+      width: 50%
+
+  @media (max-width: 320px)
+    font-size: 18px
+    &::before
+      width: 50%
+
+// === ПОДЗАГОЛОВОК ===
+.offer-rules__subtitle
+  font-size: 18px
+  color: rgba(255, 255, 255, 0.85)
+  font-weight: 500
+  text-align: center
+  max-width: 700px
+  align-self: center
+
+  @media (max-width: 768px)
+    font-size: 17px
+
+  @media (max-width: 480px)
+    font-size: 16px
+
+  @media (max-width: 320px)
+    font-size: 15px
+
+// === КАРТОЧКИ ===
+.invest-list__cards
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  gap: 32px
+  width: 100%
+
+  @media (max-width: 1024px)
+    gap: 24px
+
+  @media (max-width: 768px)
+    grid-template-columns: 1fr
+    max-width: 500px
+
+  @media (max-width: 480px)
+    gap: 20px
+
+// === КАРТОЧКА С 3D ПЕРЕВОРОТОМ ===
+.invest-list__card
+  background: transparent
+  border-radius: 16px
+  padding: 0
+  border: none
+  cursor: pointer
+  perspective: 1500px
+  opacity: 0
+  transform: translateY(20px)
+  transition: opacity 0.6s ease, transform 0.6s ease
+  height: 100%
+  display: flex
+
+  &.is-visible
+    opacity: 1
+    transform: translateY(0)
+
+  &.is-flipped .invest-list__card-inner
+    transform: rotateY(180deg)
+
+.invest-list__card-inner
+  position: relative
+  width: 100%
+  height: 100%
+  transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1)
+  transform-style: preserve-3d
+  border-radius: 16px
+  display: flex
+
+.invest-list__card-front,
+.invest-list__card-back
+  width: 100%
+  height: 100%
+  backface-visibility: hidden
+  border-radius: 16px
+  padding: 28px 24px
+  display: flex
+  flex-direction: column
+  gap: 16px
+  background: rgba(255, 255, 255, 0.12)
+  backdrop-filter: blur(12px)
+  border: 1px solid rgba(255, 255, 255, 0.15)
+  box-sizing: border-box
+
+  @media (max-width: 768px)
+    padding: 24px 20px
+
+  @media (max-width: 480px)
+    padding: 16px 14px
+    gap: 12px
+
+  &:hover
+    background: rgba(255, 255, 255, 0.16)
+
+.invest-list__card-front
+  transform: rotateY(0deg)
+
+.invest-list__card-back
+  position: absolute
+  top: 0
+  left: 0
+  transform: rotateY(180deg)
+  justify-content: flex-start
+  gap: 12px
+  overflow-y: auto
+
+  @media (max-width: 480px)
+    padding: 16px 12px
+    gap: 8px
+
+// === СТИЛИ ДЛЯ КАРТИНКИ (БАНКОВСКАЯ КАРТА) ===
+.invest-list__card-image-wrapper
+  position: relative
+  width: 100%
+  height: 230px
+  border-radius: 16px
+  overflow: hidden
+  margin-bottom: 8px
+  flex-shrink: 0
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3)
+
+  @media (max-width: 768px)
+    height: 230px
+
+  @media (max-width: 480px)
+    height: 230px
+    border-radius: 12px
+    margin-bottom: 4px
+
+// Эффект блика на карте
+.invest-list__card-shine
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%)
+  pointer-events: none
+  z-index: 2
+  border-radius: inherit
+
+// Название карты (в левой части, выше)
+.invest-list__card-name
+  position: absolute
+  top: 30px
+  left: 20px
+  color: white
+  font-family: 'Courier New', 'OCR A Extended', 'Share Tech Mono', monospace
+  font-size: 16px
+  font-weight: 600
+  letter-spacing: 1px
+  text-transform: uppercase
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5)
+  z-index: 3
+  max-width: 70%
+  line-height: 1.3
+  word-break: break-word
+
+  @media (max-width: 768px)
+    font-size: 15px
+    top: 25px
+    left: 18px
+
+  @media (max-width: 480px)
+    font-size: 14px
+    top: 20px
+    left: 16px
+
+// Сумма на карте (в правом нижнем углу)
+.invest-list__card-amount
+  position: absolute
+  bottom: 20px
+  right: 20px
+  color: white
+  font-family: 'Courier New', 'OCR A Extended', 'Share Tech Mono', monospace
+  font-size: 20px
+  font-weight: 700
+  letter-spacing: 1px
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5)
+  z-index: 3
+
+  @media (max-width: 768px)
+    font-size: 18px
+    bottom: 18px
+    right: 18px
+
+  @media (max-width: 480px)
+    font-size: 16px
+    bottom: 16px
+    right: 16px
+
+.invest-list__card-image
+  width: 100%
+  height: 100%
+  object-fit: cover
+  display: block
+  border-radius: 16px
+  filter: brightness(0.9) contrast(1.1)
+
+  @media (max-width: 480px)
+    border-radius: 12px
+
+.invest-list__card-back-image
+  margin-bottom: 4px
+
+// === СТИЛИ ДЛЯ ОБОРОТНОЙ СТОРОНЫ ===
+.invest-list__back-block
+  display: flex
+  flex-direction: column
+  gap: 8px
+  flex: 1
+
+  @media (max-width: 480px)
+    gap: 6px
+
+.invest-list__back-main-subtitle
+  font-size: 16px
+  color: white !important
+  text-align: center
+  margin-bottom: 4px
+  font-weight: 600
+
+  @media (max-width: 480px)
+    font-size: 13px
+    margin-bottom: 2px
+
+.invest-list__back-paths
+  display: flex
+  flex-direction: column
+  gap: 6px
+
+  @media (max-width: 480px)
+    gap: 4px
+
+.invest-list__back-path
+  background: rgba(255, 255, 255, 0.05)
+  border-radius: 8px
+  padding: 8px 10px
+
+  @media (max-width: 480px)
+    padding: 5px 7px
+
+.invest-list__back-path-header
+  display: flex
+  align-items: center
+  gap: 6px
+  margin-bottom: 4px
+
+  @media (max-width: 480px)
+    gap: 4px
+    margin-bottom: 2px
+
+.invest-list__back-path-icon
+  font-size: 16px
+
+  @media (max-width: 480px)
+    font-size: 13px
+
+.invest-list__back-path-title
+  font-size: 13px
+  font-weight: 700
+  color: white
+  line-height: 1.3
+
+  @media (max-width: 480px)
+    font-size: 11px
+
+.invest-list__back-path-list
+  list-style: none
+  padding: 0
+  margin: 0 0 0 22px
+
+  @media (max-width: 480px)
+    margin: 0 0 0 16px
+
+  li
+    font-size: 11px
+    color: rgba(255, 255, 255, 0.9)
+    line-height: 1.3
+    margin-bottom: 3px
+    position: relative
+
+    @media (max-width: 480px)
+      font-size: 9px
+      line-height: 1.2
+      margin-bottom: 2px
+
+    &:before
+      content: '•'
+      color: #41a8e7
+      font-weight: bold
+      margin-right: 4px
+      font-size: 10px
+
+    &:last-child
+      margin-bottom: 0
+
+.invest-list__back-hint
+  font-size: 10px
+  color: rgba(255, 255, 255, 0.3)
+  text-align: center
+  border-top: 1px solid rgba(255, 255, 255, 0.1)
+  padding-top: 6px
+  margin-top: 2px
+
+  @media (max-width: 480px)
+    font-size: 8px
+    padding-top: 4px
+
+// === ЗАГОЛОВОК КАРТОЧКИ ===
+.invest-list__card-title
+  font-size: 18px
+  font-weight: 700
+  color: white
+  text-align: center
+  line-height: 1.4
+  margin-bottom: 8px
+
+  @media (max-width: 768px)
+    font-size: 17px
+
+  @media (max-width: 480px)
+    font-size: 14px
+    margin-bottom: 4px
+
+// === БЛОКИ СОДЕРЖИМОГО ===
+.invest-list__subtitle
+  font-size: 15px
+  font-weight: 600
+  color: rgba(255, 255, 255, 0.95)
+  margin-bottom: 8px
+
+  @media (max-width: 480px)
+    font-size: 12px
+    margin-bottom: 4px
+
+.invest-list__income-list,
+.invest-list__ad-list
+  list-style: none
+  padding: 0
+  margin: 0 0 8px 0
+
+  @media (max-width: 480px)
+    margin: 0 0 4px 0
+
+.invest-list__income-item,
+.invest-list__ad-item
+  font-size: 14px
+  color: rgba(255, 255, 255, 0.92)
+  line-height: 1.5
+  margin-bottom: 6px
+
+  @media (max-width: 480px)
+    font-size: 11px
+    line-height: 1.3
+    margin-bottom: 3px
+
+  &:last-child
+    margin-bottom: 0
+
+  &:before
+    content: '•'
+    color: #41a8e7
+    font-weight: bold
+    margin-right: 8px
+
+    @media (max-width: 480px)
+      margin-right: 4px
+
+.invest-list__profit
+  font-size: 15px
+  color: white
+  font-weight: 700
+  margin-bottom: 8px
+
+  @media (max-width: 480px)
+    font-size: 12px
+    margin-bottom: 4px
+
+.invest-list__extra
+  font-size: 14px
+  color: rgba(255, 255, 255, 0.92)
+  line-height: 1.5
+  border-top: 1px solid rgba(255, 255, 255, 0.1)
+  padding-top: 10px
+  margin-top: auto
+
+  @media (max-width: 480px)
+    font-size: 10px
+    padding-top: 6px

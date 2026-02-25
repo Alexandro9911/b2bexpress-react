@@ -13,6 +13,17 @@
   align-items: center
   justify-content: center
 
+  @media (max-width: 768px) // Планшет
+    font-size: 28px
+    justify-content: center
+
+  @media (max-width: 480px) // Мобильные
+    font-size: 24px
+    text-align: center
+    padding-left: 16px
+    padding-right: 16px
+    justify-content: center
+
 .page-subtitle
   width: 100%
   padding-left: 20px
@@ -23,3 +34,16 @@
   flex-flow: row
   align-items: center
   justify-content: center
+
+  @media (max-width: 768px) // Планшет
+    font-size: 18px
+    padding-left: 16px
+    padding-right: 16px
+    text-align: center
+
+  @media (max-width: 480px) // Мобильные
+    font-size: 16px
+    padding-left: 12px
+    padding-right: 12px
+    text-align: center
+    line-height: 1.4
