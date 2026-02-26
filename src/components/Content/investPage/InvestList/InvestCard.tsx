@@ -1,5 +1,7 @@
 import './investList.sass';
 import classNames from "classnames";
+import {OpenModal} from "../../../../utils/modal.tsx";
+import InvestorForm from "../../../Forms/InvestorForm/InvestorForm.tsx";
 
 interface CardProps {
   id: string;
@@ -60,6 +62,12 @@ export default function InvestCard({
   const cardName = getCardName(title);
   const cardAmount = getCardAmount(title);
 
+  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation()
+    OpenModal(<InvestorForm id={id}/>);
+  }
+
   return (
     <div
       className={composeCardClasses()}
@@ -70,7 +78,7 @@ export default function InvestCard({
         {/* Лицевая сторона */}
         <div className="invest-list__card-front">
           <div className="invest-list__card-image-wrapper">
-            <img src={image} alt={title} className="invest-list__card-image" />
+            <img src={image} alt={title} className="invest-list__card-image"/>
             <div className="invest-list__card-shine"></div>
             <div className="invest-list__card-name">{cardName}</div>
             <div className="invest-list__card-amount">{cardAmount}</div>
@@ -98,6 +106,7 @@ export default function InvestCard({
           </div>
 
           <div className="invest-list__extra">{extra}</div>
+          <button className="gradient-button" onClick={handleButtonClick}>Стать инвестором</button>
         </div>
 
         {/* Обратная сторона */}
@@ -121,7 +130,7 @@ export default function InvestCard({
                 <ul className="invest-list__back-path-list">
                   <li>Полное обучение (от продаж до гендиректора)</li>
                   <li>Открываешь офис где удобно</li>
-                  <li>Набираешь команду, обучаешь по методичке</li>
+                  <li>Набираешь команду, мы обучаем по методичке</li>
                   <li>Получаешь 80% / 85% / 90% с каждого в своей сети</li>
                 </ul>
               </div>
@@ -149,6 +158,8 @@ export default function InvestCard({
                   <li>Продаёшь рекламу на газелях — дополнительный доход</li>
                 </ul>
               </div>
+
+              <button className="gradient-button" onClick={handleButtonClick}>Стать инвестором</button>
             </div>
           </div>
         </div>

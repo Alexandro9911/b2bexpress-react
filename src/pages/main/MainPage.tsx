@@ -14,6 +14,7 @@ import Section4 from "../../components/Content/mainPage/Section4/Section4.tsx";
 export default function MainPage(){
   return (
     <div className="main-content">
+      <NavMenu/>
       <section className="content-section">
         <Overlay
           imageSrc={Section1Image}
@@ -21,7 +22,6 @@ export default function MainPage(){
         >
           <Section1_1/>
         </Overlay>
-        <NavMenu/>
         <section id="aboutUs" data-section='section1' className="section-item">
           <Section1_2/>
           <Section1_3/>

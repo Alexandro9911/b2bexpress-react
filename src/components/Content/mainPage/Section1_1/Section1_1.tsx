@@ -22,8 +22,8 @@ export default function Section1_1() {
 
           <p className="contact-info">
             по горячей линии{" "}
-            <a href="tel:+79811100101" className="contact-link">
-              8 (981) 110-01-01
+            <a href="tel:88004441098" className="contact-link">
+              8 (800) 444 10 98
             </a>,
             <br />
             {" "}или электронной почте{" "}

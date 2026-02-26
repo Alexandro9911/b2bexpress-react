@@ -1,0 +1,176 @@
+.security
+  color: white
+  font-family: 'Raleway', sans-serif
+  overflow: hidden
+  padding: 0
+  margin: 0
+
+  .overlay-background-img
+    filter: brightness(0.6) contrast(1) sepia(0.3) hue-rotate(10deg)
+
+// === ОБЕРТКА ДЛЯ ВСЕГО КОНТЕНТА — ПО ПРАВОМУ КРАЮ ===
+.security__content-wrapper
+  max-width: 1200px
+  margin-left: auto
+  margin-right: 0
+  display: flex
+  flex-direction: column
+  align-items: flex-end
+  width: 100%
+  padding: 60px 20px 100px 0
+
+  @media (max-width: 768px)
+    padding: 70px 16px 80px 0
+
+  @media (max-width: 480px)
+    padding: 60px 12px 70px 0
+
+  @media (max-width: 320px)
+    padding: 50px 10px 60px 0
+
+// === ЗАГОЛОВОК — ПО ПРАВОМУ КРАЮ ===
+.security__header-wrapper
+  max-width: 600px
+  width: 100%
+  margin-bottom: 40px
+  display: flex
+  justify-content: flex-end
+
+  @media (max-width: 768px)
+    margin-bottom: 32px
+
+  @media (max-width: 480px)
+    margin-bottom: 28px
+
+  @media (max-width: 320px)
+    margin-bottom: 24px
+
+.security__title
+  font-size: 24px
+  font-weight: 700
+  line-height: 1.2
+  text-transform: uppercase
+  letter-spacing: 0.8px
+  display: flex
+  flex-direction: column
+  position: relative
+  align-items: flex-end
+  text-align: right
+  color: white
+  margin: 0
+  width: 100%
+
+  &::before
+    content: ''
+    position: absolute
+    right: 0
+    bottom: -12px
+    width: 350px
+    height: 3px
+    background: linear-gradient(90deg, #c734c7, #41a8e7)
+    border-radius: 2px
+
+  .security__title-line
+    display: block
+
+  @media (max-width: 768px)
+    font-size: 22px
+    &::before
+      width: 90%
+
+  @media (max-width: 480px)
+    font-size: 20px
+    &::before
+      width: 90%
+
+  @media (max-width: 320px)
+    font-size: 18px
+    &::before
+      width: 90%
+
+// === КОНТЕНТ — ПРАВАЯ ПОЛОВИНА ===
+.security__container
+  width: 100%
+  max-width: 560px
+  display: flex
+  flex-direction: column
+  gap: 24px
+
+  @media (max-width: 768px)
+    gap: 20px
+
+  @media (max-width: 480px)
+    gap: 18px
+
+  @media (max-width: 320px)
+    gap: 16px
+
+// === СПИСОК С ИКОНКАМИ ===
+.security__list
+  list-style: none
+  padding: 0
+  margin: 0
+  display: flex
+  flex-direction: column
+  gap: 20px
+
+  @media (max-width: 768px)
+    gap: 18px
+
+  @media (max-width: 480px)
+    gap: 16px
+
+// Анимация появления
+@keyframes slideInFromLeft
+  from
+    opacity: 0
+    transform: translateX(-30px)
+
+  to
+    opacity: 1
+    transform: translateX(0)
+
+.security__item
+  display: flex
+  align-items: center
+  gap: 12px
+  font-size: 16px
+  line-height: 1.6
+  color: rgba(255, 255, 255, 0.92)
+  padding: 18px
+  background: rgba(0, 0, 0, 0.3)
+  border-radius: 14px
+  border: 1px solid rgba(255, 255, 255, 0.1)
+  backdrop-filter: blur(8px)
+  transition: all 0.3s ease
+  opacity: 0
+  transform: translateX(-30px)
+  animation: slideInFromLeft 0.6s ease forwards
+  animation-delay: var(--delay, 0s)
+
+  &:hover
+    background: rgba(255, 255, 255, 0.1)
+    transform: translateY(-2px) translateX(0)
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15)
+
+  .security__icon
+    font-size: 20px
+    flex-shrink: 0
+    margin-top: 2px
+
+  .security__text
+    font-weight: 500
+    color: inherit
+
+  @media (max-width: 768px)
+    font-size: 15px
+    gap: 10px
+    padding: 16px
+
+  @media (max-width: 480px)
+    font-size: 14px
+    padding: 14px
+
+  @media (max-width: 320px)
+    font-size: 13px
+    padding: 12px
