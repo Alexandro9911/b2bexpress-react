@@ -4,6 +4,8 @@ import IntroBlock from "../../components/Content/investPage/IntroBlock/IntroBloc
 import NavMenu from "../../components/NavMenu/NavMenu.tsx";
 import OfferRules from "../../components/Content/investPage/OfferRules/OfferRules.tsx";
 import InvestList from "../../components/Content/investPage/InvestList/InvestList.tsx";
+import FranchiseSection from "../../components/Content/investPage/Franchise/FranchiseSection.tsx";
+import LogistSkills from "../../components/Content/investPage/LogistSkills/LogistSkills.tsx";
 // import OfferRules2 from "../../components/Content/investPage/OfferRules2/OfferRules2.tsx";
 export default function PageInvest(){
   return (
@@ -17,6 +19,8 @@ export default function PageInvest(){
         {/*<OfferRules2/>*/}
         <OffersList/>
         <InvestList/>
+        <FranchiseSection/>
+        <LogistSkills/>
 
       </div>
     </>

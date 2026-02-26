@@ -2,8 +2,8 @@ import './investList.sass';
 import InvestCard from './InvestCard';
 import { useState } from 'react';
 import Card1 from '../../../../assets/images/card1.jpg';
-// import Card2 from '../../../../assets/images/card2.jpg';
-// import Card3 from '../../../../assets/images/card3.jpg';
+import Card2 from '../../../../assets/images/card2.jpg';
+import Card3 from '../../../../assets/images/card3.jpg';
 
 export default function InvestList() {
   const [flippedCardId, setFlippedCardId] = useState<string | null>(null);
@@ -38,7 +38,7 @@ export default function InvestList() {
       adTitle: 'Рекламный пакет:',
       ads: ['📢 3 газели под Вашу рекламу на 4 года', 'Рекламу можно продавать — это Ваш дополнительный доход'],
       extra: '➕ Дополнительно: Вы можете приобрести франшизу «Мир Логистики» и получать второй доход от собственной команды.',
-      image: Card1
+      image: Card3
     },
     {
       id: '3',
@@ -54,7 +54,7 @@ export default function InvestList() {
       adTitle: 'Рекламный пакет:',
       ads: ['📢 5 газелей под Вашу рекламу на 5 лет', 'Рекламу можно продавать — это Ваш дополнительный доход'],
       extra: '➕ Дополнительно: Вы можете приобрести франшизу «Мир Логистики» и получать второй доход от собственной команды.',
-      image: Card1
+      image: Card2
     }
   ];
 

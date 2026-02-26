@@ -1,0 +1,268 @@
+.franchise-section
+  color: white
+  font-family: 'Raleway', sans-serif
+  padding: unset
+  overflow: hidden
+
+  // Фон теперь задаётся через Overlay, поэтому здесь только прозрачность
+  &__container
+    max-width: 1200px
+    margin: 0 auto
+    display: flex
+    flex-direction: column
+    gap: 60px
+    padding: 0 20px
+
+    @media (max-width: 768px)
+      gap: 40px
+      padding: 0 16px
+
+    @media (max-width: 480px)
+      gap: 32px
+      padding: 0 12px
+
+// === ЗАГОЛОВОК — ВНЕ КОНТЕЙНЕРА, ПО ЛЕВОМУ КРАЮ ===
+.franchise-section__header-wrapper
+  max-width: 1200px
+  margin: 0 auto 40px
+  padding: 0 20px
+
+  @media (max-width: 768px)
+    padding: 0 16px
+    margin-bottom: 32px
+
+  @media (max-width: 480px)
+    padding: 0 12px
+    margin-bottom: 28px
+
+.franchise-section__title
+  font-size: 24px
+  font-weight: 700
+  line-height: 1.2
+  text-transform: uppercase
+  letter-spacing: 0.8px
+  display: flex
+  flex-direction: column
+  position: relative
+  align-items: flex-start
+  color: white
+  margin: 0
+
+  &::before
+    content: ''
+    position: absolute
+    left: 0
+    bottom: -12px
+    width: 50%
+    height: 3px
+    background: linear-gradient(90deg, #c734c7, #41a8e7)
+    border-radius: 2px
+
+  .franchise-section__title-line
+    display: block
+
+  @media (max-width: 768px)
+    font-size: 22px
+    &::before
+      width: 90%
+
+  @media (max-width: 480px)
+    font-size: 20px
+    &::before
+      width: 90%
+
+  @media (max-width: 320px)
+    font-size: 18px
+    &::before
+      width: 90%
+
+// === ПОДЗАГОЛОВОК ===
+.franchise-section__subtitle
+  font-size: 18px
+  font-weight: 500
+  color: rgba(255, 255, 255, 0.85)
+  max-width: 700px
+  align-self: flex-start
+
+  @media (max-width: 768px)
+    font-size: 17px
+    align-self: center
+
+  @media (max-width: 480px)
+    font-size: 16px
+
+  @media (max-width: 320px)
+    font-size: 15px
+
+// === ТАБЛИЦА УРОВНЕЙ ===
+.franchise-section__table
+  display: flex
+  flex-direction: column
+  background: rgba(255, 255, 255, 0.05)
+  border-radius: 16px
+  overflow: hidden
+  border: 1px solid rgba(255, 255, 255, 0.1)
+  backdrop-filter: blur(10px)
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1)
+
+.franchise-table__header
+  display: grid
+  grid-template-columns: 1fr 1fr 1.5fr 1fr
+  background: rgba(0, 0, 0, 0.2)
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15)
+  padding: 16px 24px
+  font-weight: 700
+  color: white
+  font-size: 15px
+  text-align: left
+
+  @media (max-width: 768px)
+    display: none
+
+.franchise-table__row
+  display: grid
+  grid-template-columns: 1fr 1fr 1.5fr 1fr
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08)
+  padding: 20px 24px
+  color: rgba(255, 255, 255, 0.92)
+  background: rgba(255, 255, 255, 0.03)
+  transition: all 0.3s ease
+  backdrop-filter: blur(5px)
+
+  &:last-child
+    border-bottom: none
+
+  &:hover
+    background: rgba(255, 255, 255, 0.07)
+    transform: translateY(-2px)
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15)
+
+  @media (max-width: 768px)
+    display: flex
+    flex-direction: column
+    gap: 10px
+    padding: 18px
+
+.franchise-table__cell
+  display: flex
+  flex-direction: column
+
+  @media (max-width: 768px)
+    padding: 8px 0
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1)
+
+    &:last-child
+      border-bottom: none
+
+.franchise-table__cell-title
+  font-size: 12px
+  color: rgba(255, 255, 255, 0.6)
+  margin-bottom: 4px
+  font-weight: 500
+  text-transform: uppercase
+  letter-spacing: 0.5px
+
+  @media (min-width: 769px)
+    display: none
+
+.franchise-table__cell-value
+  font-size: 15px
+  font-weight: 600
+  color: white
+
+.franchise-table__bonus
+  margin-top: 8px
+  padding: 8px 12px
+  margin-right: 20px
+  background: rgba(255, 255, 255, 0.1)
+  border-radius: 6px
+  font-size: 13px
+  color: white
+  font-style: italic
+  border-left: 3px solid #41a8e7
+  backdrop-filter: blur(4px)
+
+// === БЛОК "ЧТО ВХОДИТ" ===
+.franchise-section__included
+  display: flex
+  flex-direction: column
+  gap: 40px
+
+.franchise-section__included-title
+  font-size: 22px
+  font-weight: 600
+  color: white
+  text-align: left
+  margin: 0
+
+  @media (max-width: 768px)
+    text-align: center
+
+  @media (max-width: 480px)
+    font-size: 20px
+
+// === РЯДЫ КАРТОЧЕК (FLEX) ===
+.franchise-included-row
+  display: flex
+  gap: 20px
+  width: 100%
+
+  // Первый ряд: 4 карточки — растянуты равномерно
+  &:not(.franchise-included-row--centered)
+    justify-content: space-between
+
+  // Второй ряд: 3 карточки — по центру
+  &--centered
+    justify-content: center
+    gap: 24px
+
+  // Адаптация под мобильные
+  @media (max-width: 768px)
+    flex-wrap: wrap
+    justify-content: center
+    gap: 16px
+
+.franchise-included-item
+  flex: 1
+  min-width: 200px
+  max-width: 260px
+  background: rgb(0 0 0 / 53%)
+  border-radius: 12px
+  padding: 20px
+  display: flex
+  flex-direction: column
+  gap: 8px
+  text-align: center
+  border: 1px solid rgba(255, 255, 255, 0.08)
+  transition: transform 0.3s ease, box-shadow 0.3s ease
+
+  &:hover
+    transform: translateY(-4px)
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15)
+
+  &__icon
+    font-size: 24px
+    margin-bottom: 6px
+    text-align: center
+
+  &__label
+    font-size: 15px
+    font-weight: 600
+    color: white
+
+  &__text
+    font-size: 13px
+    color: rgba(255, 255, 255, 0.8)
+    line-height: 1.5
+
+  @media (max-width: 768px)
+    min-width: 220px
+    max-width: 280px
+
+  @media (max-width: 480px)
+    min-width: unset
+    max-width: none
+
+.section-with-overlay
+  .overlay-background-img
+    filter: brightness(0.2) contrast(1.0)

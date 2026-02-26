@@ -1,5 +1,5 @@
 import './introBlock.sass';
-import RoadShow from '../../../../assets/images/roadshow.png';
+import ImgBoss from '../../../../assets/images/img-boss.jpg';
 
 export default function IntroBlock() {
   return (
@@ -28,7 +28,7 @@ export default function IntroBlock() {
             </div>
           </div>
           <div className="intro-block__image-wrapper">
-            <img src={RoadShow} alt="Грузовик на дороге" />
+            <img src={ImgBoss} alt="Грузовик на дороге" />
           </div>
         </div>
         <div className="intro-block__section intro-block__section--right">
