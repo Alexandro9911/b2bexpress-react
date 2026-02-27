@@ -4,7 +4,6 @@
   padding: unset
   overflow: hidden
 
-  // Фон теперь задаётся через Overlay, поэтому здесь только прозрачность
   &__container
     max-width: 1200px
     margin: 0 auto
@@ -19,9 +18,8 @@
 
     @media (max-width: 480px)
       gap: 32px
-      padding: 0 12px
+      padding: 0
 
-// === ЗАГОЛОВОК — ВНЕ КОНТЕЙНЕРА, ПО ЛЕВОМУ КРАЮ ===
 .franchise-section__header-wrapper
   max-width: 1200px
   margin: 0 auto 40px
@@ -76,7 +74,6 @@
     &::before
       width: 90%
 
-// === ПОДЗАГОЛОВОК ===
 .franchise-section__subtitle
   font-size: 18px
   font-weight: 500
@@ -94,7 +91,6 @@
   @media (max-width: 320px)
     font-size: 15px
 
-// === ТАБЛИЦА УРОВНЕЙ ===
 .franchise-section__table
   display: flex
   flex-direction: column
@@ -138,18 +134,32 @@
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15)
 
   @media (max-width: 768px)
-    display: flex
-    flex-direction: column
-    gap: 10px
-    padding: 18px
+    display: block
+    border-bottom: none
+    border-radius: 12px
+    background: rgba(255, 255, 255, 0.03)
+    margin-bottom: 16px
+    padding: 16px
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)
 
 .franchise-table__cell
   display: flex
   flex-direction: column
 
+  @media (min-width: 769px)
+    &:not(:first-child)
+      border-left: 1px solid rgba(255, 255, 255, 0.1)
+      padding-left: 16px
+      margin-left: 16px
+
   @media (max-width: 768px)
+    display: flex
+    justify-content: space-between
+    align-items: center
     padding: 8px 0
     border-bottom: 1px dashed rgba(255, 255, 255, 0.1)
+    margin: 0
+    flex-direction: row
 
     &:last-child
       border-bottom: none
@@ -182,7 +192,6 @@
   border-left: 3px solid #41a8e7
   backdrop-filter: blur(4px)
 
-// === БЛОК "ЧТО ВХОДИТ" ===
 .franchise-section__included
   display: flex
   flex-direction: column
@@ -201,22 +210,18 @@
   @media (max-width: 480px)
     font-size: 20px
 
-// === РЯДЫ КАРТОЧЕК (FLEX) ===
 .franchise-included-row
   display: flex
   gap: 20px
   width: 100%
 
-  // Первый ряд: 4 карточки — растянуты равномерно
   &:not(.franchise-included-row--centered)
     justify-content: space-between
 
-  // Второй ряд: 3 карточки — по центру
   &--centered
     justify-content: center
     gap: 24px
 
-  // Адаптация под мобильные
   @media (max-width: 768px)
     flex-wrap: wrap
     justify-content: center
@@ -266,3 +271,15 @@
 .section-with-overlay
   .overlay-background-img
     filter: brightness(0.2) contrast(1.0)
+
+@media screen and (max-width: 768px)
+  .franchise-section__table
+    border: unset !important
+    background: unset !important
+
+  .franchise-table__row
+    padding: 8px
+    background: rgba(255, 255, 255, 0.05)
+
+  .franchise-table__bonus
+    margin-right: unset

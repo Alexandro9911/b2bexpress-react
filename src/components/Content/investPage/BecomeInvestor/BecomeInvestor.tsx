@@ -1,4 +1,5 @@
 import './becomeInvestor.sass';
+import BuildingImage from '../../../../assets/images/buildingWithLogo.png';
 
 export default function BecomeInvestor() {
   const steps = [
@@ -20,7 +21,7 @@ export default function BecomeInvestor() {
         </h2>
       </div>
 
-      {/* Основной макет: текст + визуальная линия */}
+      {/* Основной макет: текст + изображение */}
       <div className="become-investor__layout">
         {/* Левая часть — шаги */}
         <div className="become-investor__steps-container">
@@ -45,8 +46,9 @@ export default function BecomeInvestor() {
           </div>
         </div>
 
-        {/* Правая часть — визуальная дорожка */}
+        {/* Правая часть — изображение */}
         <div className="become-investor__visual">
+          <img src={BuildingImage} alt="Здание компании Мир Логистики" className="become-investor__image" />
         </div>
       </div>
     </section>

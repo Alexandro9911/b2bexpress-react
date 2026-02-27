@@ -20,20 +20,17 @@ export default function FranchiseSection() {
     <div className="section-with-overlay">
       <Overlay imageSrc={ImageOverlay}>
         <section className="franchise-section">
-          {/* Заголовок — отдельно от контейнера */}
           <div className="franchise-section__header-wrapper">
             <h2 className="franchise-section__title">
               <span className="franchise-section__title-line">ФРАНШИЗА «МИР ЛОГИСТИКИ»</span>
             </h2>
           </div>
 
-          {/* Основное содержимое */}
           <div className="franchise-section__container">
             <p className="franchise-section__subtitle">
               Три уровня доступа:
             </p>
 
-            {/* Таблица уровней */}
             <div className="franchise-section__table">
               <div className="franchise-table__header">
                 <div className="franchise-table__cell">Уровень</div>
@@ -85,13 +82,11 @@ export default function FranchiseSection() {
               ))}
             </div>
 
-            {/* Что входит в любой уровень */}
             <div className="franchise-section__included">
               <h3 className="franchise-section__included-title">
                 Что входит в любой уровень:
               </h3>
 
-              {/* Первый ряд — 4 карточки */}
               <div className="franchise-included-row">
                 {firstRow.map((item, index) => (
                   <div key={index} className="franchise-included-item">
@@ -102,7 +97,6 @@ export default function FranchiseSection() {
                 ))}
               </div>
 
-              {/* Второй ряд — 3 карточки, по центру */}
               <div className="franchise-included-row franchise-included-row--centered">
                 {secondRow.map((item, index) => (
                   <div key={index} className="franchise-included-item">
