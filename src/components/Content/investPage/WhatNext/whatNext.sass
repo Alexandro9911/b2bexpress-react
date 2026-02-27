@@ -1,0 +1,246 @@
+.what-next
+  color: white
+  font-family: 'Raleway', sans-serif
+  padding: 80px 20px 60px
+  background: black
+  overflow: hidden
+
+  @media (max-width: 768px)
+    padding: 70px 16px 50px
+
+  @media (max-width: 480px)
+    padding: 60px 12px 40px
+
+  @media (max-width: 320px)
+    padding: 50px 10px 30px
+
+// === ЗАГОЛОВОК — ОТДЕЛЬНО, СЛЕВА ===
+.what-next__header-wrapper
+  max-width: 1200px
+  margin: 0 auto 40px
+  padding: 0 20px
+
+  @media (max-width: 768px)
+    padding: 0 16px
+    margin-bottom: 32px
+
+  @media (max-width: 480px)
+    padding: 0 12px
+    margin-bottom: 28px
+
+  @media (max-width: 320px)
+    margin-bottom: 24px
+
+.what-next__title
+  font-size: 24px
+  font-weight: 700
+  line-height: 1.2
+  text-transform: uppercase
+  letter-spacing: 0.8px
+  display: flex
+  flex-direction: column
+  position: relative
+  align-items: flex-start
+  color: white
+  margin: 0
+
+  &::before
+    content: ''
+    position: absolute
+    bottom: -12px
+    left: 0
+    width: 350px
+    height: 3px
+    background: linear-gradient(90deg, #c734c7, #41a8e7)
+    border-radius: 2px
+
+  .what-next__title-line
+    display: block
+
+  @media (max-width: 768px)
+    font-size: 22px
+    &::before
+      width: 70%
+
+  @media (max-width: 480px)
+    font-size: 20px
+    &::before
+      width: 80%
+
+  @media (max-width: 320px)
+    font-size: 18px
+    &::before
+      width: 90%
+
+// === КОНТЕЙНЕР — ТЕКСТ И ИЗОБРАЖЕНИЕ ===
+.what-next__container
+  max-width: 1200px
+  margin: 0 auto
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: 60px
+  align-items: center
+  padding: 0 20px
+
+  @media (max-width: 1024px)
+    gap: 40px
+
+  @media (max-width: 768px)
+    grid-template-columns: 1fr
+    text-align: center
+    gap: 32px
+    padding: 0 16px
+
+  @media (max-width: 480px)
+    gap: 28px
+    padding: 0 12px
+
+  @media (max-width: 320px)
+    gap: 24px
+    padding: 0 10px
+
+// === ЛЕВАЯ ЧАСТЬ — ТЕКСТ ===
+.what-next__text-content
+  display: flex
+  flex-direction: column
+  gap: 24px
+
+  @media (max-width: 768px)
+    align-items: center
+
+// === ОСНОВНОЙ ТЕКСТ ===
+.what-next__content
+  display: flex
+  flex-direction: column
+  gap: 16px
+
+.what-next__text
+  font-size: 18px
+  color: rgba(255, 255, 255, 0.92)
+  line-height: 1.6
+  margin: 0
+
+  @media (max-width: 768px)
+    font-size: 17px
+
+  @media (max-width: 480px)
+    font-size: 16px
+
+  @media (max-width: 320px)
+    font-size: 15px
+
+// === СПИСОК ===
+.what-next__list
+  list-style: none
+  padding: 0
+  margin: 0
+  display: flex
+  flex-direction: column
+  gap: 12px
+
+.what-next__item
+  font-size: 18px
+  font-weight: 600
+  color: white
+  line-height: 1.5
+  display: flex
+  align-items: center
+  gap: 10px
+
+  &::before
+    content: '•'
+    color: #41a8e7
+    font-weight: bold
+    font-size: 18px
+
+  @media (max-width: 768px)
+    font-size: 17px
+
+  @media (max-width: 480px)
+    font-size: 16px
+
+  @media (max-width: 320px)
+    font-size: 15px
+
+// === ПОДПИСЬ ===
+.what-next__signature
+  margin-top: 8px
+
+  @media (max-width: 768px)
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 4px
+
+.what-next__signature-text
+  font-size: 17px
+  color: rgba(255, 255, 255, 0.85)
+  margin: 0
+  font-style: italic
+
+  @media (max-width: 480px)
+    font-size: 16px
+
+  @media (max-width: 320px)
+    font-size: 15px
+
+.what-next__signature-name
+  font-size: 20px
+  font-weight: 700
+  color: white
+  margin: 4px 0 0
+  background: linear-gradient(90deg, #c734c7, #41a8e7)
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  background-clip: text
+
+  @media (max-width: 768px)
+    text-align: center
+
+  @media (max-width: 768px)
+    font-size: 19px
+
+  @media (max-width: 480px)
+    font-size: 18px
+
+  @media (max-width: 320px)
+    font-size: 17px
+
+// === ПРАВАЯ ЧАСТЬ — ИЗОБРАЖЕНИЕ ===
+.what-next__image-wrapper
+  position: relative
+  border-radius: 16px
+  overflow: hidden
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25)
+  height: 450px
+  max-width: 100%
+  transition: transform 0.3s ease, box-shadow 0.3s ease
+
+  &:hover
+    transform: translateY(-4px)
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3)
+
+  @media (max-width: 768px)
+    order: -1
+    max-width: 400px
+    margin: 0 auto
+    height: 400px
+
+  @media (max-width: 480px)
+    max-width: 360px
+    height: 360px
+
+  @media (max-width: 320px)
+    max-width: 300px
+    height: 300px
+
+.what-next__image
+  width: 100%
+  height: 100%
+  object-fit: cover
+  display: block
+  filter: brightness(0.95) contrast(1.05)
+  transition: filter 0.3s ease
+
+  &:hover
+    filter: brightness(1) contrast(1.1)

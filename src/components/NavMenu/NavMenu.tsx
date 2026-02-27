@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useCallback, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import './NavMenu.sass';
 import { OpenModal } from '../../utils/modal.tsx';
 import CalculationForm from '../Forms/CalculateForm/CalculationForm.tsx';
@@ -6,37 +7,46 @@ import CalculationForm from '../Forms/CalculateForm/CalculationForm.tsx';
 const NavMenu: React.FC = () => {
   const navMenuRef = useRef<HTMLDivElement>(null);
   const navPlaceholderRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
-  const [isShown, setIsShown] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isFixed, setIsFixed] = useState(false);
+  const [activeSection, setActiveSection] = useState('aboutUs');
+  const [menuHeight, setMenuHeight] = useState(0);
+
   const calcButtonAction = () => {
     OpenModal(<CalculationForm />);
+  };
+
+  const onClickInvestButton = () => {
+    navigate('/invest');
+    scrollTo(0,0)
   };
 
   const buttonConfigs = [
     { id: 'aboutUs', text: 'О нас' },
     { id: 'services', text: 'Услуги' },
+    { id: 'investors', text: 'Для инвесторов', actionButton: onClickInvestButton },
     { id: 'feedback', text: 'Оставить отзыв' },
     { id: 'contacts', text: 'Контакты' },
-    // { id: 'live', text: 'Жизнь компании' },
-    { id: 'none', text: 'Рассчитать стоимость', actionButton: calcButtonAction },
+    // { id: 'calculate', text: 'Рассчитать стоимость', actionButton: calcButtonAction },
   ];
 
   const handleScroll = useCallback(() => {
     const navMenu = navMenuRef.current;
-    const navPlaceholder = navPlaceholderRef.current;
     const header = document.querySelector('.header');
 
-    if (!navMenu || !header || !navPlaceholder) return;
+    if (!navMenu || !header) return;
 
     const headerHeight = header.clientHeight;
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    if (scrollTop > headerHeight) {
-      navMenu.classList.add('fixed');
-      navPlaceholder.style.display = 'none';
+    if (scrollTop > headerHeight + 50) {
+      setIsFixed(true);
+      setMenuHeight(navMenu.clientHeight);
     } else {
-      navMenu.classList.remove('fixed');
-      navPlaceholder.style.display = 'none';
+      setIsFixed(false);
+      setMenuHeight(0);
     }
   }, []);
 
@@ -46,74 +56,63 @@ const NavMenu: React.FC = () => {
 
     if (!navMenu) return;
 
-    const navHeight = navMenu.classList.contains('fixed') ? navMenu.clientHeight : 0;
-    const scrollPosition = window.scrollY + navHeight;
+    const navHeight = isFixed ? menuHeight : 0;
+    const scrollPosition = window.scrollY + navHeight + 20; // Уменьшаем отступ
 
     let currentSectionId: string | null = null;
 
-    if (scrollPosition < 10) {
-      currentSectionId = 'aboutUs';
-    } else {
-      sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        const top = rect.top + window.scrollY;
-        const height = section.offsetHeight;
-        const id = section.getAttribute('id');
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const top = rect.top + window.scrollY;
+      const height = section.offsetHeight;
+      const id = section.getAttribute('id');
 
-        if (!id) return;
+      if (!id) return;
 
-        const sectionStart = id === 'aboutUs' ? top : top - 50;
-        const sectionEnd = top + height - (id === 'aboutUs' ? 0 : 100);
+      const sectionStart = top - navHeight - 20;
+      const sectionEnd = top + height - navHeight - 20;
 
-        if (scrollPosition >= sectionStart && scrollPosition < sectionEnd) {
-          currentSectionId = id;
-        }
-      });
-    }
-
-    document.querySelectorAll('#navMenu button').forEach((btn) => {
-      btn.classList.remove('active');
+      if (scrollPosition >= sectionStart && scrollPosition < sectionEnd) {
+        currentSectionId = id;
+      }
     });
 
-    if (currentSectionId) {
-      const activeBtn = document.querySelector<HTMLElement>(
-        `#navMenu button[data-section="${currentSectionId}"]`
-      );
-      if (activeBtn) {
-        activeBtn.classList.add('active');
-      }
+    // Особый случай для первого раздела
+    if (!currentSectionId && window.scrollY < 100) {
+      currentSectionId = 'aboutUs';
     }
-  }, []);
 
-  const handleNavClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const button = (e.target as HTMLElement).closest('button[data-section]');
-    if (!button || !(button instanceof HTMLElement)) return;
+    if (currentSectionId) {
+      setActiveSection(currentSectionId);
+    }
+  }, [isFixed, menuHeight]);
 
-    const targetId = button.dataset.section;
-    const targetSection = document.getElementById(targetId!);
+  const handleNavClick = useCallback((btn: { id: string; text: string; actionButton?: () => void }) => {
+    setIsMobileMenuOpen(false);
 
-    if (!targetSection) {
-      console.error(`Секция с id="${targetId}" НЕ найдена в DOM`);
+    if (btn.actionButton) {
+      btn.actionButton();
       return;
     }
 
-    const offsetTop = targetSection.offsetTop + 180;
+    const targetSection = document.getElementById(btn.id);
+    if (!targetSection) {
+      console.error(`Секция с id="${btn.id}" НЕ найдена в DOM`);
+      return;
+    }
+
+    // Получаем актуальную высоту меню
+
+    // Рассчитываем позицию с учетом высоты меню
+    const offsetTop = targetSection.offsetTop;
+
     window.scrollTo({
-      top: offsetTop,
+      top: offsetTop + 150,
       behavior: 'smooth',
     });
-
-    if(window.innerWidth < 768){
-      setIsShown(false);
-    }
   }, []);
 
   useEffect(() => {
-    const navPlaceholder = navPlaceholderRef.current;
-    if (navPlaceholder) {
-      navPlaceholder.className = 'nav-menu-placeholder';
-    }
-
     handleScroll();
     updateActiveLink();
 
@@ -131,45 +130,60 @@ const NavMenu: React.FC = () => {
     };
   }, [handleScroll, updateActiveLink]);
 
+  // Обновляем высоту меню при изменении isFixed
+  useEffect(() => {
+    if (navMenuRef.current) {
+      setMenuHeight(navMenuRef.current.clientHeight);
+    }
+  }, [isFixed]);
 
-  const onClickHamburger = () => {
-    setIsShown((prevState) => !prevState);
-  }
+  // Закрываем меню при клике вне его (для мобильной версии)
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const menu = document.getElementById('navMenu');
+      if (menu && !menu.contains(event.target as Node) && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMobileMenuOpen]);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   return (
     <>
-      <div className="nav-menu" id="navMenu" ref={navMenuRef} onClick={handleNavClick}>
+      <div
+        className={`nav-menu ${isFixed ? 'fixed' : ''}`}
+        id="navMenu"
+        ref={navMenuRef}
+      >
         <div className="desktop-nav">
           {buttonConfigs.map((btn) => (
             <button
               key={btn.id}
               data-section={btn.id}
               type="button"
-              onClick={btn.actionButton}
+              onClick={() => handleNavClick(btn)}
+              className={activeSection === btn.id ? 'active' : ''}
             >
               {btn.text}
             </button>
           ))}
         </div>
+
         <div className="mobile-nav">
-          <button className="hamburger-btn" aria-label="Меню" onClick={onClickHamburger}>
+          <button
+            className="hamburger-btn"
+            aria-label="Меню"
+            onClick={toggleMobileMenu}
+          >
             ☰
           </button>
-          {isShown &&
-            <div className="mobile-list-items">
-              {buttonConfigs.map((btn) => (
-                <button
-                  key={btn.id}
-                  data-section={btn.id}
-                  type="button"
-                  onClick={btn.actionButton}
-                  style={btn.id == 'none' ? {display: "none"} : {}}
-                >
-                  {btn.text}
-                </button>
-              ))}
-            </div>
-          }
+
           <button
             type="button"
             className="mobile-calculate-btn"
@@ -177,10 +191,27 @@ const NavMenu: React.FC = () => {
           >
             Рассчитать стоимость
           </button>
+
+          {/* Контейнер для выпадающего меню */}
+          <div className="mobile-menu-container">
+            <div className={`mobile-list-items ${isMobileMenuOpen ? 'open' : ''}`}>
+              {buttonConfigs.map((btn) => (
+                <button
+                  key={btn.id}
+                  data-section={btn.id}
+                  type="button"
+                  onClick={() => handleNavClick(btn)}
+                  className={activeSection === btn.id ? 'active' : ''}
+                >
+                  {btn.text}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
-      <div ref={navPlaceholderRef}></div>
+      <div className={`nav-menu-placeholder ${isFixed ? 'active' : ''}`} ref={navPlaceholderRef}></div>
     </>
   );
 };

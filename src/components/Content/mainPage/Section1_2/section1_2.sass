@@ -1,0 +1,118 @@
+.wrapper
+  position: relative
+  display: flex
+  flex-flow: column
+  padding-left: 34px
+  padding-right: 34px
+  gap: 34px
+  width: 100%
+  box-sizing: border-box
+
+// === Светлая тема ===
+body.light-theme
+  .wrapper
+    background: #f8f9fa
+    color: #2c3e50
+
+  .cards-container
+    .card
+      background: rgba(255, 255, 255, 0.8)
+      color: #2c3e50
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12)
+      border: 1px solid rgba(0, 0, 0, 0.1)
+
+      &:hover
+        background: white
+        transform: translateY(-6px)
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18)
+
+      .card__title
+        color: #1a1a1a
+
+      .card__text
+        color: #444
+
+      .card__icon
+        filter: brightness(0.7)
+
+@media (max-width: 768px)
+  .wrapper
+    padding-left: 8px
+    padding-right: 8px
+    gap: 24px
+
+.cards-container
+  display: flex
+  flex-wrap: wrap
+  gap: 34px
+  justify-content: center
+  width: 100%
+  position: relative
+
+  @media (min-width: 769px)
+    .card
+      &:nth-child(1), &:nth-child(2)
+        margin-bottom: 0
+      &:nth-child(3)
+        margin-top: 34px
+        align-self: center
+
+  @media (max-width: 768px)
+    flex-direction: column
+    align-items: center
+
+    .card
+      width: auto
+      max-width: 420px
+
+.section1_1
+  position: relative
+  top: -5px
+  font-family: Raleway, serif !important
+
+  .content-overlay
+    position: relative !important
+    top: 0 !important
+    animation: none !important
+
+  .overlay-background-img
+    filter: brightness(0.4) contrast(1.8)
+
+.title
+  font-size: 32px
+  color: white
+  display: flex
+  flex-flow: column
+  align-items: center
+  justify-content: center
+  margin-bottom: 40px
+
+.title_left
+  margin-left: 120px
+  margin-bottom: 40px
+  margin-top: 40px
+  color: white
+
+  body.light-theme &
+    color: #2c3e50
+
+  @media (max-width: 768px)
+    margin-left: 8px
+    font-size: 28px
+    text-align: center
+
+.subtitle
+  display: flex
+  flex-flow: row
+  align-items: center
+  justify-content: center
+  font-size: 25px
+  margin: 34px 0
+  color: white
+
+  body.light-theme &
+    color: #2c3e50
+
+  @media (max-width: 768px)
+    font-size: 22px
+    padding: 0 8px

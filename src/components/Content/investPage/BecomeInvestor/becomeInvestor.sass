@@ -1,0 +1,207 @@
+.become-investor
+  color: white
+  font-family: 'Raleway', sans-serif
+  padding: 60px 20px 100px
+  background: black
+  overflow: hidden
+
+  @media (max-width: 768px)
+    padding: 70px 16px 80px
+
+  @media (max-width: 480px)
+    padding: 60px 12px 70px
+
+  @media (max-width: 320px)
+    padding: 50px 10px 60px
+
+// === ЗАГОЛОВОК — ПО ЛЕВОМУ КРАЮ ===
+.become-investor__header-wrapper
+  max-width: 1200px
+  margin: 0 auto 40px
+  padding: 0 20px
+
+  @media (max-width: 768px)
+    padding: 0 16px
+    margin-bottom: 32px
+
+  @media (max-width: 480px)
+    padding: 0 12px
+    margin-bottom: 28px
+
+  @media (max-width: 320px)
+    margin-bottom: 24px
+
+.become-investor__title
+  font-size: 24px
+  font-weight: 700
+  line-height: 1.2
+  text-transform: uppercase
+  letter-spacing: 0.8px
+  display: flex
+  flex-direction: column
+  position: relative
+  align-items: flex-start
+  color: white
+  margin: 0
+
+  &::before
+    content: ''
+    position: absolute
+    left: 0
+    bottom: -12px
+    width: 50%
+    height: 3px
+    background: linear-gradient(90deg, #c734c7, #41a8e7)
+    border-radius: 2px
+
+  .become-investor__title-line
+    display: block
+
+  @media (max-width: 768px)
+    font-size: 22px
+    &::before
+      width: 90%
+
+  @media (max-width: 480px)
+    font-size: 20px
+    &::before
+      width: 90%
+
+  @media (max-width: 320px)
+    font-size: 18px
+    &::before
+      width: 90%
+
+// === ДВУСТОРОННИЙ МАКЕТ ===
+.become-investor__layout
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: 60px
+  align-items: start
+  max-width: 1200px
+  margin: 0 auto
+  padding: 0 20px
+
+  @media (max-width: 1024px)
+    gap: 40px
+
+  @media (max-width: 768px)
+    grid-template-columns: 1fr
+    gap: 40px
+    padding: 0 16px
+
+  @media (max-width: 480px)
+    gap: 32px
+    padding: 0 12px
+
+  @media (max-width: 320px)
+    gap: 28px
+    padding: 0 10px
+
+// === ЛЕВАЯ ЧАСТЬ — ШАГИ ===
+.become-investor__steps-container
+  display: flex
+  flex-direction: column
+  gap: 40px
+
+// === СПИСОК ШАГОВ ===
+.become-investor__steps
+  list-style: none
+  padding: 0
+  margin: 0
+  display: flex
+  flex-direction: column
+  gap: 32px
+
+// === ОДИН ШАГ ===
+.become-investor__step-item
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  gap: 16px
+  opacity: 0
+  transform: translateY(10px)
+  transition: all 0.6s ease
+  animation: fadeInUp 0.6s ease forwards
+  animation-delay: var(--delay, 0s)
+
+.become-investor__step-content
+  display: flex
+  align-items: center
+  gap: 16px
+
+// === НОМЕР ШАГА — ГРАДИЕНТНЫЙ ТЕКСТ ===
+.become-investor__step-number
+  font-size: 24px
+  font-weight: 700
+  background: linear-gradient(90deg, #c734c7, #41a8e7)
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  background-clip: text
+  min-width: 60px
+  text-align: center
+
+  @media (max-width: 480px)
+    font-size: 22px
+
+  @media (max-width: 320px)
+    font-size: 20px
+
+// === ТЕКСТ ШАГА ===
+.become-investor__step-text
+  font-size: 18px
+  font-weight: 600
+  color: white
+  line-height: 1.5
+
+  @media (max-width: 768px)
+    font-size: 17px
+
+  @media (max-width: 480px)
+    font-size: 16px
+
+  @media (max-width: 320px)
+    font-size: 15px
+
+// === ПРАВАЯ ЧАСТЬ — ИЗОБРАЖЕНИЕ ===
+.become-investor__visual
+  display: flex
+  justify-content: center
+  align-items: center
+  overflow: hidden
+  border-radius: 16px
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3)
+
+.become-investor__image
+  width: 100%
+  height: auto
+  display: block
+  border-radius: 16px
+  object-fit: cover
+
+// === ФИНАЛЬНЫЙ ТЕКСТ ===
+.become-investor__final
+  font-size: 17px
+  font-style: italic
+  color: rgba(255, 255, 255, 0.85)
+  text-align: center
+  max-width: 600px
+  margin: 0 auto
+  line-height: 1.6
+
+  @media (max-width: 768px)
+    font-size: 16px
+
+  @media (max-width: 480px)
+    font-size: 15px
+
+  @media (max-width: 320px)
+    font-size: 14px
+
+@keyframes fadeInUp
+  from
+    opacity: 0
+    transform: translateY(16px)
+  to
+    opacity: 1
+    transform: translateY(0)

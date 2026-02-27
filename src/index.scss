@@ -1,0 +1,119 @@
+@font-face {
+    font-family: 'FindSansPro';
+    src: url('/fonts/FindSansPro-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FindSansPro';
+    src: url('/fonts/FindSansPro-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FindSansPro';
+    src: url('/fonts/FindSansPro-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FindSansPro';
+    src: url('/fonts/FindSansPro-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('/fonts/Raleway.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'FindSansPro', sans-serif !important;
+    font-weight: 400;
+    margin: unset !important;
+}
+
+.main {
+    position: relative;
+}
+
+p {
+    margin: unset !important;
+}
+
+.main-content {
+    padding-top: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.dark-image {
+    filter: brightness(0.4) contrast(1.8);
+}
+
+.container-content {
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 40px;
+}
+
+@media screen and (max-width: 1024px) {
+    .container-content {
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 20px;
+    }
+}
+
+.fixed-height-image_1 img {
+    height: 575px;
+}
+
+.nav-menu-placeholder {
+    display: none !important;
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    background: #171717;
+}
+.footer {
+    top: -10px;
+    position: relative;
+}
+
+:root {
+    --flip-card-height: 730px;
+    --flip-card-box-shadow: unset;
+    --flip-card-background-color-front: transparent;
+    --flip-card-background-color-back: transparent;
+    --flip-card-transition-duration: 800ms;
+    --flip-card-transition-timing-function: ease;
+}
+
+.flip-card__side--front {
+    background-color: transparent !important;
+};
+
+flip-card  > [ slot = "back" ] {
+    transform :  scale ( -1 );
+}
+
+/*.card {*/
+/*    height: var(--flip-card-height);*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*}*/

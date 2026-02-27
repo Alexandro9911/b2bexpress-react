@@ -1,0 +1,405 @@
+// Основной блок — чёрный фон
+.offer-rules
+  background: black
+  color: white
+  font-family: 'Raleway', sans-serif
+  padding: 60px 20px
+  overflow: hidden
+
+  @media (max-width: 768px)
+    padding: 70px 16px
+
+  @media (max-width: 480px)
+    padding: 60px 12px
+
+  @media (max-width: 320px)
+    padding: 50px 10px
+
+// Контейнер — две колонки на десктопе, одна на мобильных
+.offer-rules__container
+  max-width: 1200px
+  margin: 0 auto
+  display: flex
+  gap: 60px
+  align-items: center
+
+  @media (max-width: 1024px)
+    gap: 40px
+
+  // Переход на вертикальную компоновку, если экран узкий (планшеты и мобильные)
+  @media (max-width: 1023px)
+    flex-direction: column
+    text-align: center
+
+// === ЛЕВАЯ ЧАСТЬ — ТЕКСТ И КАРТОЧКИ ===
+.offer-rules__content
+  flex: 1
+  display: flex
+  flex-direction: column
+  gap: 32px
+
+  @media (max-width: 768px)
+    gap: 24px
+
+// === ЗАГОЛОВОК ===
+.offer-rules__title
+  font-size: 24px
+  font-weight: 700
+  line-height: 1.2
+  text-transform: uppercase
+  letter-spacing: 0.8px
+  display: flex
+  flex-direction: column
+  position: relative
+  align-items: flex-start
+
+  &::before
+    content: ''
+    position: absolute
+    left: 0
+    bottom: -12px
+    width: 50%
+    height: 3px
+    background: linear-gradient(90deg, #c734c7, #41a8e7)
+    border-radius: 2px
+
+  .offer-rules__title-line
+    display: block
+
+  @media (max-width: 768px)
+    font-size: 22px
+    &::before
+      width: 100% !important
+    align-items: center
+
+  @media (max-width: 480px)
+    font-size: 20px
+    &::before
+      width: 100%
+
+  @media (max-width: 320px)
+    font-size: 18px
+    &::before
+      width: 90%
+
+// === ПОДЗАГОЛОВОК ===
+.offer-rules__subtitle
+  font-size: 18px
+  color: rgba(255, 255, 255, 0.85)
+  font-weight: 500
+  max-width: 700px
+  align-self: center
+
+  @media (max-width: 768px)
+    font-size: 17px
+    align-self: center
+
+  @media (max-width: 480px)
+    font-size: 16px
+
+  @media (max-width: 320px)
+    font-size: 15px
+
+// === КАРТОЧКИ ===
+.offer-rules__cards
+  display: flex
+  flex-direction: column
+  gap: 24px
+
+.offer-rules__card
+  background: rgba(255, 255, 255, 0.12)
+  backdrop-filter: blur(12px)
+  border-radius: 16px
+  padding: 28px 24px
+  border: 1px solid rgba(255, 255, 255, 0.15)
+  transition: all 0.4s ease
+
+  &:hover
+    background: rgba(255, 255, 255, 0.16)
+    transform: translateY(-4px)
+
+  @media (max-width: 768px)
+    padding: 24px 20px
+
+// === ИКОНКА И ЗАГОЛОВОК ===
+.offer-rules__card-icon
+  font-size: 36px
+  margin-bottom: 12px
+  display: flex
+  justify-content: center
+  img
+    width: 80px
+
+  @media (max-width: 480px)
+    font-size: 32px
+
+.offer-rules__card-title
+  font-size: 17px
+  font-weight: 700
+  color: white
+  margin-bottom: 14px
+  text-align: left
+  line-height: 1.4
+
+  @media (max-width: 768px)
+    font-size: 16px
+    text-align: center
+    text-align-last: center
+
+  @media (max-width: 480px)
+    font-size: 15px
+
+// === СПИСОК В КАРТОЧКЕ ===
+.offer-rules__card-list
+  list-style: none
+  padding: 0
+  margin: 0
+  font-size: 14px
+  color: rgba(255, 255, 255, 0.92)
+  line-height: 1.6
+
+  li
+    position: relative
+    padding-left: 20px
+    margin-bottom: 6px
+    text-align: left
+
+    &:before
+      content: '•'
+      position: absolute
+      left: 0
+      color: #41a8e7
+      font-weight: bold
+
+    &:last-child
+      margin-bottom: 0
+
+  @media (max-width: 768px)
+    font-size: 13px
+
+  @media (max-width: 480px)
+    font-size: 12px
+    line-height: 1.5
+
+// === ИТОГОВАЯ ФРАЗА ===
+.offer-rules__conclusion
+  font-size: 18px
+  font-weight: 600
+  color: white
+  max-width: 600px
+  align-self: flex-start
+
+  @media (max-width: 768px)
+    font-size: 17px
+    align-self: center
+
+  @media (max-width: 480px)
+    font-size: 16px
+
+  @media (max-width: 320px)
+    font-size: 15px
+
+// === ПРАВАЯ ЧАСТЬ — СЛАЙДЕР ===
+.offer-rules__slider
+  flex: 1
+  height: 500px
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+  touch-action: pan-y pinch-zoom
+  -webkit-tap-highlight-color: transparent
+
+  @media (max-width: 1024px)
+    height: 450px
+
+  @media (max-width: 1023px)
+    width: 100%
+    max-width: 500px
+    min-height: 400px
+    order: 1
+    margin-top: 40px
+    align-self: center
+
+  @media (max-width: 768px)
+    height: 420px
+
+  @media (max-width: 480px)
+    height: 400px
+
+  @media (max-width: 320px)
+    height: 380px
+
+// Базовые размеры слайдов (как reference)
+$slide-base-width: 240px
+$slide-base-height: 240px
+$slide-center-scale: 1.5 // 240 * 1.5 = 360px
+$slide-top-bottom-scale: 1 // 240 * 1 = 240px
+
+// Общий стиль слайда
+.offer-rules__slide
+  position: absolute
+  width: $slide-base-width
+  height: $slide-base-height
+  border-radius: 20px
+  background-size: cover
+  background-position: center
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3)
+  cursor: pointer
+  transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1)
+  will-change: transform, opacity
+  -webkit-backface-visibility: hidden
+  backface-visibility: hidden
+  left: 50%
+  top: 50%
+
+// Активная (центральная) карточка
+.offer-rules__slide--center
+  transform: translate(-50%, -50%) scale($slide-center-scale) rotate(0deg)
+  opacity: 1
+  z-index: 3
+
+// Верхняя карточка (слева сверху)
+.offer-rules__slide--top
+  transform: translate(-50%, -50%) translate(-120px, -120px) scale($slide-top-bottom-scale) rotate(-10deg)
+  opacity: 0.97
+  z-index: 1
+
+// Нижняя карточка (справа снизу)
+.offer-rules__slide--bottom
+  transform: translate(-50%, -50%) translate(120px, 120px) scale($slide-top-bottom-scale) rotate(10deg)
+  opacity: 0.97
+  z-index: 1
+
+// === МОБИЛЬНЫЕ СТИЛИ ===
+@media (max-width: 1023px)
+  $slide-base-width: 200px
+  $slide-base-height: 200px
+  $slide-center-scale: 1.5 // 200 * 1.5 = 300px
+
+  .offer-rules__slide
+    width: $slide-base-width
+    height: $slide-base-height
+
+  .offer-rules__slide--center
+    transform: translate(-50%, -50%) scale($slide-center-scale) rotate(0deg)
+
+  .offer-rules__slide--top
+    transform: translate(-70%, -70%) translate(-90px, -90px) scale(1) rotate(-8deg)
+
+  .offer-rules__slide--bottom
+    transform: scale(1) rotate(8deg)
+
+@media (max-width: 768px)
+  $slide-base-width: 180px
+  $slide-base-height: 180px
+  $slide-center-scale: 1.67 // 180 * 1.67 ≈ 300px
+
+  .offer-rules__slide
+    width: $slide-base-width
+    height: $slide-base-height
+
+  .offer-rules__slide--center
+    transform: translate(-50%, -50%) scale($slide-center-scale) rotate(0deg)
+
+  .offer-rules__slide--top
+    transform: translate(-90%, -90%) translate(-75px, -75px) scale(1) rotate(-8deg)
+
+  .offer-rules__slide--bottom
+    transform: translate(75px, 75px) scale(1) rotate(8deg)
+
+@media (max-width: 600px)
+  $slide-base-width: 160px
+  $slide-base-height: 160px
+  $slide-center-scale: 1.875 // 160 * 1.875 = 300px
+
+  .offer-rules__slide
+    width: $slide-base-width
+    height: $slide-base-height
+
+  .offer-rules__slide--center
+    transform: translate(-50%, -50%) scale($slide-center-scale) rotate(0deg)
+
+  .offer-rules__slide--top
+    transform: translate(-90%, -90%) translate(-60px, -60px) scale(1) rotate(-8deg)
+
+  .offer-rules__slide--bottom
+    transform: translate(60px, 60px) scale(1) rotate(8deg)
+
+@media (max-width: 480px)
+  $slide-base-width: 140px
+  $slide-base-height: 140px
+  $slide-center-scale: 2 // 140 * 2 = 280px
+
+  .offer-rules__slide
+    width: $slide-base-width
+    height: $slide-base-height
+
+  .offer-rules__slide--center
+    transform: translate(-50%, -50%) scale($slide-center-scale) rotate(0deg)
+
+  .offer-rules__slide--top
+    transform: translate(-90%, -90%) translate(-50px, -50px) scale(1) rotate(-8deg)
+
+  .offer-rules__slide--bottom
+    transform: translate(50px, 50px) scale(1) rotate(8deg)
+
+@media (max-width: 400px)
+  $slide-base-width: 130px
+  $slide-base-height: 130px
+  $slide-center-scale: 2 // 130 * 2 = 260px
+
+  .offer-rules__slide
+    width: $slide-base-width
+    height: $slide-base-height
+
+  .offer-rules__slide--center
+    transform: translate(-50%, -50%) scale($slide-center-scale) rotate(0deg)
+
+  .offer-rules__slide--top
+    transform: translate(-90%, -90%) translate(-45px, -45px) scale(1) rotate(-8deg)
+
+  .offer-rules__slide--bottom
+    transform:  translate(45px, 45px) scale(1) rotate(8deg)
+
+@media (max-width: 360px)
+  $slide-base-width: 120px
+  $slide-base-height: 120px
+  $slide-center-scale: 2 // 120 * 2 = 240px
+
+  .offer-rules__slide
+    width: $slide-base-width
+    height: $slide-base-height
+
+  .offer-rules__slide--center
+    transform: translate(-50%, -50%) scale($slide-center-scale) rotate(0deg)
+
+  .offer-rules__slide--top
+    transform: translate(-90%, -90%) translate(-40px, -40px) scale(1) rotate(-8deg)
+
+  .offer-rules__slide--bottom
+    transform: translate(40px, 40px) scale(1) rotate(8deg)
+
+@media (max-width: 320px)
+  $slide-base-width: 110px
+  $slide-base-height: 110px
+  $slide-center-scale: 2 // 110 * 2 = 220px
+
+  .offer-rules__slide
+    width: $slide-base-width
+    height: $slide-base-height
+
+  .offer-rules__slide--center
+    transform: translate(-50%, -50%) scale($slide-center-scale) rotate(0deg)
+
+  .offer-rules__slide--top
+    transform: translate(-90%, -90%) translate(-35px, -35px) scale(1) rotate(-8deg)
+
+  .offer-rules__slide--bottom
+    transform: translate(35px, 35px) scale(1) rotate(8deg)
+
+// Убираем эффект появления у карточек
+.offer-rules__card
+  opacity: 1
+  transform: none
+  animation: none

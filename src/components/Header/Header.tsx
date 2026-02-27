@@ -21,7 +21,7 @@ export default function Header() {
           <h2>Ваша задача - Наше решение</h2>
         </div>
         <div className="header__contacts">
-          <p className="contact"><a href={"tel:8(981)1100101"}>8 (981) 110 01 01</a></p>
+          <p className="contact"><a href={"tel:88004441098"}>8 (800) 444 10 98</a></p>
           <p className="contact_small"><a href={'mailto:mir_logistiki01@bk.ru'}>mir_logistiki01@bk.ru</a></p>
         </div>
       </div>

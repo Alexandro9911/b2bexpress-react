@@ -1,0 +1,202 @@
+.start-now
+  color: white
+  font-family: 'Raleway', sans-serif
+  padding: 60px 20px
+  overflow: hidden
+
+  @media (max-width: 768px)
+    padding: 50px 16px
+
+  @media (max-width: 480px)
+    padding: 40px 12px
+
+  @media (max-width: 320px)
+    padding: 30px 10px
+
+// === ЗАГОЛОВОК — ПО ПРАВОМУ КРАЮ ===
+.start-now__header-wrapper
+  max-width: 1200px
+  margin: 0 auto 40px
+  padding: 0 20px
+  display: flex
+  justify-content: flex-end
+
+  @media (max-width: 768px)
+    padding: 0 16px
+    margin-bottom: 32px
+
+  @media (max-width: 480px)
+    padding: 0 12px
+    margin-bottom: 28px
+
+  @media (max-width: 320px)
+    margin-bottom: 24px
+
+.start-now__title
+  font-size: 24px
+  font-weight: 700
+  line-height: 1.2
+  text-transform: uppercase
+  letter-spacing: 0.8px
+  display: flex
+  flex-direction: column
+  position: relative
+  align-items: flex-end
+  text-align: right
+  color: white
+  margin: 0
+  max-width: 600px
+  width: 100%
+
+  &::before
+    content: ''
+    position: absolute
+    right: 0
+    bottom: -12px
+    width: 50%
+    height: 3px
+    background: linear-gradient(90deg, #c734c7, #41a8e7)
+    border-radius: 2px
+
+  .start-now__title-line
+    display: block
+
+  @media (max-width: 768px)
+    font-size: 22px
+    &::before
+      width: 90%
+
+  @media (max-width: 480px)
+    font-size: 20px
+    &::before
+      width: 90%
+
+  @media (max-width: 320px)
+    font-size: 18px
+    &::before
+      width: 90%
+
+// === КОНТЕЙНЕР ===
+.start-now__container
+  max-width: 1200px
+  margin: 0 auto
+  padding: 0 20px
+  display: flex
+  flex-direction: column
+  gap: 40px
+
+  @media (max-width: 768px)
+    gap: 32px
+    padding: 0 16px
+
+  @media (max-width: 480px)
+    gap: 28px
+    padding: 0 12px
+
+  @media (max-width: 320px)
+    gap: 24px
+    padding: 0 10px
+
+// === КАРТОЧКИ ===
+.start-now__cards
+  display: flex
+  flex-direction: column
+  gap: 24px
+  width: 100%
+
+// Первая строка — контейнер для двух карточек
+.start-now__cards-row
+  display: flex
+  gap: 24px
+  width: 100%
+
+  @media (max-width: 768px)
+    flex-direction: column
+
+// Карточки в первой строке
+.start-now__card--time,
+.start-now__card--closed
+  flex: 1
+  min-width: 0 // Чтобы корректно работало сжатие
+
+// Вторая строка — одна карточка по центру
+.start-now__cards-single
+  display: flex
+  justify-content: center
+  width: 100%
+
+.start-now__card--calendar
+  max-width: 380px
+  width: 100%
+  text-align: center
+
+  @media (max-width: 768px)
+    max-width: none
+
+// === ОДНА КАРТОЧКА ===
+.start-now__card
+  background: rgba(255, 255, 255, 0.04)
+  border: 1px solid rgba(255, 255, 255, 0.1)
+  border-radius: 16px
+  padding: 24px
+  display: flex
+  flex-direction: column
+  gap: 12px
+  backdrop-filter: blur(8px)
+  transition: all 0.3s ease
+
+  &:hover
+    transform: translateY(-6px)
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15)
+    background: rgba(255, 255, 255, 0.07)
+
+// === ИКОНКА В КАРТОЧКЕ ===
+.start-now__card-icon
+  font-size: 24px
+  align-self: center
+
+  img
+    width: 50px
+    height: 50px
+
+// === ТЕКСТ В КАРТОЧКЕ ===
+.start-now__card-text
+  font-size: 17px
+  font-weight: 500
+  color: white
+  line-height: 1.5
+  margin: 0
+
+  @media (max-width: 768px)
+    font-size: 16px
+
+  @media (max-width: 480px)
+    font-size: 15px
+
+  @media (max-width: 320px)
+    font-size: 14px
+
+// === РЕЗЮМИРУЮЩИЙ ПОДЗАГОЛОВОК ===
+.start-now__summary
+  text-align: center
+  margin-top: 8px
+
+.start-now__summary-text
+  font-size: 20px
+  font-weight: 700
+  color: white
+  margin: 0
+  line-height: 1.4
+  background: linear-gradient(90deg, #c734c7, #41a8e7)
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  background-clip: text
+
+  @media (max-width: 768px)
+    font-size: 19px
+
+  @media (max-width: 480px)
+    font-size: 18px
+
+  @media (max-width: 320px)
+    font-size: 17px

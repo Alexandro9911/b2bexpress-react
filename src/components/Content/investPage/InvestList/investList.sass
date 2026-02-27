@@ -1,0 +1,420 @@
+// investList.sass
+
+.invest-list
+  color: white
+  font-family: 'Raleway', sans-serif
+  padding: 60px 20px
+  overflow: hidden
+
+  @media (max-width: 768px)
+    padding: 70px 16px
+
+  @media (max-width: 480px)
+    padding: 60px 12px
+
+  @media (max-width: 320px)
+    padding: 50px 10px
+
+.invest-list__container
+  max-width: 1200px
+  margin: 0 auto
+  display: flex
+  flex-direction: column
+  gap: 40px
+  align-items: center
+
+  @media (max-width: 768px)
+    gap: 32px
+
+  @media (max-width: 480px)
+    gap: 28px
+
+.invest-list__title
+  font-size: 24px
+  font-weight: 700
+  line-height: 1.2
+  text-transform: uppercase
+  letter-spacing: 0.8px
+  position: relative
+  align-self: flex-end
+  margin: 0 0 20px 0
+  width: fit-content
+
+  &::before
+    content: ''
+    position: absolute
+    right: 0
+    bottom: -12px
+    width: 350px
+    height: 3px
+    background: linear-gradient(90deg, #c734c7, #41a8e7)
+    border-radius: 2px
+
+  .invest-list__title-line
+    display: block
+
+  @media (max-width: 768px)
+    font-size: 22px
+    &::before
+      width: 90%
+
+  @media (max-width: 480px)
+    font-size: 20px
+    &::before
+      width: 90%
+
+  @media (max-width: 320px)
+    font-size: 18px
+    &::before
+      width: 90%
+
+.invest-list__subtitle
+  font-size: 18px
+  color: rgba(255, 255, 255, 0.85)
+  font-weight: 500
+  text-align: center
+  max-width: 700px
+  align-self: center
+
+  @media (max-width: 768px)
+    font-size: 17px
+
+  @media (max-width: 480px)
+    font-size: 16px
+
+  @media (max-width: 320px)
+    font-size: 15px
+
+.invest-list__cards
+  display: flex
+  justify-content: center
+  gap: 30px
+  flex-wrap: wrap
+  width: 100%
+
+  flip-card
+    flex: 1 1 350px
+    max-width: 380px
+    //height: 620px
+
+    @media (max-width: 768px)
+      flex: 1 1 300px
+      max-width: 350px
+      height: 600px
+
+    @media (max-width: 480px)
+      flex: 1 1 100%
+      max-width: 100%
+      height: auto
+      min-height: 580px
+
+.invest-card__front,
+.invest-card__back
+  width: 100%
+  height: 720px
+  background: #292929
+  border-radius: 20px
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2)
+  transition: transform 0.3s ease
+  border: 1px solid rgba(255, 255, 255, 0.05)
+
+  &::-webkit-scrollbar
+    width: 4px
+
+  &::-webkit-scrollbar-track
+    background: rgba(255, 255, 255, 0.02)
+    border-radius: 10px
+
+  &::-webkit-scrollbar-thumb
+    background: rgba(255, 255, 255, 0.1)
+    border-radius: 10px
+
+    &:hover
+      background: rgba(255, 255, 255, 0.2)
+
+.invest-card__image-wrapper
+  position: relative
+  width: 90%
+  height: 210px
+  margin: 16px auto 0
+  border-radius: 16px
+  overflow: hidden
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3)
+
+  @media (max-width: 480px)
+    height: 200px
+    margin-top: 12px
+
+.invest-card__image
+  width: 100%
+  height: 100%
+  object-fit: cover
+  filter: brightness(0.9) contrast(1.1)
+
+.invest-card__card-number
+  position: absolute
+  top: 20px
+  left: 20px
+  font-family: 'Courier New', monospace
+  font-size: 14px
+  color: #fff
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5)
+  letter-spacing: 2px
+  //opacity: 0.9
+  font-weight: 400
+  padding: 4px 8px
+  border-radius: 8px
+  backdrop-filter: blur(20px)
+
+  @media (max-width: 480px)
+    font-size: 12px
+    left: 15px
+
+.invest-card__card-amount
+  position: absolute
+  bottom: 20px
+  right: 20px
+  font-family: 'Courier New', monospace
+  font-size: 20px
+  //font-weight: 700
+  color: #fff
+  padding: 4px 8px
+  border-radius: 8px
+  backdrop-filter: blur(20px)
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5)
+
+  @media (max-width: 480px)
+    font-size: 16px
+    bottom: 15px
+    right: 15px
+
+.invest-card__content
+  padding: 20px 24px
+  display: flex
+  flex-flow: column
+  height: 440px
+
+  @media (max-width: 480px)
+    padding: 16px 20px
+
+.invest-card__header
+  display: flex
+  justify-content: space-between
+  align-items: flex-start
+  margin-bottom: 12px
+  flex-wrap: wrap
+  gap: 8px
+
+.invest-card__title
+  font-size: 18px
+  font-weight: 600
+  color: #fff
+  line-height: 1.4
+  margin: 0
+  flex: 1
+
+  @media (max-width: 480px)
+    font-size: 16px
+
+.invest-card__profit
+  font-size: 18px
+  font-weight: 700
+  color: #fff
+  background: linear-gradient(90deg, #c734c7, #41a8e7)
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  background-clip: text
+  margin-bottom: 8px
+
+  @media (max-width: 480px)
+    font-size: 16px
+
+.invest-card__subtitle
+  font-size: 14px
+  font-weight: 500
+  color: rgba(255, 255, 255, 0.8)
+  margin-bottom: 10px
+
+  @media (max-width: 480px)
+    font-size: 13px
+
+.invest-card__list
+  list-style: none
+  padding: 0
+  margin: 0 0 12px 0
+
+  &-item
+    padding: 5px 0
+    font-size: 13px
+    color: rgba(255, 255, 255, 0.9)
+    line-height: 1.4
+
+    &:before
+      content: "•"
+      color: #c734c7
+      font-weight: bold
+      margin-right: 6px
+
+    &:last-child
+      padding-bottom: 0
+
+    @media (max-width: 480px)
+      font-size: 12px
+
+.invest-card__ad-title
+  font-size: 14px
+  font-weight: 500
+  color: rgba(255, 255, 255, 0.9)
+  margin: 10px 0 6px
+
+  @media (max-width: 480px)
+    font-size: 13px
+
+.invest-card__extra
+  font-size: 12px
+  color: rgba(255, 255, 255, 0.7)
+  line-height: 1.4
+  margin: 12px 0 10px !important
+  padding: 10px
+  background: rgba(255, 255, 255, 0.05)
+  border-radius: 10px
+  border-left: 2px solid #c734c7
+
+  @media (max-width: 480px)
+    font-size: 11px
+    padding: 8px
+
+.invest-card__button
+  width: 100%
+  padding: 14px
+  background: linear-gradient(90deg, #c734c7, #41a8e7)
+  color: white
+  border: none
+  margin-top: auto
+  border-radius: 12px
+  font-size: 15px
+  font-weight: 600
+  cursor: pointer
+  transition: all 0.3s ease
+  font-family: 'Raleway', sans-serif
+
+  &:hover
+    transform: translateY(-2px)
+    box-shadow: 0 8px 20px rgba(199, 52, 199, 0.3)
+
+  &:active
+    transform: translateY(0)
+
+  @media (max-width: 480px)
+    padding: 12px
+    font-size: 14px
+
+.invest-card__back-content
+  padding: 20px 24px
+
+  @media (max-width: 480px)
+    padding: 16px 20px
+
+.invest-card__back-title
+  font-size: 18px
+  font-weight: 600
+  margin: 0 0 8px
+  text-align: center
+  color: #fff
+  background: linear-gradient(90deg, #c734c7, #41a8e7)
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  background-clip: text
+
+  @media (max-width: 480px)
+    font-size: 18px
+    margin-bottom: 14px
+
+.invest-card__paths
+  display: flex
+  flex-direction: column
+  gap: 8px
+
+  @media (max-width: 480px)
+    gap: 10px
+
+.invest-card__path
+  display: flex
+  gap: 12px
+  padding: 12px
+  border-radius: 12px
+  background: rgba(255, 255, 255, 0.05)
+  border: 1px solid rgba(255, 255, 255, 0.08)
+
+  @media (max-width: 480px)
+    padding: 10px
+    gap: 10px
+    flex-direction: row
+
+.invest-card__path-icon
+  font-size: 24px
+  min-width: 36px
+  display: flex
+  align-items: center
+  justify-content: center
+
+  @media (max-width: 480px)
+    min-width: auto
+    font-size: 20px
+
+.invest-card__path-content h5
+  font-size: 13px
+  font-weight: 600
+  color: #fff
+  margin: 0 0 4px 0
+
+  @media (max-width: 480px)
+    font-size: 13px
+
+.invest-card__path-content p
+  font-size: 11px
+  color: rgba(255, 255, 255, 0.8)
+  margin: 2px 0
+  line-height: 1.4
+
+  @media (max-width: 480px)
+    font-size: 11px
+
+.invest-card__path-profit
+  font-weight: 600
+  color: #c734c7
+  font-size: 12px
+  margin-top: 4px
+  display: block
+
+  @media (max-width: 480px)
+    font-size: 11px
+
+// === НОВЫЕ СТИЛИ ДЛЯ BACK CONTENT ===
+.invest-card__back-content-block
+  width: 100%
+
+.invest-card__back-highlight
+  font-size: 13px
+  font-weight: 700
+  color: #fff
+  margin: 0 0 8px 0
+  line-height: 1.5
+
+  @media screen and (max-width: 768px)
+    font-size: 12px
+
+.invest-card__back-text
+  font-size: 13px
+  color: rgba(255, 255, 255, 0.9)
+  line-height: 1.5
+  margin: 0 0 8px 0
+
+  @media screen and (max-width: 768px)
+    font-size: 12px
+
+.invest-card__back-text--highlighted
+  font-weight: 700
+
+.invest-card__back-list
+  font-size: 12px

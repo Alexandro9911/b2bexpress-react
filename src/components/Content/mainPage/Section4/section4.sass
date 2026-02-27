@@ -1,0 +1,113 @@
+.section4
+  background: black
+  position: relative
+  top: -10px
+  color: white
+  font-family: Raleway, serif
+  padding-top: 60px
+  padding-bottom: 70px
+
+  a
+    text-decoration: unset
+    color: white
+
+.contacts
+  display: flex
+  flex-flow: row
+  align-items: center
+  justify-content: center
+  gap: 30px
+
+  &__info
+    display: flex
+    flex-flow: column
+
+  &__image
+    img
+      width: 455px
+      height: 507px
+      object-fit: cover
+
+  .info
+    &__title
+      font-size: 71px
+      margin-bottom: 20px
+    &__sub-title
+      font-size: 44px
+      margin-bottom: 20px
+    &__email
+      font-size: 20px
+      margin-bottom: 10px
+    &__contacts
+      font-size: 17px
+
+.contact-item
+  margin-bottom: 20px
+  max-width: 600px
+
+@media (max-width: 768px)
+  .contacts
+    flex-direction: column
+    text-align: left
+    gap: 40px
+    padding: 0 20px
+
+  .contacts__image img
+    width: 350px
+    height: 390px
+
+  .info
+    &__title
+      margin-left: auto
+      margin-right: auto
+      font-size: 56px !important
+    &__sub-title
+      font-size: 25px !important
+    &__email
+      font-size: 18px
+    &__contacts
+      font-size: 16px
+
+  .contact-item
+    max-width: 100%
+
+@media (max-width: 320px)
+  .section4
+    padding-top: 40px
+    padding-bottom: 50px
+
+  .contacts
+    flex-direction: column
+    text-align: left
+    gap: 30px
+    padding: 0 10px
+
+  .contacts__image img
+    width: 280px
+    height: 312px
+
+  .info
+    &__title
+      font-size: 36px !important
+      margin-bottom: 15px
+    &__sub-title
+      font-size: 22px !important
+      margin-bottom: 12px
+    &__email
+      font-size: 15px
+      margin-bottom: 6px
+    &__contacts
+      font-size: 14px
+
+  .contact-item
+    margin-bottom: 12px
+    font-size: 13px
+    text-align: left
+
+  .contact-item p
+    line-height: 1.4
+    margin: 0
+
+.dates
+  margin-bottom: 20px
+  font-size: 30px

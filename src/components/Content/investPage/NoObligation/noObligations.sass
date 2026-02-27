@@ -1,0 +1,233 @@
+.no-obligations
+  color: white
+  font-family: 'Raleway', sans-serif
+  padding: 60px 20px 100px
+  background: transparent
+  overflow: hidden
+
+  @media (max-width: 768px)
+    padding: 70px 16px 80px
+
+  @media (max-width: 480px)
+    padding: 60px 12px 70px
+
+  @media (max-width: 320px)
+    padding: 50px 10px 60px
+
+// === ЗАГОЛОВОК — ВНЕ КОНТЕЙНЕРА, ПО ЛЕВОМУ КРАЮ ===
+.no-obligations__header-wrapper
+  max-width: 1200px
+  margin: 0 auto 40px
+  padding: 0 20px
+
+  @media (max-width: 768px)
+    padding: 0 16px
+    margin-bottom: 32px
+
+  @media (max-width: 480px)
+    padding: 0 12px
+    margin-bottom: 28px
+
+  @media (max-width: 320px)
+    margin-bottom: 24px
+
+.no-obligations__title
+  font-size: 24px
+  font-weight: 700
+  line-height: 1.2
+  text-transform: uppercase
+  letter-spacing: 0.8px
+  display: flex
+  flex-direction: column
+  position: relative
+  align-items: flex-start
+  color: white
+  margin: 0
+
+  &::before
+    content: ''
+    position: absolute
+    left: 0
+    bottom: -12px
+    width: 50%
+    height: 3px
+    background: linear-gradient(90deg, #c734c7, #41a8e7)
+    border-radius: 2px
+
+  .no-obligations__title-line
+    display: block
+
+  @media (max-width: 768px)
+    font-size: 22px
+    &::before
+      width: 90%
+
+  @media (max-width: 480px)
+    font-size: 20px
+    &::before
+      width: 90%
+
+  @media (max-width: 320px)
+    font-size: 18px
+    &::before
+      width: 90%
+
+// === ДВУСТОРОННИЙ МАКЕТ ===
+.no-obligations__layout
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: 40px
+  align-items: start
+  max-width: 1200px
+  margin: 0 auto
+  padding: 0 20px
+
+  @media (max-width: 1024px)
+    gap: 32px
+
+  @media (max-width: 768px)
+    grid-template-columns: 1fr
+    gap: 40px
+    padding: 0 16px
+
+  @media (max-width: 480px)
+    gap: 32px
+    padding: 0 12px
+
+  @media (max-width: 320px)
+    padding: 0 10px
+
+// === ЛЕВАЯ ЧАСТЬ — КОНТЕНТ ===
+.no-obligations__content
+  display: flex
+  flex-direction: column
+  gap: 24px
+
+  @media (max-width: 768px)
+    order: 2
+
+// === СПИСОК ЗАПРЕТОВ — ДВА СТОЛБИКА ===
+.no-obligations__list
+  list-style: none
+  padding: 0
+  margin: 0
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  gap: 16px
+
+  @media (max-width: 768px)
+    grid-template-columns: 1fr
+    gap: 14px
+
+  @media (max-width: 480px)
+    gap: 12px
+
+.no-obligations__item
+  display: flex
+  align-items: flex-start
+  gap: 12px
+  font-size: 16px
+  line-height: 1.5
+  color: rgba(255, 255, 255, 0.9)
+  padding: 16px
+  background: rgba(255, 255, 255, 0.04)
+  border-radius: 12px
+  border: 1px solid rgba(255, 255, 255, 0.08)
+  backdrop-filter: blur(5px)
+  transition: all 0.3s ease
+
+  &:hover
+    transform: translateY(-2px)
+    background: rgba(255, 255, 255, 0.07)
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1)
+
+  .no-obligations__icon
+    font-size: 18px
+    flex-shrink: 0
+    margin-top: 2px
+
+  .no-obligations__text
+    font-weight: 500
+    color: inherit
+
+  @media (max-width: 768px)
+    font-size: 15px
+    gap: 10px
+    padding: 14px
+
+  @media (max-width: 480px)
+    font-size: 14px
+    padding: 12px
+
+  @media (max-width: 320px)
+    font-size: 13px
+    padding: 10px
+
+// === ФИНАЛЬНОЕ УТВЕРЖДЕНИЕ ===
+.no-obligations__final
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 12px
+  padding: 24px
+  background: rgba(65, 168, 231, 0.15)
+  border-radius: 16px
+  border: 1px solid rgba(65, 168, 231, 0.3)
+  backdrop-filter: blur(6px)
+  text-align: center
+
+  .no-obligations__final-icon
+    font-size: 20px
+
+  .no-obligations__final-text
+    font-size: 17px
+    font-weight: 600
+    color: white
+    margin: 0
+    line-height: 1.5
+
+  @media (max-width: 768px)
+    flex-direction: column
+    gap: 8px
+    padding: 20px
+
+  @media (max-width: 480px)
+    font-size: 15px
+    padding: 18px
+
+  @media (max-width: 320px)
+    font-size: 14px
+    padding: 16px
+    gap: 6px
+
+// === ПРАВАЯ ЧАСТЬ — ИЗОБРАЖЕНИЕ ===
+.no-obligations__image
+  background-image: url('../../../../assets/images/carWithLogo.jpg')
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
+  border-radius: 16px
+  height: 320px
+  min-height: 320px
+  max-height: 360px
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2)
+  transition: transform 0.4s ease
+  align-self: center
+
+  &:hover
+    transform: scale(1.02)
+
+  @media (max-width: 768px)
+    height: 280px
+    min-height: 280px
+    border-radius: 14px
+    order: 1
+
+  @media (max-width: 480px)
+    height: 260px
+    min-height: 260px
+
+  @media (max-width: 320px)
+    height: 240px
+    min-height: 240px
+    border-radius: 12px

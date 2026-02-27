@@ -1,20 +1,75 @@
 .nav-menu
   font-family: Raleway, serif !important
-  position: absolute
+  position: relative
   top: 0
   left: 0
   width: 100%
-  background: rgba(7, 7, 7, 0.18)
+  background: rgba(7, 7, 7, 0.25)
   color: white
-  z-index: 2
-  transition: all 0.3s ease
+  z-index: 1000
   box-sizing: border-box
-  backdrop-filter: blur(5px)
-  padding: 10px 10px 10px 50px
+  backdrop-filter: blur(8px)
+  -webkit-backdrop-filter: blur(8px)
   display: flex
   align-items: center
   justify-content: flex-start
   gap: 20px
+  transition: all 0.3s ease
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2)
+  padding: 10px 10px 10px 50px
+
+  &.fixed
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    padding: 8px 10px 8px 50px
+    animation: slideDown 0.3s ease
+
+// === Светлая тема ===
+body.light-theme
+  .nav-menu
+    background: #f8f9fa
+    color: #2c3e50
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12)
+
+    .desktop-nav button,
+    .mobile-calculate-btn
+      color: #2c3e50
+
+      &:hover
+        border-bottom: 3px solid rgba(199, 52, 199, 0.4)
+
+      &.active
+        border-bottom: 3px solid #c734c7
+
+    .hamburger-btn
+      color: #2c3e50
+
+      &:hover
+        transform: scale(1.1)
+
+    .mobile-list-items
+      background: #fff
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15)
+      border: 1px solid rgba(0, 0, 0, 0.1)
+
+      button
+        color: #2c3e50
+
+        &:hover
+          background: rgba(199, 52, 199, 0.05)
+
+        &.active
+          color: #c734c7
+          border-left: 3px solid #c734c7
+          background: rgba(199, 52, 199, 0.04)
+
+@keyframes slideDown
+  from
+    transform: translateY(-100%)
+  to
+    transform: translateY(0)
 
 .desktop-nav
   display: flex
@@ -24,12 +79,12 @@
   font-family: Raleway, serif !important
   color: white
   border: none
-  padding: 8px 16px
+  padding: 18px 16px
   margin: 0 5px
   cursor: pointer
   border-radius: unset
   font-size: 16px
-  transition: background 0.3s ease
+  transition: all 0.2s ease
 
   &:hover
     color: white
@@ -42,9 +97,10 @@
 .mobile-nav
   display: none
   align-items: center
-  gap: 10px
+  gap: unset !important
   width: 100%
   justify-content: space-between
+  position: relative
 
 .hamburger-btn
   background: transparent
@@ -54,6 +110,10 @@
   cursor: pointer
   padding: 5px 10px
   margin: 0
+  transition: transform 0.2s ease
+
+  &:hover
+    transform: scale(1.1)
 
 .mobile-calculate-btn
   margin-left: auto
@@ -61,62 +121,120 @@
   border: none
   color: white
   font-size: 16px
-  padding: 8px 16px
+  margin-top: 8px
+  padding-right: 20px
   cursor: pointer
+  transition: all 0.2s ease
 
   &:hover
     color: white
     border-bottom: 3px solid rgba(255, 255, 255, 0.58)
-.mobile-list-items
+
+  &.active
+    color: white
+    border-bottom: 3px solid white
+
+.mobile-menu-container
   display: flex
+  flex-direction: column
+  width: 100%
+
+.mobile-list-items
+  width: 100%
+  display: none
   flex-flow: column
+  gap: 5px
+  padding: 10px 0 5px 0
+  margin-top: 5px
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2)
+
+  &.open
+    display: flex
+    animation: fadeIn 0.3s ease
 
   button
     background: transparent
     font-family: Raleway, serif !important
     color: white
     border: none
-    padding: 8px 16px
-    margin: 0 5px
+    padding: 12px 20px
+    margin: 0
     cursor: pointer
     border-radius: unset
     font-size: 16px
-    transition: background 0.3s ease
+    text-align: left
+    transition: all 0.2s ease
+    width: 100%
 
     &:hover
-      color: white
-      border-bottom: 3px solid rgba(255, 255, 255, 0.58)
+      background: rgba(255, 255, 255, 0.1)
+      border-bottom: none
 
     &.active
       color: white
-      border-bottom: 3px solid white
+      border-left: 3px solid white
+      background: rgba(255, 255, 255, 0.05)
 
-.nav-menu.fixed
-  position: fixed
-  top: 0
-  left: 0
-  background: rgba(7, 7, 7, 0.18)
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2)
-  z-index: 1000
-  margin-top: 0
+@keyframes fadeIn
+  from
+    opacity: 0
+    transform: translateY(-10px)
+  to
+    opacity: 1
+    transform: translateY(0)
 
 .nav-menu-placeholder
   height: 50px
   display: none
 
-.nav-menu.fixed + .nav-menu-placeholder
-  display: block
+  &.active
+    display: block
 
 @media (max-width: 768px)
   .nav-menu
-    padding: 10px 15px
+    padding: 0 15px 0 0
     justify-content: center
+    width: 100%
+    background: rgba(7, 7, 7, 0.25)
+    backdrop-filter: blur(8px)
+    -webkit-backdrop-filter: blur(8px)
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2)
+
+    &.fixed
+      padding: 0 15px 0 0
+      width: 100%
+      background: rgba(7, 7, 7, 0.25)
+      backdrop-filter: blur(8px)
+      -webkit-backdrop-filter: blur(8px)
 
   .desktop-nav
     display: none
 
   .mobile-nav
     display: flex
+    flex-wrap: wrap
 
-  .mobile-calculate-btn.active
-    border-bottom: none
+  .mobile-calculate-btn
+    &.active
+      border-bottom: none
+
+  .mobile-menu-container
+    width: 100%
+    order: 2
+
+  .mobile-list-items
+    width: 100%
+    margin-left: 0
+    border-radius: 12px
+    margin-top: 10px
+
+    button
+      padding: 14px 20px
+
+@media screen and (max-width: 600px)
+  .mobile-calculate-btn
+    background: linear-gradient(180deg, rgb(199, 52, 199) 0%, rgb(65, 168, 231) 100%) !important
+    padding-top: 8px !important
+    padding-bottom: 8px !important
+    font-family: Raleway, serif
+    border-radius: 8px

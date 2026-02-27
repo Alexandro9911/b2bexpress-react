@@ -49,7 +49,6 @@ export default function CalculationForm() {
       from: !formData.from.trim(),
       to: !formData.to.trim(),
       weight: !formData.weight.trim(),
-      volume: !formData.volume.trim(),
       date: !formData.date,
       name: !formData.name.trim(),
       phone: !formData.phone.trim(),
@@ -162,7 +161,6 @@ export default function CalculationForm() {
               placeholder="м³ (кубометры)"
               value={formData.volume}
               onChange={handleChange}
-              required
               min="0"
               step="0.1"
             />
