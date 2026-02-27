@@ -1,4 +1,5 @@
-// Основной блок — без фона (прозрачный)
+// investList.sass
+
 .invest-list
   color: white
   font-family: 'Raleway', sans-serif
@@ -14,7 +15,6 @@
   @media (max-width: 320px)
     padding: 50px 10px
 
-// Контейнер
 .invest-list__container
   max-width: 1200px
   margin: 0 auto
@@ -29,27 +29,16 @@
   @media (max-width: 480px)
     gap: 28px
 
-// === ЗАГОЛОВОК ===
 .invest-list__title
   font-size: 24px
   font-weight: 700
   line-height: 1.2
   text-transform: uppercase
   letter-spacing: 0.8px
-  display: flex
-  flex-direction: column
   position: relative
-  align-items: flex-end
-  text-align: right
-  width: 100%
-  max-width: 1200px
-  margin: 0 auto 20px
-  transform: translateY(20px)
-  transition: opacity 0.6s ease, transform 0.6s ease
-
-  &.is-visible
-    opacity: 1
-    transform: translateY(0)
+  align-self: flex-end
+  margin: 0 0 20px 0
+  width: fit-content
 
   &::before
     content: ''
@@ -67,20 +56,19 @@
   @media (max-width: 768px)
     font-size: 22px
     &::before
-      width: 50%
+      width: 90%
 
   @media (max-width: 480px)
     font-size: 20px
     &::before
-      width: 50%
+      width: 90%
 
   @media (max-width: 320px)
     font-size: 18px
     &::before
-      width: 50%
+      width: 90%
 
-// === ПОДЗАГОЛОВОК ===
-.offer-rules__subtitle
+.invest-list__subtitle
   font-size: 18px
   color: rgba(255, 255, 255, 0.85)
   font-weight: 500
@@ -97,497 +85,336 @@
   @media (max-width: 320px)
     font-size: 15px
 
-// === КАРТОЧКИ ===
 .invest-list__cards
-  display: grid
-  grid-template-columns: repeat(3, 1fr)
-  gap: 32px
+  display: flex
+  justify-content: center
+  gap: 30px
+  flex-wrap: wrap
   width: 100%
 
-  @media (max-width: 1024px)
-    gap: 24px
+  flip-card
+    flex: 1 1 350px
+    max-width: 380px
+    //height: 620px
 
-  @media (max-width: 768px)
-    grid-template-columns: 1fr
-    max-width: 500px
+    @media (max-width: 768px)
+      flex: 1 1 300px
+      max-width: 350px
+      height: 600px
 
-  @media (max-width: 480px)
-    gap: 20px
+    @media (max-width: 480px)
+      flex: 1 1 100%
+      max-width: 100%
+      height: auto
+      min-height: 580px
 
-// === КАРТОЧКА С 3D ПЕРЕВОРОТОМ ===
-.invest-list__card
-  background: transparent
-  border-radius: 16px
-  padding: 0
-  border: none
-  cursor: pointer
-  perspective: 1500px
-  opacity: 0
-  transform: translateY(20px)
-  transition: opacity 0.6s ease, transform 0.6s ease
-  height: 100%
-  display: flex
-  // Фикс для Safari/iOS
-  -webkit-transform-style: preserve-3d
-  transform-style: preserve-3d
+.invest-card__front,
+.invest-card__back
+  width: 100%
+  height: 720px
+  background: #292929
+  border-radius: 20px
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2)
+  transition: transform 0.3s ease
+  border: 1px solid rgba(255, 255, 255, 0.05)
 
-  &.is-visible
-    opacity: 1
-    transform: translateY(0)
+  &::-webkit-scrollbar
+    width: 4px
 
-  &.is-flipped .invest-list__card-inner
-    transform: rotateY(180deg)
+  &::-webkit-scrollbar-track
+    background: rgba(255, 255, 255, 0.02)
+    border-radius: 10px
 
-.invest-list__card-inner
+  &::-webkit-scrollbar-thumb
+    background: rgba(255, 255, 255, 0.1)
+    border-radius: 10px
+
+    &:hover
+      background: rgba(255, 255, 255, 0.2)
+
+.invest-card__image-wrapper
   position: relative
-  width: 100%
-  height: 100%
-  transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1)
-  transform-style: preserve-3d
-  -webkit-transform-style: preserve-3d
-  border-radius: 16px
-  display: flex
-
-.invest-list__card-front,
-.invest-list__card-back
-  width: 100%
-  height: 100%
-  backface-visibility: hidden
-  -webkit-backface-visibility: hidden  // Важно для Safari
-  border-radius: 16px
-  padding: 28px 24px
-  display: flex
-  flex-direction: column
-  gap: 16px
-  background: rgba(255, 255, 255, 0.12)
-  backdrop-filter: blur(12px)
-  border: 1px solid rgba(255, 255, 255, 0.15)
-  box-sizing: border-box
-  // Дополнительный фикс для iOS
-  -webkit-transform: translateZ(0)
-  transform: translateZ(0)
-
-  @media (max-width: 768px)
-    padding: 24px 20px
-
-  @media (max-width: 480px)
-    padding: 16px 14px
-    gap: 12px
-
-  &:hover
-    background: rgba(255, 255, 255, 0.16)
-
-.invest-list__card-front
-  transform: rotateY(0deg)
-  -webkit-transform: rotateY(0deg)
-
-.invest-list__card-back
-  position: absolute
-  top: 0
-  left: 0
-  transform: rotateY(180deg)
-  -webkit-transform: rotateY(180deg)
-  justify-content: flex-start
-  gap: 12px
-  overflow-y: auto
-  // Фикс для предотвращения зеркального отображения
-  -webkit-box-reflect: none
-  box-reflect: none
-
-  @media (max-width: 480px)
-    padding: 16px 12px
-    gap: 8px
-
-// === СТИЛИ ДЛЯ КАРТИНКИ (БАНКОВСКАЯ КАРТА) ===
-.invest-list__card-image-wrapper
-  position: relative
-  width: 100%
-  height: 230px
+  width: 90%
+  height: 210px
+  margin: 16px auto 0
   border-radius: 16px
   overflow: hidden
-  margin-bottom: 8px
-  flex-shrink: 0
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3)
-  // Фикс для iOS
-  -webkit-mask-image: -webkit-radial-gradient(white, black)
-  mask-image: radial-gradient(white, black)
-
-  @media (max-width: 768px)
-    height: 230px
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3)
 
   @media (max-width: 480px)
-    height: 230px
-    border-radius: 12px
-    margin-bottom: 4px
+    height: 200px
+    margin-top: 12px
 
-// Эффект блика на карте
-.invest-list__card-shine
-  position: absolute
-  top: 0
-  left: 0
-  width: 100%
-  height: 100%
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%)
-  pointer-events: none
-  z-index: 2
-  border-radius: inherit
-
-// Название карты (в левой части, выше)
-.invest-list__card-name
-  position: absolute
-  top: 30px
-  left: 20px
-  color: white
-  font-family: 'Courier New', 'OCR A Extended', 'Share Tech Mono', monospace
-  font-size: 16px
-  font-weight: 600
-  letter-spacing: 1px
-  text-transform: uppercase
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5)
-  z-index: 3
-  max-width: 70%
-  line-height: 1.3
-  word-break: break-word
-
-  @media (max-width: 768px)
-    font-size: 15px
-    top: 25px
-    left: 18px
-
-  @media (max-width: 480px)
-    font-size: 14px
-    top: 20px
-    left: 16px
-
-// Сумма на карте (в правом нижнем углу)
-.invest-list__card-amount
-  position: absolute
-  bottom: 20px
-  right: 20px
-  color: white
-  font-family: 'Courier New', 'OCR A Extended', 'Share Tech Mono', monospace
-  font-size: 20px
-  font-weight: 700
-  letter-spacing: 1px
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5)
-  z-index: 3
-
-  @media (max-width: 768px)
-    font-size: 18px
-    bottom: 18px
-    right: 18px
-
-  @media (max-width: 480px)
-    font-size: 16px
-    bottom: 16px
-    right: 16px
-
-.invest-list__card-image
+.invest-card__image
   width: 100%
   height: 100%
   object-fit: cover
-  display: block
-  border-radius: 16px
   filter: brightness(0.9) contrast(1.1)
 
+.invest-card__card-number
+  position: absolute
+  top: 20px
+  left: 20px
+  font-family: 'Courier New', monospace
+  font-size: 14px
+  color: #fff
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5)
+  letter-spacing: 2px
+  //opacity: 0.9
+  font-weight: 400
+  padding: 4px 8px
+  border-radius: 8px
+  backdrop-filter: blur(20px)
+
   @media (max-width: 480px)
-    border-radius: 12px
+    font-size: 12px
+    left: 15px
 
-.invest-list__card-back-image
-  margin-bottom: 4px
+.invest-card__card-amount
+  position: absolute
+  bottom: 20px
+  right: 20px
+  font-family: 'Courier New', monospace
+  font-size: 20px
+  //font-weight: 700
+  color: #fff
+  padding: 4px 8px
+  border-radius: 8px
+  backdrop-filter: blur(20px)
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5)
 
-// === СТИЛИ ДЛЯ ОБОРОТНОЙ СТОРОНЫ ===
-.invest-list__back-block
+  @media (max-width: 480px)
+    font-size: 16px
+    bottom: 15px
+    right: 15px
+
+.invest-card__content
+  padding: 20px 24px
   display: flex
-  flex-direction: column
+  flex-flow: column
+  height: 440px
+
+  @media (max-width: 480px)
+    padding: 16px 20px
+
+.invest-card__header
+  display: flex
+  justify-content: space-between
+  align-items: flex-start
+  margin-bottom: 12px
+  flex-wrap: wrap
   gap: 8px
+
+.invest-card__title
+  font-size: 18px
+  font-weight: 600
+  color: #fff
+  line-height: 1.4
+  margin: 0
   flex: 1
 
   @media (max-width: 480px)
-    gap: 6px
-
-.invest-list__back-main-subtitle
-  font-size: 16px
-  color: white !important
-  text-align: center
-  margin-bottom: 4px
-  font-weight: 600
-
-  @media (max-width: 480px)
-    font-size: 13px
-    margin-bottom: 2px
-
-.invest-list__back-paths
-  display: flex
-  flex-direction: column
-  gap: 6px
-
-  @media (max-width: 480px)
-    gap: 4px
-
-.invest-list__back-path
-  background: rgba(255, 255, 255, 0.05)
-  border-radius: 8px
-  padding: 8px 10px
-
-  @media (max-width: 480px)
-    padding: 5px 7px
-
-.invest-list__back-path-header
-  display: flex
-  align-items: center
-  gap: 6px
-  margin-bottom: 4px
-
-  @media (max-width: 480px)
-    gap: 4px
-    margin-bottom: 2px
-
-.invest-list__back-path-icon
-  font-size: 16px
-
-  @media (max-width: 480px)
-    font-size: 13px
-
-.invest-list__back-path-title
-  font-size: 13px
-  font-weight: 700
-  color: white
-  line-height: 1.3
-
-  @media (max-width: 480px)
-    font-size: 11px
-
-.invest-list__back-path-list
-  list-style: none
-  padding: 0
-  margin: 0 0 0 22px
-
-  @media (max-width: 480px)
-    margin: 0 0 0 16px
-
-  li
-    font-size: 11px
-    color: rgba(255, 255, 255, 0.9)
-    line-height: 1.3
-    margin-bottom: 3px
-    position: relative
-
-    @media (max-width: 480px)
-      font-size: 9px
-      line-height: 1.2
-      margin-bottom: 2px
-
-    &:before
-      content: '•'
-      color: #41a8e7
-      font-weight: bold
-      margin-right: 4px
-      font-size: 10px
-
-    &:last-child
-      margin-bottom: 0
-
-.invest-list__back-hint
-  font-size: 10px
-  color: rgba(255, 255, 255, 0.3)
-  text-align: center
-  border-top: 1px solid rgba(255, 255, 255, 0.1)
-  padding-top: 6px
-  margin-top: 2px
-
-  @media (max-width: 480px)
-    font-size: 8px
-    padding-top: 4px
-
-// === ЗАГОЛОВОК КАРТОЧКИ ===
-.invest-list__card-title
-  font-size: 18px
-  font-weight: 700
-  color: white
-  text-align: center
-  line-height: 1.4
-  margin-bottom: 8px
-
-  @media (max-width: 768px)
-    font-size: 17px
-
-  @media (max-width: 480px)
-    font-size: 14px
-    margin-bottom: 4px
-
-// === БЛОКИ СОДЕРЖИМОГО ===
-.invest-list__subtitle
-  font-size: 15px
-  font-weight: 600
-  color: rgba(255, 255, 255, 0.95)
-  margin-bottom: 8px
-
-  @media (max-width: 480px)
-    font-size: 12px
-    margin-bottom: 4px
-
-.invest-list__income-list,
-.invest-list__ad-list
-  list-style: none
-  padding: 0
-  margin: 0 0 8px 0
-
-  @media (max-width: 480px)
-    margin: 0 0 4px 0
-
-.invest-list__income-item,
-.invest-list__ad-item
-  font-size: 14px
-  color: rgba(255, 255, 255, 0.92)
-  line-height: 1.5
-  margin-bottom: 6px
-
-  @media (max-width: 480px)
-    font-size: 11px
-    line-height: 1.3
-    margin-bottom: 3px
-
-  &:last-child
-    margin-bottom: 0
-
-  &:before
-    content: '•'
-    color: #41a8e7
-    font-weight: bold
-    margin-right: 8px
-
-    @media (max-width: 480px)
-      margin-right: 4px
-
-.invest-list__profit
-  font-size: 15px
-  color: white
-  font-weight: 700
-  margin-bottom: 8px
-
-  @media (max-width: 480px)
-    font-size: 12px
-    margin-bottom: 4px
-
-.invest-list__extra
-  font-size: 14px
-  color: rgba(255, 255, 255, 0.92)
-  line-height: 1.5
-  border-top: 1px solid rgba(255, 255, 255, 0.1)
-  padding-top: 10px
-  margin-top: auto
-
-  @media (max-width: 480px)
-    font-size: 10px
-    padding-top: 6px
-
-// === РЕЗЮМИРУЮЩИЙ ПОДЗАГОЛОВОК ===
-.invest-list__summary
-  margin-top: 24px
-  text-align: center
-  max-width: 700px
-  width: 100%
-
-  @media (max-width: 768px)
-    margin-top: 20px
-
-  @media (max-width: 480px)
-    margin-top: 16px
-
-.invest-list__summary-item
-  display: flex
-  align-items: center
-  justify-content: center
-  gap: 16px
-  font-size: 20px
-  color: rgba(255, 255, 255, 0.95)
-  font-weight: 500
-  line-height: 1.6
-
-  @media (max-width: 768px)
-    gap: 12px
     font-size: 16px
 
-  @media (max-width: 480px)
-    gap: 10px
-    font-size: 14px
+.invest-card__profit
+  font-size: 18px
+  font-weight: 700
+  color: #fff
+  background: linear-gradient(90deg, #c734c7, #41a8e7)
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  background-clip: text
+  margin-bottom: 8px
 
-  @media (max-width: 320px)
-    gap: 8px
+  @media (max-width: 480px)
+    font-size: 16px
+
+.invest-card__subtitle
+  font-size: 14px
+  font-weight: 500
+  color: rgba(255, 255, 255, 0.8)
+  margin-bottom: 10px
+
+  @media (max-width: 480px)
     font-size: 13px
 
-.invest-list__summary-icon
-  width: 54px
-  height: 54px
-  flex-shrink: 0
+.invest-card__list
+  list-style: none
+  padding: 0
+  margin: 0 0 12px 0
 
-  @media (max-width: 768px)
-    width: 22px
-    height: 22px
+  &-item
+    padding: 5px 0
+    font-size: 13px
+    color: rgba(255, 255, 255, 0.9)
+    line-height: 1.4
 
-  @media (max-width: 480px)
-    width: 20px
-    height: 20px
+    &:before
+      content: "•"
+      color: #c734c7
+      font-weight: bold
+      margin-right: 6px
 
-.invest-list__summary-text-block
-  display: flex
-  flex-direction: column
-  align-items: flex-start
-  text-align: left
+    &:last-child
+      padding-bottom: 0
 
-  @media (max-width: 480px)
-    align-items: flex-start
+    @media (max-width: 480px)
+      font-size: 12px
 
-.invest-list__summary-text
-  margin: 0
-  color: inherit
-  font-weight: inherit
-  line-height: 1.5
-
-  &:not(:last-child)
-    margin-bottom: 6px
-
-  @media (max-width: 768px)
-    &:not(:last-child)
-      margin-bottom: 5px
+.invest-card__ad-title
+  font-size: 14px
+  font-weight: 500
+  color: rgba(255, 255, 255, 0.9)
+  margin: 10px 0 6px
 
   @media (max-width: 480px)
-    &:not(:last-child)
-      margin-bottom: 4px
+    font-size: 13px
 
-.gradient-button
+.invest-card__extra
+  font-size: 12px
+  color: rgba(255, 255, 255, 0.7)
+  line-height: 1.4
+  margin: 12px 0 10px !important
+  padding: 10px
+  background: rgba(255, 255, 255, 0.05)
+  border-radius: 10px
+  border-left: 2px solid #c734c7
+
+  @media (max-width: 480px)
+    font-size: 11px
+    padding: 8px
+
+.invest-card__button
   width: 100%
-  padding: 16px 24px
+  padding: 14px
   background: linear-gradient(90deg, #c734c7, #41a8e7)
   color: white
-  font-size: 14px
-  font-family: Raleway, serif
-  font-weight: 600
   border: none
+  margin-top: auto
   border-radius: 12px
+  font-size: 15px
+  font-weight: 600
   cursor: pointer
   transition: all 0.3s ease
-  -webkit-appearance: none  // Фикс для кнопок на iOS
-  appearance: none
+  font-family: 'Raleway', sans-serif
 
   &:hover
-    background: linear-gradient(90deg, #b52cc5, #3a96d4)
     transform: translateY(-2px)
-    box-shadow: 0 10px 20px rgba(65, 168, 231, 0.2)
+    box-shadow: 0 8px 20px rgba(199, 52, 199, 0.3)
 
   &:active
     transform: translateY(0)
-    box-shadow: 0 5px 10px rgba(65, 168, 231, 0.15)
-
-  @media (max-width: 768px)
-    font-size: 17px
-    padding: 14px 20px
 
   @media (max-width: 480px)
-    font-size: 16px
-    padding: 12px 16px
+    padding: 12px
+    font-size: 14px
 
-  @media (max-width: 320px)
-    font-size: 15px
-    padding: 10px 14px
+.invest-card__back-content
+  padding: 20px 24px
+
+  @media (max-width: 480px)
+    padding: 16px 20px
+
+.invest-card__back-title
+  font-size: 18px
+  font-weight: 600
+  margin: 0 0 8px
+  text-align: center
+  color: #fff
+  background: linear-gradient(90deg, #c734c7, #41a8e7)
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  background-clip: text
+
+  @media (max-width: 480px)
+    font-size: 18px
+    margin-bottom: 14px
+
+.invest-card__paths
+  display: flex
+  flex-direction: column
+  gap: 8px
+
+  @media (max-width: 480px)
+    gap: 10px
+
+.invest-card__path
+  display: flex
+  gap: 12px
+  padding: 12px
+  border-radius: 12px
+  background: rgba(255, 255, 255, 0.05)
+  border: 1px solid rgba(255, 255, 255, 0.08)
+
+  @media (max-width: 480px)
+    padding: 10px
+    gap: 10px
+    flex-direction: row
+
+.invest-card__path-icon
+  font-size: 24px
+  min-width: 36px
+  display: flex
+  align-items: center
+  justify-content: center
+
+  @media (max-width: 480px)
+    min-width: auto
+    font-size: 20px
+
+.invest-card__path-content h5
+  font-size: 13px
+  font-weight: 600
+  color: #fff
+  margin: 0 0 4px 0
+
+  @media (max-width: 480px)
+    font-size: 13px
+
+.invest-card__path-content p
+  font-size: 11px
+  color: rgba(255, 255, 255, 0.8)
+  margin: 2px 0
+  line-height: 1.4
+
+  @media (max-width: 480px)
+    font-size: 11px
+
+.invest-card__path-profit
+  font-weight: 600
+  color: #c734c7
+  font-size: 12px
+  margin-top: 4px
+  display: block
+
+  @media (max-width: 480px)
+    font-size: 11px
+
+// === НОВЫЕ СТИЛИ ДЛЯ BACK CONTENT ===
+.invest-card__back-content-block
+  width: 100%
+
+.invest-card__back-highlight
+  font-size: 13px
+  font-weight: 700
+  color: #fff
+  margin: 0 0 8px 0
+  line-height: 1.5
+
+  @media screen and (max-width: 768px)
+    font-size: 12px
+
+.invest-card__back-text
+  font-size: 13px
+  color: rgba(255, 255, 255, 0.9)
+  line-height: 1.5
+  margin: 0 0 8px 0
+
+  @media screen and (max-width: 768px)
+    font-size: 12px
+
+.invest-card__back-text--highlighted
+  font-weight: 700
+
+.invest-card__back-list
+  font-size: 12px

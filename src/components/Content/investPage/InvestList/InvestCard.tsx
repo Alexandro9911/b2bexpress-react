@@ -1,7 +1,7 @@
 import './investList.sass';
-import classNames from "classnames";
-import {OpenModal} from "../../../../utils/modal.tsx";
+import { OpenModal } from "../../../../utils/modal.tsx";
 import InvestorForm from "../../../Forms/InvestorForm/InvestorForm.tsx";
+import FlipCard from './FlipCard.jsx';
 
 interface CardProps {
   id: string;
@@ -13,36 +13,28 @@ interface CardProps {
   ads: string[];
   extra: string;
   image: string;
-  isFlipped: boolean;
-  onFlip: () => void;
+  backPath: any;
 }
 
 export default function InvestCard({
-                                     id,
-                                     title,
-                                     subtitle,
-                                     income,
-                                     profit,
-                                     adTitle,
-                                     ads,
-                                     extra,
-                                     image,
-                                     isFlipped,
-                                     onFlip
-                                   }: CardProps) {
+  id,
+  title,
+  subtitle,
+  income,
+  profit,
+  adTitle,
+  ads,
+  extra,
+  image,
+  backPath,
+}: CardProps) {
 
-  const handleCardClick = () => {
-    onFlip();
+  const handleButtonClick = (e: any) => {
+    e.preventDefault();
+    e.stopPropagation();
+    OpenModal(<InvestorForm id={id}/>)
   };
 
-  const composeCardClasses = () => {
-    return classNames('invest-list__card', {
-      'is-flipped': isFlipped,
-      'is-visible': true
-    });
-  }
-
-  // Функция для извлечения текста до дефиса и удаления суммы
   const getCardName = (fullTitle: string) => {
     // Берем часть до дефиса и удаляем цифры и символ ₽
     const beforeDash = fullTitle.split('—')[0].trim();
@@ -52,118 +44,95 @@ export default function InvestCard({
     return cleanText.replace(/\s+/g, '_');
   };
 
-  // Функция для извлечения суммы
   const getCardAmount = (fullTitle: string) => {
     // Берем часть после дефиса
     const afterDash = fullTitle.split('—')[1]?.trim() || '';
     return afterDash;
   };
 
-  const cardName = getCardName(title);
-  const cardAmount = getCardAmount(title);
-
-  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    e.stopPropagation()
-    OpenModal(<InvestorForm id={id}/>);
+  const onClickFlip = (e: any) => {
+    const cards: any = document.querySelectorAll("flip-card")
+    cards.forEach((card : any) => {
+      const cardAttr = card.attributes['data-id'].value;
+      if(cardAttr == e){
+        card.flip()
+      }
+    })
   }
 
   return (
-    <div
-      className={composeCardClasses()}
-      id={id}
-      onClick={handleCardClick}
-    >
-      <div className="invest-list__card-inner">
-        {/* Лицевая сторона */}
-        <div className="invest-list__card-front">
-          <div className="invest-list__card-image-wrapper">
-            <img src={image} alt={title} className="invest-list__card-image"/>
-            <div className="invest-list__card-shine"></div>
-            <div className="invest-list__card-name">{cardName}</div>
-            <div className="invest-list__card-amount">{cardAmount}</div>
+    <FlipCard
+      id={`card_${id}`}
+      variant="click"
+      frontOfCard={
+        <div className="invest-card__front" onClick={() => onClickFlip(`card_${id}`)}>
+          <div className="invest-card__image-wrapper">
+            <img src={image} alt={title} className="invest-card__image" />
+            <div className="invest-card__card-number">{getCardName(title)}</div>
+            <div className="invest-card__card-amount">{getCardAmount(title)}</div>
           </div>
 
-          <h3 className="invest-list__card-title">{title}</h3>
+          <div className="invest-card__content">
+            <div>
+            <div className="invest-card__header">
+              <h3 className="invest-card__title">{title}</h3>
+            </div>
 
-          <div className="invest-list__income-block">
-            <div className="invest-list__subtitle">{subtitle}</div>
-            <ul className="invest-list__income-list">
+            <p className="invest-card__subtitle">{subtitle}</p>
+
+            <ul className="invest-card__list">
               {income.map((item, index) => (
-                <li key={index} className="invest-list__income-item">{item}</li>
+                <li key={index} className="invest-card__list-item">{item}</li>
               ))}
             </ul>
-            <div className="invest-list__profit">Доходность: <strong>{profit}</strong></div>
-          </div>
+            <div className="invest-card__profit">Доходность: {profit}</div>
 
-          <div className="invest-list__ad-block">
-            <div className="invest-list__subtitle">{adTitle}</div>
-            <ul className="invest-list__ad-list">
+            <p className="invest-card__ad-title">{adTitle}</p>
+
+            <ul className="invest-card__list">
               {ads.map((ad, index) => (
-                <li key={index} className="invest-list__ad-item">{ad}</li>
+                <li key={index} className="invest-card__list-item">{ad}</li>
               ))}
             </ul>
-          </div>
 
-          <div className="invest-list__extra">{extra}</div>
-          <button className="gradient-button" onClick={handleButtonClick}>Стать инвестором</button>
+            <p className="invest-card__extra">{extra}</p>
+            </div>
+            <button
+              className="invest-card__button"
+              onClick={handleButtonClick}
+            >
+              Стать инвестором
+            </button>
+          </div>
         </div>
-
-        {/* Обратная сторона */}
-        <div className="invest-list__card-back">
-          <div className="invest-list__card-image-wrapper invest-list__card-back-image">
-            <img src={image} alt={title} className="invest-list__card-image" />
-            <div className="invest-list__card-shine"></div>
-            <div className="invest-list__card-name">{cardName}</div>
-            <div className="invest-list__card-amount">{cardAmount}</div>
+      }
+      backOfCard={
+        <div className="invest-card__back" onClick={() => onClickFlip(`card_${id}`)}>
+          <div className="invest-card__image-wrapper">
+            <img src={image} alt={title} className="invest-card__image"/>
+            <div className="invest-card__card-number">{getCardName(title)}</div>
+            <div className="invest-card__card-amount">{getCardAmount(title)}</div>
           </div>
 
-          <div className="invest-list__back-block">
-            <div className="invest-list__subtitle invest-list__back-main-subtitle">Как получить профессиональный доход</div>
+          <div className="invest-card__back-content">
+            <h4 className="invest-card__back-title">
+              Как получить профессиональный доход
+            </h4>
 
-            <div className="invest-list__back-paths">
-              <div className="invest-list__back-path">
-                <div className="invest-list__back-path-header">
-                  <span className="invest-list__back-path-icon">🌟</span>
-                  <span className="invest-list__back-path-title">Учиться самому и обучать других</span>
-                </div>
-                <ul className="invest-list__back-path-list">
-                  <li>Полное обучение (от продаж до гендиректора)</li>
-                  <li>Открываешь офис где удобно</li>
-                  <li>Набираешь команду, мы обучаем по методичке</li>
-                  <li>Получаешь 80% / 85% / 90% с каждого в своей сети</li>
-                </ul>
+            <div className="invest-card__paths">
+              <div className="invest-card__path">
+                {backPath}
               </div>
-
-              <div className="invest-list__back-path">
-                <div className="invest-list__back-path-header">
-                  <span className="invest-list__back-path-icon">⚡</span>
-                  <span className="invest-list__back-path-title">Купить готовых логистов</span>
-                </div>
-                <ul className="invest-list__back-path-list">
-                  <li>Покупаешь тариф франшизы (500 тыс / 900 тыс / 2 млн)</li>
-                  <li>Мы обучаем 1/2/5 логистов под ключ за 1 месяц</li>
-                  <li>Они сразу работают в твоём офисе</li>
-                  <li>Ты получаешь 80% / 85% / 90% с каждого</li>
-                </ul>
-              </div>
-
-              <div className="invest-list__back-path">
-                <div className="invest-list__back-path-header">
-                  <span className="invest-list__back-path-icon">🌿</span>
-                  <span className="invest-list__back-path-title">Ничего не делать</span>
-                </div>
-                <ul className="invest-list__back-path-list">
-                  <li>Просто получаешь пассивный доход от автопарка</li>
-                  <li>Продаёшь рекламу на газелях — дополнительный доход</li>
-                </ul>
-              </div>
-
-              <button className="gradient-button" onClick={handleButtonClick}>Стать инвестором</button>
+              <button
+                className="invest-card__button"
+                onClick={handleButtonClick}
+              >
+                Стать инвестором
+              </button>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      }
+    />
   );
 }

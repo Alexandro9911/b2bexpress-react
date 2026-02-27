@@ -93,3 +93,27 @@ html, body {
     top: -10px;
     position: relative;
 }
+
+:root {
+    --flip-card-height: 730px;
+    --flip-card-box-shadow: unset;
+    --flip-card-background-color-front: transparent;
+    --flip-card-background-color-back: transparent;
+    --flip-card-transition-duration: 800ms;
+    --flip-card-transition-timing-function: ease;
+}
+
+.flip-card__side--front {
+    background-color: transparent !important;
+};
+
+flip-card  > [ slot = "back" ] {
+    transform :  scale ( -1 );
+}
+
+/*.card {*/
+/*    height: var(--flip-card-height);*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*}*/

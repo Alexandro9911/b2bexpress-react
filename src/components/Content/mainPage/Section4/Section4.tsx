@@ -11,8 +11,9 @@ export default function Section4(){
           </div>
           <div className="info__sub-title">
             <p>Горячая линия</p>
-            <a href={'tel:89811100101'}>8 981 110 01 01 </a>
+            <a href={'tel: 88004441098,'}>8 (800) 444 10 98</a>
           </div>
+          <div className="dates">C 8:00 до 20:00 Ежедневно</div>
           <div className="info__email">Общая почта: <a href={'mailto:mir_logistiki01@bk.ru'}>mir_logistiki01@bk.ru</a></div>
           <div className="info__contacts">
             <div className="contact-item">

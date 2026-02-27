@@ -13,9 +13,10 @@ const NavMenuInvest: React.FC = () => {
   const buttonConfigs = [
     { id: 'aboutUs', text: 'О нас', path: '/', sectionId: 'aboutUs' },
     { id: 'services', text: 'Услуги', path: '/', sectionId: 'services' },
+    { id: 'investors', text: 'Для инвесторов', path: '/invest', sectionId: 'none' },
     { id: 'feedback', text: 'Оставить отзыв', path: '/', sectionId: 'feedback' },
     { id: 'contacts', text: 'Контакты', path: '/', sectionId: 'contacts' },
-    { id: 'none2', text: 'Стать инвестором', path: '/invest', sectionId: 'none2' },
+    // { id: 'becomeInvestor', text: 'Стать инвестором', path: '/invest', sectionId: 'none2' },
   ];
 
   // Функция для скролла к разделу на главной странице
@@ -110,23 +111,21 @@ const NavMenuInvest: React.FC = () => {
               data-section={btn.id}
               type="button"
               onClick={() => handleMenuClick(btn)}
-              className={activeSection === btn.id ? 'active' : ''}
+              className={(activeSection === btn.id || btn.id === 'investors') ? 'active' : ''}
             >
               {btn.text}
             </button>
           ))}
           <button
-            className={activeSection === 'investors' ? 'active' : ''}
-            data-section="investors"
             type="button"
             onClick={() => handleMenuClick({
-              id: 'investors',
-              text: 'Для инвесторов',
+              id: 'none2',
+              text: 'Стать инвестором',
               path: '/invest',
-              sectionId: 'investors'
+              sectionId: 'none2'
             })}
           >
-            Для инвесторов
+            Стать инвестором
           </button>
         </div>
 
@@ -166,19 +165,6 @@ const NavMenuInvest: React.FC = () => {
                   {btn.text}
                 </button>
               ))}
-              <button
-                className={activeSection === 'investors' ? 'active' : ''}
-                data-section="investors"
-                type="button"
-                onClick={() => handleMenuClick({
-                  id: 'investors',
-                  text: 'Для инвесторов',
-                  path: '/invest',
-                  sectionId: 'investors'
-                })}
-              >
-                Для инвесторов
-              </button>
             </div>
           </div>
         </div>

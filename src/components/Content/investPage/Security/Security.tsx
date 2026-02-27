@@ -1,6 +1,7 @@
 import './security.sass';
 import Overlay from '../../../common/Overlay/Overlay.tsx';
 import BackgroundImage from '../../../../assets/images/bigCarWithLogo.jpg';
+import ProtectionImage from '../../../../assets/icons/protection.png';
 
 export default function Security() {
   const items = [
@@ -15,17 +16,18 @@ export default function Security() {
   return (
     <section className="security">
       <Overlay imageSrc={BackgroundImage}>
-        {/* Контейнер для правого выравнивания всего содержимого */}
-        <div className="security__content-wrapper">
-          {/* Заголовок — по правому краю */}
-          <div className="security__header-wrapper">
-            <h2 className="security__title">
-              <span className="security__title-line">ПОЛНАЯ ЗАЩИТА</span>
-            </h2>
-          </div>
+        {/* Заголовок — вынесен отдельно, по правому краю */}
+        <div className="security__header-wrapper">
+          <h2 className="security__title">
+            <span className="security__title-line">ПОЛНАЯ ЗАЩИТА</span>
+          </h2>
+        </div>
 
-          {/* Основной контент — правая половина */}
-          <div className="security__container">
+        {/* Основной контент — флекс: картинка слева, список справа */}
+        <div className="security__content-wrapper">
+          <img src={ProtectionImage} alt="Защита" className="security__protection-image" />
+
+          <div className="security__list-container">
             <ul className="security__list">
               {items.map((text, index) => (
                 <li
@@ -33,7 +35,6 @@ export default function Security() {
                   className="security__item"
                   style={{ '--delay': `${index * 0.1}s` } as React.CSSProperties}
                 >
-                  <span className="security__icon">🛡</span>
                   <span className="security__text">{text}</span>
                 </li>
               ))}

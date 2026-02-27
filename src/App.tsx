@@ -1,10 +1,11 @@
-import './index.css'
+import './index.scss'
 import Header from "./components/Header/Header.tsx";
 import ScrollToTopButton from "./components/ScrollToTopButton/ScrollToTopButton.tsx";
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import MainPage from "./pages/main/MainPage.tsx";
 import PageInvest from "./pages/invest/PageInvest.tsx";
+// import ThemeToggle from "./components/ThemeToggle/ThemeToggle.tsx";
 function App() {
 
   useEffect(() => {
@@ -22,10 +23,11 @@ function App() {
         />
         <Route
           path="/invest"
-          element={<PageInvest />}
+          element={<PageInvest/>}
         />
       </Routes>
-      <ScrollToTopButton />
+      <ScrollToTopButton/>
+      {/*<ThemeToggle/>*/}
       <div className="footer">
         <Header/>
       </div>

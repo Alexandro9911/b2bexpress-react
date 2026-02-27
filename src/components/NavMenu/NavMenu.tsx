@@ -26,10 +26,10 @@ const NavMenu: React.FC = () => {
   const buttonConfigs = [
     { id: 'aboutUs', text: 'О нас' },
     { id: 'services', text: 'Услуги' },
+    { id: 'investors', text: 'Для инвесторов', actionButton: onClickInvestButton },
     { id: 'feedback', text: 'Оставить отзыв' },
     { id: 'contacts', text: 'Контакты' },
-    { id: 'investors', text: 'Для инвесторов', actionButton: onClickInvestButton },
-    { id: 'calculate', text: 'Рассчитать стоимость', actionButton: calcButtonAction },
+    // { id: 'calculate', text: 'Рассчитать стоимость', actionButton: calcButtonAction },
   ];
 
   const handleScroll = useCallback(() => {

@@ -8,6 +8,33 @@
   width: 100%
   box-sizing: border-box
 
+// === Светлая тема ===
+body.light-theme
+  .wrapper
+    background: #f8f9fa
+    color: #2c3e50
+
+  .cards-container
+    .card
+      background: rgba(255, 255, 255, 0.8)
+      color: #2c3e50
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12)
+      border: 1px solid rgba(0, 0, 0, 0.1)
+
+      &:hover
+        background: white
+        transform: translateY(-6px)
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18)
+
+      .card__title
+        color: #1a1a1a
+
+      .card__text
+        color: #444
+
+      .card__icon
+        filter: brightness(0.7)
+
 @media (max-width: 768px)
   .wrapper
     padding-left: 8px
@@ -21,8 +48,6 @@
   justify-content: center
   width: 100%
   position: relative
-
-  // Убираем min-height: 600px — больше не нужно
 
   @media (min-width: 769px)
     .card
@@ -66,6 +91,10 @@
   margin-left: 120px
   margin-bottom: 40px
   margin-top: 40px
+  color: white
+
+  body.light-theme &
+    color: #2c3e50
 
   @media (max-width: 768px)
     margin-left: 8px
@@ -80,6 +109,9 @@
   font-size: 25px
   margin: 34px 0
   color: white
+
+  body.light-theme &
+    color: #2c3e50
 
   @media (max-width: 768px)
     font-size: 22px

@@ -100,6 +100,7 @@
 
   @media (max-width: 1024px)
     gap: 32px
+    grid-template-columns: 1fr
 
   @media (max-width: 768px)
     grid-template-columns: 1fr
@@ -118,7 +119,10 @@
   min-height: 500px
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1)
   aspect-ratio: 1 / 1
-
+  @media (max-width: 1024px)
+    max-height: 400px
+    margin-left: auto
+    margin-right: auto
   @media (max-width: 768px)
     background-position: unset
     min-height: 300px

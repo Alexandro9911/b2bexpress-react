@@ -1,4 +1,7 @@
 import './startNow.sass';
+import Time from '../../../../assets/icons/time-management.png';
+import Calendar from '../../../../assets/icons/calendar.png';
+import Closed from '../../../../assets/icons/unprotected.png';
 
 export default function StartNow() {
   return (
@@ -13,17 +16,43 @@ export default function StartNow() {
       {/* Основной контент */}
       <div className="start-now__container">
         <div className="start-now__cards">
-          <div className="start-now__card">
-            <span className="start-now__card-icon">⏳</span>
-            <p className="start-now__card-text">Через год условия могут измениться</p>
+          {/* Первая строка — две карточки */}
+          <div className="start-now__cards-row">
+            {/* Первая карточка — "Завтра — это не когда" */}
+            <div className="start-now__card start-now__card--time">
+              <span className="start-now__card-icon">
+                <img src={Time} alt="Время решает" />
+              </span>
+              <p className="start-now__card-text">
+                Завтра — это не когда. Завтра — это просто слово, которым мы оправдываем свое бездействие. Сегодня — это единственная реальность,
+                где принимаются решения. Те, кто ждут «завтра», зачастую остаются вчера.
+              </p>
+            </div>
+
+            {/* Вторая карточка — "Физическое закрытие" */}
+            <div className="start-now__card start-now__card--closed">
+              <span className="start-now__card-icon">
+                <img src={Closed} alt="Физическое закрытие входа" />
+              </span>
+              <p className="start-now__card-text">
+                Физическое закрытие входа в Компанию. Мы находимся на финальной стадии формирования юридического реестра инвесторов.
+                Как только мы превысим лимит в 5 инвесторов, регистрация новых участников станет невозможна до следующего раунда инвестиций
+                (где минимальный чек будет выше в 2 раза). Сегодня — это тот день, когда мы физически можем добавить новых людей в действующий пул.
+                Возможно, завтра реестр будет уже закрыт.
+              </p>
+            </div>
           </div>
-          <div className="start-now__card">
-            <span className="start-now__card-icon">⏳</span>
-            <p className="start-now__card-text">Проценты по картам могут быть пересмотрены</p>
-          </div>
-          <div className="start-now__card">
-            <span className="start-now__card-icon">⏳</span>
-            <p className="start-now__card-text">Сейчас Вы заходите в действующий бизнес с историей</p>
+
+          {/* Вторая строка — одна карточка по центру */}
+          <div className="start-now__cards-single">
+            <div className="start-now__card start-now__card--calendar">
+              <span className="start-now__card-icon">
+                <img src={Calendar} alt="Календарь" />
+              </span>
+              <p className="start-now__card-text">
+                Следующий раунд инвестиций — 2027 год.
+              </p>
+            </div>
           </div>
         </div>
 

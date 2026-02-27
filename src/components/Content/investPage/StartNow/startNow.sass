@@ -99,9 +99,39 @@
 
 // === КАРТОЧКИ ===
 .start-now__cards
-  display: grid
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))
+  display: flex
+  flex-direction: column
   gap: 24px
+  width: 100%
+
+// Первая строка — контейнер для двух карточек
+.start-now__cards-row
+  display: flex
+  gap: 24px
+  width: 100%
+
+  @media (max-width: 768px)
+    flex-direction: column
+
+// Карточки в первой строке
+.start-now__card--time,
+.start-now__card--closed
+  flex: 1
+  min-width: 0 // Чтобы корректно работало сжатие
+
+// Вторая строка — одна карточка по центру
+.start-now__cards-single
+  display: flex
+  justify-content: center
+  width: 100%
+
+.start-now__card--calendar
+  max-width: 380px
+  width: 100%
+  text-align: center
+
+  @media (max-width: 768px)
+    max-width: none
 
 // === ОДНА КАРТОЧКА ===
 .start-now__card
@@ -125,6 +155,10 @@
   font-size: 24px
   align-self: center
 
+  img
+    width: 50px
+    height: 50px
+
 // === ТЕКСТ В КАРТОЧКЕ ===
 .start-now__card-text
   font-size: 17px
@@ -132,7 +166,6 @@
   color: white
   line-height: 1.5
   margin: 0
-  text-align: center
 
   @media (max-width: 768px)
     font-size: 16px

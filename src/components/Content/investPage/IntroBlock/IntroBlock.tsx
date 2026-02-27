@@ -37,22 +37,21 @@ export default function IntroBlock() {
           </h2>
 
           <div className="intro-block__cards">
+
             <div className="intro-block__card" data-animate="fade-up">
-              <div className="intro-block__card-number">2,61 <span>трлн ₽</span></div>
-              <div className="intro-block__card-label">Объём рынка в 2024 году</div>
-              <div className="intro-block__card-sublabel">+13% к предыдущему году</div>
+              <div className="intro-block__card-number">2,63 <span>трлн ₽</span></div>
+              <div className="intro-block__card-label">Объём рынка в 2025 году</div>
+
             </div>
 
             <div className="intro-block__card" data-animate="fade-up" data-delay="100">
-              <div className="intro-block__card-number">2,63 <span>трлн ₽</span></div>
-              <div className="intro-block__card-label">Объём рынка в 2025 году</div>
-              <div className="intro-block__card-sublabel">Несмотря на замедление темпов роста до 1%, рынок остаётся на стабильно высоком уровне</div>
+              <div className="intro-block__card-number">+2,8 %</div>
+              <div className="intro-block__card-label">Рост грузооборота автотранспорта</div>
             </div>
 
             <div className="intro-block__card" data-animate="fade-up" data-delay="200">
-              <div className="intro-block__card-number">+3,5%</div>
-              <div className="intro-block__card-label">Рост физического объёма перевозок</div>
-              <div className="intro-block__card-sublabel">в 2025 году</div>
+              <div className="intro-block__card-number">+13 %</div>
+              <div className="intro-block__card-label">Рост рынка годом ранее</div>
             </div>
           </div>
 
