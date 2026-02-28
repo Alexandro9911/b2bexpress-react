@@ -74,28 +74,29 @@ export default function InvestCard({
 
           <div className="invest-card__content">
             <div>
-            <div className="invest-card__header">
-              <h3 className="invest-card__title">{title}</h3>
-            </div>
+              <div className='invest-card__more-label'>Нажмите чтобы узнать подробности</div>
+              <div className="invest-card__header">
+                <h3 className="invest-card__title">{title}</h3>
+              </div>
 
-            <p className="invest-card__subtitle">{subtitle}</p>
+              <p className="invest-card__subtitle">{subtitle}</p>
 
-            <ul className="invest-card__list">
-              {income.map((item, index) => (
-                <li key={index} className="invest-card__list-item">{item}</li>
-              ))}
-            </ul>
-            <div className="invest-card__profit">Доходность: {profit}</div>
+              <ul className="invest-card__list">
+                {income.map((item, index) => (
+                  <li key={index} className="invest-card__list-item">{item}</li>
+                ))}
+              </ul>
+              <div className="invest-card__profit">Доходность: {profit}</div>
 
-            <p className="invest-card__ad-title">{adTitle}</p>
+              <p className="invest-card__ad-title">{adTitle}</p>
 
-            <ul className="invest-card__list">
-              {ads.map((ad, index) => (
-                <li key={index} className="invest-card__list-item">{ad}</li>
-              ))}
-            </ul>
+              <ul className="invest-card__list">
+                {ads.map((ad, index) => (
+                  <li key={index} className="invest-card__list-item">{ad}</li>
+                ))}
+              </ul>
 
-            <p className="invest-card__extra">{extra}</p>
+              <p className="invest-card__extra">{extra}</p>
             </div>
             <button
               className="invest-card__button"

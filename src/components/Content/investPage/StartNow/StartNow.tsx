@@ -2,8 +2,15 @@ import './startNow.sass';
 import Time from '../../../../assets/icons/time-management.png';
 import Calendar from '../../../../assets/icons/calendar.png';
 import Closed from '../../../../assets/icons/unprotected.png';
+import {OpenModal} from "../../../../utils/modal.tsx";
+import InvestorForm from "../../../Forms/InvestorForm/InvestorForm.tsx";
 
 export default function StartNow() {
+
+  const handleClick = () => {
+    OpenModal(<InvestorForm id={'1'}/>);
+  }
+
   return (
     <section className="start-now">
       {/* Заголовок — по правой стороне */}
@@ -58,7 +65,9 @@ export default function StartNow() {
 
         {/* Резюмирующий подзаголовок */}
         <div className="start-now__summary">
-          <p className="start-now__summary-text">🚀 Лучший момент — пока другие думают.</p>
+          <button className="start-now__summary-text" onClick={handleClick}>
+            Лучший момент — пока другие думают.
+          </button>
         </div>
       </div>
     </section>

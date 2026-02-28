@@ -45,9 +45,11 @@
     gap: 6px
 
   .contact
-    font-size: 18px
+    //font-size: 18px
     margin: 0
     line-height: 1.4
+    font-family: Gravity, serif
+    font-size: 24px
 
     a
       text-decoration: none
@@ -75,9 +77,10 @@
 // === Светлая тема ===
 body.light-theme
   .header
-    background: #ccc
+    background: #ffffff
     color: #2c3e50 !important
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1)
+
 
     .header__title h2
       color: #2c3e50
@@ -130,7 +133,8 @@ body.light-theme
     gap: 4px
 
   .contact
-    font-size: 16px
+    a
+      font-size: 18px
 
   .contact_small
     font-size: 12px
@@ -182,3 +186,8 @@ body.light-theme
 
   .contact_small
     font-size: 10px
+
+
+.header-bottom
+  position: relative
+  bottom: -10px

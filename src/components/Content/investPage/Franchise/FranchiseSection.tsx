@@ -1,16 +1,22 @@
 import './franchiseSection.sass';
 import Overlay from '../../../common/Overlay/Overlay.tsx';
 import ImageOverlay from '../../../../assets/images/slider2.png';
-
+import TeamIcon from '../../../../assets/icons/team.png';
+import ScaleIcon from '../../../../assets/icons/scale.png';
+import DocumentIcon from '../../../../assets/icons/document.png';
+import LocationIcon from '../../../../assets/icons/location-pin.png';
+import SecurityIcon from '../../../../assets/icons/security-guard.png';
+import CashIcon from '../../../../assets/icons/cash-bag.png';
+import Award from '../../../../assets/icons/award.png';
 export default function FranchiseSection() {
   const items = [
-    { icon: '👥', label: 'Люди', text: 'Обученные логисты под ключ (1/2/5 человек), 1 месяц обучения' },
-    { icon: '🧑‍⚖️', label: 'Юридическая помощь', text: 'Договоры, споры, консультации' },
-    { icon: '📊', label: 'Бухгалтерия', text: 'Налоги, отчёты, документы' },
-    { icon: '🚔', label: 'Служба безопасности', text: 'Проверка клиентов и исполнителей' },
-    { icon: '💰', label: 'Финансовые риски', text: 'Компания берёт на себя после проверки' },
-    { icon: '🚀', label: 'Право открыть офис', text: 'В любом городе' },
-    { icon: '🔥', label: 'Бренд', text: 'Вы работаете под именем «Мир Логистики»' }
+    { icon: TeamIcon, label: 'Люди', text: 'Обученные логисты под ключ (1/2/5 человек), 1 месяц обучения' },
+    { icon: ScaleIcon, label: 'Юридическая помощь', text: 'Договоры, споры, консультации' },
+    { icon: DocumentIcon, label: 'Бухгалтерия', text: 'Налоги, отчёты, документы' },
+    { icon: SecurityIcon, label: 'Служба безопасности', text: 'Проверка клиентов и исполнителей' },
+    { icon: CashIcon, label: 'Финансовые риски', text: 'Компания берёт на себя после проверки' },
+    { icon: LocationIcon, label: 'Право открыть офис', text: 'В любом городе' },
+    { icon: Award, label: 'Бренд', text: 'Вы работаете под именем «Мир Логистики»' }
   ];
 
   const firstRow = items.slice(0, 4);
@@ -71,8 +77,11 @@ export default function FranchiseSection() {
                   </div>
                   <div className="franchise-table__cell">
                     <span className="franchise-table__cell-title">Что Вы получаете</span>
-                    <span className="franchise-table__cell-value">{level.get}</span>
-                    {level.bonus && <div className="franchise-table__bonus">{level.bonus}</div>}
+                    <div className="cell-with-bonus">
+                      <span className="franchise-table__cell-value">{level.get}</span>
+                      {level.bonus && <div className="franchise-table__bonus">{level.bonus}</div>}
+                    </div>
+
                   </div>
                   <div className="franchise-table__cell">
                     <span className="franchise-table__cell-title">Ваш доход</span>
@@ -90,7 +99,7 @@ export default function FranchiseSection() {
               <div className="franchise-included-row">
                 {firstRow.map((item, index) => (
                   <div key={index} className="franchise-included-item">
-                    <div className="franchise-included-item__icon">{item.icon}</div>
+                    <div className="franchise-included-item__icon"><img src={item.icon}/></div>
                     <div className="franchise-included-item__label">{item.label}</div>
                     <div className="franchise-included-item__text">{item.text}</div>
                   </div>
@@ -100,7 +109,7 @@ export default function FranchiseSection() {
               <div className="franchise-included-row franchise-included-row--centered">
                 {secondRow.map((item, index) => (
                   <div key={index} className="franchise-included-item">
-                    <div className="franchise-included-item__icon">{item.icon}</div>
+                    <div className="franchise-included-item__icon"><img src={item.icon}/></div>
                     <div className="franchise-included-item__label">{item.label}</div>
                     <div className="franchise-included-item__text">{item.text}</div>
                   </div>

@@ -140,6 +140,7 @@
   background-clip: text
   min-width: 60px
   text-align: center
+  font-family: Gravity, serif
 
   @media (max-width: 480px)
     font-size: 22px
@@ -205,3 +206,36 @@
   to
     opacity: 1
     transform: translateY(0)
+
+
+// === Светлая тема — светло-серая, белая с полупрозрачностью и мягкими тенями ===
+body.light-theme
+  .become-investor
+    color: #2c3e50
+    background: #f8f9fa
+    padding-bottom: 20px
+
+  .become-investor__title
+    color: #1a1a1a
+
+    &::before
+      background: linear-gradient(90deg, #c734c7, #41a8e7) // градиент сохранён
+
+  .become-investor__step-number
+    background: linear-gradient(90deg, #c734c7, #41a8e7) // градиентный текст остаётся
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    background-clip: text
+
+  .become-investor__step-text
+    color: #1a1a1a
+
+  .become-investor__final
+    color: #666
+
+  .become-investor__visual
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08)
+    border: 1px solid rgba(200, 200, 200, 0.6)
+
+  .become-investor__image
+    border-radius: 16px

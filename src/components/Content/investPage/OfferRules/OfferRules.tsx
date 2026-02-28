@@ -45,6 +45,11 @@ export default function OfferRules() {
       setIsTransitioning(true);
       setActiveIndex(index);
     }
+    if (index === activeIndex && !isTransitioning) {
+      setIsTransitioning(true);
+      const newIndex = index < 2 ? index + 1 : 0
+       setActiveIndex(newIndex);
+    }
   };
 
   const getPositionClasses = (index: number) => {

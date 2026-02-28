@@ -185,6 +185,7 @@
     transform: translateY(0)
 
 .logist-skill-item__icon
+  font-family: Gravity, serif
   flex-shrink: 0
   width: 40px
   height: 40px
@@ -237,3 +238,28 @@
 
   @media (max-width: 768px)
     font-size: 12px
+
+// === Светлая тема — светло-серая, белая с полупрозрачностью и мягкими тенями ===
+body.light-theme
+  .logist-skills
+    color: #2c3e50
+    background: #d8d8d8
+
+  .logist-skills__title
+    color: #1a1a1a
+
+    &::before
+      background: linear-gradient(90deg, #c734c7, #41a8e7) // градиент сохранён
+
+  .logist-skills__image
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08)
+    border: 1px solid rgba(200, 200, 200, 0.6)
+
+  .logist-skill-item__title
+    color: #1a1a1a
+
+  .logist-skill-item__description
+    color: #444
+
+  .logist-skill-item__icon
+    background: linear-gradient(135deg, #c734c7, #41a8e7) // градиент иконки сохранён

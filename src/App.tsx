@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import MainPage from "./pages/main/MainPage.tsx";
 import PageInvest from "./pages/invest/PageInvest.tsx";
-// import ThemeToggle from "./components/ThemeToggle/ThemeToggle.tsx";
+import ThemeToggle from "./components/ThemeToggle/ThemeToggle.tsx";
 function App() {
 
   useEffect(() => {
@@ -27,9 +27,9 @@ function App() {
         />
       </Routes>
       <ScrollToTopButton/>
-      {/*<ThemeToggle/>*/}
+      <ThemeToggle/>
       <div className="footer">
-        <Header/>
+        <Header isFooter/>
       </div>
     </div>
   )
