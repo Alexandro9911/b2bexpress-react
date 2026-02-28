@@ -20,15 +20,38 @@
   opacity: 1
   transform: translateY(0)
   visibility: visible
+  overflow: hidden
 
   &:hover
     background: rgba(255, 255, 255, 0.3)
     transform: translateY(-2px)
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1)
 
+  // Показываем только иконку на мобильных и планшетах
+  @media (max-width: 1023px)
+    .theme-toggle__text
+      display: none
+
+  // На десктопе — раскрываем текст
+  @media (min-width: 1024px)
+    width: auto
+    padding: 0 16px
+    border-radius: 24px
+    gap: 8px
+
+    .theme-toggle__icon
+      margin: 0
+      font-size: 18px
+
+    .theme-toggle__text
+      display: inline
+      font-size: 14px
+      font-weight: 500
+      white-space: nowrap
+
 // Темы
 body.dark-theme
-  background-color: #111
+  background-color: black
   color: #eee
 
 body.light-theme

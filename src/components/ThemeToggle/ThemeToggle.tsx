@@ -24,7 +24,10 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={isDarkTheme ? "Включить светлую тему" : "Включить тёмную тему"}
     >
-      {isDarkTheme ? "☀️" : "🌙"}
+      <span className="theme-toggle__icon">{isDarkTheme ? "🌙" : "☀️"}</span>
+      <span className="theme-toggle__text">
+        {isDarkTheme ? "Темная тема" : "Светлая тема"}
+      </span>
     </button>
   );
 }

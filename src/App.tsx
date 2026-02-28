@@ -29,7 +29,7 @@ function App() {
       <ScrollToTopButton/>
       <ThemeToggle/>
       <div className="footer">
-        <Header/>
+        <Header isFooter/>
       </div>
     </div>
   )

@@ -141,6 +141,9 @@
     margin-bottom: 16px
     padding: 16px
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)
+.cell-with-bonus
+  display: flex
+  flex-flow: column
 
 .franchise-table__cell
   display: flex
@@ -172,13 +175,17 @@
   text-transform: uppercase
   letter-spacing: 0.5px
 
+  @media (max-width: 769px)
+    align-self: start
+
   @media (min-width: 769px)
     display: none
 
 .franchise-table__cell-value
   font-size: 15px
-  font-weight: 600
   color: white
+  font-family: Gravity, serif
+  font-weight: 100
 
 .franchise-table__bonus
   margin-top: 8px
@@ -249,16 +256,25 @@
     font-size: 24px
     margin-bottom: 6px
     text-align: center
+    height: 30px
+    width: 30px
+    align-self: center
+    img
+      height: 30px
+      width: 30px
+
 
   &__label
     font-size: 15px
     font-weight: 600
     color: white
 
+
   &__text
     font-size: 13px
     color: rgba(255, 255, 255, 0.8)
     line-height: 1.5
+    font-family: Gravity, serif
 
   @media (max-width: 768px)
     min-width: 220px
@@ -353,3 +369,7 @@ body.light-theme
   .section-with-overlay .overlay-background-img
     filter: brightness(0.2) contrast(1.0)
     opacity: 0.5
+
+  .franchise-table__cell-title
+    color: black
+    font-weight: bold

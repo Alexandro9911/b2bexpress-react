@@ -157,6 +157,7 @@
 
 .service-text
   font-size: 15px
+  font-family: Gravity, serif
   line-height: 1.6
   color: rgba(255, 255, 255, 0.95)
   margin-bottom: 24px
@@ -178,8 +179,8 @@
         font-weight: bold
 
 .service-button
-  background: rgba(79, 195, 247, 0.2)
-  border: 1px solid rgba(255, 255, 255, 0.3)
+  background: linear-gradient(90deg, #c734c7, #41a8e7)
+  border: unset
   color: white
   padding: 12px 24px
   border-radius: 8px
@@ -421,6 +422,7 @@ body.light-theme
   .service-text
     color: #444
     line-height: 1.7
+    font-weight: bold
 
     ul li
       color: #444
@@ -429,13 +431,14 @@ body.light-theme
         color: #0055aa
 
   .service-button
-    background: rgba(0, 85, 170, 0.1)
-    border: 1px solid rgba(0, 85, 170, 0.3)
-    color: #0055aa
+    background: linear-gradient(90deg, #c734c7, #41a8e7)
+    border: unset
+    color: white
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1)
 
     &:hover
       background: rgba(0, 85, 170, 0.2)
-      color: #004080
+      color: white
+      font-weight: bold
       transform: translateY(-2px)
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)
