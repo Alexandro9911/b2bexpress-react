@@ -200,3 +200,38 @@
 
   @media (max-width: 320px)
     font-size: 17px
+
+// === Светлая тема — светло-серая, белая с полупрозрачностью и мягкими тенями ===
+body.light-theme
+  .start-now
+    color: #2c3e50
+    background: #f8f9fa
+
+  .start-now__title
+    color: #1a1a1a
+
+    &::before
+      background: linear-gradient(90deg, #c734c7, #41a8e7) // градиент сохранён
+
+  .start-now__card
+    background: rgba(255, 255, 255, 0.7)
+    border: 1px solid rgba(200, 200, 200, 0.5)
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08)
+    backdrop-filter: blur(10px)
+    -webkit-backdrop-filter: blur(10px)
+    transition: all 0.3s ease
+
+    &:hover
+      transform: translateY(-6px)
+      background: rgba(255, 255, 255, 0.9)
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.12)
+
+  .start-now__card-text
+    color: #1a1a1a
+
+  .start-now__summary-text
+    background: linear-gradient(90deg, #c734c7, #41a8e7)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    background-clip: text
+    color: transparent

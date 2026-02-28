@@ -403,3 +403,51 @@ $slide-top-bottom-scale: 1 // 240 * 1 = 240px
   opacity: 1
   transform: none
   animation: none
+
+// === Светлая тема — светло-серая, белая с полупрозрачностью и мягкими тенями ===
+body.light-theme
+  .offer-rules
+    background: #d8d8d8
+    color: #2c3e50
+    padding: 0 40px 20px
+
+    .offer-rules__subtitle
+      color: #666
+
+    .offer-rules__conclusion
+      color: #1a1a1a
+
+  .offer-rules__title
+    color: #1a1a1a
+
+    &::before
+      background: linear-gradient(90deg, #c734c7, #41a8e7) // градиент сохранён
+
+  .offer-rules__card
+    background: rgba(255, 255, 255, 0.7)
+    border: 1px solid rgba(200, 200, 200, 0.5)
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08)
+    backdrop-filter: blur(10px)
+    -webkit-backdrop-filter: blur(10px)
+
+    &:hover
+      background: rgba(255, 255, 255, 0.9)
+      transform: translateY(-4px)
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12)
+
+  .offer-rules__card-title
+    color: #1a1a1a
+
+  .offer-rules__card-list
+    color: #444
+
+    li::before
+      color: #41a8e7
+
+  .offer-rules__slide
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12)
+
+    &--center,
+    &--top,
+    &--bottom
+      border: 1px solid rgba(200, 200, 200, 0.6)

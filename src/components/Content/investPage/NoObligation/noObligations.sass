@@ -231,3 +231,43 @@
     height: 240px
     min-height: 240px
     border-radius: 12px
+
+// === Светлая тема — светло-серая, белая с полупрозрачностью и мягкими тенями ===
+body.light-theme
+  .no-obligations
+    color: #2c3e50
+    background: #f8f9fa
+
+  .no-obligations__title
+    color: #1a1a1a
+
+    &::before
+      background: linear-gradient(90deg, #c734c7, #41a8e7) // градиент сохранён
+
+  .no-obligations__item
+    color: #444
+    background: rgba(255, 255, 255, 0.7)
+    border: 1px solid rgba(200, 200, 200, 0.5)
+    backdrop-filter: blur(10px)
+    -webkit-backdrop-filter: blur(10px)
+    transition: all 0.3s ease
+
+    &:hover
+      transform: translateY(-2px)
+      background: rgba(255, 255, 255, 0.9)
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1)
+
+  .no-obligations__final
+    background: rgba(65, 168, 231, 0.1)
+    border: 1px solid rgba(65, 168, 231, 0.3)
+    color: #1a1a1a
+
+    .no-obligations__final-text
+      color: #1a1a1a
+
+  .no-obligations__image
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08)
+    border: 1px solid rgba(200, 200, 200, 0.6)
+
+    &:hover
+      transform: scale(1.02)

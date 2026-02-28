@@ -179,3 +179,56 @@
 
     &__text
       font-size: 12px
+
+// === Светлая тема — светло-серая, белая с полупрозрачностью и мягкими тенями ===
+body.light-theme
+  .section2_1
+    position: relative
+    top: -10px
+    .content-overlay
+      color: #2c3e50
+      background: rgb(248 249 250 / 70%)
+      //backdrop-filter: blur(10px)
+      //-webkit-backdrop-filter: blur(10px)
+      padding: 40px 20px
+      margin: unset
+      max-width: unset
+
+    .title
+      color: #1a1a1a
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
+      background: linear-gradient(90deg, #c734c7, #41a8e7)
+      -webkit-background-clip: text
+      -webkit-text-fill-color: transparent
+      background-clip: text
+      position: relative
+      display: inline-block
+      padding: 10px 24px
+      border-radius: 12px
+
+  .step-item
+    &__icon
+      background: rgba(255, 255, 255, 0.7)
+      border: 1px solid rgba(200, 200, 200, 0.5)
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08)
+      backdrop-filter: blur(10px)
+      -webkit-backdrop-filter: blur(10px)
+
+      &:hover
+        background: rgba(255, 255, 255, 0.9)
+        transform: scale(1.1)
+
+      img
+        filter: brightness(0.8)
+
+    &__title
+      color: #1a1a1a
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
+
+    &__text
+      color: #444
+      font-weight: bolder
+
+  .arrow path
+    stroke: #444
+    filter: drop-shadow(0 0 4px rgba(68, 68, 68, 0.3))

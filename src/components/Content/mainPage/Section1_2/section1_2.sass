@@ -116,3 +116,86 @@ body.light-theme
   @media (max-width: 768px)
     font-size: 22px
     padding: 0 8px
+
+// === Светлая тема — обновлённая палитра: светло-серые, белые и прозрачные тона с мягкими акцентами ===
+body.light-theme
+  .wrapper
+    background: transparent // Светлый фон для воздушности
+    color: #2c3e50
+
+  .cards-container
+    .card
+      background: rgba(255, 255, 255, 0.9) // Почти белый с лёгкой прозрачностью
+      color: #2c3e50
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08)
+      border: 1px solid rgba(200, 200, 200, 0.4)
+      border-radius: 16px
+      backdrop-filter: blur(10px)
+      -webkit-backdrop-filter: blur(10px)
+      transition: all 0.4s ease
+
+      &:hover
+        background: white
+        transform: translateY(-8px)
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.14)
+        border-color: rgba(180, 180, 180, 0.5)
+
+      .card__title
+        color: #1a1a1a
+        font-weight: 600
+        font-size: 20px
+
+      .card__text
+        color: #444
+        line-height: 1.6
+        font-size: 14px
+
+      .card__icon
+        filter: unset
+        transition: all 0.3s ease
+        padding: 16px
+        border-radius: 12px
+        background: rgba(245, 245, 245, 0.8)
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06)
+
+      &:hover .card__icon
+        filter: brightness(0.9)
+        transform: scale(1.05)
+        background: white
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1)
+
+  .title
+    color: #1a1a1a
+    font-weight: 600
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
+
+  .title_left
+    color: #2c3e50
+
+  .subtitle
+    color: #2c3e50
+    font-weight: 500
+
+  // Мягкие тени и адаптация под мобильные
+  @media (max-width: 768px)
+    .cards-container .card
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1)
+      border-radius: 14px
+
+    .cards-container .card:hover
+      transform: translateY(-6px)
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12)
+
+  .section1_1 .overlay-background-img
+    filter: unset!important
+
+  .card__description
+    color: black
+
+  .card__button
+    color: black
+    border-color: black
+
+  .card__detail-content
+    color: black
+    background: rgb(220 220 220 / 82%)

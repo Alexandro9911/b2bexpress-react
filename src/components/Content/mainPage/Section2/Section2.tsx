@@ -140,7 +140,7 @@ export default function Section2() {
   return (
     <div className="content-section section2">
       <Overlay imageSrc={Section2Image}>
-        <h2 className="section-title">Наши услуги</h2>
+        <h2 className="section-title"><span>Наши услуги</span></h2>
         <div className="services-list" ref={containerRef}>
           {data.map((item, index) => (
             <div

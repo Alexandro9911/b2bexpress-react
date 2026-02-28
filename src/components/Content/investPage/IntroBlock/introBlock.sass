@@ -289,3 +289,64 @@
 @media screen and (max-width: 768px)
   .intro-block__title .intro-block__title--right
     text-align: end !important
+
+// === Светлая тема — светло-серая, белая с полупрозрачностью и мягкими тенями ===
+body.light-theme
+  .intro-block
+    color: #2c3e50
+    background: #f8f9fa
+
+    .intro-block__text
+      color: #444
+
+    .intro-block__highlight
+      color: #1a1a1a
+
+    .intro-block__conclusion
+      color: #1a1a1a
+
+  .intro-block__container
+  // фон уже задан у .intro-block
+
+  .intro-block__section--split
+  // без изменений, только цвета
+
+  .intro-block__image-wrapper img
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12)
+    border: 1px solid rgba(200, 200, 200, 0.6)
+    transition: transform 0.3s ease
+
+    &:hover
+      transform: scale(1.02)
+
+  .intro-block__title
+    color: #1a1a1a
+
+    &::before
+      background: linear-gradient(90deg, #c734c7, #41a8e7) // градиент сохранён
+      opacity: 1
+
+  .intro-block__card
+    background: rgba(255, 255, 255, 0.7)
+    border: 1px solid rgba(200, 200, 200, 0.5)
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08)
+    backdrop-filter: blur(10px)
+    -webkit-backdrop-filter: blur(10px)
+    transition: all 0.4s ease
+
+    &:hover
+      background: rgba(255, 255, 255, 0.9)
+      transform: translateY(-5px)
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12)
+
+  .intro-block__card-number
+    color: #1a1a1a
+
+    span
+      color: #666
+
+  .intro-block__card-label
+    color: #444
+
+  .intro-block__card-sublabel
+    color: #888

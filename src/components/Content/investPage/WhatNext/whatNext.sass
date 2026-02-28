@@ -244,3 +244,46 @@
 
   &:hover
     filter: brightness(1) contrast(1.1)
+
+
+// === Светлая тема — светло-серая, белая с полупрозрачностью и мягкими тенями ===
+body.light-theme
+  .what-next
+    color: #2c3e50
+    background: #d8d8d8
+
+  .what-next__title
+    color: #1a1a1a
+
+    &::before
+      background: linear-gradient(90deg, #c734c7, #41a8e7) // градиент сохранён
+
+  .what-next__text
+    color: #444
+
+  .what-next__item
+    color: #1a1a1a
+
+    &::before
+      color: #41a8e7
+
+  .what-next__signature-text
+    color: #666
+
+  .what-next__signature-name
+    background: linear-gradient(90deg, #c734c7, #41a8e7)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    background-clip: text
+    color: transparent
+
+  .what-next__image-wrapper
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08)
+    border: 1px solid rgba(200, 200, 200, 0.6)
+
+    &:hover
+      transform: translateY(-4px)
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12)
+
+  .what-next__image
+    filter: brightness(0.95) contrast(1.05)

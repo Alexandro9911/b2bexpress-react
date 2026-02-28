@@ -283,3 +283,73 @@
 
   .franchise-table__bonus
     margin-right: unset
+// === Светлая тема — светло-серая, белая с полупрозрачностью и мягкими тенями ===
+body.light-theme
+  .franchise-section
+    color: #2c3e50
+
+
+    &__subtitle
+      color: black
+      font-weight: bolder
+
+  .franchise-section__title
+    color: #1a1a1a
+
+    &::before
+      background: linear-gradient(90deg, #c734c7, #41a8e7) // градиент сохранён
+
+  .franchise-section__table
+    background: rgba(255, 255, 255, 0.7)
+    border: 1px solid rgba(200, 200, 200, 0.5)
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08)
+    backdrop-filter: blur(10px)
+    -webkit-backdrop-filter: blur(10px)
+
+  .franchise-table__header
+    background: rgba(240, 240, 240, 0.6)
+    border-bottom: 1px solid rgba(200, 200, 200, 0.5)
+    color: #1a1a1a
+
+  .franchise-table__row
+    background: rgba(255, 255, 255, 0.5)
+    border-bottom: 1px solid rgba(200, 200, 200, 0.4)
+    color: #444
+    transition: all 0.3s ease
+
+    &:hover
+      background: rgba(255, 255, 255, 0.7)
+      transform: translateY(-2px)
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1)
+
+  .franchise-table__cell-value
+    color: #1a1a1a
+
+  .franchise-table__bonus
+    background: rgba(65, 168, 231, 0.1)
+    color: #41a8e7
+    border-left-color: #41a8e7
+
+  .franchise-section__included-title
+    color: #1a1a1a
+
+  .franchise-included-item
+    background: rgba(255, 255, 255, 0.7)
+    border: 1px solid rgba(200, 200, 200, 0.5)
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06)
+    backdrop-filter: blur(10px)
+    -webkit-backdrop-filter: blur(10px)
+
+    &:hover
+      transform: translateY(-4px)
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1)
+
+    &__label
+      color: #1a1a1a
+
+    &__text
+      color: #444
+
+  .section-with-overlay .overlay-background-img
+    filter: brightness(0.2) contrast(1.0)
+    opacity: 0.5

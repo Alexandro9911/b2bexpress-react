@@ -4,14 +4,23 @@ import './styles.sass';
 import Button from "../common/button/Button.tsx";
 import {OpenModal} from "../../utils/modal.tsx";
 import CalculationForm from "../Forms/CalculateForm/CalculationForm.tsx";
-
-export default function Header() {
+import classNames from "classnames";
+type Props = {
+  isFooter?: boolean;
+}
+export default function Header(props : Props) {
   const onButtonClick = () => {
     OpenModal(<CalculationForm/>);
   };
 
+  const composeClasses = () => {
+    return classNames('header',{
+      'header-bottom': props.isFooter
+    })
+  }
+
   return (
-    <header className="header">
+    <header className={composeClasses()}>
       <picture className="header__logo-wrapper">
         <source media="(max-width: 768px)" srcSet={MainLogoCropped} />
         <img src={MainLogo} alt="Логотип компании" className="header__logo" />

@@ -128,3 +128,38 @@
     ul li
       padding-left: 36px
       font-size: 20px
+
+// === Светлая тема — светло-серая, белая с полупрозрачностью и мягкими тенями ===
+body.light-theme
+  .section2_2
+    background: #f8f9fa
+    color: #2c3e50
+
+    .documents-layout__image img
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12)
+      border: 1px solid rgba(200, 200, 200, 0.6)
+
+    .documents-info
+      &__title
+        color: #1a1a1a
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
+
+      &__text
+        color: #444
+
+        ul li
+          color: #444
+
+          &:before
+            content: "📄"
+            top: 2px
+
+      &__action .btn
+        background: linear-gradient(90deg, #c734c7, #41a8e7)
+        color: white
+        border: none
+
+        &:hover
+          background: linear-gradient(90deg, #d140d1, #4bb3f0)
+          transform: translateY(-2px)
+          box-shadow: 0 6px 16px rgba(199, 52, 199, 0.2), 0 4px 8px rgba(65, 168, 231, 0.15)

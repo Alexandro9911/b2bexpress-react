@@ -341,3 +341,101 @@
 
   .service-text
     font-size: 11px
+
+// === Светлая тема — светло-серая, белая с полупрозрачностью и мягкими тенями ===
+body.light-theme
+  .section2 .overlay-background-img
+    opacity: 0.5
+  .section2.overlay-wrapper .content-overlay
+    max-width: unset
+    margin: unset
+  .section2
+    position: relative
+    top: -10px
+    .content-overlay
+      color: #2c3e50
+      //background: rgba(248, 249, 250, 0.85)
+      //backdrop-filter: blur(10px)
+      //-webkit-backdrop-filter: blur(10px)
+
+    .section-title
+      display: inline-block
+      padding: 12px 28px
+      background: white
+      border-radius: 16px
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08)
+      background-clip: padding-box
+      position: relative
+      z-index: 2
+
+      &::before
+        content: ''
+        position: absolute
+        inset: 0
+        border-radius: 16px
+        padding: 1px
+        background: linear-gradient(90deg, #c734c7, #41a8e7)
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)
+        -webkit-mask-composite: xor
+        mask-composite: exclude
+        pointer-events: none
+        z-index: -1
+
+      span
+        background: linear-gradient(90deg, #c734c7, #41a8e7)
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+        background-clip: text
+
+  .service-block
+    &::before
+      background: rgba(255, 255, 255, 0.7)
+      border: 1px solid rgba(200, 200, 200, 0.5)
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08)
+      backdrop-filter: blur(12px)
+      -webkit-backdrop-filter: blur(12px)
+
+    &.image-left .service-image-wrapper::before,
+    &.image-right .service-image-wrapper::before
+      background: repeating-linear-gradient(35deg, rgba(230, 230, 230, 0.8), rgba(230, 230, 230, 0.8) 10px, rgba(210, 210, 210, 0.6) 10px, rgba(210, 210, 210, 0.6) 20px)
+
+  .service-content
+    color: #2c3e50
+    background: rgba(255, 255, 255, 0.6)
+    border-radius: 16px
+    padding: 32px
+    backdrop-filter: blur(10px)
+    -webkit-backdrop-filter: blur(10px)
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06)
+    transition: all 0.4s ease
+
+    @media (max-width: 768px)
+      background: transparent
+      padding: 20px
+      box-shadow: none
+
+  .service-title
+    color: #1a1a1a
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
+
+  .service-text
+    color: #444
+    line-height: 1.7
+
+    ul li
+      color: #444
+
+      &::before
+        color: #0055aa
+
+  .service-button
+    background: rgba(0, 85, 170, 0.1)
+    border: 1px solid rgba(0, 85, 170, 0.3)
+    color: #0055aa
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1)
+
+    &:hover
+      background: rgba(0, 85, 170, 0.2)
+      color: #004080
+      transform: translateY(-2px)
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)
