@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './navMenuInvest.sass';
 import {OpenModal} from "../../../../utils/modal.tsx";
 import InvestorForm from "../../../Forms/InvestorForm/InvestorForm.tsx";
+import CalculationForm from "../../../Forms/CalculateForm/CalculationForm.tsx";
 
 const NavMenuInvest: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -116,17 +117,22 @@ const NavMenuInvest: React.FC = () => {
               {btn.text}
             </button>
           ))}
-          <button
-            type="button"
-            onClick={() => handleMenuClick({
-              id: 'none2',
-              text: 'Стать инвестором',
-              path: '/invest',
-              sectionId: 'none2'
-            })}
-          >
-            Стать инвестором
-          </button>
+          <div className="actions-wrapper">
+            <button
+              className="nav-menu-action"
+              type="button"
+              onClick={()=> OpenModal(<CalculationForm/>)}
+            >
+              Рассчитать стоимость
+            </button>
+            <button
+              className="nav-menu-action"
+              type="button"
+              onClick={()=> OpenModal(<InvestorForm id={'1'}/>)}
+            >
+              Стать инвестором
+            </button>
+          </div>
         </div>
 
         <div className="mobile-nav">
@@ -138,18 +144,34 @@ const NavMenuInvest: React.FC = () => {
             ☰
           </button>
 
-          <button
-            type="button"
-            className={`mobile-calculate-btn ${activeSection === 'none2' ? 'active' : ''}`}
-            onClick={() => handleMenuClick({
-              id: 'none2',
-              text: 'Стать инвестором',
-              path: '/invest',
-              sectionId: 'none2'
-            })}
-          >
-            Стать инвестором
-          </button>
+          {/*<button*/}
+          {/*  type="button"*/}
+          {/*  className={`mobile-calculate-btn ${activeSection === 'none2' ? 'active' : ''}`}*/}
+          {/*  onClick={() => handleMenuClick({*/}
+          {/*    id: 'none2',*/}
+          {/*    text: 'Стать инвестором',*/}
+          {/*    path: '/invest',*/}
+          {/*    sectionId: 'none2'*/}
+          {/*  })}*/}
+          {/*>*/}
+          {/*  Стать инвестором*/}
+          {/*</button>*/}
+          <div className="actions-wrapper">
+            <button
+              className="nav-menu-action"
+              type="button"
+              onClick={() => OpenModal(<CalculationForm/>)}
+            >
+              Рассчитать стоимость
+            </button>
+            <button
+              className="nav-menu-action"
+              type="button"
+              onClick={() => OpenModal(<InvestorForm id={'1'}/>)}
+            >
+              Стать инвестором
+            </button>
+          </div>
 
           {/* Контейнер для выпадающего меню */}
           <div className="mobile-menu-container">
@@ -165,6 +187,8 @@ const NavMenuInvest: React.FC = () => {
                   {btn.text}
                 </button>
               ))}
+
+
             </div>
           </div>
         </div>

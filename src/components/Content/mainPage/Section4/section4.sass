@@ -27,6 +27,7 @@
       width: 455px
       height: 507px
       object-fit: cover
+      border-radius: 10px
 
   .info
     &__title
@@ -154,3 +155,9 @@ body.light-theme
 
   .dates
     color: #1a1a1a
+
+.reversed-order
+  display: flex
+  flex-flow: row-reverse
+  @media (max-width: 768px)
+    flex-flow: column

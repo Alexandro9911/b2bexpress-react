@@ -1,10 +1,22 @@
 import './section4.sass';
 import ContactsImage from '../../../../assets/images/contacts_image.png';
+import classNames from "classnames";
 
-export default function Section4(){
+type Props = {
+  reversed?: boolean
+}
+
+export default function Section4(props : Props){
+
+  const composeClasses = () => {
+    return classNames('contacts',{
+      'reversed-order': props.reversed
+    });
+  }
+
   return (
     <div className="section4">
-      <div className="contacts">
+      <div className={composeClasses()}>
         <div className="contacts__info">
           <div className="info__title">
             Контакты
@@ -17,12 +29,6 @@ export default function Section4(){
           <div className="info__email">Общая почта: <a href={'mailto:mir_logistiki01@bk.ru'}>mir_logistiki01@bk.ru</a></div>
           <div className="info__contacts">
             <br/>
-            <div className="contact-item">
-              <p>Генеральный Директор: Дмитрий Александрович А.</p>
-            </div>
-            <div className="contact-item">
-              <p>Коммерческий директор: Владислав Владимирович С.</p>
-            </div>
             <div className="contact-item">
               <p>Головной офис: </p>
               <p>190013 , Санкт-Петербург, Московский проспект, 60/129, офис 212-В</p>

@@ -2,7 +2,7 @@ import './index.scss'
 import Header from "./components/Header/Header.tsx";
 import ScrollToTopButton from "./components/ScrollToTopButton/ScrollToTopButton.tsx";
 import { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import MainPage from "./pages/main/MainPage.tsx";
 import PageInvest from "./pages/invest/PageInvest.tsx";
 import ThemeToggle from "./components/ThemeToggle/ThemeToggle.tsx";
@@ -25,6 +25,7 @@ function App() {
           path="/invest"
           element={<PageInvest/>}
         />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <ScrollToTopButton/>
       <ThemeToggle/>

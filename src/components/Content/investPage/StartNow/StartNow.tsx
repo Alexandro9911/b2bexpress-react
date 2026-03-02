@@ -67,6 +67,8 @@ export default function StartNow() {
         <div className="start-now__summary">
           <button className="start-now__summary-text" onClick={handleClick}>
             Лучший момент — пока другие думают.
+            <br/>
+            Стать инвестором
           </button>
         </div>
       </div>

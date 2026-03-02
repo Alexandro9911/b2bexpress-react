@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './NavMenu.sass';
 import { OpenModal } from '../../utils/modal.tsx';
 import CalculationForm from '../Forms/CalculateForm/CalculationForm.tsx';
+import InvestorForm from "../Forms/InvestorForm/InvestorForm.tsx";
 
 const NavMenu: React.FC = () => {
   const navMenuRef = useRef<HTMLDivElement>(null);
@@ -14,9 +15,9 @@ const NavMenu: React.FC = () => {
   const [activeSection, setActiveSection] = useState('aboutUs');
   const [menuHeight, setMenuHeight] = useState(0);
 
-  const calcButtonAction = () => {
-    OpenModal(<CalculationForm />);
-  };
+  // const calcButtonAction = () => {
+  //   OpenModal(<CalculationForm />);
+  // };
 
   const onClickInvestButton = () => {
     navigate('/invest');
@@ -173,6 +174,22 @@ const NavMenu: React.FC = () => {
               {btn.text}
             </button>
           ))}
+          <div className="actions-wrapper">
+            <button
+              className="nav-menu-action"
+              type="button"
+              onClick={() => OpenModal(<CalculationForm/>)}
+            >
+              Рассчитать стоимость
+            </button>
+            <button
+              className="nav-menu-action"
+              type="button"
+              onClick={() => OpenModal(<InvestorForm id={'1'}/>)}
+            >
+              Стать инвестором
+            </button>
+          </div>
         </div>
 
         <div className="mobile-nav">
@@ -184,13 +201,22 @@ const NavMenu: React.FC = () => {
             ☰
           </button>
 
-          <button
-            type="button"
-            className="mobile-calculate-btn"
-            onClick={calcButtonAction}
-          >
-            Рассчитать стоимость
-          </button>
+          <div className="actions-wrapper">
+            <button
+              className="nav-menu-action"
+              type="button"
+              onClick={() => OpenModal(<CalculationForm/>)}
+            >
+              Рассчитать стоимость
+            </button>
+            <button
+              className="nav-menu-action"
+              type="button"
+              onClick={() => OpenModal(<InvestorForm id={'1'}/>)}
+            >
+              Стать инвестором
+            </button>
+          </div>
 
           {/* Контейнер для выпадающего меню */}
           <div className="mobile-menu-container">

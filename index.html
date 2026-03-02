@@ -1,14 +1,54 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Мир Логистики</title>
-    <link rel="icon" href="/favicon.png" type="image/png" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  <!-- Основные SEO теги -->
+  <title>Мир Логистики</title>
+  <meta name="description" content="Ваша задача - наше решение – «ООО МИР ЛОГИСТИКИ». Горячая линия 8 (800) 444 10 98 с 8:00 до 20:00 ежедневно. Почта: mir_logistiki01@bk.ru." />
+
+  <!-- Open Graph (соцсети) -->
+  <meta property="og:title" content="Мир Логистики" />
+  <meta property="og:description" content="Ваша задача - наше решение – «ООО МИР ЛОГИСТИКИ». Горячая линия 8 (800) 444 10 98 с 8:00 до 20:00 ежедневно. Почта: mir_logistiki01@bk.ru." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://мл-спб.рф" />
+  <meta property="og:image" content="https://мл-спб.рф/favicon.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Мир Логистики" />
+  <meta name="twitter:description" content="Ваша задача - наше решение – «ООО МИР ЛОГИСТИКИ». Горячая линия 8 (800) 444 10 98 с 8:00 до 20:00 ежедневно. Почта: mir_logistiki01@bk.ru." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <link rel="canonical" href="https://мл-спб.рф" />
+
+  <!-- Структурированные данные (для Google и Яндекс) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Мир Логистики",
+      "url": "https://мл-спб.рф",
+      "logo": "https://мл-спб.рф/favicon.png",
+      "description": "Ваша задача - наше решение – «ООО МИР ЛОГИСТИКИ».",
+      "telephone": "+78004441098",
+      "email": "mir_logistiki01@bk.ru",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Московский проспект, 60/129, офис 212-В",
+        "addressLocality": "Санкт-Петербург",
+        "postalCode": "190013",
+        "addressCountry": "RU"
+      },
+      "openingHours": "Mo-Su 08:00-20:00"
+    }
+  </script>
+</head>
+<body>
+<div id="root"></div>
+<script type="module" src="/src/main.tsx"></script>
+</body>
 </html>
