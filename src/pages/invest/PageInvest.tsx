@@ -10,6 +10,7 @@ import BecomeInvestor from "../../components/Content/investPage/BecomeInvestor/B
 import StartNow from "../../components/Content/investPage/StartNow/StartNow.tsx";
 import WhatNext from "../../components/Content/investPage/WhatNext/WhatNext.tsx";
 import NavMenuInvest from "../../components/Content/investPage/NavMenu/NavMenuInvest.tsx";
+import Section4 from "../../components/Content/mainPage/Section4/Section4.tsx";
 
 export default function PageInvest(){
   return (
@@ -28,6 +29,7 @@ export default function PageInvest(){
         <BecomeInvestor/>
         <StartNow/>
         <WhatNext/>
+        <Section4 reversed/>
       </div>
     </>
   )

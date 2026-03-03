@@ -2,10 +2,11 @@ import './index.scss'
 import Header from "./components/Header/Header.tsx";
 import ScrollToTopButton from "./components/ScrollToTopButton/ScrollToTopButton.tsx";
 import { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 import MainPage from "./pages/main/MainPage.tsx";
 import PageInvest from "./pages/invest/PageInvest.tsx";
 import ThemeToggle from "./components/ThemeToggle/ThemeToggle.tsx";
+import NotFound from "./pages/notFound/NotFound.tsx";
 function App() {
 
   useEffect(() => {
@@ -15,22 +16,41 @@ function App() {
 
   return (
     <div className="main">
-      <Header/>
       <Routes>
         <Route
           path="/"
-          element={<MainPage/>}
+          element={
+            <>
+              <Header/>
+              <MainPage/>
+              <div className="footer">
+                <Header isFooter/>
+              </div>
+              <ScrollToTopButton/>
+              <ThemeToggle/>
+            </>
+          }
         />
         <Route
           path="/invest"
-          element={<PageInvest/>}
+          element={
+            <>
+              <Header/>
+              <PageInvest/>
+              <div className="footer">
+                <Header isFooter/>
+              </div>
+              <ScrollToTopButton/>
+              <ThemeToggle/>
+            </>
+          }
         />
+        <Route path="*" element={
+          <>
+            <NotFound/>
+          </>
+        }/>
       </Routes>
-      <ScrollToTopButton/>
-      <ThemeToggle/>
-      <div className="footer">
-        <Header isFooter/>
-      </div>
     </div>
   )
 }

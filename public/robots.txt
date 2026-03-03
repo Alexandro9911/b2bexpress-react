@@ -1,0 +1,76 @@
+# Общие правила для всех роботов
+User-agent: *
+Allow: /index.html
+Allow: /privacy.html
+Disallow: /index.html*
+Disallow: /privacy.html*
+Disallow: /assets/*.php
+Disallow: /assets/*.js
+Disallow: /assets/*.css
+Disallow: /assets/*.map
+Disallow: /phpmailer/
+Disallow: /fonts/
+Disallow: /.htaccess
+Disallow: /package.json
+Disallow: /webpack.config.js
+Disallow: /vite.config.js
+Crawl-delay: 2
+
+# Googlebot (Google)
+User-agent: Googlebot
+Allow: /
+Allow: /index.html
+Allow: /privacy.html
+Disallow: /assets/*.php
+Disallow: /assets/*.js
+Disallow: /assets/*.css
+Disallow: /assets/*.map
+Disallow: /phpmailer/
+Disallow: /fonts/
+Crawl-delay: 1
+
+# Yandex (YandexBot)
+User-agent: Yandex
+Allow: /index.html
+Allow: /privacy.html
+Disallow: /index.html*
+Disallow: /privacy.html*
+Disallow: /assets/*.php
+Disallow: /assets/*.js
+Disallow: /assets/*.css
+Disallow: /assets/*.map
+Disallow: /phpmailer/
+Disallow: /fonts/
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&gclid&yclid https://ваш-сайт.рф/
+
+# Bing (Bingbot)
+User-agent: Bingbot
+Allow: /index.html
+Allow: /privacy.html
+Disallow: /assets/*.php
+Disallow: /assets/*.js
+Disallow: /assets/*.css
+Disallow: /assets/*.map
+Disallow: /phpmailer/
+Crawl-delay: 2
+
+# Baidu (Китай, если не нужен — можно удалить)
+User-agent: Baiduspider
+Disallow: /
+
+# Sogou (ещё один китайский поисковик)
+User-agent: Sogou
+Disallow: /
+
+# Yahoo (устаревший, но встречается)
+User-agent: Slurp
+Crawl-delay: 10
+
+# Host — только для Yandex (указывается ОДИН основной зеркальный домен)
+Host: мл-спб.рф
+
+# Карта сайта — для всех
+Sitemap: https://мл-спб.рф/sitemap.xml
+
+# Частота сканирования (рекомендация, не стандарт)
+# Crawl-delay: 2 — означает паузу в 2 секунды между запросами

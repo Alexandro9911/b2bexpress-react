@@ -1,26 +1,25 @@
-import React, {useEffect, useRef, useCallback, useState} from 'react';
+import React, { useEffect, useRef, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './NavMenu.sass';
 import { OpenModal } from '../../utils/modal.tsx';
 import CalculationForm from '../Forms/CalculateForm/CalculationForm.tsx';
+import InvestorForm from "../Forms/InvestorForm/InvestorForm.tsx";
 
 const NavMenu: React.FC = () => {
   const navMenuRef = useRef<HTMLDivElement>(null);
   const navPlaceholderRef = useRef<HTMLDivElement>(null);
+  // const buttonRef = useRef<HTMLButtonElement>(null); // Ссылка на кнопку btn-header-action
   const navigate = useNavigate();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const [activeSection, setActiveSection] = useState('aboutUs');
   const [menuHeight, setMenuHeight] = useState(0);
-
-  const calcButtonAction = () => {
-    OpenModal(<CalculationForm />);
-  };
+  const [isHeaderActionVisible, setIsHeaderActionVisible] = useState(true); // Новый стейт
 
   const onClickInvestButton = () => {
     navigate('/invest');
-    scrollTo(0,0)
+    scrollTo(0, 0);
   };
 
   const buttonConfigs = [
@@ -29,8 +28,33 @@ const NavMenu: React.FC = () => {
     { id: 'investors', text: 'Для инвесторов', actionButton: onClickInvestButton },
     { id: 'feedback', text: 'Оставить отзыв' },
     { id: 'contacts', text: 'Контакты' },
-    // { id: 'calculate', text: 'Рассчитать стоимость', actionButton: calcButtonAction },
   ];
+
+  // Intersection Observer для отслеживания видимости кнопки
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Если кнопка НЕ видна в области просмотра — значит, она "скрыта", и нужно показать дубль в меню
+        setIsHeaderActionVisible(!entry.isIntersecting);
+      },
+      {
+        root: null, // viewport
+        threshold: 0, // срабатывает, когда 10% кнопки видны
+        rootMargin: '-100px 0px 0px 0px', // немного смещаем зону наблюдения
+      }
+    );
+
+    const buttonElement = document.querySelector('.header') as HTMLButtonElement;
+    if (buttonElement) {
+      observer.observe(buttonElement);
+    }
+
+    return () => {
+      if (buttonElement) {
+        observer.unobserve(buttonElement);
+      }
+    };
+  }, []);
 
   const handleScroll = useCallback(() => {
     const navMenu = navMenuRef.current;
@@ -57,7 +81,7 @@ const NavMenu: React.FC = () => {
     if (!navMenu) return;
 
     const navHeight = isFixed ? menuHeight : 0;
-    const scrollPosition = window.scrollY + navHeight + 20; // Уменьшаем отступ
+    const scrollPosition = window.scrollY + navHeight + 20;
 
     let currentSectionId: string | null = null;
 
@@ -77,7 +101,6 @@ const NavMenu: React.FC = () => {
       }
     });
 
-    // Особый случай для первого раздела
     if (!currentSectionId && window.scrollY < 100) {
       currentSectionId = 'aboutUs';
     }
@@ -101,13 +124,8 @@ const NavMenu: React.FC = () => {
       return;
     }
 
-    // Получаем актуальную высоту меню
-
-    // Рассчитываем позицию с учетом высоты меню
-    const offsetTop = targetSection.offsetTop;
-
     window.scrollTo({
-      top: offsetTop + 150,
+      top: targetSection.offsetTop + 150,
       behavior: 'smooth',
     });
   }, []);
@@ -130,14 +148,12 @@ const NavMenu: React.FC = () => {
     };
   }, [handleScroll, updateActiveLink]);
 
-  // Обновляем высоту меню при изменении isFixed
   useEffect(() => {
     if (navMenuRef.current) {
       setMenuHeight(navMenuRef.current.clientHeight);
     }
   }, [isFixed]);
 
-  // Закрываем меню при клике вне его (для мобильной версии)
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const menu = document.getElementById('navMenu');
@@ -173,6 +189,25 @@ const NavMenu: React.FC = () => {
               {btn.text}
             </button>
           ))}
+          <div className="actions-wrapper">
+            {/* Условно показываем дубль кнопки только если оригинальная скрыта */}
+            {isHeaderActionVisible && (
+              <button
+                className="nav-menu-action"
+                type="button"
+                onClick={() => OpenModal(<CalculationForm />)}
+              >
+                Рассчитать стоимость
+              </button>
+            )}
+            <button
+              className="nav-menu-action"
+              type="button"
+              onClick={() => OpenModal(<InvestorForm id={'1'} />)}
+            >
+              Стать инвестором
+            </button>
+          </div>
         </div>
 
         <div className="mobile-nav">
@@ -184,15 +219,25 @@ const NavMenu: React.FC = () => {
             ☰
           </button>
 
-          <button
-            type="button"
-            className="mobile-calculate-btn"
-            onClick={calcButtonAction}
-          >
-            Рассчитать стоимость
-          </button>
+          <div className="actions-wrapper">
+            {(isHeaderActionVisible || window.innerWidth <=600) && (
+              <button
+                className="nav-menu-action"
+                type="button"
+                onClick={() => OpenModal(<CalculationForm />)}
+              >
+                Рассчитать стоимость
+              </button>
+            )}
+            <button
+              className="nav-menu-action"
+              type="button"
+              onClick={() => OpenModal(<InvestorForm id={'1'} />)}
+            >
+              Стать инвестором
+            </button>
+          </div>
 
-          {/* Контейнер для выпадающего меню */}
           <div className="mobile-menu-container">
             <div className={`mobile-list-items ${isMobileMenuOpen ? 'open' : ''}`}>
               {buttonConfigs.map((btn) => (

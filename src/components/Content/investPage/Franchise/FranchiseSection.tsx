@@ -90,6 +90,9 @@ export default function FranchiseSection() {
                 </div>
               ))}
             </div>
+            <div className="logist-place">
+              Мы предлагаем гибкий формат обучения логистов: как в нашем офисе, так и с выездом к вам. Вы можете выбрать наиболее удобный для вас вариант,
+            </div>
 
             <div className="franchise-section__included">
               <h3 className="franchise-section__included-title">

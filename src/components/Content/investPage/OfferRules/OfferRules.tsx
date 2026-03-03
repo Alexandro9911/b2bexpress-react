@@ -1,12 +1,12 @@
 import './offerRules.sass';
 import { useEffect, useState, useRef } from 'react';
-import Slider1 from '../../../../assets/images/slider1.png';
-import Slider2 from '../../../../assets/images/slider2.png';
-import Slider3 from '../../../../assets/images/slider3.png';
+import Car1 from '../../../../assets/images/car1.jpg';
+import Car2 from '../../../../assets/images/car2.jpg';
+import Car3 from '../../../../assets/images/car3.jpg';
 // import Franchise from '../../../../assets/icons/franchise_col.png';
 import InvestImg from '../../../../assets/icons/invest_col.png';
 
-const images = [Slider1, Slider2, Slider3];
+const images = [Car1, Car2, Car3];
 
 export default function OfferRules() {
   const [activeIndex, setActiveIndex] = useState(0);

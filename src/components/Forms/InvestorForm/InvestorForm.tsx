@@ -170,7 +170,7 @@ export default function InvestorForm({ id }: Props) {
 
         <div className="form-footer">
           Нажимая кнопку, вы соглашаетесь с{' '}
-          <a href="https://мл-спб.рф/privacy" target="_blank" rel="noopener noreferrer">
+          <a href="https://мл-спб.рф/privacy.html" target="_blank" rel="noopener noreferrer">
             политикой обработки персональных данных
           </a>
         </div>

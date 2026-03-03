@@ -3,6 +3,7 @@ import InvestCard from './InvestCard';
 import Card1 from '../../../../assets/images/card1.jpg';
 import Card2 from '../../../../assets/images/card2.jpg';
 import Card3 from '../../../../assets/images/card3.jpg';
+import CheckIcon from '../../../../assets/icons/check.png';
 
 export default function InvestList() {
   const cards = [
@@ -66,6 +67,9 @@ export default function InvestList() {
           <ul className="invest-card__back-list">
             <li>Вы получаете пассивный доход от автопарка.</li>
             <li>И одновременно мы обучаем трёх человек по Вашей заявке — полностью под ключ.</li>
+            <li>Обучение логистов может проходить как в нашем офисе, так и прямо у Вас. Выбор места проведения обучения
+              остается за вами
+            </li>
           </ul>
           <p className="invest-card__back-highlight">После обучения они готовы работать в Вашем офисе:</p>
           <ul className="invest-card__back-list">
@@ -104,6 +108,7 @@ export default function InvestList() {
           <ul className="invest-card__back-list">
             <li>Вы получаете пассивный доход от автопарка.</li>
             <li>И одновременно мы обучаем пять человек по Вашей заявке — полностью под ключ.</li>
+            <li>Обучение логистов может проходить как в нашем офисе, так и прямо у Вас. Выбор места проведения обучения остается за вами</li>
           </ul>
           <p className="invest-card__back-highlight">Вы открываете офис с полноценной командой.</p>
           <p className="invest-card__back-text">Каждый логист:</p>
@@ -139,6 +144,18 @@ export default function InvestList() {
               {...card}
             />
           ))}
+        </div>
+
+        {/* Обновлённый блок conclusion */}
+        <div className="invest-list__conclusion">
+          <div className="invest-list__conclusion-content">
+            <img src={CheckIcon} alt="Преимущества" className="invest-list__conclusion-image" />
+            <ul className="invest-list__conclusion-list">
+              <li>Всё можно комбинировать</li>
+              <li>Все цифры фиксированы</li>
+              <li>Никаких «от прибыли» — только чёткие выплаты</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
