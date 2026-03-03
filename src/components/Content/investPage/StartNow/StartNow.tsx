@@ -66,9 +66,7 @@ export default function StartNow() {
         {/* Резюмирующий подзаголовок */}
         <div className="start-now__summary">
           <button className="start-now__summary-text" onClick={handleClick}>
-            Лучший момент — пока другие думают.
-            <br/>
-            Стать инвестором
+            <span className="thin-text">Сейчас лучший момент</span> <br/> стать инвестором
           </button>
         </div>
       </div>

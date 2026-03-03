@@ -10,6 +10,7 @@ import Section2_1 from "../../components/Content/mainPage/Section2_1/Section2_1.
 import Section2_2 from "../../components/Content/mainPage/Section2_2/Section2_2.tsx";
 import Section3 from "../../components/Content/mainPage/Section3/Section3.tsx";
 import Section4 from "../../components/Content/mainPage/Section4/Section4.tsx";
+import LogistSkills from "../../components/Content/investPage/LogistSkills/LogistSkills.tsx";
 
 export default function MainPage(){
   return (
@@ -29,6 +30,7 @@ export default function MainPage(){
       </section>
       <section id="services" data-section="section2" className="section-item">
         <Section2/>
+        <LogistSkills mainInfo/>
         <Section2_1/>
         <Section2_2/>
       </section>

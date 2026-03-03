@@ -108,35 +108,82 @@
     min-height: auto
     overflow: visible
 
-// === БЛОК ИЗОБРАЖЕНИЯ ===
-.logist-skills__image
-  background-image: url('../../../../assets/images/logist.jpg')
-  background-size: cover
-  background-position: center top
-  background-repeat: no-repeat
+// === ОБЁРТКА СЛАЙДЕРА И ПАГИНАЦИИ ===
+.logist-skills__image-slider-wrapper
+  display: flex
+  flex-direction: column
+  align-items: center
+  width: 100%
+
+// === СЛАЙДЕР ИЗОБРАЖЕНИЙ ===
+.logist-skills__image-slider
+  position: relative
   border-radius: 16px
   height: 100%
   min-height: 500px
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1)
+  cursor: pointer
+  overflow: hidden
   aspect-ratio: 1 / 1
+  width: 100%
+
   @media (max-width: 1024px)
     max-height: 400px
-    margin-left: auto
-    margin-right: auto
+
   @media (max-width: 768px)
-    background-position: unset
     min-height: 300px
     aspect-ratio: 4 / 3
-    width: 100%
-    object-fit: cover
 
   @media (max-width: 480px)
     height: 280px
     min-height: 280px
-    background-position: unset
     border-radius: 12px
     aspect-ratio: auto
-    background-size: cover
+
+// === СЛАЙД ===
+.logist-skills__slide
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-size: cover
+  background-position: center top
+  background-repeat: no-repeat
+  opacity: 0
+  transition: opacity 0.6s ease
+
+  &.active
+    opacity: 1
+
+// === ПАГИНАЦИЯ (градиентные полоски) под слайдером ===
+.logist-skills__pagination
+  display: flex
+  gap: 8px
+  margin-top: 16px
+  z-index: 10
+
+.logist-skills__pagination-item
+  width: 40px
+  height: 4px
+  background: rgba(255, 255, 255, 0.4)
+  border: none
+  border-radius: 2px
+  cursor: pointer
+  transition: all 0.3s ease
+  background: linear-gradient(90deg, #c734c7, #41a8e7)
+  opacity: 0.4
+
+  &.active
+    opacity: 1
+    transform: scaleY(1.4)
+
+  &:hover
+    opacity: 0.8
+
+  @media (max-width: 768px)
+    width: 32px
+    height: 3px
 
 // === КОНТЕНТ С НАВЫКАМИ (два столбца) ===
 .logist-skills__content
@@ -249,11 +296,14 @@ body.light-theme
     color: #1a1a1a
 
     &::before
-      background: linear-gradient(90deg, #c734c7, #41a8e7) // градиент сохранён
+      background: linear-gradient(90deg, #c734c7, #41a8e7)
 
-  .logist-skills__image
+  .logist-skills__image-slider
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08)
     border: 1px solid rgba(200, 200, 200, 0.6)
+
+  .logist-skills__slide
+    background-position: center top
 
   .logist-skill-item__title
     color: #1a1a1a
@@ -262,4 +312,15 @@ body.light-theme
     color: #444
 
   .logist-skill-item__icon
-    background: linear-gradient(135deg, #c734c7, #41a8e7) // градиент иконки сохранён
+    background: linear-gradient(135deg, #c734c7, #41a8e7)
+
+  .logist-skills__pagination-item
+    background: linear-gradient(90deg, #c734c7, #41a8e7)
+    opacity: 0.3
+
+    &.active
+      opacity: 0.8
+
+  @media (max-width: 768px)
+    .logist-skills__image-slider
+      background-position: unset

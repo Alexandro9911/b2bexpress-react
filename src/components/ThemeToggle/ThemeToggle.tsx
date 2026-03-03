@@ -20,11 +20,19 @@ export default function ThemeToggle() {
 
   return (
     <button
-      className="theme-toggle"
+      className={`theme-toggle ${isDarkTheme ? 'theme-toggle--dark' : 'theme-toggle--light'}`}
       onClick={toggleTheme}
       aria-label={isDarkTheme ? "Включить светлую тему" : "Включить тёмную тему"}
+      type="button"
     >
-      <span className="theme-toggle__icon">{isDarkTheme ? "🌙" : "☀️"}</span>
+      <div className="theme-toggle__switch">
+        {/* Луна слева */}
+        <div className="theme-toggle__option theme-toggle__option--left">🌙</div>
+        {/* Солнце справа */}
+        <div className="theme-toggle__option theme-toggle__option--right">☀️</div>
+        {/* Активный индикатор — кольцо с прозрачным центром и мягким свечением */}
+        <div className="theme-toggle__indicator"></div>
+      </div>
       <span className="theme-toggle__text">
         {isDarkTheme ? "Темная тема" : "Светлая тема"}
       </span>

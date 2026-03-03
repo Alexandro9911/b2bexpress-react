@@ -37,7 +37,7 @@ export default function Header(props : Props) {
       <div className="header__button-wrapper">
         <Button
           onClickHandler={onButtonClick}
-          classNames="btn btn_medium"
+          classNames="btn btn_medium btn-header-action"
           disabled={false}
         >
           Рассчитать стоимость
