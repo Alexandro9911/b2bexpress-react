@@ -2,6 +2,7 @@ import './logistSkills.sass';
 import SotrudnikImage from '../../../../assets/images/sotrudnik.png';
 import Sotrudnik2Image from '../../../../assets/images/sotrudnik2.png';
 import { useState, useEffect, useRef } from 'react';
+import classNames from "classnames";
 
 type TProps = {
   mainInfo?: boolean;
@@ -78,8 +79,14 @@ export default function LogistSkills({ mainInfo }: TProps) {
     return mainInfo ? 'Что умеет наш логист' : 'ЧТО УМЕЕТ ВАШ ЛОГИСТ ПОСЛЕ ОБУЧЕНИЯ';
   };
 
+  const composeClasses = () => {
+    return classNames('logist-skills', {
+      'aligned-section': mainInfo
+    })
+  }
+
   return (
-    <section className="logist-skills">
+    <section className={composeClasses()}>
       {/* Заголовок — вынесен отдельно, выравнен по правому краю */}
       <div className="logist-skills__header-wrapper">
         <h2 className="logist-skills__title">
