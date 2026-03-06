@@ -20,7 +20,6 @@
     padding-right: 8px
     padding-bottom: 20px
 
-
 // === ЗАГОЛОВОК И ТЕКСТ ===
 
 .section1_2__title
@@ -62,6 +61,83 @@
     font-size: 24px
     margin-bottom: unset
 
+// === СЛАЙДЕР ИЗОБРАЖЕНИЙ (взят из logistSkills) ===
+.slider-with-photo
+  //width: 100%
+  display: flex
+  flex-direction: column
+  align-items: center
+  margin: 40px 0
+
+  @media (max-width: 767px)
+    width: 100%
+
+.logist-skills__image-slider
+  position: relative
+  border-radius: 16px
+  height: 100%
+  min-height: 500px
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1)
+  cursor: pointer
+  overflow: hidden
+  aspect-ratio: 1 / 1
+  width: 100%
+
+  @media (max-width: 1024px)
+    max-height: 400px
+
+  @media (max-width: 768px)
+    min-height: 300px
+    aspect-ratio: 4 / 3
+
+  @media (max-width: 480px)
+    height: 280px
+    min-height: 280px
+    border-radius: 12px
+    aspect-ratio: auto
+
+.logist-skills__slide
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-size: cover
+  background-position: center 30%
+  background-repeat: no-repeat
+  opacity: 0
+  transition: opacity 0.6s ease
+
+  &.active
+    opacity: 1
+
+.logist-skills__pagination
+  display: flex
+  gap: 8px
+  margin-top: 16px
+  z-index: 10
+
+.logist-skills__pagination-item
+  width: 40px
+  height: 4px
+  background: rgba(255, 255, 255, 0.4)
+  border: none
+  border-radius: 2px
+  cursor: pointer
+  transition: all 0.3s ease
+  background: linear-gradient(90deg, #c734c7, #41a8e7)
+  opacity: 0.4
+
+  &.active
+    opacity: 1
+    transform: scaleY(1.4)
+
+  &:hover
+    opacity: 0.8
+
+  @media (max-width: 768px)
+    width: 32px
+    height: 3px
 
 // === НОВЫЙ БЛОК — ВЕРТИКАЛЬНЫЙ СТЕК КАРТОЧЕК ===
 
@@ -75,7 +151,6 @@
 
   @media (max-width: 768px)
     gap: 20px
-
 
 // === ОБЩИЕ СТИЛИ ДЛЯ КАРТОЧЕК ===
 
@@ -104,7 +179,6 @@
 
   @media (max-width: 768px)
     padding: 16px
-
 
 // === СТИЛИ КАРТОЧЕК — ЧЕРЕДОВАНИЕ ПОРЯДКА ===
 
@@ -164,7 +238,6 @@
     @media (max-width: 768px)
       font-size: 14px
 
-
 // === КОНТЕНТ КАРТОЧКИ — ФОН ТОЛЬКО У .custom-card__content ===
 
 .custom-card
@@ -204,7 +277,6 @@
       padding: 20px
       margin: 0
 
-
 // Явное позиционирование: ЛЕВАЯ иконка
 .left-icon
   flex-direction: row
@@ -228,7 +300,6 @@
 
     .custom-card__content
       order: 2
-
 
 // Явное позиционирование: ПРАВАЯ иконка
 .right-icon
@@ -257,13 +328,11 @@
       order: 1
       margin: 0
 
-
 @keyframes moveDiagonalLines
   0%
     background-position: 0 0
   100%
     background-position: 20px 20px
-
 
 .text-with-bullets
   text-align: start
@@ -276,7 +345,6 @@
 
   @media (max-width: 480px)
     padding-left: 16px
-
 
 // === ОСТАЛЬНЫЕ СТИЛИ — БЕЗ ИЗМЕНЕНИЙ (цифры и счётчики) ===
 
@@ -454,7 +522,6 @@
     font-size: 38px
     height: 50px
 
-
 // === МОБИЛЬНАЯ ВЕРСИЯ КАРТОЧЕК — ФИКСИРОВАННАЯ ШИРИНА 300px ===
 
 @media (max-width: 768px)
@@ -491,7 +558,7 @@
 // === Светлая тема — обновлённая палитра: светло-серые, белые и прозрачные тона с мягкими акцентами ===
 body.light-theme
   .section1_2
-    background: #f8f9fa // Светло-серый фон для воздушности
+    background: #f8f9fa
     color: #2c3e50
 
   .section1_2__title,
@@ -505,8 +572,25 @@ body.light-theme
     border-radius: 12px
     padding: 12px 24px
 
+  .slider-with-photo
+    margin: 32px 0
+
+  .logist-skills__image-slider
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08)
+    border: 1px solid rgba(200, 200, 200, 0.4)
+
+  .logist-skills__slide
+    background-position: center 30%
+
+  .logist-skills__pagination-item
+    background: linear-gradient(90deg, #c734c7, #41a8e7)
+    opacity: 0.3
+
+    &.active
+      opacity: 0.8
+
   .about-card-stacked
-    background: rgba(255, 255, 255, 0.85) // Чистый белый с прозрачностью
+    background: rgba(255, 255, 255, 0.85)
     backdrop-filter: blur(12px)
     -webkit-backdrop-filter: blur(12px)
     border: 1px solid rgba(200, 200, 200, 0.4)
@@ -514,21 +598,16 @@ body.light-theme
     border-radius: 16px
 
   .custom-card__content
-    background: rgba(248, 249, 250, 0.7) // Почти белый с лёгким серым оттенком
+    background: rgba(248, 249, 250, 0.7)
     color: #2c3e50
     border: 1px solid rgba(220, 220, 220, 0.5)
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06)
     border-radius: 12px
 
     &::before
-      content: ''
-      position: absolute
-      inset: 0
-      border-radius: 12px
       background: linear-gradient(45deg, transparent 49%, rgba(200, 200, 200, 0.1) 49%, rgba(200, 200, 200, 0.1) 51%, transparent 51%)
       background-size: 16px 16px
       animation: moveDiagonalLines 15s linear infinite
-      pointer-events: none
 
   .about-card__title
     color: #1a1a1a
@@ -539,7 +618,7 @@ body.light-theme
     line-height: 1.6
 
   .section1_2__digits
-    background: #f1f3f5 // Нейтральный светло-серый
+    background: #f1f3f5
     color: #1a1a1a
     box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05)
 
@@ -563,13 +642,11 @@ body.light-theme
     background: rgba(255, 255, 255, 0.9)
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08)
 
-  // Эффект при наведении на иконку — мягкая анимация
   .about-card__icon:hover
     transform: rotate(0deg) scale(1.05)
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12)
     background: rgba(255, 255, 255, 1)
 
-  // Мягкие тени и границы для карточек на мобильных
   @media (max-width: 768px)
     .about-card-stacked
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1)

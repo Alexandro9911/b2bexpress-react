@@ -1,11 +1,11 @@
 // Основной контейнер кнопки
 .theme-toggle
   position: fixed
-  bottom: 20px
+  bottom: 8px
   right: 20px
   width: auto
-  min-width: 60px
-  height: 50px
+  min-width: 50px
+  height: 70px
   background: rgba(255, 255, 255, 0.2)
   backdrop-filter: blur(10px)
   -webkit-backdrop-filter: blur(10px)
@@ -36,21 +36,22 @@
     text-align: center
     transition: opacity 0.3s ease
 
-  // === Свитч (два фиксированных положения) ===
+  // === Свитч (вертикальный) ===
   &__switch
     position: relative
-    width: 68px
-    height: 32px
+    width: 32px
+    height: 68px
     background: rgba(255, 255, 255, 0.3)
     border-radius: 16px
     display: flex
+    flex-direction: column
     overflow: hidden
     flex-shrink: 0
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1)
 
   &__option
-    width: 50%
-    height: 100%
+    width: 100%
+    height: 50%
     display: flex
     align-items: center
     justify-content: center
@@ -58,10 +59,22 @@
     z-index: 1
     user-select: none
 
-    &--left
-      //border-right: 1px solid rgba(255, 255, 255, 0.4)
+  // Круглые индикаторы
+  &__circle
+    width: 16px
+    height: 16px
+    border-radius: 50%
+    transition: transform 0.3s ease
 
-  // Прозрачный индикатор — кольцо с бордером и свечением
+    &--dark
+      background: #1a1a1a
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3)
+
+    &--light
+      background: white
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2)
+
+  // Индикатор — кольцо, движется по вертикали
   &__indicator
     position: absolute
     top: 2px
@@ -76,15 +89,13 @@
     z-index: 2
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2)
 
-  // Темное состояние — активен левый (луна)
-  &--dark
-    .theme-toggle__indicator
-    transform: translateX(0)
+  // Темное состояние — активен верх (тёмный кружок)
+  &--dark .theme-toggle__indicator
+    transform: translateY(0)
 
-  // Светлое состояние — активен правый (солнце)
-  &--light
-    .theme-toggle__indicator
-      transform: translateX(35px) // 68 - 24 - 4 - 4 = 36
+  // Светлое состояние — активен низ (светлый кружок)
+  &--light .theme-toggle__indicator
+    transform: translateY(35px)
 
 // === Адаптивность под мобильные устройства (< 1024px) ===
 @media (max-width: 1023px)
@@ -98,26 +109,26 @@
       display: none
 
     &__switch
-      width: 48px
-      height: 28px
+      width: 28px
+      height: 48px
       border-radius: 14px
-      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1)
 
-    &__option
-      font-size: 14px
+    &__circle
+      width: 14px
+      height: 14px
 
     &__indicator
       width: 24px
       height: 24px
       border-width: 1.5px
-      top: 2px
-      left: 0px
+      top: 0px
+      left: 2px
 
     &--dark .theme-toggle__indicator
-      transform: translateX(0)
+      transform: translateY(0)
 
     &--light .theme-toggle__indicator
-      transform: translateX(24px) // 48 - 20 - 3 - 3 = 22
+      transform: translateY(24px)
 
 // === Темы ===
 body.dark-theme
@@ -147,21 +158,22 @@ body.light-theme
     .theme-toggle__switch
       background: rgba(0, 0, 0, 0.2)
 
-    .theme-toggle__option
-      &--left
-        //border-right: 1px solid rgba(0, 0, 0, 0.3)
+    .theme-toggle__circle--dark
+      background: #1a1a1a
 
-  // Сохраняем позицию индикатора при наведении в светлой теме
-  .theme-toggle:hover
-    background: rgba(0, 0, 0, 0.15)
+    .theme-toggle__circle--light
+      background: white
 
-  // Убедимся, что индикатор не "уезжает" — он всегда следует за состоянием
+// Гарантия правильного позиционирования индикатора
+.theme-toggle--dark .theme-toggle__indicator
+  transform: translateY(0) !important
+
+.theme-toggle--light .theme-toggle__indicator
+  transform: translateY(35px) !important
+
+@media (max-width: 1023px)
   .theme-toggle--dark .theme-toggle__indicator
-    transform: translateX(0) !important
+    transform: translateY(0) !important
 
-  @media (max-width: 1023px)
-    .theme-toggle--dark .theme-toggle__indicator
-      transform: translateX(0) !important
-
-    .theme-toggle--light .theme-toggle__indicator
-      transform: translateX(24px) !important
+  .theme-toggle--light .theme-toggle__indicator
+    transform: translateY(24px) !important

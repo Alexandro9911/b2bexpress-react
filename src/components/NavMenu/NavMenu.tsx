@@ -4,6 +4,7 @@ import './NavMenu.sass';
 import { OpenModal } from '../../utils/modal.tsx';
 import CalculationForm from '../Forms/CalculateForm/CalculationForm.tsx';
 import InvestorForm from "../Forms/InvestorForm/InvestorForm.tsx";
+import SmallLogo from "../../assets/icons/small-logo.png";
 
 const NavMenu: React.FC = () => {
   const navMenuRef = useRef<HTMLDivElement>(null);
@@ -190,20 +191,25 @@ const NavMenu: React.FC = () => {
             </button>
           ))}
           <div className="actions-wrapper">
-            {/* Условно показываем дубль кнопки только если оригинальная скрыта */}
             {isHeaderActionVisible && (
-              <button
-                className="nav-menu-action"
-                type="button"
-                onClick={() => OpenModal(<CalculationForm />)}
-              >
-                Рассчитать стоимость
-              </button>
+              <>
+                <div className='contacts-in-nav'>
+                  <img src={SmallLogo}/>
+                  <a href={"tel:88004441098"}>Горячая линия: 8 (800) 444 10 98</a>
+                </div>
+                <button
+                  className="nav-menu-action"
+                  type="button"
+                  onClick={() => OpenModal(<CalculationForm/>)}
+                >
+                  Рассчитать стоимость
+                </button>
+              </>
             )}
             <button
               className="nav-menu-action"
               type="button"
-              onClick={() => OpenModal(<InvestorForm id={'1'} />)}
+              onClick={() => OpenModal(<InvestorForm id={'1'}/>)}
             >
               Стать инвестором
             </button>
@@ -219,23 +225,31 @@ const NavMenu: React.FC = () => {
             ☰
           </button>
 
-          <div className="actions-wrapper">
-            {(isHeaderActionVisible || window.innerWidth <=600) && (
+
+          <div className="menu-info">
+            <div className="actions-wrapper">
+              {(isHeaderActionVisible || window.innerWidth <= 600) && (
+                <button
+                  className="nav-menu-action"
+                  type="button"
+                  onClick={() => OpenModal(<CalculationForm/>)}
+                >
+                  Рассчитать стоимость
+                </button>
+              )}
               <button
                 className="nav-menu-action"
                 type="button"
-                onClick={() => OpenModal(<CalculationForm />)}
+                onClick={() => OpenModal(<InvestorForm id={'1'}/>)}
               >
-                Рассчитать стоимость
+                Стать инвестором
               </button>
-            )}
-            <button
-              className="nav-menu-action"
-              type="button"
-              onClick={() => OpenModal(<InvestorForm id={'1'} />)}
-            >
-              Стать инвестором
-            </button>
+            </div>
+            {isHeaderActionVisible &&
+              <div className='contacts-in-nav'>
+                <a href={"tel:88004441098"}>Горячая линия: 8 (800) 444 10 98</a>
+              </div>
+            }
           </div>
 
           <div className="mobile-menu-container">

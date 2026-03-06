@@ -1,6 +1,8 @@
 import './logistSkills.sass';
 import SotrudnikImage from '../../../../assets/images/sotrudnik.png';
 import Sotrudnik2Image from '../../../../assets/images/sotrudnik2.png';
+import Sotrudnik3Image from '../../../../assets/images/sotrudnik3.png';
+import Sotrudnik4Image from '../../../../assets/images/sotrudnik4.png';
 import { useState, useEffect, useRef } from 'react';
 import classNames from "classnames";
 
@@ -24,7 +26,7 @@ export default function LogistSkills({ mainInfo }: TProps) {
   const sliderRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<number | null>(null);
 
-  const images = [SotrudnikImage, Sotrudnik2Image];
+  const images = [SotrudnikImage, Sotrudnik2Image, Sotrudnik3Image, Sotrudnik4Image];
   const totalSlides = images.length;
 
   const resetTimer = () => {
@@ -36,15 +38,14 @@ export default function LogistSkills({ mainInfo }: TProps) {
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % totalSlides);
-    resetTimer(); // Сбрасываем таймер при свайпе или клике
+    resetTimer();
   };
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
-    resetTimer(); // Сбрасываем таймер при выборе точки пагинации
+    resetTimer();
   };
 
-  // Инициализация таймера
   useEffect(() => {
     resetTimer();
     return () => {
@@ -52,7 +53,6 @@ export default function LogistSkills({ mainInfo }: TProps) {
     };
   }, []);
 
-  // Обработка свайпов
   const touchStartX = useRef<number | null>(null);
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -63,7 +63,7 @@ export default function LogistSkills({ mainInfo }: TProps) {
     if (touchStartX.current === null) return;
 
     const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchStartX.current - touchEndX;
+    const diff = touchStartX.current! - touchEndX;
 
     if (diff > 50) {
       nextSlide();
@@ -82,22 +82,19 @@ export default function LogistSkills({ mainInfo }: TProps) {
   const composeClasses = () => {
     return classNames('logist-skills', {
       'aligned-section': mainInfo
-    })
-  }
+    });
+  };
 
   return (
     <section className={composeClasses()}>
-      {/* Заголовок — вынесен отдельно, выравнен по правому краю */}
       <div className="logist-skills__header-wrapper">
         <h2 className="logist-skills__title">
           <span className="logist-skills__title-line">{composeText()}</span>
         </h2>
       </div>
 
-      {/* Основной контент */}
       <div className="logist-skills__container">
         <div className="logist-skills__layout">
-          {/* Левая часть — слайдер изображений */}
           <div className="logist-skills__image-slider-wrapper">
             <div
               className="logist-skills__image-slider"
@@ -118,7 +115,6 @@ export default function LogistSkills({ mainInfo }: TProps) {
               ))}
             </div>
 
-            {/* Пагинация под слайдером */}
             <div className="logist-skills__pagination">
               {images.map((_, index) => (
                 <button
@@ -134,7 +130,6 @@ export default function LogistSkills({ mainInfo }: TProps) {
             </div>
           </div>
 
-          {/* Правая часть — навыки в двух колонках */}
           <div className="logist-skills__content">
             <ul className="logist-skills__list">
               {skills.slice(0, 4).map((skill, index) => (

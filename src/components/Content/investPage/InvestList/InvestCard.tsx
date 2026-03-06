@@ -13,21 +13,23 @@ interface CardProps {
   ads: string[];
   extra: string;
   image: string;
+  buttonText: string;
   backPath: any;
 }
 
 export default function InvestCard({
-  id,
-  title,
-  subtitle,
-  income,
-  profit,
-  adTitle,
-  ads,
-  extra,
-  image,
-  backPath,
-}: CardProps) {
+                                     id,
+                                     title,
+                                     subtitle,
+                                     income,
+                                     profit,
+                                     adTitle,
+                                     ads,
+                                     extra,
+                                     image,
+                                     buttonText,
+                                     backPath,
+                                   }: CardProps) {
 
   const handleButtonClick = (e: any) => {
     e.preventDefault();
@@ -50,11 +52,12 @@ export default function InvestCard({
     return afterDash;
   };
 
-  const onClickFlip = (e: any) => {
+  const onClickFlip = (e: any, id: string) => {
+    console.log(e, id)
     const cards: any = document.querySelectorAll("flip-card")
     cards.forEach((card : any) => {
       const cardAttr = card.attributes['data-id'].value;
-      if(cardAttr == e){
+      if(cardAttr == id){
         card.flip()
       }
     })
@@ -65,7 +68,7 @@ export default function InvestCard({
       id={`card_${id}`}
       variant="click"
       frontOfCard={
-        <div className="invest-card__front" onClick={() => onClickFlip(`card_${id}`)}>
+        <div className="invest-card__front" onClick={(e) => onClickFlip(e,`card_${id}`)}>
           <div className="invest-card__image-wrapper">
             <img src={image} alt={title} className="invest-card__image" />
             <div className="invest-card__card-number">{getCardName(title)}</div>
@@ -102,13 +105,13 @@ export default function InvestCard({
               className="invest-card__button"
               onClick={handleButtonClick}
             >
-              Стать инвестором
+              {buttonText}
             </button>
           </div>
         </div>
       }
       backOfCard={
-        <div className="invest-card__back" onClick={() => onClickFlip(`card_${id}`)}>
+        <div className="invest-card__back" onClick={(e) => onClickFlip(e,`card_${id}`)}>
           <div className="invest-card__image-wrapper">
             <img src={image} alt={title} className="invest-card__image"/>
             <div className="invest-card__card-number">{getCardName(title)}</div>
@@ -128,7 +131,7 @@ export default function InvestCard({
                 className="invest-card__button"
                 onClick={handleButtonClick}
               >
-                Стать инвестором
+                {buttonText}
               </button>
             </div>
           </div>
