@@ -4,13 +4,11 @@ import PeopleImage from '../../../../assets/icons/healthcare_colored.png';
 import AgreementImage from '../../../../assets/icons/agreement_colored.png';
 import PadlockImage from '../../../../assets/icons/padlock_colored.png';
 
-import SotrudnikImage from '../../../../assets/images/sotrudnik.png';
-import Sotrudnik2Image from '../../../../assets/images/sotrudnik2.png';
 import Car1 from '../../../../assets/images/car1.jpg';
 import Car2 from '../../../../assets/images/car2.jpg';
 import Car3 from '../../../../assets/images/car3.jpg';
-import Sotrudnik3Image from '../../../../assets/images/sotrudnik3.png';
-import Sotrudnik4Image from '../../../../assets/images/sotrudnik4.png';
+import WorkersBlock from "./WorkersBlock.tsx";
+
 // Хук для отслеживания видимости элемента
 function useOnScreen(ref: React.RefObject<Element>): boolean {
   const [isIntersecting, setIntersecting] = useState(false);
@@ -199,7 +197,7 @@ export default function Section1_3() {
   const sliderRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<number | null>(null);
 
-  const images = [SotrudnikImage, Sotrudnik2Image,Sotrudnik3Image,Sotrudnik4Image, Car1, Car2, Car3];
+  const images = [Car1, Car2, Car3];
   const totalSlides = images.length;
 
   const resetTimer = () => {
@@ -254,7 +252,19 @@ export default function Section1_3() {
       <div className="section1_2">
         <div className="section1_2__title">О нас</div>
         <div className="section1_2__sub-title">Мир Логистики</div>
-
+        {/* Новый блок — карточки во всю ширину */}
+        <div className="about-cards-stack">
+          {aboutCards.map((card, index) => (
+            <div
+              key={`stacked-card-${index}`}
+              ref={cardRefs[index]}
+              className={`about-card-stacked ${appeared[index] ? 'visible' : ''}`}
+            >
+              {card}
+            </div>
+          ))}
+        </div>
+        <WorkersBlock/>
         {/* Интегрированный слайдер */}
         <div className="slider-with-photo">
           <div
@@ -271,7 +281,7 @@ export default function Section1_3() {
               <div
                 key={index}
                 className={`logist-skills__slide ${index === currentIndex ? 'active' : ''}`}
-                style={{ backgroundImage: `url(${img})` }}
+                style={{backgroundImage: `url(${img})`}}
               />
             ))}
           </div>
@@ -290,19 +300,6 @@ export default function Section1_3() {
             ))}
           </div>
         </div>
-
-        {/* Новый блок — карточки во всю ширину */}
-        <div className="about-cards-stack">
-          {aboutCards.map((card, index) => (
-            <div
-              key={`stacked-card-${index}`}
-              ref={cardRefs[index]}
-              className={`about-card-stacked ${appeared[index] ? 'visible' : ''}`}
-            >
-              {card}
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* Блок цифр — без изменений */}
@@ -311,7 +308,7 @@ export default function Section1_3() {
         <div className="digits__items">
           <div className="digit-item">
             <div className="digit-item__title">
-              <Counter end={1574000} />
+              <Counter end={1574000}/>
             </div>
             <div className="digit-item__subtext">АВТОТРАНСПОРТОМ - более, чем на 1.574.000 км.</div>
           </div>
