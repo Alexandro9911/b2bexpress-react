@@ -26,11 +26,15 @@ export default function ThemeToggle() {
       type="button"
     >
       <div className="theme-toggle__switch">
-        {/* Луна слева */}
-        <div className="theme-toggle__option theme-toggle__option--left">🌙</div>
-        {/* Солнце справа */}
-        <div className="theme-toggle__option theme-toggle__option--right">☀️</div>
-        {/* Активный индикатор — кольцо с прозрачным центром и мягким свечением */}
+        {/* Верхний — тёмный кружок */}
+        <div className="theme-toggle__option">
+          <div className="theme-toggle__circle theme-toggle__circle--dark"></div>
+        </div>
+        {/* Нижний — светлый кружок */}
+        <div className="theme-toggle__option">
+          <div className="theme-toggle__circle theme-toggle__circle--light"></div>
+        </div>
+        {/* Прозрачное кольцо-индикатор */}
         <div className="theme-toggle__indicator"></div>
       </div>
       <span className="theme-toggle__text">

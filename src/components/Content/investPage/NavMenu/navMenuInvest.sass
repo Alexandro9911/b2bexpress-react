@@ -22,7 +22,7 @@
     top: 0
     left: 0
     width: 100%
-    padding: 8px 10px 8px 50px
+    padding: 8px 10px 8px 10px
     animation: slideDown 0.3s ease
 
 @keyframes slideDown
@@ -154,7 +154,7 @@
 
 @media (max-width: 768px)
   .nav-menu
-    padding: 0 15px 0 0
+    padding: 0 0px 0 0
     justify-content: center
     width: 100%
     background: rgba(7, 7, 7, 0.25)
@@ -163,7 +163,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2)
 
     &.fixed
-      padding: 0 15px 0 0
+      padding: 0 0px 0 0
       width: 100%
       background: rgba(7, 7, 7, 0.25)
       backdrop-filter: blur(8px)
@@ -251,3 +251,25 @@ body.light-theme
   .actions-wrapper
     button
       color: white !important
+
+.contacts-in-nav
+  font-family: Gravity, serif
+  display: flex
+  flex-flow: row
+  align-items: center
+  justify-content: center
+  gap: 10px
+  margin-right: 8px
+  img
+    width: 20px
+    height: 20px
+
+  a
+    color: white
+    text-decoration: none
+
+body.light-theme
+  .contacts-in-nav
+    font-family: Gravity, serif
+    a
+      color: black

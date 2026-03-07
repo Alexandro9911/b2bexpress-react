@@ -26,7 +26,7 @@ export default function InvestorForm({ id }: Props) {
     } else if (id === '2') {
       setFormData(prev => ({ ...prev, direction: 'Мир Инвестиций (3 млн, автопарк)' }));
     } else if (id === '3') {
-      setFormData(prev => ({ ...prev, direction: 'Мир Логистики (франшиза)' }));
+      setFormData(prev => ({ ...prev, direction: 'Мир Логистики (5 млн, автопарк)' }));
     }
   }, [id]);
 
@@ -48,7 +48,7 @@ export default function InvestorForm({ id }: Props) {
       name: !formData.name.trim(),
       phone: !formData.phone.trim(),
       direction: !formData.direction.trim(),
-      tariff: formData.direction === 'Мир Логистики (франшиза)' && !formData.tariff.trim(),
+      tariff: formData.direction === 'Мир Логистики (5 млн, автопарк)' && !formData.tariff.trim(),
     };
     setErrors(newErrors);
     return !Object.values(newErrors).some(Boolean);
@@ -93,8 +93,9 @@ export default function InvestorForm({ id }: Props) {
     );
   }
 
-  const selectedType = formData.direction.includes('Мир') ? formData.direction.split(' ')[1] : '';
-
+  const getSelectedType = () => {
+    return formData.direction.includes('Мир') ? formData.direction.split(' ')[1] : 'Логистики'
+  }
   return (
     <div className="investor-form">
       <form onSubmit={handleSubmit}>
@@ -143,11 +144,12 @@ export default function InvestorForm({ id }: Props) {
             <option value="">Выбрать направление</option>
             <option value="Мир Партнёрства (2 млн, автопарк)">Мир Партнёрства (2 млн, автопарк)</option>
             <option value="Мир Инвестиций (3 млн, автопарк)">Мир Инвестиций (3 млн, автопарк)</option>
-            <option value="Мир Логистики (франшиза)">Мир Логистики (франшиза)</option>
+            <option value="Мир Логистики (5 млн, автопарк)">Мир Логистики (5 млн, автопарк)</option>
+            <option value="Франшиза">Франшиза</option>
           </select>
         </div>
 
-        {formData.direction === 'Мир Логистики (франшиза)' && (
+        {formData.direction === 'Мир Логистики (5 млн, автопарк)' && (
           <div className={`form-group ${errors.tariff ? 'error' : ''}`}>
             <select
               name="tariff"
@@ -165,7 +167,7 @@ export default function InvestorForm({ id }: Props) {
         )}
 
         <button type="submit" className="btn btn_submit">
-          Хочу в Мир {selectedType || '...'}
+          Хочу в Мир {getSelectedType() || '...'}
         </button>
 
         <div className="form-footer">

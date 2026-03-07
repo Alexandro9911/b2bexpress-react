@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./modal.sass";
+import {clearUrlParams} from "../../utils/clearUrlParams.ts";
 
 type Props = {
   children: React.ReactNode;
@@ -12,6 +13,7 @@ export default function Modal({ children, onClose }: Props) {
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
+      clearUrlParams();
       if (
         overlayRef.current === e.target ||
         (modalRef.current && !modalRef.current.contains(e.target as Node))
@@ -22,6 +24,7 @@ export default function Modal({ children, onClose }: Props) {
 
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      clearUrlParams();
     };
 
     document.addEventListener("mousedown", handleOutsideClick);

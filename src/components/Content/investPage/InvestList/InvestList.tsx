@@ -21,6 +21,8 @@ export default function InvestList() {
       ads: ['📢 2 газели под Вашу рекламу на 4 года', 'Рекламу можно продавать — это Ваш дополнительный доход'],
       extra: '🔹 Франшиза приобретается отдельно.',
       image: Card1,
+      buttonText: 'Хочу стать Инвестором',
+
       backPath: (
         <div className="invest-card__back-content-block">
           <p className="invest-card__back-highlight">Пассивный доход + доступ к франшизе. 80% маржинальность</p>
@@ -61,6 +63,7 @@ export default function InvestList() {
       ads: ['📢 3 газели под Вашу рекламу на 4 года', 'Рекламу можно продавать — это Ваш дополнительный доход'],
       extra: '➕Уже включена в стоимость франшиза «Мир Логистики» на обучение 1 логиста, что дает возможность получать дополнительный доход от собственной команды',
       image: Card2,
+      buttonText: 'Хочу стать Партнером',
       backPath: (
         <div className="invest-card__back-content-block">
           <p className="invest-card__back-highlight">Пассивный доход + обучение 3 логистов под ключ. 85% маржинальность</p>
@@ -102,6 +105,7 @@ export default function InvestList() {
       ads: ['📢 5 газелей под Вашу рекламу на 5 лет', 'Рекламу можно продавать — это Ваш дополнительный доход'],
       extra: '➕Уже включена в стоимость франшиза «Мир Логистики» на обучение 3 логистов, что дает возможность получать дополнительный доход от собственной команды',
       image: Card3,
+      buttonText: 'Хочу в Мир Логистики',
       backPath: (
         <div className="invest-card__back-content-block">
           <p className="invest-card__back-highlight">Пассивный доход + обучение 5 логистов под ключ. 90% маржинальность</p>

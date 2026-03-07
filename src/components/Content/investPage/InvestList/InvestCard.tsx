@@ -13,21 +13,23 @@ interface CardProps {
   ads: string[];
   extra: string;
   image: string;
+  buttonText: string;
   backPath: any;
 }
 
 export default function InvestCard({
-  id,
-  title,
-  subtitle,
-  income,
-  profit,
-  adTitle,
-  ads,
-  extra,
-  image,
-  backPath,
-}: CardProps) {
+                                     id,
+                                     title,
+                                     subtitle,
+                                     income,
+                                     profit,
+                                     adTitle,
+                                     ads,
+                                     extra,
+                                     image,
+                                     buttonText,
+                                     backPath,
+                                   }: CardProps) {
 
   const handleButtonClick = (e: any) => {
     e.preventDefault();
@@ -50,90 +52,97 @@ export default function InvestCard({
     return afterDash;
   };
 
-  const onClickFlip = (e: any) => {
+  const onClickFlip = (e: any, id: string) => {
+    e.preventDefault();
+    e.stopPropagation();
     const cards: any = document.querySelectorAll("flip-card")
     cards.forEach((card : any) => {
       const cardAttr = card.attributes['data-id'].value;
-      if(cardAttr == e){
+      if(cardAttr == id){
         card.flip()
       }
     })
   }
 
   return (
-    <FlipCard
-      id={`card_${id}`}
-      variant="click"
-      frontOfCard={
-        <div className="invest-card__front" onClick={() => onClickFlip(`card_${id}`)}>
-          <div className="invest-card__image-wrapper">
-            <img src={image} alt={title} className="invest-card__image" />
-            <div className="invest-card__card-number">{getCardName(title)}</div>
-            <div className="invest-card__card-amount">{getCardAmount(title)}</div>
-          </div>
-
-          <div className="invest-card__content">
-            <div>
-              <div className='invest-card__more-label'>Нажмите чтобы узнать подробности</div>
-              <div className="invest-card__header">
-                <h3 className="invest-card__title">{title}</h3>
+    <div className='card-wrapper'>
+      <div className='card-click-zone' onClick={(e) => onClickFlip(e,`card_${id}`)}></div>
+      <div className="card-main">
+        <FlipCard
+          id={`card_${id}`}
+          variant="click"
+          frontOfCard={
+            <div className="invest-card__front">
+              <div className="invest-card__image-wrapper">
+                <img src={image} alt={title} className="invest-card__image" />
+                <div className="invest-card__card-number">{getCardName(title)}</div>
+                <div className="invest-card__card-amount">{getCardAmount(title)}</div>
               </div>
 
-              <p className="invest-card__subtitle">{subtitle}</p>
+              <div className="invest-card__content">
+                <div>
+                  <div className='invest-card__more-label'>Нажмите чтобы узнать подробности</div>
+                  <div className="invest-card__header">
+                    <h3 className="invest-card__title">{title}</h3>
+                  </div>
 
-              <ul className="invest-card__list">
-                {income.map((item, index) => (
-                  <li key={index} className="invest-card__list-item">{item}</li>
-                ))}
-              </ul>
-              <div className="invest-card__profit">Доходность: {profit}</div>
+                  <p className="invest-card__subtitle">{subtitle}</p>
 
-              <p className="invest-card__ad-title">{adTitle}</p>
+                  <ul className="invest-card__list">
+                    {income.map((item, index) => (
+                      <li key={index} className="invest-card__list-item">{item}</li>
+                    ))}
+                  </ul>
+                  <div className="invest-card__profit">Доходность: {profit}</div>
 
-              <ul className="invest-card__list">
-                {ads.map((ad, index) => (
-                  <li key={index} className="invest-card__list-item">{ad}</li>
-                ))}
-              </ul>
+                  <p className="invest-card__ad-title">{adTitle}</p>
 
-              <p className="invest-card__extra">{extra}</p>
-            </div>
-            <button
-              className="invest-card__button"
-              onClick={handleButtonClick}
-            >
-              Стать инвестором
-            </button>
-          </div>
-        </div>
-      }
-      backOfCard={
-        <div className="invest-card__back" onClick={() => onClickFlip(`card_${id}`)}>
-          <div className="invest-card__image-wrapper">
-            <img src={image} alt={title} className="invest-card__image"/>
-            <div className="invest-card__card-number">{getCardName(title)}</div>
-            <div className="invest-card__card-amount">{getCardAmount(title)}</div>
-          </div>
+                  <ul className="invest-card__list">
+                    {ads.map((ad, index) => (
+                      <li key={index} className="invest-card__list-item">{ad}</li>
+                    ))}
+                  </ul>
 
-          <div className="invest-card__back-content">
-            <h4 className="invest-card__back-title">
-              Как получить профессиональный доход
-            </h4>
-
-            <div className="invest-card__paths">
-              <div className="invest-card__path">
-                {backPath}
+                  <p className="invest-card__extra">{extra}</p>
+                </div>
+                <button
+                  className="invest-card__button"
+                  onClick={handleButtonClick}
+                >
+                  {buttonText}
+                </button>
               </div>
-              <button
-                className="invest-card__button"
-                onClick={handleButtonClick}
-              >
-                Стать инвестором
-              </button>
             </div>
-          </div>
-        </div>
-      }
-    />
+          }
+          backOfCard={
+            <div className="invest-card__back">
+              <div className="invest-card__image-wrapper">
+                <img src={image} alt={title} className="invest-card__image"/>
+                <div className="invest-card__card-number">{getCardName(title)}</div>
+                <div className="invest-card__card-amount">{getCardAmount(title)}</div>
+              </div>
+
+              <div className="invest-card__back-content">
+                <h4 className="invest-card__back-title">
+                  Как получить профессиональный доход
+                </h4>
+
+                <div className="invest-card__paths">
+                  <div className="invest-card__path">
+                    {backPath}
+                  </div>
+                  <button
+                    className="invest-card__button"
+                    onClick={handleButtonClick}
+                  >
+                    {buttonText}
+                  </button>
+                </div>
+              </div>
+            </div>
+          }
+        />
+      </div>
+    </div>
   );
 }
