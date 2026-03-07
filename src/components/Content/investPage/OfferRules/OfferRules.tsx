@@ -48,7 +48,21 @@ export default function OfferRules() {
     if (index === activeIndex && !isTransitioning) {
       setIsTransitioning(true);
       const newIndex = index < 2 ? index + 1 : 0
-       setActiveIndex(newIndex);
+      setActiveIndex(newIndex);
+    }
+  };
+
+  const nextSlide = () => {
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      setActiveIndex((prev) => (prev + 1) % images.length);
+    }
+  };
+
+  const prevSlide = () => {
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
     }
   };
 
@@ -77,12 +91,10 @@ export default function OfferRules() {
 
     if (isLeftSwipe) {
       // Свайп влево - следующий слайд
-      setIsTransitioning(true);
-      setActiveIndex((prev) => (prev + 1) % images.length);
+      nextSlide();
     } else if (isRightSwipe) {
       // Свайп вправо - предыдущий слайд
-      setIsTransitioning(true);
-      setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
+      prevSlide();
     }
   };
 
@@ -95,17 +107,14 @@ export default function OfferRules() {
             <span className="offer-rules__title-line">ЧТО МЫ ПРЕДЛАГАЕМ</span>
           </h2>
 
-
           <div className="offer-rules__card-icon"><img src={InvestImg} alt='Инвестиции'/></div>
           <p className="offer-rules__subtitle">
             Два направления, которые можно комбинировать
           </p>
 
-
           <div className="offer-rules__cards">
             {/* Карточка 1: Инвестиции в автопарк */}
             <div className="offer-rules__card">
-              {/*<div className="offer-rules__card-icon"><img src={InvestImg} alt='Инвестиции'/></div>*/}
               <h3 className="offer-rules__card-title">Инвестиции в автопарк из трех уровней — пассивный доход</h3>
               <ul className="offer-rules__card-list">
                 <li>Вы вкладываете — мы покупаем газели — Вы получаете деньги каждый месяц</li>
@@ -115,7 +124,6 @@ export default function OfferRules() {
 
             {/* Карточка 2: Франшиза */}
             <div className="offer-rules__card">
-              {/*<div className="offer-rules__card-icon"><img src={Franchise} alt='Франшиза'/></div>*/}
               <h3 className="offer-rules__card-title">Франшиза из трех уровней — профессиональный доход</h3>
               <ul className="offer-rules__card-list">
                 <li>Вы получаете доступ ко всей системе компании: люди, инфраструктура, бренд, защита</li>
@@ -137,6 +145,19 @@ export default function OfferRules() {
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
         >
+          <button
+            className="slider-nav-button slider-nav-button-left"
+            onClick={(e) => {
+              e.stopPropagation();
+              prevSlide();
+            }}
+            aria-label="Предыдущее изображение"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+            </svg>
+          </button>
+
           {images.map((img, index) => (
             <div
               key={index}
@@ -145,6 +166,19 @@ export default function OfferRules() {
               onClick={() => handleSlideClick(index)}
             ></div>
           ))}
+
+          <button
+            className="slider-nav-button slider-nav-button-right"
+            onClick={(e) => {
+              e.stopPropagation();
+              nextSlide();
+            }}
+            aria-label="Следующее изображение"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
+            </svg>
+          </button>
         </div>
       </div>
     </section>

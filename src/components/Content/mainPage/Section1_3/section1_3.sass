@@ -63,10 +63,11 @@
 
 // === СЛАЙДЕР ИЗОБРАЖЕНИЙ (взят из logistSkills) ===
 .slider-with-photo
-  //width: 100%
+  position: relative
   display: flex
-  flex-direction: column
+  flex-flow: column
   align-items: center
+  justify-content: center
   margin: 40px 0
 
   @media (max-width: 767px)
@@ -138,6 +139,74 @@
   @media (max-width: 768px)
     width: 32px
     height: 3px
+
+// === Навигационные кнопки для слайдера ===
+.slider-nav-button
+  position: absolute
+  top: 50%
+  transform: translateY(-50%)
+  width: 40px
+  height: 40px
+  background: rgba(255, 255, 255, 0.2)
+  backdrop-filter: blur(10px)
+  -webkit-backdrop-filter: blur(10px)
+  border: 1px solid transparent
+  color: white
+  border-radius: 50%
+  display: flex
+  align-items: center
+  justify-content: center
+  cursor: pointer
+  z-index: 10
+  transition: all 0.3s ease
+  padding: 0
+  margin: 0
+
+  svg
+    width: 18px
+    height: 18px
+    fill: currentColor
+
+  &:hover
+    background: rgba(255, 255, 255, 0.3)
+    transform: translateY(-50%) scale(1.1)
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1)
+
+  &.slider-nav-button-left
+    left: -60px
+
+    @media (max-width: 768px)
+      left: 10px
+      background: rgba(255, 255, 255, 0.8)
+      backdrop-filter: blur(10px)
+      border: 1px solid rgba(200, 200, 200, 0.4)
+
+  &.slider-nav-button-right
+    right: -60px
+
+    @media (max-width: 768px)
+      right: 10px
+      background: rgba(255, 255, 255, 0.8)
+      backdrop-filter: blur(10px)
+      border: 1px solid rgba(200, 200, 200, 0.4)
+
+  @media (max-width: 768px)
+    width: 36px
+    height: 36px
+
+    svg
+      width: 16px
+      height: 16px
+      fill: black
+
+body.light-theme
+  .slider-nav-button
+    background: rgba(255, 255, 255, 0.8)
+    border-color: black
+    color: black
+
+    &:hover
+      background: rgba(255, 255, 255, 0.9)
 
 // === НОВЫЙ БЛОК — ВЕРТИКАЛЬНЫЙ СТЕК КАРТОЧЕК ===
 

@@ -212,6 +212,11 @@ export default function Section1_3() {
     resetTimer();
   };
 
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
+    resetTimer();
+  };
+
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
     resetTimer();
@@ -239,8 +244,7 @@ export default function Section1_3() {
     if (diff > 50) {
       nextSlide();
     } else if (diff < -50) {
-      setCurrentIndex((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
-      resetTimer();
+      prevSlide();
     }
 
     touchStartX.current = null;
@@ -267,6 +271,19 @@ export default function Section1_3() {
         <WorkersBlock/>
         {/* Интегрированный слайдер */}
         <div className="slider-with-photo">
+          <button
+            className="slider-nav-button slider-nav-button-left"
+            onClick={(e) => {
+              e.stopPropagation();
+              prevSlide();
+            }}
+            aria-label="Предыдущее изображение"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+            </svg>
+          </button>
+
           <div
             className="logist-skills__image-slider"
             ref={sliderRef}
@@ -285,6 +302,19 @@ export default function Section1_3() {
               />
             ))}
           </div>
+
+          <button
+            className="slider-nav-button slider-nav-button-right"
+            onClick={(e) => {
+              e.stopPropagation();
+              nextSlide();
+            }}
+            aria-label="Следующее изображение"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
+            </svg>
+          </button>
 
           <div className="logist-skills__pagination">
             {images.map((_, index) => (
