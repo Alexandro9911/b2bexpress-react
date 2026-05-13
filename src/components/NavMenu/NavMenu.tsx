@@ -29,6 +29,7 @@ const NavMenu: React.FC = () => {
     { id: 'investors', text: 'Для инвесторов', actionButton: onClickInvestButton },
     { id: 'feedback', text: 'Оставить отзыв' },
     { id: 'contacts', text: 'Контакты' },
+    { id: 'live', text: 'Жизнь компании'}
   ];
 
   // Intersection Observer для отслеживания видимости кнопки

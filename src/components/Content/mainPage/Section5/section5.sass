@@ -1,0 +1,527 @@
+.section5
+  display: flex
+  flex-flow: column
+  align-items: center
+  justify-content: center
+  background: black
+  color: white
+  font-family: Raleway, serif
+  padding: 60px 40px
+  width: 100%
+  box-sizing: border-box
+
+  @media (max-width: 768px)
+    padding: 40px 16px
+
+  @media (max-width: 480px)
+    padding: 32px 12px
+
+  @media (max-width: 360px)
+    padding: 28px 10px
+
+  @media (max-width: 320px)
+    padding: 24px 8px
+
+  .image-slider,
+  .image-slider-wrapper
+    max-width: none
+    max-height: none
+
+// Контейнер
+.section5__container
+  display: flex
+  flex-flow: column
+  align-items: center
+  width: 100%
+  max-width: 1200px
+  gap: 60px
+
+  @media (max-width: 768px)
+    gap: 40px
+
+  @media (max-width: 480px)
+    gap: 32px
+
+  @media (max-width: 320px)
+    gap: 24px
+
+// Заголовок
+.section5__title
+  font-size: 38px
+  font-weight: bold
+  text-align: center
+  color: white
+  margin: 0
+  padding: 0 20px
+
+  @media (max-width: 768px)
+    font-size: 30px
+
+  @media (max-width: 480px)
+    font-size: 24px
+
+  @media (max-width: 360px)
+    font-size: 22px
+
+  @media (max-width: 320px)
+    font-size: 20px
+
+// Подзаголовок
+.section5__subtitle
+  font-size: 28px
+  font-weight: bold
+  color: white
+  margin: 0 0 24px 0
+
+  @media (max-width: 768px)
+    font-size: 24px
+    margin-bottom: 20px
+
+  @media (max-width: 480px)
+    font-size: 20px
+
+  @media (max-width: 320px)
+    font-size: 18px
+    margin-bottom: 16px
+
+// Блоки с текстом и слайдером
+.section5__block
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 58px
+  width: 100%
+
+  @media (max-width: 1024px)
+    gap: 32px
+
+  @media (max-width: 768px)
+    flex-direction: column
+    gap: 24px
+
+  @media (max-width: 320px)
+    gap: 20px
+
+// Первый блок
+.section5__block-first
+  align-items: center
+
+  @media (max-width: 768px)
+    align-items: flex-start
+
+// Текст слева, слайдер справа
+.section5__block-text-left
+  flex-direction: row
+
+  @media (max-width: 768px)
+    flex-direction: column
+
+// Текст справа, слайдер слева
+.section5__block-text-right
+  flex-direction: row
+
+  @media (max-width: 768px)
+    flex-direction: column
+
+// Текстовый блок — ограничение ширины
+.section5__text
+  flex: 0 0 440px
+  max-width: 440px
+  min-width: 0
+
+  p
+    font-size: 16px
+    line-height: 1.7
+    color: rgba(255, 255, 255, 0.9)
+    margin-top: 18px !important
+
+    &:last-child
+      margin-bottom: 0
+
+  @media (max-width: 1024px)
+    flex: 0 0 360px
+    max-width: 360px
+
+    p
+      font-size: 15px
+
+  @media (max-width: 768px)
+    flex: 1
+    max-width: 100%
+    width: 100%
+
+    p
+      font-size: 15px
+      line-height: 1.6
+      margin-bottom: 20px
+
+  @media (max-width: 480px)
+    p
+      font-size: 14px
+      margin-bottom: 16px
+
+  @media (max-width: 320px)
+    p
+      font-size: 13px
+      line-height: 1.5
+      margin-bottom: 14px
+
+// Слайдер — базовые стили
+.section5__slider
+  flex: 1
+  min-width: 0
+  display: flex
+  justify-content: center
+  align-items: center
+
+  @media (max-width: 768px)
+    width: 100%
+    max-width: 100%
+
+// Увеличенный слайдер
+.section5__slider-large
+  flex: 0 0 380px
+  width: 380px
+  max-width: 380px
+
+  .image-slider-wrapper
+    width: 100%
+    max-width: 380px
+
+  .image-slider
+    min-height: 500px
+
+  @media (max-width: 1024px)
+    flex: 0 0 320px
+    width: 320px
+    max-width: 320px
+
+    .image-slider-wrapper
+      max-width: 320px
+
+    .image-slider
+      min-height: 420px
+
+  @media (max-width: 768px)
+    flex: 1
+    width: 100%
+    max-width: 380px
+    margin: 0 auto
+
+    .image-slider-wrapper
+      max-width: 380px
+
+    .image-slider
+      min-height: 450px
+
+  @media (max-width: 480px)
+    max-width: 100%
+
+    .image-slider-wrapper
+      max-width: 100%
+
+    .image-slider
+      min-height: 380px
+
+// Средний слайдер
+.section5__slider-medium
+  flex: 0 0 320px
+  width: 320px
+  max-width: 320px
+
+  .image-slider-wrapper
+    width: 100%
+    max-width: 320px
+
+  .image-slider
+    min-height: 420px
+
+  @media (max-width: 1024px)
+    flex: 0 0 280px
+    width: 280px
+    max-width: 280px
+
+    .image-slider-wrapper
+      max-width: 280px
+
+    .image-slider
+      min-height: 370px
+
+  @media (max-width: 768px)
+    flex: 1
+    width: 100%
+    max-width: 340px
+    margin: 0 auto
+
+    .image-slider-wrapper
+      max-width: 340px
+
+    .image-slider
+      min-height: 400px
+
+  @media (max-width: 480px)
+    max-width: 100%
+
+    .image-slider-wrapper
+      max-width: 100%
+
+    .image-slider
+      min-height: 350px
+
+// Списки
+.section5__list
+  margin: 0 0 24px 0
+  padding-left: 24px
+  line-height: 1.7
+
+  li
+    font-size: 16px
+    color: rgba(255, 255, 255, 0.9)
+    margin-bottom: 6px
+
+    &:last-child
+      margin-bottom: 0
+
+  @media (max-width: 768px)
+    margin-bottom: 20px
+
+    li
+      font-size: 15px
+
+  @media (max-width: 480px)
+    padding-left: 20px
+    margin-bottom: 16px
+
+    li
+      font-size: 14px
+
+  @media (max-width: 320px)
+    padding-left: 16px
+    margin-bottom: 14px
+
+    li
+      font-size: 13px
+
+// Список городов — вертикальный
+.section5__list-cities
+  display: block
+
+// Ряд одиночных изображений
+.section5__single-images-row
+  display: flex
+  flex-wrap: wrap
+  gap: 20px
+  justify-content: center
+  width: 100%
+
+  @media (max-width: 768px)
+    gap: 16px
+
+  @media (max-width: 480px)
+    gap: 10px
+
+  @media (max-width: 320px)
+    gap: 8px
+
+.section5__single-image-wrapper
+  flex: 1
+  min-width: 220px
+  max-width: 300px
+  border-radius: 12px
+  overflow: hidden
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3)
+  transition: transform 0.3s ease, box-shadow 0.3s ease
+  cursor: pointer
+
+  &:hover
+    transform: translateY(-4px)
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4)
+
+  @media (max-width: 768px)
+    min-width: 160px
+    max-width: 48%
+    border-radius: 10px
+
+  @media (max-width: 480px)
+    min-width: 44%
+    max-width: 48%
+    border-radius: 8px
+
+  @media (max-width: 320px)
+    min-width: 44%
+    max-width: 48%
+    border-radius: 6px
+
+.section5__single-image
+  width: 100%
+  height: 100%
+  object-fit: cover
+  display: block
+  aspect-ratio: 4 / 3
+
+// === ЛАЙТБОКС ===
+.section5__lightbox
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: rgba(0, 0, 0, 0.9)
+  display: flex
+  align-items: center
+  justify-content: center
+  z-index: 1000
+  padding: 20px
+  box-sizing: border-box
+  cursor: pointer
+  animation: fadeIn 0.3s ease
+
+  @media (max-width: 480px)
+    padding: 10px
+
+.section5__lightbox-content
+  position: relative
+  max-width: 90%
+  max-height: 90%
+  cursor: default
+  animation: zoomIn 0.3s ease
+
+.section5__lightbox-image
+  max-width: 100%
+  max-height: 85vh
+  object-fit: contain
+  border-radius: 8px
+  display: block
+
+.section5__lightbox-close
+  position: absolute
+  top: -40px
+  right: 0
+  background: none
+  border: none
+  cursor: pointer
+  padding: 4px
+  z-index: 1001
+  opacity: 0.8
+  transition: opacity 0.3s ease
+
+  &:hover
+    opacity: 1
+
+  @media (max-width: 480px)
+    top: -36px
+
+    svg
+      width: 28px
+      height: 28px
+
+@keyframes fadeIn
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+@keyframes zoomIn
+  from
+    transform: scale(0.9)
+    opacity: 0
+  to
+    transform: scale(1)
+    opacity: 1
+
+// CTA блок
+.section5__cta
+  text-align: center
+  max-width: 640px
+  width: 100%
+  margin-top: 20px
+
+  p
+    font-size: 17px
+    line-height: 1.7
+    color: rgba(255, 255, 255, 0.9)
+    margin: 0 0 24px 0
+
+  @media (max-width: 768px)
+    max-width: 100%
+
+    p
+      font-size: 15px
+      margin-bottom: 20px
+
+  @media (max-width: 480px)
+    p
+      font-size: 14px
+      margin-bottom: 16px
+
+  @media (max-width: 320px)
+    p
+      font-size: 13px
+      margin-bottom: 14px
+
+.section5__cta-highlight
+  font-size: 28px !important
+  font-weight: bold
+  color: transparent !important
+  background: linear-gradient(180deg, rgba(199, 52, 199, 1) 0%, rgba(65, 168, 231, 1) 100%)
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  margin-top: 32px !important
+
+  @media (max-width: 768px)
+    font-size: 24px !important
+    margin-top: 24px !important
+
+  @media (max-width: 480px)
+    font-size: 20px !important
+
+  @media (max-width: 320px)
+    font-size: 18px !important
+    margin-top: 20px !important
+
+// === СВЕТЛАЯ ТЕМА ===
+body.light-theme
+  .section5
+    background: #f8f9fa
+    color: #2c3e50
+
+  .section5__title
+    color: #1a1a1a
+
+  .section5__subtitle
+    color: #1a1a1a
+
+  .section5__text
+    p
+      color: #444
+
+  .section5__list
+    li
+      color: #444
+
+  .section5__single-image-wrapper
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1)
+    border: 1px solid rgba(200, 200, 200, 0.4)
+
+    &:hover
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15)
+
+  .section5__cta
+    p
+      color: #444
+
+  .section5__cta-highlight
+    color: #1a1a1a !important
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+
+.additional-mardin
+  margin-left: 20px
+  @media screen and (max-width: 767px)
+    margin-left: unset
+
+.block-title
+  font-size: 44px !important
+
+  @media screen and (max-width: 767px)
+    font-size: 36px !important

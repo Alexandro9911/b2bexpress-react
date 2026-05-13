@@ -7,6 +7,32 @@ import Sotrudnik4Image from '../../../../assets/images/sotrudnik4.png';
 export default function WorkersBlock() {
   const workers = [
     {
+      name: 'Мудров Александр Андреевич',
+      contacts: {
+        tel: {
+          hrefVal: 'tel:+79217778005',
+          label: 'Тел: +7 (921) 777-80-05'
+        },
+        email: {
+          hrefVal: 'mailto:mir_logistiki2@mail.ru',
+          label: 'Email: mir_logistiki2@mail.ru',
+        },
+      },
+      image: Sotrudnik4Image,
+      position: 'Руководитель отдела внутренней логистики'
+    },
+    {
+      name: 'Дружинников Александр Сергеевич ',
+      contacts: {
+        email: {
+          hrefVal: 'mailto:mir_logistiki07@bk.ru',
+          label: 'Email: mir_logistiki07@bk.ru',
+        },
+      },
+      image: Sotrudnik2Image,
+      position: 'Руководитель отдела по работе с партнерами'
+    },
+    {
       name: ' Вислогузов Артем Сергеевич',
       contacts: {
         tel: {
@@ -20,17 +46,6 @@ export default function WorkersBlock() {
       },
       image: SotrudnikImage,
       position: 'Руководитель отдела международной логистики'
-    },
-    {
-      name: 'Дружинников Александр Сергеевич ',
-      contacts: {
-        email: {
-          hrefVal: 'mailto:mir_logistiki07@bk.ru',
-          label: 'Email: mir_logistiki07@bk.ru',
-        },
-      },
-      image: Sotrudnik2Image,
-      position: 'Руководитель отдела по работе с партнерами'
     },
     {
       name: 'Малыгин Иван Алексеевич',
@@ -47,21 +62,6 @@ export default function WorkersBlock() {
       image: Sotrudnik3Image,
       position: 'Руководитель Финансово-экономического отдела'
     },
-    {
-      name: 'Мудров Александр Андреевич',
-      contacts: {
-        tel: {
-          hrefVal: 'tel:+79217778005',
-          label: 'Тел: +7 (921) 777-80-05'
-        },
-        email: {
-          hrefVal: 'mailto:mir_logistiki2@mail.ru',
-          label: 'Email: mir_logistiki2@mail.ru',
-        },
-      },
-      image: Sotrudnik4Image,
-      position: 'Руководитель отдела внутренней логистики'
-    }
   ];
 
   return (
