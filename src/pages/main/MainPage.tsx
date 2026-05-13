@@ -10,6 +10,7 @@ import Section2_1 from "../../components/Content/mainPage/Section2_1/Section2_1.
 import Section2_2 from "../../components/Content/mainPage/Section2_2/Section2_2.tsx";
 import Section3 from "../../components/Content/mainPage/Section3/Section3.tsx";
 import Section4 from "../../components/Content/mainPage/Section4/Section4.tsx";
+import Section5 from "../../components/Content/mainPage/Section5/Section5.tsx";
 
 export default function MainPage(){
   return (
@@ -37,6 +38,9 @@ export default function MainPage(){
       </section>
       <section id='contacts' data-section="section4" className="section-item">
         <Section4/>
+      </section>
+      <section id='live' data-section='section5' className="section-item">
+        <Section5/>
       </section>
     </div>
   )
