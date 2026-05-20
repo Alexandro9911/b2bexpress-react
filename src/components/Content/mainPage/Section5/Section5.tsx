@@ -5,22 +5,22 @@ import ImageSlider from '../../../ImageSlider/ImageSlider.tsx';
 import Live1Img from '../../../../assets/images/live/live1.jpg';
 import Live2Img from '../../../../assets/images/live/live2.jpg';
 import Live3Img from '../../../../assets/images/live/live3.jpg';
-import Live4Img from '../../../../assets/images/live/live4.jpg';
+import Live4Img from '../../../../assets/images/live/live4.jpg'; // босс2 заглавная 2 ряд
 import Live5Img from '../../../../assets/images/live/live5.jpg';
 import Live6Img from '../../../../assets/images/live/live6.jpg';
 import Live7Img from '../../../../assets/images/live/live7.jpg';
 import Live8Img from '../../../../assets/images/live/live8.jpg';
 import Live9Img from '../../../../assets/images/live/live9.jpg';
 import Live10Img from '../../../../assets/images/live/live10.jpg';
-import Live11Img from '../../../../assets/images/live/live11.jpg';
+import Live11Img from '../../../../assets/images/live/live11.jpg'; // босс 1 заглавная 1 ряд
 import Live12Img from '../../../../assets/images/live/live12.jpg';
-import Live13Img from '../../../../assets/images/live/live13.jpg';
 import Live14Img from '../../../../assets/images/live/live14.jpg';
 import Live15Img from '../../../../assets/images/live/live15.jpg';
-import Live16Img from '../../../../assets/images/live/live16.jpg';
+import Live16Img from '../../../../assets/images/live/live16.jpg';  // вратарь
 import Live17Img from '../../../../assets/images/live/live17.jpg';
-import Live18Img from '../../../../assets/images/live/live18.jpg';
-import Live19Img from '../../../../assets/images/live/live19.jpg';
+import Live18Img from '../../../../assets/images/live/live18.jpg';  // вратарь
+import Live19Img from '../../../../assets/images/live/live19.jpg'; // вратарь заглавная 3 ряд
+import Live20Img from '../../../../assets/images/live/live20.jpg';
 
 function ZoomableImage({ src, alt }: { src: string; alt: string }) {
   const [zoomed, setZoomed] = useState(false);
@@ -57,10 +57,10 @@ function ZoomableImage({ src, alt }: { src: string; alt: string }) {
 }
 
 export default function Section5() {
-  const slider1Images = [Live1Img, Live2Img, Live3Img, Live4Img, Live5Img];
-  const slider2Images = [Live6Img, Live7Img, Live8Img, Live9Img, Live10Img];
-  const slider3Images = [Live11Img, Live12Img, Live13Img, Live14Img, Live15Img];
-  const singleImages = [Live16Img, Live17Img, Live18Img, Live19Img];
+  const slider1Images = [Live4Img, Live1Img, Live2Img, Live3Img, Live5Img];
+  const slider2Images = [Live11Img, Live7Img, Live8Img, Live9Img, Live10Img, Live17Img];
+  const slider3Images = [Live20Img, Live12Img, Live14Img, Live15Img, Live6Img];
+  const singleImages = [Live16Img, Live18Img, Live19Img];
 
   return (
     <div className="section5">
@@ -88,7 +88,7 @@ export default function Section5() {
           <div className="section5__slider section5__slider-large">
             <ImageSlider
               images={slider1Images}
-              autoPlayInterval={4000}
+              autoPlayInterval={20000}
               aspectRatio="3 / 4"
               minHeight="450px"
             />
@@ -99,7 +99,7 @@ export default function Section5() {
           <div className="section5__slider section5__slider-large">
             <ImageSlider
               images={slider2Images}
-              autoPlayInterval={4500}
+              autoPlayInterval={20000}
               aspectRatio="3 / 4"
               minHeight="450px"
             />
@@ -152,7 +152,7 @@ export default function Section5() {
           <div className="section5__slider section5__slider-medium">
             <ImageSlider
               images={slider3Images}
-              autoPlayInterval={5000}
+              autoPlayInterval={20000}
               aspectRatio="3 / 4"
               minHeight="350px"
             />

@@ -7,6 +7,8 @@ import PadlockImage from '../../../../assets/icons/padlock_colored.png';
 import Car1 from '../../../../assets/images/car1.jpg';
 import Car2 from '../../../../assets/images/car2.jpg';
 import Car3 from '../../../../assets/images/car3.jpg';
+import Truck_01 from '../../../../assets/images/truck_01.png';
+import Truck_03 from '../../../../assets/images/truck_03.jpg';
 import WorkersBlock from "./WorkersBlock.tsx";
 
 // Хук для отслеживания видимости элемента
@@ -197,7 +199,7 @@ export default function Section1_3() {
   const sliderRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<number | null>(null);
 
-  const images = [Car1, Car2, Car3];
+  const images = [Truck_01, Car1, Truck_03, Car2, Car3];
   const totalSlides = images.length;
 
   const resetTimer = () => {

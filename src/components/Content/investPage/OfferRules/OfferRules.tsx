@@ -3,10 +3,12 @@ import { useEffect, useState, useRef } from 'react';
 import Car1 from '../../../../assets/images/car1.jpg';
 import Car2 from '../../../../assets/images/car2.jpg';
 import Car3 from '../../../../assets/images/car3.jpg';
+import Truck02 from '../../../../assets/images/truck_02.png';
+import Truck04 from '../../../../assets/images/truck_04.png';
 // import Franchise from '../../../../assets/icons/franchise_col.png';
 import InvestImg from '../../../../assets/icons/invest_col.png';
 
-const images = [Car1, Car2, Car3];
+const images = [Truck02, Car1, Car2, Truck04, Car3];
 
 export default function OfferRules() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -41,14 +43,15 @@ export default function OfferRules() {
   }, [isTransitioning, activeIndex]);
 
   const handleSlideClick = (index: number) => {
-    if (index !== activeIndex && !isTransitioning) {
-      setIsTransitioning(true);
-      setActiveIndex(index);
-    }
-    if (index === activeIndex && !isTransitioning) {
-      setIsTransitioning(true);
-      const newIndex = index < 2 ? index + 1 : 0
-      setActiveIndex(newIndex);
+    if (!isTransitioning) {
+      if (index !== activeIndex) {
+        setIsTransitioning(true);
+        setActiveIndex(index);
+      } else {
+        // Клик по центральной карточке - переключаем на следующую
+        setIsTransitioning(true);
+        setActiveIndex((prev) => (prev + 1) % images.length);
+      }
     }
   };
 
@@ -66,10 +69,15 @@ export default function OfferRules() {
     }
   };
 
-  const getPositionClasses = (index: number) => {
+  // Получаем индексы для трёх позиций
+  const getPrevIndex = () => (activeIndex - 1 + images.length) % images.length;
+  const getNextIndex = () => (activeIndex + 1) % images.length;
+
+  const getPositionClass = (index: number) => {
     if (index === activeIndex) return 'offer-rules__slide--center';
-    if (index === (activeIndex - 1 + images.length) % images.length) return 'offer-rules__slide--top';
-    return 'offer-rules__slide--bottom';
+    if (index === getPrevIndex()) return 'offer-rules__slide--top';
+    if (index === getNextIndex()) return 'offer-rules__slide--bottom';
+    return ''; // Скрытые слайды
   };
 
   // Обработчики свайпа
@@ -158,14 +166,20 @@ export default function OfferRules() {
             </svg>
           </button>
 
-          {images.map((img, index) => (
-            <div
-              key={index}
-              className={`offer-rules__slide ${getPositionClasses(index)} ${isTransitioning ? 'offer-rules__slide--transitioning' : ''}`}
-              style={{ backgroundImage: `url(${img})` }}
-              onClick={() => handleSlideClick(index)}
-            ></div>
-          ))}
+          {images.map((img, index) => {
+            const positionClass = getPositionClass(index);
+            return (
+              <div
+                key={index}
+                className={`offer-rules__slide ${positionClass} ${isTransitioning ? 'offer-rules__slide--transitioning' : ''}`}
+                style={{
+                  backgroundImage: `url(${img})`,
+                  display: positionClass ? 'block' : 'none'
+                }}
+                onClick={() => handleSlideClick(index)}
+              ></div>
+            );
+          })}
 
           <button
             className="slider-nav-button slider-nav-button-right"
