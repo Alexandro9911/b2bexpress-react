@@ -103,6 +103,7 @@
   display: flex
   flex-direction: column
   gap: 40px
+  padding-top: 40px
 
 // === СПИСОК ШАГОВ ===
 .become-investor__steps
@@ -239,3 +240,62 @@ body.light-theme
 
   .become-investor__image
     border-radius: 16px
+
+//.section-slider
+//  .image-slider-nav-button-left
+//    margin-left: 70px
+//
+//    @media screen and (max-width: 768px)
+//      margin-left: unset
+//
+//  .image-slider-nav-button-right
+//    margin-right: 70px
+//
+//    @media screen and (max-width: 768px)
+//      margin-right: unset
+
+
+// Увеличенный слайдер
+.section-slider-large
+  flex: 0 0 380px
+  width: 380px
+  max-width: 380px
+
+  .image-slider-wrapper
+    width: 100%
+    max-width: 380px
+
+  .image-slider
+    min-height: 500px
+
+  @media (max-width: 1024px)
+    flex: 0 0 320px
+    width: 320px
+    max-width: 320px
+
+    .image-slider-wrapper
+      max-width: 320px
+
+    .image-slider
+      min-height: 420px
+
+  @media (max-width: 768px)
+    flex: 1
+    width: 100%
+    max-width: 380px
+    margin: 0 auto
+
+    .image-slider-wrapper
+      max-width: 380px
+
+    .image-slider
+      min-height: 450px
+
+  @media (max-width: 480px)
+    max-width: 100%
+
+    .image-slider-wrapper
+      max-width: 100%
+
+    .image-slider
+      min-height: 380px

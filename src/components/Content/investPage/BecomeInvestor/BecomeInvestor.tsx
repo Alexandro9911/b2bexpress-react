@@ -1,5 +1,8 @@
 import './becomeInvestor.sass';
 import BuildingImage from '../../../../assets/images/buildingWithLogo.png';
+import TrucksImage from '../../../../assets/images/trucks_with_logo.jpg';
+
+import ImageSlider from "../../../ImageSlider/ImageSlider.tsx";
 
 export default function BecomeInvestor() {
   const steps = [
@@ -48,7 +51,14 @@ export default function BecomeInvestor() {
 
         {/* Правая часть — изображение */}
         <div className="become-investor__visual">
-          <img src={BuildingImage} alt="Здание компании Мир Логистики" className="become-investor__image" />
+          <div className="section-slider-large">
+            <ImageSlider
+              autoPlayInterval={20000}
+              //aspectRatio="3 / 4"
+              minHeight="450px"
+              images={[TrucksImage,BuildingImage]}
+            />
+          </div>
         </div>
       </div>
     </section>

@@ -57,10 +57,10 @@ function ZoomableImage({ src, alt }: { src: string; alt: string }) {
 }
 
 export default function Section5() {
-  const slider1Images = [Live4Img, Live1Img, Live2Img, Live3Img, Live5Img];
-  const slider2Images = [Live11Img, Live7Img, Live8Img, Live9Img, Live10Img, Live17Img];
-  const slider3Images = [Live20Img, Live12Img, Live14Img, Live15Img, Live6Img];
-  const singleImages = [Live16Img, Live18Img, Live19Img];
+  const slider1Images = [Live4Img, Live1Img, Live2Img, Live3Img, Live5Img, Live19Img];
+  const slider2Images = [Live11Img, Live8Img, Live9Img,Live16Img, Live17Img];
+  const slider3Images = [Live18Img, Live20Img, Live14Img, Live15Img, Live6Img];
+  const singleImages = [Live10Img, Live7Img, Live12Img];
 
   return (
     <div className="section5">
