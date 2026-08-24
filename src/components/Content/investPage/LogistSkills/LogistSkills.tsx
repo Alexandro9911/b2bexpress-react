@@ -1,7 +1,5 @@
 import './logistSkills.sass';
-import SotrudnikImage from '../../../../assets/images/sotrudnik.png';
 import Sotrudnik2Image from '../../../../assets/images/sotrudnik2.png';
-import Sotrudnik3Image from '../../../../assets/images/sotrudnik3.png';
 import Sotrudnik4Image from '../../../../assets/images/sotrudnik4.png';
 import { useState, useEffect, useRef } from 'react';
 import classNames from "classnames";
@@ -26,7 +24,7 @@ export default function LogistSkills({ mainInfo }: TProps) {
   const sliderRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<number | null>(null);
 
-  const images = [SotrudnikImage, Sotrudnik2Image, Sotrudnik3Image, Sotrudnik4Image];
+  const images = [Sotrudnik2Image, Sotrudnik4Image];
   const totalSlides = images.length;
 
   const resetTimer = () => {

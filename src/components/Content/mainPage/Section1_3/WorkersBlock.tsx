@@ -1,7 +1,5 @@
 import './workersBlock.sass';
-import SotrudnikImage from '../../../../assets/images/sotrudnik.png';
 import Sotrudnik2Image from '../../../../assets/images/sotrudnik2.png';
-import Sotrudnik3Image from '../../../../assets/images/sotrudnik3.png';
 import Sotrudnik4Image from '../../../../assets/images/sotrudnik4.png';
 
 export default function WorkersBlock() {
@@ -31,36 +29,6 @@ export default function WorkersBlock() {
       },
       image: Sotrudnik2Image,
       position: 'Руководитель отдела по работе с партнерами'
-    },
-    {
-      name: ' Вислогузов Артем Сергеевич',
-      contacts: {
-        tel: {
-          hrefVal: 'tel:+79215772638',
-          label: 'Тел: +7 (921) 577-26-38'
-        },
-        email: {
-          hrefVal: 'mailto:mir_logistiki04@bk.ru',
-          label: 'Email: mir_logistiki04@bk.ru',
-        },
-      },
-      image: SotrudnikImage,
-      position: 'Руководитель отдела международной логистики'
-    },
-    {
-      name: 'Малыгин Иван Алексеевич',
-      contacts: {
-        tel: {
-          hrefVal: 'tel:+79215763226',
-          label: 'Тел:  +7 (921) 576-32-26'
-        },
-        email: {
-          hrefVal: 'mailto:mir_logistiki05@bk.ru',
-          label: 'Email: mir_logistiki05@bk.ru',
-        },
-      },
-      image: Sotrudnik3Image,
-      position: 'Руководитель Финансово-экономического отдела'
     },
   ];
 
